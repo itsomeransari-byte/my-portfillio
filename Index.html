@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio Web</title>
+    <style>
+        /* 🌊 Moving Animated Background Gadget */
+        body {
+            background: linear-gradient(-45deg, #00a2ff, #ae00ff, #00ff87, #ff00ea);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 🌈 Rainbow Header Styling */
+        h1, h2, h3 {
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #00ffff, #0000ff, #8b00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        /* 🔮 Frosted Glass Container Card */
+        .card {
+            background-color: rgba(93, 0, 255, 0.288);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px auto;
+            max-width: 600px;
+            border: black solid 2px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 📄 White Paragraph Text for Clear Reading */
+        p {
+            color: #ffffff;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        /* 📸 Circular Profile Picture Graphic */
+        .profile-img {
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ⚡ Glowing Dynamic Button Setup */
+        .glow-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 10px 5px; /* Added spacing between buttons */
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            background: linear-gradient(45deg, #ff00ea, #00a2ff);
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .glow-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 162, 255, 0.6);
+            letter-spacing: 1px;
+        }
+
+        .glow-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* 📝 Footer Metadata Section */
+        footer {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            margin-top: 25px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to My Portfolio</h1>
+
+    <div class="card">
+        <!-- Profile Picture Grid Layout -->
+        <img class="profile-img" src="channels4_profile.jpg" height="200" width="200" alt="Profile Picture">
+        
+        <h2>About Me</h2>
+        <p>Hello, I am a frontend web designer and vlogger.</p>
+        
+        <h3>I Love To</h3>
+        <p>Make beautiful websites using modern styles and create video content with my crew.</p>
+        
+        <!-- 👑 Honestly showcasing your current skills -->
+        <h3>My Current Skills</h3>
+        <p>HTML5, CSS3, Responsive Design, Background Animations, javascript</p>
+        
+        <!-- 👑 Professional Dynamic Project Showcase Teaser -->
+        <h3>My Journey</h3>
+        <p style="color: #ffff00; font-weight: bold; font-size: 1.2rem; letter-spacing: 1px; margin-bottom: 5px;">🚀 FIRST SITE COMPLETED</p>
+        <p style="font-style: italic; opacity: 0.95; font-size: 1rem; padding: 0 10px;">Check out my web projects below!</p>
+        
+        <!-- 🔥 FIXED BUTTON LINKS HERE -->
+        <div>
+            <a href="page2.html" class="glow-btn">Open Page 2</a>
+            <a href="page3.html" class="glow-btn">Open Page 3</a>
+            <a href="page4.html" class="glow-btn">Open Page 4</a>
+            <a href="page5.html" class="glow-btn">Open Page 4</a>
+        </div>
+
+        <p>If you want to talk about vlogging or coding, reach out here:</p> 
+        <h3><em>itsomeransaro@gmail.com</em></h3>
+        <p>03133489623</p> 
+        
+        <h2>Thanks</h2> 
+        
+        <footer>
+            <p style="font-size: 0.95rem; font-style: italic; color: #00ff87; margin-bottom: 5px;">Made with curiosity & love</p>
+            <p>© 2026 Umar. All Rights Reserved.</p>
+            <p style="font-size: 0.75rem; opacity: 0.6;">"No part of this website or its content may be reproduced or copied without the written permission of the author."</p>
+        </footer>
+    </div>
+</body>
+</html>
+<script>
+    alert ('welcome')
+</script>

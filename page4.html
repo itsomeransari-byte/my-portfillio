@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Professional Business Card</title>
+    <style>
+        /* 🌌 Moving Cyber-Grid Background */
+        body {
+            background-color: #0a0a53;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden; /* Keeps the screen locked in place */
+            
+            /* Creates a tech grid pattern using gradients */
+            background-image: 
+                linear-gradient(rgba(0, 255, 136, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.04) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        /* Pulls the grid downward smoothly */
+        @keyframes moveGrid {
+            from { background-position: 0 0; }
+            to { background-position: 0 100%; }
+        }
+
+        /* 🗂️ The Breathing Neon Card Box Container */
+        .biz-card {
+            background-color: #000d6c;
+            border: 2px solid #ff0000;
+            border-radius: 15px;
+            padding: 35px 25px;
+            width: 550px;
+            height: 350px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+            animation: breatheGlow 4s ease-in-out infinite alternate;
+        }
+
+        /* Makes the box border glow shift between Green and Blue */
+        @keyframes breatheGlow {
+            0% {
+                box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+                border-color: #00ff66;
+            }
+            100% {
+                box-shadow: 0 0 30px rgba(0, 162, 255, 0.5);
+                border-color: #ff0000;
+            }
+        }
+
+        /* 👑 Card Typography Styles */
+        h1 {
+            color: #00ff88;
+            margin: 0 0 10px 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+        h2 {
+            color: #ffffff;
+            margin: 0 0 5px 0;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+        h3 {
+            color: #00ff88;
+            margin: 0 0 25px 0;
+            font-size: 1rem;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* 📄 Info Rows Layout Configuration */
+        .info-row {
+            color: #a0a5b5;
+            font-size: 0.95rem;
+            margin: 12px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: left;
+        }
+
+        /* Highlight text inside info rows */
+        .info-row strong {
+            color: #ffffff;
+            display: inline-block;
+            width: 70px;
+        }
+
+        /* 📱 Mobile Responsive Layout Overrides */
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 10px;
+                height: auto; /* Allows the page to stretch naturally on phones */
+                overflow-y: auto; /* Lets the user scroll down to read your footer */
+                align-items: center;
+            }
+            
+            .biz-card {
+                width: 85%; /* Fits beautifully inside the mobile screen edges */
+                height: auto; /* Lets the box grow tall so your text never overflows */
+                padding: 25px 15px; /* Adds clean breathing room inside the box */
+                align-items: center;
+            }
+
+            h1 {
+                font-size: 1.8rem; /* Makes the heading slightly smaller for mobile */
+                align-items: center;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+                align-items: center;
+            }
+
+            h3 {
+                font-size: 0.85rem;
+                margin-bottom: 15px;
+                align-items: center;
+            }
+            
+            .info-row {
+                font-size: 0.85rem; /* Shrinks text size slightly so it doesn't wrap oddly */
+                margin: 10px 0;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 👑 Main Business Card Component Wrapper -->
+    <div class="biz-card">
+        <h1>My Business Card</h1>
+
+        <!-- Name display -->
+        <h2>UMAR</h2>
+        
+        <!-- Specialty title -->
+        <h3>HTML & CSS Designer</h3>
+        
+        <!-- Contact details layout -->
+        <div class="info-row"><strong>Email:</strong> itsomeransaro@gmail.com</div>
+        <div class="info-row"><strong>Phone:</strong> 03133489623</div>
+        <div class="info-row"><strong>Focus:</strong> Frontend Layouts</div>
+        <div class="info-row"><strong>Status:</strong> Local Dev Mode</div>
+
+        <!-- Footer information block using clean HTML5 layout -->
+        <footer style="color: #00ff88; font-size: 0.75rem; margin-top: 15px; opacity: 0.8;">
+            <div>made with curiosity & love</div>
+            <div>© 2026 Umar. All Rights Reserved.</div>
+            <div style="font-size: 0.65rem; opacity: 0.5; margin-top: 5px;">
+                "No part of this website or its content may be reproduced or copied without the written permission of the author."
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>

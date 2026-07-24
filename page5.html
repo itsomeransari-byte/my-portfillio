@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project</title>
+    <style>
+        body {
+            background-color: darkblue;
+            border-color: blueviolet;
+            border-radius: 10px;
+            border: 15px solid transparent; /* Added solid style to fix the border */
+        }
+        .box {
+            /* Box dimensions and styling */
+            background-color: rgb(255, 255, 255);
+            border: 5px solid black;
+            width: 400px;
+            height: 410px;
+            padding: 5px;
+            /* Centering the box on the screen */
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 80px; /* Adjust top space as needed */
+            /* Centering contents inside the box */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        h1 {
+            color: blueviolet;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        h2 {
+            color: blue;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        p {
+            color: darkcyan;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        button {
+            color: rgb(0, 0, 0);
+            border: none;
+            background-color: greenyellow;
+            padding: 5px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>hi</h1>
+        <h2>i can make simple functions with javascript</h2>
+        <p>if you want to check my portfolio</p>
+        
+        <!-- Updated onclick behavior below -->
+        <button onclick="window.open('file:///D:/portfililo/Index.html', '_blank')">click me</button>
+        <p>for say hello</p>
+        <button onclick="alert('konnichiwa wahtashu wa umar desu')">say hello</button>
+        <p>functions did i make</p>
+        <button onclick="confirm('are you confirm')">click me</button>
+    </div>
+</body>
+</html>
+<script>
+    alert ('welcome to projects')
+    let phoneNumber = "";
+let isValid = false;
+
+// Regex checks for exactly 10 digits (adjust as needed for your country)
+const phonePattern = /^\d{11}$/; 
+
+while (!isValid) {
+    phoneNumber = prompt("Enter your 11-digit phone number (numbers only) its is a joke you can add any number like 12345678910:");
+    
+    // If user clicks "Cancel", break the loop
+    if (phoneNumber === null) {
+        alert("Input cancelled.");
+        break;
+    }
+
+    // Validate the input against the pattern
+    if (phonePattern.test(phoneNumber)) {
+        isValid = true;
+        alert("Success! Phone number saved: " + phoneNumber);
+    } else {
+        alert("Invalid input! Please make sure it is exactly 10 digits.");
+    }
+}
+
+    confirm ("are you confirm")
+</script>
