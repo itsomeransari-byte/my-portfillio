@@ -1,0 +1,2252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CakeHub | Luxury Bakery</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --pink: #be185d;
+    --pink-dark: #9d174d;
+    --pink-light: #fce7f3;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --cream: #fffafa;
+    --white: #ffffff;
+    --border: #e5e7eb;
+    --gold: #f59e0b;
+    --radius: 12px;
+    --card-radius: 20px;
+}
+
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: var(--cream);
+    color: var(--text);
+
+    padding-top: 75px;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 75px;
+
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 5%;
+
+    background: rgba(255,255,255,.97);
+
+    box-shadow:
+        0 3px 20px rgba(0,0,0,.08);
+}
+
+.logo {
+    color: var(--pink);
+
+    text-decoration: none;
+
+    font-size: 1.5rem;
+
+    font-weight: 900;
+}
+
+.nav-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text);
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition: .25s;
+}
+
+.nav-links a:hover {
+    color: var(--pink);
+}
+
+.nav-order {
+    background: var(--pink);
+
+    color: white !important;
+
+    padding: 11px 18px;
+
+    border-radius: 10px;
+}
+
+.nav-order:hover {
+    background: var(--pink-dark);
+}
+
+/* MOBILE BUTTON */
+
+.menu-button {
+    display: none;
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 28px;
+
+    cursor: pointer;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    max-width: 1200px;
+
+    min-height: 600px;
+
+    margin: auto;
+
+    padding: 70px 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+.badge {
+    padding: 9px 17px;
+
+    margin-bottom: 20px;
+
+    background: var(--pink-light);
+
+    color: var(--pink);
+
+    border-radius: 50px;
+
+    font-weight: 800;
+
+    font-size: 14px;
+}
+
+.hero h1 {
+    max-width: 850px;
+
+    font-size:
+        clamp(42px, 7vw, 76px);
+
+    line-height: 1.05;
+
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: var(--pink);
+}
+
+.hero p {
+    max-width: 700px;
+
+    color: var(--muted);
+
+    line-height: 1.7;
+
+    font-size: 18px;
+
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+}
+
+.primary-button,
+.secondary-button {
+    padding: 14px 25px;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    transition: .25s;
+}
+
+.primary-button {
+    border: none;
+
+    background: var(--pink);
+
+    color: white;
+}
+
+.primary-button:hover {
+    background: var(--pink-dark);
+
+    transform: translateY(-2px);
+}
+
+.secondary-button {
+    border: 2px solid var(--pink);
+
+    background: white;
+
+    color: var(--pink);
+}
+
+.secondary-button:hover {
+    background: var(--pink-light);
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+section {
+    scroll-margin-top: 90px;
+}
+
+.section {
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 80px 25px;
+}
+
+.section-title {
+    text-align: center;
+
+    font-size: 38px;
+
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    text-align: center;
+
+    color: var(--muted);
+
+    margin-bottom: 45px;
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.feature-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+.feature-card {
+    padding: 30px;
+
+    background: white;
+
+    border-radius: var(--card-radius);
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 25px rgba(0,0,0,.06);
+
+    transition: .25s;
+}
+
+.feature-card:hover {
+    transform: translateY(-7px);
+}
+
+.feature-icon {
+    font-size: 45px;
+
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: var(--muted);
+
+    line-height: 1.6;
+}
+
+/* =========================
+   CAKES
+========================= */
+
+.cake-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+.cake-card {
+    overflow: hidden;
+
+    background: white;
+
+    border-radius: var(--card-radius);
+
+    box-shadow:
+        0 5px 25px rgba(0,0,0,.06);
+
+    transition: .25s;
+}
+
+.cake-card:hover {
+    transform: translateY(-7px);
+}
+
+.cake-picture {
+    height: 220px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 90px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fce7f3,
+            #fff1f2
+        );
+}
+
+.cake-info {
+    padding: 23px;
+}
+
+.cake-info h3 {
+    margin-bottom: 9px;
+}
+
+.cake-info p {
+    color: var(--muted);
+
+    line-height: 1.5;
+
+    margin-bottom: 14px;
+}
+
+.price {
+    color: var(--pink);
+
+    font-size: 20px;
+
+    font-weight: 900;
+}
+
+/* =========================
+   ORDER
+========================= */
+
+.order-section {
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 80px 25px;
+}
+
+.order-card {
+    background: white;
+
+    padding: 40px;
+
+    border-radius: var(--card-radius);
+
+    box-shadow:
+        0 8px 35px rgba(0,0,0,.07);
+}
+
+.order-heading {
+    text-align: center;
+
+    margin-bottom: 35px;
+}
+
+.order-heading h2 {
+    font-size: 36px;
+
+    margin-bottom: 10px;
+}
+
+.order-heading p {
+    color: var(--muted);
+}
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-weight: 800;
+
+    margin-bottom: 7px;
+
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    padding: 14px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: .2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--pink);
+
+    box-shadow:
+        0 0 0 3px var(--pink-light);
+}
+
+.form-group textarea {
+    min-height: 120px;
+
+    resize: vertical;
+}
+
+.send-order {
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: var(--pink);
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+.send-order:hover {
+    background: var(--pink-dark);
+
+    transform: translateY(-2px);
+}
+
+/* =========================
+   REVIEWS
+========================= */
+
+.rating-summary {
+    max-width: 400px;
+
+    margin:
+        0 auto 40px;
+
+    padding: 25px;
+
+    background: white;
+
+    border-radius: var(--card-radius);
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 25px rgba(0,0,0,.05);
+}
+
+.big-rating {
+    font-size: 50px;
+
+    font-weight: 900;
+
+    color: var(--pink);
+}
+
+.gold-stars {
+    color: var(--gold);
+
+    font-size: 24px;
+
+    letter-spacing: 3px;
+}
+
+.rating-summary p {
+    color: var(--muted);
+
+    margin-top: 5px;
+}
+
+.review-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+.review-card {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: var(--card-radius);
+
+    box-shadow:
+        0 5px 25px rgba(0,0,0,.05);
+
+    transition: .25s;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+}
+
+.reviewer {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 10px;
+}
+
+.avatar {
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: var(--pink-light);
+
+    color: var(--pink);
+
+    font-weight: 900;
+}
+
+.reviewer-name {
+    font-weight: 900;
+}
+
+.reviewer-date {
+    font-size: 12px;
+
+    color: var(--muted);
+}
+
+.review-text {
+    color: var(--muted);
+
+    line-height: 1.6;
+
+    margin-top: 12px;
+}
+
+/* REVIEW FORM */
+
+.review-box {
+    max-width: 700px;
+
+    margin: 50px auto 0;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: var(--card-radius);
+
+    box-shadow:
+        0 5px 25px rgba(0,0,0,.05);
+}
+
+.review-box h3 {
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+.review-box input,
+.review-box textarea {
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    font-family: inherit;
+
+    margin-bottom: 15px;
+
+    outline: none;
+}
+
+.review-box textarea {
+    min-height: 110px;
+
+    resize: vertical;
+}
+
+.star-selector {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    margin-bottom: 15px;
+}
+
+.star-selector button {
+    border: none;
+
+    background: transparent;
+
+    color: #d1d5db;
+
+    font-size: 35px;
+
+    cursor: pointer;
+}
+
+.star-selector button.active {
+    color: var(--gold);
+}
+
+.review-submit {
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: var(--pink);
+
+    color: white;
+
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 40px 20px;
+
+    background: #1f2937;
+
+    color: white;
+
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 25px;
+
+    font-weight: 900;
+
+    margin-bottom: 10px;
+}
+
+footer p {
+    color: #d1d5db;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast {
+    position: fixed;
+
+    right: 20px;
+
+    bottom: 20px;
+
+    z-index: 3000;
+
+    max-width: 350px;
+
+    padding: 15px 20px;
+
+    background: #1f2937;
+
+    color: white;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.2);
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    pointer-events: none;
+
+    transition: .3s;
+}
+
+.toast.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:850px) {
+
+    .menu-button {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+
+        top: 75px;
+
+        left: 0;
+
+        width: 100%;
+
+        display: none;
+
+        flex-direction: column;
+
+        gap: 0;
+
+        background: white;
+
+        box-shadow:
+            0 10px 25px rgba(0,0,0,.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+
+        padding: 15px;
+    }
+
+    .nav-order {
+        margin:
+            10px 20px 20px;
+    }
+
+    .feature-grid,
+    .cake-grid,
+    .review-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full {
+        grid-column: auto;
+    }
+
+    .order-card {
+        padding: 25px 18px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <a
+        href="#home"
+        class="logo"
+    >
+        🎂 CakeHub
+    </a>
+
+    <button
+        class="menu-button"
+        id="menuButton"
+    >
+        ☰
+    </button>
+
+    <ul
+        class="nav-links"
+        id="navLinks"
+    >
+
+        <li>
+            <a href="#home">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="#cakes">
+                Cakes
+            </a>
+        </li>
+
+        <li>
+            <a href="#services">
+                Services
+            </a>
+        </li>
+
+        <li>
+            <a href="#reviews">
+                Reviews
+            </a>
+        </li>
+
+        <li>
+            <a
+                href="#order"
+                class="nav-order"
+            >
+                Order Now
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section
+    class="hero"
+    id="home"
+>
+
+    <span class="badge">
+        ✨ Freshly Baked With Love
+    </span>
+
+    <h1>
+        Beautiful Cakes
+        <span>Made For You</span>
+    </h1>
+
+    <p>
+        Delicious handcrafted cakes made with
+        premium ingredients for birthdays,
+        celebrations and special moments.
+    </p>
+
+    <div class="hero-buttons">
+
+        <a
+            href="#cakes"
+            class="primary-button"
+        >
+            Explore Cakes
+        </a>
+
+        <a
+            href="#order"
+            class="secondary-button"
+        >
+            Place an Order
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SERVICES
+========================= -->
+
+<section
+    class="section"
+    id="services"
+>
+
+    <h2 class="section-title">
+        Why Choose CakeHub?
+    </h2>
+
+    <p class="section-subtitle">
+        Everything you need for a perfect cake.
+    </p>
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🍰
+            </div>
+
+            <h3>
+                Fresh Ingredients
+            </h3>
+
+            <p>
+                Fresh and quality ingredients
+                in every cake.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🎨
+            </div>
+
+            <h3>
+                Custom Designs
+            </h3>
+
+            <p>
+                Tell us your idea and create
+                your perfect cake.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🚚
+            </div>
+
+            <h3>
+                Safe Delivery
+            </h3>
+
+            <p>
+                Your cake is carefully prepared
+                for delivery.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CAKES
+========================= -->
+
+<section
+    class="section"
+    id="cakes"
+>
+
+    <h2 class="section-title">
+        Our Cakes
+    </h2>
+
+    <p class="section-subtitle">
+        Choose your favorite.
+    </p>
+
+    <div class="cake-grid">
+
+        <div class="cake-card">
+
+            <div class="cake-picture">
+                🎂
+            </div>
+
+            <div class="cake-info">
+
+                <h3>
+                    Classic Celebration
+                </h3>
+
+                <p>
+                    Perfect birthday cake.
+                </p>
+
+                <div class="price">
+                    PKR 2,499
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="cake-card">
+
+            <div class="cake-picture">
+                🍓
+            </div>
+
+            <div class="cake-info">
+
+                <h3>
+                    Strawberry Dream
+                </h3>
+
+                <p>
+                    Creamy strawberry flavor.
+                </p>
+
+                <div class="price">
+                    PKR 2,999
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="cake-card">
+
+            <div class="cake-picture">
+                🍫
+            </div>
+
+            <div class="cake-info">
+
+                <h3>
+                    Chocolate Bliss
+                </h3>
+
+                <p>
+                    Rich chocolate cake.
+                </p>
+
+                <div class="price">
+                    PKR 2,799
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="cake-card">
+
+            <div class="cake-picture">
+                🌸
+            </div>
+
+            <div class="cake-info">
+
+                <h3>
+                    Floral Elegance
+                </h3>
+
+                <p>
+                    Beautiful floral design.
+                </p>
+
+                <div class="price">
+                    PKR 3,499
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="cake-card">
+
+            <div class="cake-picture">
+                🧁
+            </div>
+
+            <div class="cake-info">
+
+                <h3>
+                    Cupcake Set
+                </h3>
+
+                <p>
+                    Delicious mini cupcakes.
+                </p>
+
+                <div class="price">
+                    PKR 1,799
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="cake-card">
+
+            <div class="cake-picture">
+                👑
+            </div>
+
+            <div class="cake-info">
+
+                <h3>
+                    Luxury Cake
+                </h3>
+
+                <p>
+                    Premium custom celebration cake.
+                </p>
+
+                <div class="price">
+                    PKR 4,999
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ORDER FORM
+========================= -->
+
+<section
+    class="order-section"
+    id="order"
+>
+
+    <div class="order-card">
+
+        <div class="order-heading">
+
+            <h2>
+                Place Your Order
+            </h2>
+
+            <p>
+                Fill in your information below.
+            </p>
+
+        </div>
+
+
+        <form id="orderForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>
+                        Your Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        placeholder="Your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="customerPhone"
+                        placeholder="03XX XXXXXXX"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Select Cake
+                    </label>
+
+                    <select
+                        id="cakeType"
+                        required
+                    >
+
+                        <option value="">
+                            Select a cake
+                        </option>
+
+                        <option>
+                            Classic Celebration
+                        </option>
+
+                        <option>
+                            Strawberry Dream
+                        </option>
+
+                        <option>
+                            Chocolate Bliss
+                        </option>
+
+                        <option>
+                            Floral Elegance
+                        </option>
+
+                        <option>
+                            Cupcake Set
+                        </option>
+
+                        <option>
+                            Luxury Cake
+                        </option>
+
+                        <option>
+                            Custom Cake
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Quantity
+                    </label>
+
+                    <input
+                        type="number"
+                        id="quantity"
+                        min="1"
+                        value="1"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Delivery Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="deliveryDate"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Delivery Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="deliveryTime"
+                    >
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Delivery Address
+                    </label>
+
+                    <input
+                        type="text"
+                        id="deliveryAddress"
+                        placeholder="Full delivery address"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Special Instructions
+                    </label>
+
+                    <textarea
+                        id="instructions"
+                        placeholder="Cake message, colors, design, flavor, etc."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="send-order"
+            >
+                📧 Send Order
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     REVIEWS
+========================= -->
+
+<section
+    class="section"
+    id="reviews"
+>
+
+    <h2 class="section-title">
+        Customer Reviews
+    </h2>
+
+    <p class="section-subtitle">
+        See what our customers say.
+    </p>
+
+
+    <div class="rating-summary">
+
+        <div
+            class="big-rating"
+            id="averageRating"
+        >
+            5.0
+        </div>
+
+        <div class="gold-stars">
+            ★★★★★
+        </div>
+
+        <p id="reviewCount">
+            3 customer reviews
+        </p>
+
+    </div>
+
+
+    <div
+        class="review-grid"
+        id="reviewGrid"
+    >
+
+        <div class="review-card">
+
+            <div class="reviewer">
+
+                <div class="avatar">
+                    A
+                </div>
+
+                <div>
+
+                    <div class="reviewer-name">
+                        Ayesha
+                    </div>
+
+                    <div class="reviewer-date">
+                        Customer
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="gold-stars">
+                ★★★★★
+            </div>
+
+            <p class="review-text">
+                The cake was beautiful and
+                tasted amazing!
+            </p>
+
+        </div>
+
+
+        <div class="review-card">
+
+            <div class="reviewer">
+
+                <div class="avatar">
+                    H
+                </div>
+
+                <div>
+
+                    <div class="reviewer-name">
+                        Hamza
+                    </div>
+
+                    <div class="reviewer-date">
+                        Customer
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="gold-stars">
+                ★★★★★
+            </div>
+
+            <p class="review-text">
+                Amazing cake and beautiful design.
+            </p>
+
+        </div>
+
+
+        <div class="review-card">
+
+            <div class="reviewer">
+
+                <div class="avatar">
+                    S
+                </div>
+
+                <div>
+
+                    <div class="reviewer-name">
+                        Sara
+                    </div>
+
+                    <div class="reviewer-date">
+                        Customer
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="gold-stars">
+                ★★★★★
+            </div>
+
+            <p class="review-text">
+                My custom cake looked exactly
+                how I wanted.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- WRITE REVIEW -->
+
+    <div class="review-box">
+
+        <h3>
+            ⭐ Write a Review
+        </h3>
+
+        <form id="reviewForm">
+
+            <input
+                type="text"
+                id="reviewName"
+                placeholder="Your name"
+                required
+            >
+
+            <div
+                class="star-selector"
+                id="starSelector"
+            >
+
+                <button
+                    type="button"
+                    data-rating="1"
+                >
+                    ★
+                </button>
+
+                <button
+                    type="button"
+                    data-rating="2"
+                >
+                    ★
+                </button>
+
+                <button
+                    type="button"
+                    data-rating="3"
+                >
+                    ★
+                </button>
+
+                <button
+                    type="button"
+                    data-rating="4"
+                >
+                    ★
+                </button>
+
+                <button
+                    type="button"
+                    data-rating="5"
+                >
+                    ★
+                </button>
+
+            </div>
+
+
+            <textarea
+                id="reviewText"
+                placeholder="Write your review..."
+                required
+            ></textarea>
+
+
+            <button
+                type="submit"
+                class="review-submit"
+            >
+                Submit Review
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        🎂 CakeHub
+    </div>
+
+    <p>
+        Fresh cakes made with love.
+    </p>
+
+    <p style="margin-top:10px;">
+        © <span id="year"></span> CakeHub
+    </p>
+
+</footer>
+
+
+<!-- TOAST -->
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+<script>
+
+/* =====================================================
+   YOUR EMAIL
+===================================================== */
+
+const YOUR_EMAIL =
+    "itsomeransari@gmail.com";
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+const menuButton =
+    document.getElementById(
+        "menuButton"
+    );
+
+const navLinks =
+    document.getElementById(
+        "navLinks"
+    );
+
+
+menuButton.addEventListener(
+    "click",
+    function () {
+
+        navLinks.classList.toggle(
+            "active"
+        );
+
+    }
+);
+
+
+document
+    .querySelectorAll(
+        ".nav-links a"
+    )
+    .forEach(function (link) {
+
+        link.addEventListener(
+            "click",
+            function () {
+
+                navLinks.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+    });
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+    toast.textContent =
+        message;
+
+    toast.classList.add(
+        "show"
+    );
+
+    setTimeout(
+        function () {
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },
+        4000
+    );
+}
+
+
+/* =====================================================
+   ORDER FORM
+===================================================== */
+
+const orderForm =
+    document.getElementById(
+        "orderForm"
+    );
+
+
+orderForm.addEventListener(
+    "submit",
+    function (event) {
+
+        event.preventDefault();
+
+
+        /* GET VALUES */
+
+        const name =
+            document.getElementById(
+                "customerName"
+            ).value.trim();
+
+
+        const phone =
+            document.getElementById(
+                "customerPhone"
+            ).value.trim();
+
+
+        const cake =
+            document.getElementById(
+                "cakeType"
+            ).value;
+
+
+        const quantity =
+            document.getElementById(
+                "quantity"
+            ).value;
+
+
+        const date =
+            document.getElementById(
+                "deliveryDate"
+            ).value;
+
+
+        const time =
+            document.getElementById(
+                "deliveryTime"
+            ).value ||
+            "Not specified";
+
+
+        const address =
+            document.getElementById(
+                "deliveryAddress"
+            ).value.trim();
+
+
+        const instructions =
+            document.getElementById(
+                "instructions"
+            ).value.trim() ||
+            "None";
+
+
+        /* =================================================
+           EMAIL SUBJECT
+        ================================================= */
+
+        const subject =
+            "CakeHub Order - " +
+            name;
+
+
+        /* =================================================
+           EMAIL MESSAGE
+        ================================================= */
+
+        const message =
+`Hello CakeHub,
+
+I would like to place an order.
+
+================================
+CAKE ORDER
+================================
+
+Customer Name:
+${name}
+
+Phone Number:
+${phone}
+
+Cake:
+${cake}
+
+Quantity:
+${quantity}
+
+Delivery Date:
+${date}
+
+Delivery Time:
+${time}
+
+Delivery Address:
+${address}
+
+Special Instructions:
+${instructions}
+
+================================
+
+Please contact me to confirm this order.
+
+Thank you!
+CakeHub Customer`;
+
+
+        /* =================================================
+           GMAIL COMPOSE
+        ================================================= */
+
+        const gmailURL =
+            "https://mail.google.com/mail/u/0/?view=cm&fs=1&to="
+            + encodeURIComponent(YOUR_EMAIL)
+            + "&su="
+            + encodeURIComponent(subject)
+            + "&body="
+            + encodeURIComponent(message);
+
+
+        /*
+           Open Gmail compose
+        */
+
+        window.open(
+            gmailURL,
+            "_blank"
+        );
+
+
+        showToast(
+            "📧 Opening Gmail with your order..."
+        );
+
+    }
+);
+
+
+/* =====================================================
+   MINIMUM DELIVERY DATE
+===================================================== */
+
+const dateInput =
+    document.getElementById(
+        "deliveryDate"
+    );
+
+
+const today =
+    new Date()
+        .toISOString()
+        .split("T")[0];
+
+
+dateInput.min =
+    today;
+
+
+/* =====================================================
+   REVIEWS
+===================================================== */
+
+let selectedRating = 0;
+
+
+const stars =
+    document.querySelectorAll(
+        "#starSelector button"
+    );
+
+
+stars.forEach(
+    function (star) {
+
+        star.addEventListener(
+            "click",
+            function () {
+
+                selectedRating =
+                    Number(
+                        star.dataset.rating
+                    );
+
+
+                stars.forEach(
+                    function (s) {
+
+                        const rating =
+                            Number(
+                                s.dataset.rating
+                            );
+
+
+                        s.classList.toggle(
+                            "active",
+                            rating <=
+                            selectedRating
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   REVIEW SUBMIT
+===================================================== */
+
+const reviewForm =
+    document.getElementById(
+        "reviewForm"
+    );
+
+
+reviewForm.addEventListener(
+    "submit",
+    function (event) {
+
+        event.preventDefault();
+
+
+        if (
+            selectedRating === 0
+        ) {
+
+            showToast(
+                "⭐ Please select a rating."
+            );
+
+            return;
+
+        }
+
+
+        const name =
+            document.getElementById(
+                "reviewName"
+            ).value.trim();
+
+
+        const review =
+            document.getElementById(
+                "reviewText"
+            ).value.trim();
+
+
+        const card =
+            document.createElement(
+                "div"
+            );
+
+
+        card.className =
+            "review-card";
+
+
+        const starsText =
+            "★".repeat(
+                selectedRating
+            )
+            +
+            "☆".repeat(
+                5 - selectedRating
+            );
+
+
+        card.innerHTML = `
+
+            <div class="reviewer">
+
+                <div class="avatar">
+                    ${escapeHTML(
+                        name
+                            .charAt(0)
+                            .toUpperCase()
+                    )}
+                </div>
+
+                <div>
+
+                    <div class="reviewer-name">
+                        ${escapeHTML(name)}
+                    </div>
+
+                    <div class="reviewer-date">
+                        Just now
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="gold-stars">
+                ${starsText}
+            </div>
+
+            <p class="review-text">
+                ${escapeHTML(review)}
+            </p>
+        `;
+
+
+        document
+            .getElementById(
+                "reviewGrid"
+            )
+            .prepend(card);
+
+
+        reviewForm.reset();
+
+
+        selectedRating = 0;
+
+
+        stars.forEach(
+            function (star) {
+
+                star.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+        updateReviewStats();
+
+
+        showToast(
+            "⭐ Review added successfully!"
+        );
+
+    }
+);
+
+
+/* =====================================================
+   SECURITY
+===================================================== */
+
+function escapeHTML(text) {
+
+    const element =
+        document.createElement(
+            "div"
+        );
+
+    element.textContent =
+        text;
+
+    return element.innerHTML;
+}
+
+
+/* =====================================================
+   UPDATE REVIEW COUNT
+===================================================== */
+
+function updateReviewStats() {
+
+    const cards =
+        document.querySelectorAll(
+            "#reviewGrid .review-card"
+        );
+
+
+    let total =
+        0;
+
+
+    cards.forEach(
+        function (card) {
+
+            const stars =
+                card.querySelector(
+                    ".gold-stars"
+                ).textContent;
+
+
+            total +=
+                (
+                    stars.match(
+                        /★/g
+                    ) || []
+                ).length;
+
+        }
+    );
+
+
+    const count =
+        cards.length;
+
+
+    const average =
+        count
+            ? (
+                total / count
+            ).toFixed(1)
+            : "0.0";
+
+
+    document.getElementById(
+        "averageRating"
+    ).textContent =
+        average;
+
+
+    document.getElementById(
+        "reviewCount"
+    ).textContent =
+        count +
+        (
+            count === 1
+                ? " customer review"
+                : " customer reviews"
+        );
+}
+
+
+/* =====================================================
+   FOOTER YEAR
+===================================================== */
+
+document.getElementById(
+    "year"
+).textContent =
+    new Date().getFullYear();
+
+</script>
+
+</body>
+</html>
