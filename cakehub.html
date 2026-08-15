@@ -4,2247 +4,1895 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CakeHub | Luxury Bakery</title>
+<title>CHAOTIC AMP | Minecraft Server Applications</title>
 
 <style>
-
-/* =========================
-   RESET
-========================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root{
+    --bg:#050806;
+    --bg2:#09110b;
+    --card:#0d1710;
+    --card2:#111f14;
+    --border:#233c29;
+    --green:#55ff70;
+    --green2:#21c943;
+    --white:#f3fff5;
+    --muted:#93a999;
+    --yellow:#ffd85c;
+    --red:#ff6868;
+    --shadow:0 20px 60px rgba(0,0,0,.4);
 }
 
-html {
-    scroll-behavior: smooth;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-:root {
-    --pink: #be185d;
-    --pink-dark: #9d174d;
-    --pink-light: #fce7f3;
-    --text: #1f2937;
-    --muted: #6b7280;
-    --cream: #fffafa;
-    --white: #ffffff;
-    --border: #e5e7eb;
-    --gold: #f59e0b;
-    --radius: 12px;
-    --card-radius: 20px;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+body{
+    min-height:100vh;
+    font-family:Arial,Helvetica,sans-serif;
+    color:var(--white);
+    background:
+        radial-gradient(circle at 10% 0%,#163a1d 0%,transparent 35%),
+        radial-gradient(circle at 100% 100%,#123219 0%,transparent 30%),
+        var(--bg);
+}
 
-    background: var(--cream);
-    color: var(--text);
+/* PIXEL GRID */
 
-    padding-top: 75px;
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.045;
+    background-image:
+        linear-gradient(#fff 1px,transparent 1px),
+        linear-gradient(90deg,#fff 1px,transparent 1px);
+    background-size:32px 32px;
 }
 
 /* =========================
    NAVBAR
 ========================= */
 
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    border-bottom:1px solid var(--border);
+    background:rgba(5,8,6,.88);
+    backdrop-filter:blur(15px);
+}
 
-    width: 100%;
-    height: 75px;
+.nav-inner{
+    width:min(1150px,92%);
+    height:76px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
 
-    z-index: 1000;
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:18px;
+    font-weight:900;
+}
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 5%;
-
-    background: rgba(255,255,255,.97);
-
+.brand-icon{
+    width:45px;
+    height:45px;
+    display:grid;
+    place-items:center;
+    border-radius:10px;
+    background:
+        linear-gradient(145deg,#75ff88,#15872e);
     box-shadow:
-        0 3px 20px rgba(0,0,0,.08);
+        0 0 25px rgba(70,255,95,.22);
+    font-size:23px;
 }
 
-.logo {
-    color: var(--pink);
-
-    text-decoration: none;
-
-    font-size: 1.5rem;
-
-    font-weight: 900;
+.brand span{
+    color:var(--green);
 }
 
-.nav-links {
-    display: flex;
-
-    align-items: center;
-
-    gap: 28px;
-
-    list-style: none;
+.nav-links{
+    display:flex;
+    gap:25px;
 }
 
-.nav-links a {
-    color: var(--text);
-
-    text-decoration: none;
-
-    font-weight: 700;
-
-    transition: .25s;
+.nav-links a{
+    text-decoration:none;
+    color:var(--muted);
+    font-size:14px;
+    font-weight:800;
+    transition:.2s;
 }
 
-.nav-links a:hover {
-    color: var(--pink);
+.nav-links a:hover{
+    color:var(--green);
 }
 
-.nav-order {
-    background: var(--pink);
+/* =========================
+   CONTAINER
+========================= */
 
-    color: white !important;
-
-    padding: 11px 18px;
-
-    border-radius: 10px;
-}
-
-.nav-order:hover {
-    background: var(--pink-dark);
-}
-
-/* MOBILE BUTTON */
-
-.menu-button {
-    display: none;
-
-    border: none;
-
-    background: transparent;
-
-    font-size: 28px;
-
-    cursor: pointer;
+.container{
+    width:min(1150px,92%);
+    margin:auto;
 }
 
 /* =========================
    HERO
 ========================= */
 
-.hero {
-    max-width: 1200px;
-
-    min-height: 600px;
-
-    margin: auto;
-
-    padding: 70px 25px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
+.hero{
+    min-height:650px;
+    padding:80px 0;
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:45px;
+    align-items:center;
 }
 
-.badge {
-    padding: 9px 17px;
-
-    margin-bottom: 20px;
-
-    background: var(--pink-light);
-
-    color: var(--pink);
-
-    border-radius: 50px;
-
-    font-weight: 800;
-
-    font-size: 14px;
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 13px;
+    border-radius:50px;
+    border:1px solid #2d6339;
+    background:#0d2413;
+    color:#9df6aa;
+    font-size:12px;
+    font-weight:900;
 }
 
-.hero h1 {
-    max-width: 850px;
-
-    font-size:
-        clamp(42px, 7vw, 76px);
-
-    line-height: 1.05;
-
-    margin-bottom: 22px;
+.badge-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 12px var(--green);
 }
 
-.hero h1 span {
-    color: var(--pink);
+.hero h1{
+    margin:20px 0;
+    font-size:clamp(45px,7vw,80px);
+    line-height:.94;
+    letter-spacing:-4px;
 }
 
-.hero p {
-    max-width: 700px;
-
-    color: var(--muted);
-
-    line-height: 1.7;
-
-    font-size: 18px;
-
-    margin-bottom: 30px;
+.hero h1 span{
+    color:var(--green);
 }
 
-.hero-buttons {
-    display: flex;
-
-    gap: 14px;
-
-    flex-wrap: wrap;
-
-    justify-content: center;
+.hero-text{
+    max-width:650px;
+    color:var(--muted);
+    font-size:18px;
+    line-height:1.7;
 }
 
-.primary-button,
-.secondary-button {
-    padding: 14px 25px;
-
-    border-radius: 10px;
-
-    font-size: 16px;
-
-    font-weight: 800;
-
-    cursor: pointer;
-
-    text-decoration: none;
-
-    transition: .25s;
+.buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:28px;
 }
 
-.primary-button {
-    border: none;
-
-    background: var(--pink);
-
-    color: white;
+.btn{
+    border:0;
+    border-radius:11px;
+    padding:13px 18px;
+    font-weight:900;
+    cursor:pointer;
+    transition:.2s;
 }
 
-.primary-button:hover {
-    background: var(--pink-dark);
-
-    transform: translateY(-2px);
+.btn:hover{
+    transform:translateY(-2px);
 }
 
-.secondary-button {
-    border: 2px solid var(--pink);
-
-    background: white;
-
-    color: var(--pink);
+.primary{
+    color:#041006;
+    background:var(--green);
 }
 
-.secondary-button:hover {
-    background: var(--pink-light);
+.secondary{
+    color:#fff;
+    background:#142319;
+    border:1px solid var(--border);
+}
+
+.danger{
+    color:#fff;
+    background:#361515;
+    border:1px solid #663030;
 }
 
 /* =========================
-   GENERAL
+   SERVER CARD
 ========================= */
 
-section {
-    scroll-margin-top: 90px;
-}
-
-.section {
-    max-width: 1100px;
-
-    margin: auto;
-
-    padding: 80px 25px;
-}
-
-.section-title {
-    text-align: center;
-
-    font-size: 38px;
-
-    margin-bottom: 10px;
-}
-
-.section-subtitle {
-    text-align: center;
-
-    color: var(--muted);
-
-    margin-bottom: 45px;
-}
-
-/* =========================
-   SERVICES
-========================= */
-
-.feature-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 22px;
-}
-
-.feature-card {
-    padding: 30px;
-
-    background: white;
-
-    border-radius: var(--card-radius);
-
-    text-align: center;
-
-    box-shadow:
-        0 5px 25px rgba(0,0,0,.06);
-
-    transition: .25s;
-}
-
-.feature-card:hover {
-    transform: translateY(-7px);
-}
-
-.feature-icon {
-    font-size: 45px;
-
-    margin-bottom: 15px;
-}
-
-.feature-card h3 {
-    margin-bottom: 10px;
-}
-
-.feature-card p {
-    color: var(--muted);
-
-    line-height: 1.6;
-}
-
-/* =========================
-   CAKES
-========================= */
-
-.cake-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 22px;
-}
-
-.cake-card {
-    overflow: hidden;
-
-    background: white;
-
-    border-radius: var(--card-radius);
-
-    box-shadow:
-        0 5px 25px rgba(0,0,0,.06);
-
-    transition: .25s;
-}
-
-.cake-card:hover {
-    transform: translateY(-7px);
-}
-
-.cake-picture {
-    height: 220px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 90px;
-
+.server-card{
+    padding:27px;
+    border-radius:24px;
+    border:1px solid var(--border);
     background:
-        linear-gradient(
-            135deg,
-            #fce7f3,
-            #fff1f2
-        );
+        linear-gradient(150deg,#12291a,#08110b);
+    box-shadow:var(--shadow);
 }
 
-.cake-info {
-    padding: 23px;
+.server-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
-.cake-info h3 {
-    margin-bottom: 9px;
+.server-online{
+    color:#7dff91;
+    font-size:12px;
+    font-weight:900;
 }
 
-.cake-info p {
-    color: var(--muted);
-
-    line-height: 1.5;
-
-    margin-bottom: 14px;
+.online-dot{
+    display:inline-block;
+    width:8px;
+    height:8px;
+    margin-right:6px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 12px var(--green);
 }
 
-.price {
-    color: var(--pink);
-
-    font-size: 20px;
-
-    font-weight: 900;
+.server-ip{
+    margin:22px 0 12px;
+    padding:17px;
+    text-align:center;
+    font-family:monospace;
+    font-size:15px;
+    background:#040805;
+    border:1px dashed #396543;
+    border-radius:12px;
 }
 
-/* =========================
-   ORDER
-========================= */
-
-.order-section {
-    max-width: 900px;
-
-    margin: auto;
-
-    padding: 80px 25px;
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:12px;
 }
 
-.order-card {
-    background: white;
-
-    padding: 40px;
-
-    border-radius: var(--card-radius);
-
-    box-shadow:
-        0 8px 35px rgba(0,0,0,.07);
+.stat{
+    padding:14px;
+    text-align:center;
+    background:#09150c;
+    border-radius:12px;
 }
 
-.order-heading {
-    text-align: center;
-
-    margin-bottom: 35px;
+.stat strong{
+    display:block;
+    font-size:19px;
 }
 
-.order-heading h2 {
-    font-size: 36px;
-
-    margin-bottom: 10px;
-}
-
-.order-heading p {
-    color: var(--muted);
-}
-
-.form-grid {
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 18px;
-}
-
-.form-group {
-    display: flex;
-
-    flex-direction: column;
-}
-
-.form-group.full {
-    grid-column: 1 / -1;
-}
-
-.form-group label {
-    font-weight: 800;
-
-    margin-bottom: 7px;
-
-    font-size: 14px;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-
-    padding: 14px;
-
-    border: 1px solid var(--border);
-
-    border-radius: 10px;
-
-    font-family: inherit;
-
-    font-size: 15px;
-
-    outline: none;
-
-    transition: .2s;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    border-color: var(--pink);
-
-    box-shadow:
-        0 0 0 3px var(--pink-light);
-}
-
-.form-group textarea {
-    min-height: 120px;
-
-    resize: vertical;
-}
-
-.send-order {
-    width: 100%;
-
-    margin-top: 22px;
-
-    padding: 15px;
-
-    border: none;
-
-    border-radius: 10px;
-
-    background: var(--pink);
-
-    color: white;
-
-    font-size: 17px;
-
-    font-weight: 900;
-
-    cursor: pointer;
-
-    transition: .25s;
-}
-
-.send-order:hover {
-    background: var(--pink-dark);
-
-    transform: translateY(-2px);
+.stat small{
+    color:var(--muted);
 }
 
 /* =========================
-   REVIEWS
+   SECTION
 ========================= */
 
-.rating-summary {
-    max-width: 400px;
-
-    margin:
-        0 auto 40px;
-
-    padding: 25px;
-
-    background: white;
-
-    border-radius: var(--card-radius);
-
-    text-align: center;
-
-    box-shadow:
-        0 5px 25px rgba(0,0,0,.05);
+section{
+    scroll-margin-top:90px;
 }
 
-.big-rating {
-    font-size: 50px;
-
-    font-weight: 900;
-
-    color: var(--pink);
+.section{
+    padding:75px 0;
 }
 
-.gold-stars {
-    color: var(--gold);
-
-    font-size: 24px;
-
-    letter-spacing: 3px;
+.section-title{
+    text-align:center;
+    margin-bottom:35px;
 }
 
-.rating-summary p {
-    color: var(--muted);
-
-    margin-top: 5px;
+.section-title h2{
+    font-size:38px;
+    margin-bottom:9px;
 }
 
-.review-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 22px;
+.section-title p{
+    color:var(--muted);
 }
 
-.review-card {
-    background: white;
+/* =========================
+   CARD
+========================= */
 
-    padding: 25px;
-
-    border-radius: var(--card-radius);
-
-    box-shadow:
-        0 5px 25px rgba(0,0,0,.05);
-
-    transition: .25s;
+.card{
+    padding:28px;
+    border-radius:22px;
+    border:1px solid var(--border);
+    background:rgba(13,23,16,.94);
+    box-shadow:var(--shadow);
 }
 
-.review-card:hover {
-    transform: translateY(-5px);
+/* =========================
+   FORM
+========================= */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
 }
 
-.reviewer {
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    margin-bottom: 10px;
+.full{
+    grid-column:1/-1;
 }
 
-.avatar {
-    width: 48px;
-
-    height: 48px;
-
-    border-radius: 50%;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: var(--pink-light);
-
-    color: var(--pink);
-
-    font-weight: 900;
+label{
+    display:block;
+    margin-bottom:8px;
+    color:#dcf1df;
+    font-size:13px;
+    font-weight:900;
 }
 
-.reviewer-name {
-    font-weight: 900;
+input,
+select,
+textarea{
+    width:100%;
+    padding:13px 14px;
+    border:1px solid #294a31;
+    border-radius:10px;
+    outline:none;
+    color:white;
+    background:#071009;
+    font-family:inherit;
+    font-size:14px;
 }
 
-.reviewer-date {
-    font-size: 12px;
-
-    color: var(--muted);
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:var(--green);
+    box-shadow:0 0 0 3px rgba(85,255,112,.08);
 }
 
-.review-text {
-    color: var(--muted);
-
-    line-height: 1.6;
-
-    margin-top: 12px;
+textarea{
+    min-height:125px;
+    resize:vertical;
 }
 
-/* REVIEW FORM */
-
-.review-box {
-    max-width: 700px;
-
-    margin: 50px auto 0;
-
-    background: white;
-
-    padding: 30px;
-
-    border-radius: var(--card-radius);
-
-    box-shadow:
-        0 5px 25px rgba(0,0,0,.05);
+.checkbox{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.5;
 }
 
-.review-box h3 {
-    text-align: center;
-
-    margin-bottom: 20px;
+.checkbox input{
+    width:auto;
+    margin-top:3px;
 }
 
-.review-box input,
-.review-box textarea {
-    width: 100%;
-
-    padding: 13px;
-
-    border: 1px solid var(--border);
-
-    border-radius: 10px;
-
-    font-family: inherit;
-
-    margin-bottom: 15px;
-
-    outline: none;
+.success{
+    display:none;
+    padding:14px;
+    margin-bottom:20px;
+    border-radius:11px;
+    color:#adffb9;
+    background:#103719;
+    border:1px solid #307441;
 }
 
-.review-box textarea {
-    min-height: 110px;
+/* =========================
+   APPLICATIONS
+========================= */
 
-    resize: vertical;
+.application-toolbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:18px;
 }
 
-.star-selector {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 5px;
-
-    margin-bottom: 15px;
+.application-list{
+    display:grid;
+    gap:14px;
 }
 
-.star-selector button {
-    border: none;
-
-    background: transparent;
-
-    color: #d1d5db;
-
-    font-size: 35px;
-
-    cursor: pointer;
+.application{
+    padding:20px;
+    border-radius:16px;
+    background:#08140b;
+    border:1px solid var(--border);
 }
 
-.star-selector button.active {
-    color: var(--gold);
+.application-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
 }
 
-.review-submit {
-    width: 100%;
+.application h3{
+    font-size:19px;
+}
 
-    padding: 13px;
+.application-meta{
+    margin-top:5px;
+    color:var(--muted);
+    font-size:12px;
+}
 
-    border: none;
+.status{
+    padding:6px 10px;
+    border-radius:50px;
+    font-size:11px;
+    font-weight:900;
+}
 
-    border-radius: 10px;
+.pending{
+    color:var(--yellow);
+    background:#392d08;
+}
 
-    background: var(--pink);
+.approved{
+    color:#7dff9a;
+    background:#0d3820;
+}
 
-    color: white;
+.rejected{
+    color:#ff8e8e;
+    background:#3b1515;
+}
 
-    font-weight: 900;
+.application-body{
+    margin:16px 0;
+    color:#c5d5c8;
+    font-size:14px;
+    line-height:1.65;
+}
 
-    cursor: pointer;
+.actions{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.small{
+    padding:8px 11px;
+    font-size:12px;
+}
+
+.empty{
+    padding:40px;
+    text-align:center;
+    color:var(--muted);
 }
 
 /* =========================
    FOOTER
 ========================= */
 
-footer {
-    padding: 40px 20px;
-
-    background: #1f2937;
-
-    color: white;
-
-    text-align: center;
-}
-
-.footer-logo {
-    font-size: 25px;
-
-    font-weight: 900;
-
-    margin-bottom: 10px;
-}
-
-footer p {
-    color: #d1d5db;
-}
-
-/* =========================
-   TOAST
-========================= */
-
-.toast {
-    position: fixed;
-
-    right: 20px;
-
-    bottom: 20px;
-
-    z-index: 3000;
-
-    max-width: 350px;
-
-    padding: 15px 20px;
-
-    background: #1f2937;
-
-    color: white;
-
-    border-radius: 10px;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.2);
-
-    opacity: 0;
-
-    transform: translateY(20px);
-
-    pointer-events: none;
-
-    transition: .3s;
-}
-
-.toast.show {
-    opacity: 1;
-
-    transform: translateY(0);
+footer{
+    padding:45px 0;
+    border-top:1px solid var(--border);
+    text-align:center;
+    color:#718678;
 }
 
 /* =========================
    MOBILE
 ========================= */
 
-@media(max-width:850px) {
+@media(max-width:800px){
 
-    .menu-button {
-        display: block;
+    .nav-links{
+        display:none;
     }
 
-    .nav-links {
-        position: absolute;
-
-        top: 75px;
-
-        left: 0;
-
-        width: 100%;
-
-        display: none;
-
-        flex-direction: column;
-
-        gap: 0;
-
-        background: white;
-
-        box-shadow:
-            0 10px 25px rgba(0,0,0,.1);
+    .hero{
+        grid-template-columns:1fr;
+        padding:55px 0;
     }
 
-    .nav-links.active {
-        display: flex;
+    .server-card{
+        order:-1;
     }
 
-    .nav-links li {
-        width: 100%;
-
-        text-align: center;
+    .hero h1{
+        letter-spacing:-2px;
     }
 
-    .nav-links a {
-        display: block;
-
-        padding: 15px;
+    .form-grid{
+        grid-template-columns:1fr;
     }
 
-    .nav-order {
-        margin:
-            10px 20px 20px;
+    .full{
+        grid-column:auto;
     }
 
-    .feature-grid,
-    .cake-grid,
-    .review-grid {
-        grid-template-columns: 1fr;
+    .section{
+        padding:50px 0;
     }
 
-    .form-grid {
-        grid-template-columns: 1fr;
+    .card{
+        padding:19px;
     }
 
-    .form-group.full {
-        grid-column: auto;
-    }
-
-    .order-card {
-        padding: 25px 18px;
+    .application-top{
+        align-items:flex-start;
     }
 }
-
 </style>
 </head>
 
 
 <body>
 
-
 <!-- =========================
-     NAVBAR
+     NAVIGATION
 ========================= -->
 
-<nav class="navbar">
+<header class="navbar">
 
-    <a
-        href="#home"
-        class="logo"
-    >
-        🎂 CakeHub
-    </a>
+<div class="nav-inner">
 
-    <button
-        class="menu-button"
-        id="menuButton"
-    >
-        ☰
-    </button>
+<div class="brand">
 
-    <ul
-        class="nav-links"
-        id="navLinks"
-    >
+<div class="brand-icon">
+    ⚡
+</div>
 
-        <li>
-            <a href="#home">
-                Home
-            </a>
-        </li>
+<div>
+    CHAOTIC <span>AMP</span>
+</div>
 
-        <li>
-            <a href="#cakes">
-                Cakes
-            </a>
-        </li>
+</div>
 
-        <li>
-            <a href="#services">
-                Services
-            </a>
-        </li>
 
-        <li>
-            <a href="#reviews">
-                Reviews
-            </a>
-        </li>
+<nav class="nav-links">
 
-        <li>
-            <a
-                href="#order"
-                class="nav-order"
-            >
-                Order Now
-            </a>
-        </li>
+<a href="#home">
+    Home
+</a>
 
-    </ul>
+<a href="#apply">
+    Apply
+</a>
+
+<a href="#applications">
+    Applications
+</a>
 
 </nav>
 
+</div>
+
+</header>
+
+
+<main>
 
 <!-- =========================
      HERO
 ========================= -->
 
-<section
-    class="hero"
-    id="home"
->
+<section id="home">
 
-    <span class="badge">
-        ✨ Freshly Baked With Love
-    </span>
+<div class="container hero">
 
-    <h1>
-        Beautiful Cakes
-        <span>Made For You</span>
-    </h1>
+<div>
 
-    <p>
-        Delicious handcrafted cakes made with
-        premium ingredients for birthdays,
-        celebrations and special moments.
-    </p>
+<div class="badge">
 
-    <div class="hero-buttons">
+<span class="badge-dot"></span>
 
-        <a
-            href="#cakes"
-            class="primary-button"
-        >
-            Explore Cakes
-        </a>
+APPLICATIONS ARE OPEN
 
-        <a
-            href="#order"
-            class="secondary-button"
-        >
-            Place an Order
-        </a>
+</div>
 
-    </div>
+
+<h1>
+
+Join the<br>
+
+<span>CHAOTIC AMP</span><br>
+
+SMP.
+
+</h1>
+
+
+<p class="hero-text">
+
+Welcome to the official CHAOTIC AMP Minecraft
+server application portal. Submit your application
+and become part of our Minecraft community.
+
+</p>
+
+
+<div class="buttons">
+
+<a
+href="#apply"
+class="btn primary">
+
+⚡ Apply Now
+
+</a>
+
+
+<a
+href="#applications"
+class="btn secondary">
+
+📋 View Applications
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- SERVER CARD -->
+
+<div class="server-card">
+
+<div class="server-header">
+
+<strong>
+SERVER STATUS
+</strong>
+
+
+<span class="server-online">
+
+<span class="online-dot"></span>
+
+ONLINE
+
+</span>
+
+</div>
+
+
+<div
+class="server-ip"
+id="serverIP">
+
+play.chaoticamp.net:25565
+
+</div>
+
+
+<button
+class="btn secondary"
+style="width:100%"
+onclick="copyServerIP()">
+
+📋 Copy Server IP
+
+</button>
+
+
+<div class="stats">
+
+<div class="stat">
+
+<strong>
+24/7
+</strong>
+
+<small>
+Online
+</small>
+
+</div>
+
+
+<div class="stat">
+
+<strong>
+1.21+
+</strong>
+
+<small>
+Version
+</small>
+
+</div>
+
+
+<div class="stat">
+
+<strong>
+Java
+</strong>
+
+<small>
+Edition
+</small>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
 <!-- =========================
-     SERVICES
+     APPLICATION FORM
 ========================= -->
 
 <section
-    class="section"
-    id="services"
->
+id="apply"
+class="section">
 
-    <h2 class="section-title">
-        Why Choose CakeHub?
-    </h2>
+<div class="container">
 
-    <p class="section-subtitle">
-        Everything you need for a perfect cake.
-    </p>
+<div class="section-title">
 
-    <div class="feature-grid">
+<h2>
+Join CHAOTIC AMP
+</h2>
 
-        <div class="feature-card">
+<p>
+Complete the application below to request access.
+</p>
 
-            <div class="feature-icon">
-                🍰
-            </div>
-
-            <h3>
-                Fresh Ingredients
-            </h3>
-
-            <p>
-                Fresh and quality ingredients
-                in every cake.
-            </p>
-
-        </div>
+</div>
 
 
-        <div class="feature-card">
-
-            <div class="feature-icon">
-                🎨
-            </div>
-
-            <h3>
-                Custom Designs
-            </h3>
-
-            <p>
-                Tell us your idea and create
-                your perfect cake.
-            </p>
-
-        </div>
+<div class="card">
 
 
-        <div class="feature-card">
+<div
+class="success"
+id="successMessage">
 
-            <div class="feature-icon">
-                🚚
-            </div>
+✅ Application submitted successfully!
+Your application is now shown in the Applications section.
 
-            <h3>
-                Safe Delivery
-            </h3>
+</div>
 
-            <p>
-                Your cake is carefully prepared
-                for delivery.
-            </p>
 
-        </div>
+<form id="applicationForm">
 
-    </div>
+
+<div class="form-grid">
+
+
+<!-- USERNAME -->
+
+<div>
+
+<label>
+Minecraft Username *
+</label>
+
+<input
+id="username"
+type="text"
+placeholder="Example: Steve123"
+required>
+
+</div>
+
+
+<!-- DISCORD -->
+
+<div>
+
+<label>
+Discord Username
+</label>
+
+<input
+id="discord"
+type="text"
+placeholder="Example: steve123">
+
+</div>
+
+
+<!-- AGE -->
+
+<div>
+
+<label>
+Age *
+</label>
+
+<input
+id="age"
+type="number"
+min="8"
+max="99"
+placeholder="Your age"
+required>
+
+</div>
+
+
+<!-- COUNTRY -->
+
+<div>
+
+<label>
+Country / Timezone *
+</label>
+
+<input
+id="country"
+type="text"
+placeholder="Example: Pakistan (PKT)"
+required>
+
+</div>
+
+
+<!-- EXPERIENCE -->
+
+<div>
+
+<label>
+Minecraft Experience *
+</label>
+
+<select
+id="experience"
+required>
+
+<option value="">
+Choose experience
+</option>
+
+<option>
+Less than 1 year
+</option>
+
+<option>
+1–2 years
+</option>
+
+<option>
+3–5 years
+</option>
+
+<option>
+5+ years
+</option>
+
+</select>
+
+</div>
+
+
+<!-- PLAY STYLE -->
+
+<div>
+
+<label>
+Preferred Play Style *
+</label>
+
+<select
+id="playstyle"
+required>
+
+<option value="">
+Choose play style
+</option>
+
+<option>
+Survival / SMP
+</option>
+
+<option>
+Builder
+</option>
+
+<option>
+Redstone
+</option>
+
+<option>
+PvP
+</option>
+
+<option>
+Explorer
+</option>
+
+<option>
+Mixed
+</option>
+
+</select>
+
+</div>
+
+
+<!-- REASON -->
+
+<div class="full">
+
+<label>
+Why do you want to join? *
+</label>
+
+<textarea
+id="reason"
+placeholder="Tell us why you want to join CHAOTIC AMP..."
+required></textarea>
+
+</div>
+
+
+<!-- CONTRIBUTION -->
+
+<div class="full">
+
+<label>
+What can you contribute to the server? *
+</label>
+
+<textarea
+id="contribution"
+placeholder="Tell us about your builds, ideas, events, community skills..."
+required></textarea>
+
+</div>
+
+
+<!-- BAN -->
+
+<div>
+
+<label>
+Have you been banned from a Minecraft server?
+</label>
+
+<select id="banned">
+
+<option>
+No
+</option>
+
+<option>
+Yes
+</option>
+
+</select>
+
+</div>
+
+
+<!-- FAVORITE -->
+
+<div>
+
+<label>
+Favorite Minecraft Activity
+</label>
+
+<select id="activity">
+
+<option>
+Building
+</option>
+
+<option>
+Mining
+</option>
+
+<option>
+Exploring
+</option>
+
+<option>
+Farming
+</option>
+
+<option>
+Redstone
+</option>
+
+<option>
+PvP
+</option>
+
+<option>
+Everything
+</option>
+
+</select>
+
+</div>
+
+
+<!-- RULES -->
+
+<div class="full checkbox">
+
+<input
+id="rules"
+type="checkbox"
+required>
+
+<span>
+
+I agree to follow the CHAOTIC AMP server rules,
+respect other players, and provide honest information.
+
+</span>
+
+</div>
+
+
+<!-- SUBMIT -->
+
+<div class="full">
+
+<button
+type="submit"
+class="btn primary"
+style="width:100%;">
+
+🚀 Submit Application
+
+</button>
+
+</div>
+
+
+</div>
+
+</form>
+
+</div>
+
+</div>
 
 </section>
 
 
 <!-- =========================
-     CAKES
+     APPLICATIONS SECTION
 ========================= -->
 
 <section
-    class="section"
-    id="cakes"
->
+id="applications"
+class="section">
 
-    <h2 class="section-title">
-        Our Cakes
-    </h2>
-
-    <p class="section-subtitle">
-        Choose your favorite.
-    </p>
-
-    <div class="cake-grid">
-
-        <div class="cake-card">
-
-            <div class="cake-picture">
-                🎂
-            </div>
-
-            <div class="cake-info">
-
-                <h3>
-                    Classic Celebration
-                </h3>
-
-                <p>
-                    Perfect birthday cake.
-                </p>
-
-                <div class="price">
-                    PKR 2,499
-                </div>
-
-            </div>
-
-        </div>
+<div class="container">
 
 
-        <div class="cake-card">
+<div class="section-title">
 
-            <div class="cake-picture">
-                🍓
-            </div>
+<h2>
+Applications
+</h2>
 
-            <div class="cake-info">
+<p>
+All submitted applications are displayed here.
+</p>
 
-                <h3>
-                    Strawberry Dream
-                </h3>
-
-                <p>
-                    Creamy strawberry flavor.
-                </p>
-
-                <div class="price">
-                    PKR 2,999
-                </div>
-
-            </div>
-
-        </div>
+</div>
 
 
-        <div class="cake-card">
-
-            <div class="cake-picture">
-                🍫
-            </div>
-
-            <div class="cake-info">
-
-                <h3>
-                    Chocolate Bliss
-                </h3>
-
-                <p>
-                    Rich chocolate cake.
-                </p>
-
-                <div class="price">
-                    PKR 2,799
-                </div>
-
-            </div>
-
-        </div>
+<div class="card">
 
 
-        <div class="cake-card">
-
-            <div class="cake-picture">
-                🌸
-            </div>
-
-            <div class="cake-info">
-
-                <h3>
-                    Floral Elegance
-                </h3>
-
-                <p>
-                    Beautiful floral design.
-                </p>
-
-                <div class="price">
-                    PKR 3,499
-                </div>
-
-            </div>
-
-        </div>
+<div class="application-toolbar">
 
 
-        <div class="cake-card">
+<strong id="applicationCount">
 
-            <div class="cake-picture">
-                🧁
-            </div>
+0 Applications
 
-            <div class="cake-info">
-
-                <h3>
-                    Cupcake Set
-                </h3>
-
-                <p>
-                    Delicious mini cupcakes.
-                </p>
-
-                <div class="price">
-                    PKR 1,799
-                </div>
-
-            </div>
-
-        </div>
+</strong>
 
 
-        <div class="cake-card">
+<div style="display:flex;gap:8px;flex-wrap:wrap">
 
-            <div class="cake-picture">
-                👑
-            </div>
 
-            <div class="cake-info">
+<button
+class="btn secondary small"
+onclick="exportApplications()">
 
-                <h3>
-                    Luxury Cake
-                </h3>
+📤 Export
 
-                <p>
-                    Premium custom celebration cake.
-                </p>
+</button>
 
-                <div class="price">
-                    PKR 4,999
-                </div>
 
-            </div>
+<button
+class="btn danger small"
+onclick="clearApplications()">
 
-        </div>
+🗑 Clear All
 
-    </div>
+</button>
+
+
+</div>
+
+</div>
+
+
+<div
+id="applicationList"
+class="application-list">
+</div>
+
+
+</div>
+
+</div>
 
 </section>
 
+</main>
 
-<!-- =========================
-     ORDER FORM
-========================= -->
 
-<section
-    class="order-section"
-    id="order"
->
-
-    <div class="order-card">
-
-        <div class="order-heading">
-
-            <h2>
-                Place Your Order
-            </h2>
-
-            <p>
-                Fill in your information below.
-            </p>
-
-        </div>
-
-
-        <form id="orderForm">
-
-            <div class="form-grid">
-
-                <div class="form-group">
-
-                    <label>
-                        Your Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="customerName"
-                        placeholder="Your name"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Phone Number
-                    </label>
-
-                    <input
-                        type="tel"
-                        id="customerPhone"
-                        placeholder="03XX XXXXXXX"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Select Cake
-                    </label>
-
-                    <select
-                        id="cakeType"
-                        required
-                    >
-
-                        <option value="">
-                            Select a cake
-                        </option>
-
-                        <option>
-                            Classic Celebration
-                        </option>
-
-                        <option>
-                            Strawberry Dream
-                        </option>
-
-                        <option>
-                            Chocolate Bliss
-                        </option>
-
-                        <option>
-                            Floral Elegance
-                        </option>
-
-                        <option>
-                            Cupcake Set
-                        </option>
-
-                        <option>
-                            Luxury Cake
-                        </option>
-
-                        <option>
-                            Custom Cake
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Quantity
-                    </label>
-
-                    <input
-                        type="number"
-                        id="quantity"
-                        min="1"
-                        value="1"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Delivery Date
-                    </label>
-
-                    <input
-                        type="date"
-                        id="deliveryDate"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Delivery Time
-                    </label>
-
-                    <input
-                        type="time"
-                        id="deliveryTime"
-                    >
-
-                </div>
-
-
-                <div class="form-group full">
-
-                    <label>
-                        Delivery Address
-                    </label>
-
-                    <input
-                        type="text"
-                        id="deliveryAddress"
-                        placeholder="Full delivery address"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group full">
-
-                    <label>
-                        Special Instructions
-                    </label>
-
-                    <textarea
-                        id="instructions"
-                        placeholder="Cake message, colors, design, flavor, etc."
-                    ></textarea>
-
-                </div>
-
-            </div>
-
-
-            <button
-                type="submit"
-                class="send-order"
-            >
-                📧 Send Order
-            </button>
-
-        </form>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     REVIEWS
-========================= -->
-
-<section
-    class="section"
-    id="reviews"
->
-
-    <h2 class="section-title">
-        Customer Reviews
-    </h2>
-
-    <p class="section-subtitle">
-        See what our customers say.
-    </p>
-
-
-    <div class="rating-summary">
-
-        <div
-            class="big-rating"
-            id="averageRating"
-        >
-            5.0
-        </div>
-
-        <div class="gold-stars">
-            ★★★★★
-        </div>
-
-        <p id="reviewCount">
-            3 customer reviews
-        </p>
-
-    </div>
-
-
-    <div
-        class="review-grid"
-        id="reviewGrid"
-    >
-
-        <div class="review-card">
-
-            <div class="reviewer">
-
-                <div class="avatar">
-                    A
-                </div>
-
-                <div>
-
-                    <div class="reviewer-name">
-                        Ayesha
-                    </div>
-
-                    <div class="reviewer-date">
-                        Customer
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="gold-stars">
-                ★★★★★
-            </div>
-
-            <p class="review-text">
-                The cake was beautiful and
-                tasted amazing!
-            </p>
-
-        </div>
-
-
-        <div class="review-card">
-
-            <div class="reviewer">
-
-                <div class="avatar">
-                    H
-                </div>
-
-                <div>
-
-                    <div class="reviewer-name">
-                        Hamza
-                    </div>
-
-                    <div class="reviewer-date">
-                        Customer
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="gold-stars">
-                ★★★★★
-            </div>
-
-            <p class="review-text">
-                Amazing cake and beautiful design.
-            </p>
-
-        </div>
-
-
-        <div class="review-card">
-
-            <div class="reviewer">
-
-                <div class="avatar">
-                    S
-                </div>
-
-                <div>
-
-                    <div class="reviewer-name">
-                        Sara
-                    </div>
-
-                    <div class="reviewer-date">
-                        Customer
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="gold-stars">
-                ★★★★★
-            </div>
-
-            <p class="review-text">
-                My custom cake looked exactly
-                how I wanted.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <!-- WRITE REVIEW -->
-
-    <div class="review-box">
-
-        <h3>
-            ⭐ Write a Review
-        </h3>
-
-        <form id="reviewForm">
-
-            <input
-                type="text"
-                id="reviewName"
-                placeholder="Your name"
-                required
-            >
-
-            <div
-                class="star-selector"
-                id="starSelector"
-            >
-
-                <button
-                    type="button"
-                    data-rating="1"
-                >
-                    ★
-                </button>
-
-                <button
-                    type="button"
-                    data-rating="2"
-                >
-                    ★
-                </button>
-
-                <button
-                    type="button"
-                    data-rating="3"
-                >
-                    ★
-                </button>
-
-                <button
-                    type="button"
-                    data-rating="4"
-                >
-                    ★
-                </button>
-
-                <button
-                    type="button"
-                    data-rating="5"
-                >
-                    ★
-                </button>
-
-            </div>
-
-
-            <textarea
-                id="reviewText"
-                placeholder="Write your review..."
-                required
-            ></textarea>
-
-
-            <button
-                type="submit"
-                class="review-submit"
-            >
-                Submit Review
-            </button>
-
-        </form>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- FOOTER -->
 
 <footer>
 
-    <div class="footer-logo">
-        🎂 CakeHub
-    </div>
-
-    <p>
-        Fresh cakes made with love.
-    </p>
-
-    <p style="margin-top:10px;">
-        © <span id="year"></span> CakeHub
-    </p>
+© 2026 CHAOTIC AMP · Minecraft Server Applications
 
 </footer>
-
-
-<!-- TOAST -->
-
-<div
-    class="toast"
-    id="toast"
-></div>
 
 
 <script>
 
 /* =====================================================
-   YOUR EMAIL
+   CHAOTIC AMP APPLICATION SYSTEM
 ===================================================== */
 
-const YOUR_EMAIL =
-    "itsomeransari@gmail.com";
+const STORAGE_KEY =
+"chaotic_amp_applications";
 
 
-/* =====================================================
-   MOBILE MENU
-===================================================== */
+/* GET APPLICATIONS */
 
-const menuButton =
-    document.getElementById(
-        "menuButton"
-    );
+function getApplications(){
 
-const navLinks =
-    document.getElementById(
-        "navLinks"
-    );
+    try{
 
-
-menuButton.addEventListener(
-    "click",
-    function () {
-
-        navLinks.classList.toggle(
-            "active"
+        return JSON.parse(
+            localStorage.getItem(STORAGE_KEY) || "[]"
         );
+
+    }catch(error){
+
+        return [];
 
     }
-);
+
+}
 
 
-document
-    .querySelectorAll(
-        ".nav-links a"
-    )
-    .forEach(function (link) {
+/* SAVE APPLICATIONS */
 
-        link.addEventListener(
-            "click",
-            function () {
+function saveApplications(applications){
 
-                navLinks.classList.remove(
-                    "active"
-                );
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(applications)
+    );
 
-            }
-        );
-
-    });
+}
 
 
 /* =====================================================
-   TOAST
+   PROTECT HTML DISPLAY
 ===================================================== */
 
-function showToast(message) {
+function escapeHTML(value){
 
-    const toast =
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================================
+   RENDER APPLICATIONS
+===================================================== */
+
+function renderApplications(){
+
+    const applications =
+        getApplications();
+
+
+    const list =
         document.getElementById(
-            "toast"
+            "applicationList"
         );
-
-    toast.textContent =
-        message;
-
-    toast.classList.add(
-        "show"
-    );
-
-    setTimeout(
-        function () {
-
-            toast.classList.remove(
-                "show"
-            );
-
-        },
-        4000
-    );
-}
-
-
-/* =====================================================
-   ORDER FORM
-===================================================== */
-
-const orderForm =
-    document.getElementById(
-        "orderForm"
-    );
-
-
-orderForm.addEventListener(
-    "submit",
-    function (event) {
-
-        event.preventDefault();
-
-
-        /* GET VALUES */
-
-        const name =
-            document.getElementById(
-                "customerName"
-            ).value.trim();
-
-
-        const phone =
-            document.getElementById(
-                "customerPhone"
-            ).value.trim();
-
-
-        const cake =
-            document.getElementById(
-                "cakeType"
-            ).value;
-
-
-        const quantity =
-            document.getElementById(
-                "quantity"
-            ).value;
-
-
-        const date =
-            document.getElementById(
-                "deliveryDate"
-            ).value;
-
-
-        const time =
-            document.getElementById(
-                "deliveryTime"
-            ).value ||
-            "Not specified";
-
-
-        const address =
-            document.getElementById(
-                "deliveryAddress"
-            ).value.trim();
-
-
-        const instructions =
-            document.getElementById(
-                "instructions"
-            ).value.trim() ||
-            "None";
-
-
-        /* =================================================
-           EMAIL SUBJECT
-        ================================================= */
-
-        const subject =
-            "CakeHub Order - " +
-            name;
-
-
-        /* =================================================
-           EMAIL MESSAGE
-        ================================================= */
-
-        const message =
-`Hello CakeHub,
-
-I would like to place an order.
-
-================================
-CAKE ORDER
-================================
-
-Customer Name:
-${name}
-
-Phone Number:
-${phone}
-
-Cake:
-${cake}
-
-Quantity:
-${quantity}
-
-Delivery Date:
-${date}
-
-Delivery Time:
-${time}
-
-Delivery Address:
-${address}
-
-Special Instructions:
-${instructions}
-
-================================
-
-Please contact me to confirm this order.
-
-Thank you!
-CakeHub Customer`;
-
-
-        /* =================================================
-           GMAIL COMPOSE
-        ================================================= */
-
-        const gmailURL =
-            "https://mail.google.com/mail/u/0/?view=cm&fs=1&to="
-            + encodeURIComponent(YOUR_EMAIL)
-            + "&su="
-            + encodeURIComponent(subject)
-            + "&body="
-            + encodeURIComponent(message);
-
-
-        /*
-           Open Gmail compose
-        */
-
-        window.open(
-            gmailURL,
-            "_blank"
-        );
-
-
-        showToast(
-            "📧 Opening Gmail with your order..."
-        );
-
-    }
-);
-
-
-/* =====================================================
-   MINIMUM DELIVERY DATE
-===================================================== */
-
-const dateInput =
-    document.getElementById(
-        "deliveryDate"
-    );
-
-
-const today =
-    new Date()
-        .toISOString()
-        .split("T")[0];
-
-
-dateInput.min =
-    today;
-
-
-/* =====================================================
-   REVIEWS
-===================================================== */
-
-let selectedRating = 0;
-
-
-const stars =
-    document.querySelectorAll(
-        "#starSelector button"
-    );
-
-
-stars.forEach(
-    function (star) {
-
-        star.addEventListener(
-            "click",
-            function () {
-
-                selectedRating =
-                    Number(
-                        star.dataset.rating
-                    );
-
-
-                stars.forEach(
-                    function (s) {
-
-                        const rating =
-                            Number(
-                                s.dataset.rating
-                            );
-
-
-                        s.classList.toggle(
-                            "active",
-                            rating <=
-                            selectedRating
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-    }
-);
-
-
-/* =====================================================
-   REVIEW SUBMIT
-===================================================== */
-
-const reviewForm =
-    document.getElementById(
-        "reviewForm"
-    );
-
-
-reviewForm.addEventListener(
-    "submit",
-    function (event) {
-
-        event.preventDefault();
-
-
-        if (
-            selectedRating === 0
-        ) {
-
-            showToast(
-                "⭐ Please select a rating."
-            );
-
-            return;
-
-        }
-
-
-        const name =
-            document.getElementById(
-                "reviewName"
-            ).value.trim();
-
-
-        const review =
-            document.getElementById(
-                "reviewText"
-            ).value.trim();
-
-
-        const card =
-            document.createElement(
-                "div"
-            );
-
-
-        card.className =
-            "review-card";
-
-
-        const starsText =
-            "★".repeat(
-                selectedRating
-            )
-            +
-            "☆".repeat(
-                5 - selectedRating
-            );
-
-
-        card.innerHTML = `
-
-            <div class="reviewer">
-
-                <div class="avatar">
-                    ${escapeHTML(
-                        name
-                            .charAt(0)
-                            .toUpperCase()
-                    )}
-                </div>
-
-                <div>
-
-                    <div class="reviewer-name">
-                        ${escapeHTML(name)}
-                    </div>
-
-                    <div class="reviewer-date">
-                        Just now
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="gold-stars">
-                ${starsText}
-            </div>
-
-            <p class="review-text">
-                ${escapeHTML(review)}
-            </p>
-        `;
-
-
-        document
-            .getElementById(
-                "reviewGrid"
-            )
-            .prepend(card);
-
-
-        reviewForm.reset();
-
-
-        selectedRating = 0;
-
-
-        stars.forEach(
-            function (star) {
-
-                star.classList.remove(
-                    "active"
-                );
-
-            }
-        );
-
-
-        updateReviewStats();
-
-
-        showToast(
-            "⭐ Review added successfully!"
-        );
-
-    }
-);
-
-
-/* =====================================================
-   SECURITY
-===================================================== */
-
-function escapeHTML(text) {
-
-    const element =
-        document.createElement(
-            "div"
-        );
-
-    element.textContent =
-        text;
-
-    return element.innerHTML;
-}
-
-
-/* =====================================================
-   UPDATE REVIEW COUNT
-===================================================== */
-
-function updateReviewStats() {
-
-    const cards =
-        document.querySelectorAll(
-            "#reviewGrid .review-card"
-        );
-
-
-    let total =
-        0;
-
-
-    cards.forEach(
-        function (card) {
-
-            const stars =
-                card.querySelector(
-                    ".gold-stars"
-                ).textContent;
-
-
-            total +=
-                (
-                    stars.match(
-                        /★/g
-                    ) || []
-                ).length;
-
-        }
-    );
 
 
     const count =
-        cards.length;
-
-
-    const average =
-        count
-            ? (
-                total / count
-            ).toFixed(1)
-            : "0.0";
-
-
-    document.getElementById(
-        "averageRating"
-    ).textContent =
-        average;
-
-
-    document.getElementById(
-        "reviewCount"
-    ).textContent =
-        count +
-        (
-            count === 1
-                ? " customer review"
-                : " customer reviews"
+        document.getElementById(
+            "applicationCount"
         );
+
+
+    count.textContent =
+        applications.length +
+        " Application" +
+        (
+            applications.length === 1
+            ? ""
+            : "s"
+        );
+
+
+    if(applications.length === 0){
+
+        list.innerHTML = `
+
+            <div class="empty">
+
+                📭
+
+                <br><br>
+
+                No applications yet.
+
+                <br>
+
+                Submit an application
+                to see it here.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    list.innerHTML =
+
+        applications.map(
+            (app,index)=>{
+
+                const statusClass =
+                    app.status.toLowerCase();
+
+
+                return `
+
+                <article
+                    class="application">
+
+
+                    <div
+                        class="application-top">
+
+
+                        <div>
+
+                            <h3>
+
+                                ${escapeHTML(
+                                    app.username
+                                )}
+
+                            </h3>
+
+
+                            <div
+                                class="application-meta">
+
+                                ${escapeHTML(
+                                    app.country
+                                )}
+
+                                ·
+
+                                ${escapeHTML(
+                                    app.experience
+                                )}
+
+                                ·
+
+                                ${escapeHTML(
+                                    app.date
+                                )}
+
+                            </div>
+
+                        </div>
+
+
+                        <span
+                            class="status ${statusClass}">
+
+                            ${escapeHTML(
+                                app.status
+                            )}
+
+                        </span>
+
+
+                    </div>
+
+
+                    <div
+                        class="application-body">
+
+
+                        <b>
+                            Age:
+                        </b>
+
+                        ${escapeHTML(
+                            app.age
+                        )}
+
+                        <br>
+
+
+                        <b>
+                            Discord:
+                        </b>
+
+                        ${escapeHTML(
+                            app.discord ||
+                            "Not provided"
+                        )}
+
+                        <br>
+
+
+                        <b>
+                            Play Style:
+                        </b>
+
+                        ${escapeHTML(
+                            app.playstyle
+                        )}
+
+                        <br>
+
+
+                        <b>
+                            Favorite Activity:
+                        </b>
+
+                        ${escapeHTML(
+                            app.activity
+                        )}
+
+                        <br>
+
+
+                        <b>
+                            Previous Ban:
+                        </b>
+
+                        ${escapeHTML(
+                            app.banned
+                        )}
+
+
+                        <br><br>
+
+
+                        <b>
+                            Why they want to join:
+                        </b>
+
+                        <br>
+
+                        ${escapeHTML(
+                            app.reason
+                        )}
+
+
+                        <br><br>
+
+
+                        <b>
+                            Contribution:
+                        </b>
+
+                        <br>
+
+                        ${escapeHTML(
+                            app.contribution
+                        )}
+
+                    </div>
+
+
+                    <div class="actions">
+
+
+                    ${
+                        app.status === "Pending"
+
+                        ?
+
+                        `
+
+                        <button
+                            class="btn primary small"
+                            onclick="changeStatus(
+                                ${index},
+                                'Approved'
+                            )">
+
+                            ✓ Approve
+
+                        </button>
+
+
+                        <button
+                            class="btn secondary small"
+                            onclick="changeStatus(
+                                ${index},
+                                'Rejected'
+                            )">
+
+                            ✕ Reject
+
+                        </button>
+
+                        `
+
+                        :
+
+                        ""
+
+                    }
+
+
+                    <button
+                        class="btn danger small"
+                        onclick="deleteApplication(
+                            ${index}
+                        )">
+
+                        🗑 Delete
+
+                    </button>
+
+
+                    </div>
+
+
+                </article>
+
+                `;
+
+            }
+        ).join("");
+
 }
 
 
 /* =====================================================
-   FOOTER YEAR
+   SUBMIT APPLICATION
 ===================================================== */
 
-document.getElementById(
-    "year"
-).textContent =
-    new Date().getFullYear();
+document
+.getElementById("applicationForm")
+.addEventListener(
+    "submit",
+    function(event){
+
+        event.preventDefault();
+
+
+        const application = {
+
+            id:
+                Date.now(),
+
+
+            username:
+                document
+                .getElementById(
+                    "username"
+                )
+                .value
+                .trim(),
+
+
+            discord:
+                document
+                .getElementById(
+                    "discord"
+                )
+                .value
+                .trim(),
+
+
+            age:
+                document
+                .getElementById(
+                    "age"
+                )
+                .value,
+
+
+            country:
+                document
+                .getElementById(
+                    "country"
+                )
+                .value
+                .trim(),
+
+
+            experience:
+                document
+                .getElementById(
+                    "experience"
+                )
+                .value,
+
+
+            playstyle:
+                document
+                .getElementById(
+                    "playstyle"
+                )
+                .value,
+
+
+            reason:
+                document
+                .getElementById(
+                    "reason"
+                )
+                .value
+                .trim(),
+
+
+            contribution:
+                document
+                .getElementById(
+                    "contribution"
+                )
+                .value
+                .trim(),
+
+
+            banned:
+                document
+                .getElementById(
+                    "banned"
+                )
+                .value,
+
+
+            activity:
+                document
+                .getElementById(
+                    "activity"
+                )
+                .value,
+
+
+            status:
+                "Pending",
+
+
+            date:
+                new Date()
+                .toLocaleString()
+
+        };
+
+
+        const applications =
+            getApplications();
+
+
+        applications.unshift(
+            application
+        );
+
+
+        saveApplications(
+            applications
+        );
+
+
+        this.reset();
+
+
+        document
+        .getElementById(
+            "successMessage"
+        )
+        .style.display =
+        "block";
+
+
+        renderApplications();
+
+
+        setTimeout(
+            ()=>{
+
+                document
+                .getElementById(
+                    "successMessage"
+                )
+                .style.display =
+                "none";
+
+            },
+            5000
+        );
+
+
+        window.location.hash =
+        "applications";
+
+    }
+);
+
+
+/* =====================================================
+   APPROVE / REJECT
+===================================================== */
+
+function changeStatus(
+    index,
+    status
+){
+
+    const applications =
+        getApplications();
+
+
+    applications[index].status =
+        status;
+
+
+    saveApplications(
+        applications
+    );
+
+
+    renderApplications();
+
+}
+
+
+/* =====================================================
+   DELETE APPLICATION
+===================================================== */
+
+function deleteApplication(index){
+
+    if(
+        !confirm(
+            "Delete this application?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    const applications =
+        getApplications();
+
+
+    applications.splice(
+        index,
+        1
+    );
+
+
+    saveApplications(
+        applications
+    );
+
+
+    renderApplications();
+
+}
+
+
+/* =====================================================
+   CLEAR ALL
+===================================================== */
+
+function clearApplications(){
+
+    if(
+        !confirm(
+            "Delete ALL CHAOTIC AMP applications?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    localStorage.removeItem(
+        STORAGE_KEY
+    );
+
+
+    renderApplications();
+
+}
+
+
+/* =====================================================
+   EXPORT APPLICATIONS
+===================================================== */
+
+function exportApplications(){
+
+    const applications =
+        getApplications();
+
+
+    if(
+        applications.length === 0
+    ){
+
+        alert(
+            "There are no applications to export."
+        );
+
+        return;
+
+    }
+
+
+    const blob =
+        new Blob(
+            [
+                JSON.stringify(
+                    applications,
+                    null,
+                    2
+                )
+            ],
+            {
+                type:
+                "application/json"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(
+            blob
+        );
+
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+
+    link.href =
+        url;
+
+
+    link.download =
+        "chaotic-amp-applications.json";
+
+
+    document.body.appendChild(
+        link
+    );
+
+
+    link.click();
+
+
+    link.remove();
+
+
+    URL.revokeObjectURL(
+        url
+    );
+
+}
+
+
+/* =====================================================
+   COPY SERVER IP
+===================================================== */
+
+function copyServerIP(){
+
+    const ip =
+        document
+        .getElementById(
+            "serverIP"
+        )
+        .textContent
+        .trim();
+
+
+    if(
+        navigator.clipboard
+    ){
+
+        navigator.clipboard
+        .writeText(ip)
+        .then(
+            ()=>{
+
+                alert(
+                    "✅ Server IP copied!"
+                );
+
+            }
+        )
+        .catch(
+            ()=>{
+
+                alert(
+                    "Server IP: " +
+                    ip
+                );
+
+            }
+        );
+
+    }else{
+
+        alert(
+            "Server IP: " +
+            ip
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   START APPLICATION SYSTEM
+===================================================== */
+
+renderApplications();
 
 </script>
 
