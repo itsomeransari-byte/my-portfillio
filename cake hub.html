@@ -1,13 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="description" content="CakeHub - Beautiful handcrafted cakes, delicious flavors and custom celebration cakes.">
-<meta name="theme-color" content="#e85d88">
-
 <title>CakeHub | Luxury Bakery</title>
 
 <style>
@@ -20,22 +15,14 @@
     --brown:#351c1c;
     --brown-light:#735957;
     --gold:#d9a441;
-    --green:#25d366;
     --border:#efdfda;
     --shadow:0 20px 60px rgba(70,30,30,.12);
     --radius:28px;
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
-html{
-    scroll-behavior:smooth;
-    scroll-padding-top:90px;
-}
+html{scroll-behavior:smooth}
 
 body{
     font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
@@ -44,29 +31,17 @@ body{
     overflow-x:hidden;
 }
 
-a{
-    text-decoration:none;
-    color:inherit;
-}
+a{text-decoration:none;color:inherit}
 
-button,
-input,
-select,
-textarea{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
 
 .container{
     width:min(1180px,92%);
     margin:auto;
 }
 
-/* ================= LOADER ================= */
-
+/* LOADER */
 #loader{
     position:fixed;
     inset:0;
@@ -75,18 +50,15 @@ button{
     justify-content:center;
     align-items:center;
     z-index:99999;
-    transition:.7s ease;
+    transition:.7s;
 }
 
 #loader.hide{
     opacity:0;
     visibility:hidden;
-    pointer-events:none;
 }
 
-.loader-content{
-    text-align:center;
-}
+.loader-content{text-align:center}
 
 .loader-cake{
     font-size:70px;
@@ -100,23 +72,12 @@ button{
     letter-spacing:5px;
 }
 
-.loader-subtitle{
-    color:var(--brown-light);
-    margin-top:8px;
-    font-size:13px;
-}
-
 @keyframes loaderBounce{
-    from{
-        transform:translateY(0) rotate(-5deg);
-    }
-    to{
-        transform:translateY(-18px) rotate(5deg);
-    }
+    from{transform:translateY(0) rotate(-5deg)}
+    to{transform:translateY(-18px) rotate(5deg)}
 }
 
-/* ================= BACKGROUND ================= */
-
+/* BACKGROUND */
 .bg-circle{
     position:fixed;
     border-radius:50%;
@@ -154,13 +115,10 @@ button{
 }
 
 @keyframes bgFloat{
-    50%{
-        transform:translate(25px,-30px);
-    }
+    50%{transform:translate(25px,-30px)}
 }
 
-/* ================= HEADER ================= */
-
+/* HEADER */
 header{
     position:fixed;
     top:0;
@@ -169,13 +127,12 @@ header{
     z-index:5000;
     background:rgba(255,249,245,.72);
     backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
     border-bottom:1px solid transparent;
     transition:.3s;
 }
 
 header.scrolled{
-    background:rgba(255,255,255,.95);
+    background:rgba(255,255,255,.94);
     border-bottom-color:#f0deda;
     box-shadow:0 10px 35px rgba(50,20,20,.08);
 }
@@ -207,9 +164,7 @@ header.scrolled{
     transform:rotate(-5deg);
 }
 
-.logo span{
-    color:var(--pink);
-}
+.logo span{color:var(--pink)}
 
 .nav-links{
     display:flex;
@@ -234,9 +189,7 @@ header.scrolled{
     transition:.3s;
 }
 
-.nav-links a:hover::after{
-    width:100%;
-}
+.nav-links a:hover::after{width:100%}
 
 .nav-order{
     background:var(--brown);
@@ -247,9 +200,7 @@ header.scrolled{
     transition:.3s;
 }
 
-.nav-order:hover{
-    transform:translateY(-3px);
-}
+.nav-order:hover{transform:translateY(-3px)}
 
 .menu-button{
     display:none;
@@ -259,8 +210,7 @@ header.scrolled{
     color:var(--brown);
 }
 
-/* ================= HERO ================= */
-
+/* HERO */
 .hero{
     min-height:100vh;
     padding-top:140px;
@@ -289,9 +239,7 @@ header.scrolled{
 }
 
 @keyframes pulseBadge{
-    50%{
-        box-shadow:0 0 0 8px rgba(232,93,136,.06);
-    }
+    50%{box-shadow:0 0 0 8px rgba(232,93,136,.06)}
 }
 
 .hero h1{
@@ -301,9 +249,7 @@ header.scrolled{
     margin-bottom:25px;
 }
 
-.hero h1 .pink{
-    color:var(--pink);
-}
+.hero h1 .pink{color:var(--pink)}
 
 .hero h1 .outline{
     color:transparent;
@@ -334,17 +280,9 @@ header.scrolled{
     align-items:center;
     gap:8px;
     transition:.3s;
-    position:relative;
-    overflow:hidden;
 }
 
-.btn:hover{
-    transform:translateY(-5px);
-}
-
-.btn:active{
-    transform:translateY(-1px);
-}
+.btn:hover{transform:translateY(-5px)}
 
 .btn-primary{
     background:linear-gradient(135deg,var(--pink),var(--pink2));
@@ -358,12 +296,6 @@ header.scrolled{
     box-shadow:0 10px 25px rgba(50,20,20,.06);
 }
 
-.btn-whatsapp{
-    background:var(--green);
-    color:white;
-    box-shadow:0 15px 30px rgba(37,211,102,.2);
-}
-
 .hero-features{
     display:flex;
     flex-wrap:wrap;
@@ -373,12 +305,9 @@ header.scrolled{
     font-size:14px;
 }
 
-.hero-features strong{
-    color:var(--brown);
-}
+.hero-features strong{color:var(--brown)}
 
-/* ================= HERO CAKE ================= */
-
+/* HERO CAKE */
 .hero-art{
     min-height:520px;
     position:relative;
@@ -395,9 +324,7 @@ header.scrolled{
 }
 
 @keyframes cakeFloat{
-    50%{
-        transform:translateY(-15px);
-    }
+    50%{transform:translateY(-15px)}
 }
 
 .plate{
@@ -465,23 +392,9 @@ header.scrolled{
     border-radius:0 0 12px 12px;
 }
 
-.drip1{
-    height:35px;
-    left:25%;
-    bottom:186px;
-}
-
-.drip2{
-    height:50px;
-    left:43%;
-    bottom:185px;
-}
-
-.drip3{
-    height:30px;
-    left:64%;
-    bottom:190px;
-}
+.drip1{height:35px;left:25%;bottom:186px}
+.drip2{height:50px;left:43%;bottom:185px}
+.drip3{height:30px;left:64%;bottom:190px}
 
 .cherry{
     position:absolute;
@@ -511,22 +424,9 @@ header.scrolled{
     animation:sparkle 2s infinite;
 }
 
-.sparkle1{
-    left:15px;
-    top:50px;
-}
-
-.sparkle2{
-    right:15px;
-    top:130px;
-    animation-delay:.6s;
-}
-
-.sparkle3{
-    left:30px;
-    bottom:80px;
-    animation-delay:1s;
-}
+.sparkle1{left:15px;top:50px}
+.sparkle2{right:15px;top:130px;animation-delay:.6s}
+.sparkle3{left:30px;bottom:80px;animation-delay:1s}
 
 @keyframes sparkle{
     50%{
@@ -539,7 +439,6 @@ header.scrolled{
     position:absolute;
     background:rgba(255,255,255,.92);
     backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
     padding:14px 17px;
     border-radius:18px;
     font-weight:850;
@@ -547,28 +446,15 @@ header.scrolled{
     animation:cardFloat 4s infinite ease-in-out;
 }
 
-.card1{
-    top:90px;
-    right:0;
-}
-
-.card2{
-    bottom:90px;
-    left:0;
-    animation-delay:1s;
-}
+.card1{top:90px;right:0}
+.card2{bottom:90px;left:0;animation-delay:1s}
 
 @keyframes cardFloat{
-    50%{
-        transform:translateY(-10px);
-    }
+    50%{transform:translateY(-10px)}
 }
 
-/* ================= SECTIONS ================= */
-
-section{
-    padding:100px 0;
-}
+/* SECTIONS */
+section{padding:100px 0}
 
 .section-title{
     max-width:700px;
@@ -596,8 +482,7 @@ section{
     line-height:1.6;
 }
 
-/* ================= FEATURES ================= */
-
+/* FEATURES */
 .feature-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
@@ -621,9 +506,7 @@ section{
     box-shadow:var(--shadow);
 }
 
-.feature-icon{
-    font-size:30px;
-}
+.feature-icon{font-size:30px}
 
 .feature-card small{
     display:block;
@@ -631,8 +514,7 @@ section{
     margin-top:3px;
 }
 
-/* ================= PRODUCTS ================= */
-
+/* PRODUCTS */
 .cake-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -660,29 +542,12 @@ section{
     position:relative;
 }
 
-.product-bg1{
-    background:linear-gradient(135deg,#fff0f5,#ffdce8);
-}
-
-.product-bg2{
-    background:linear-gradient(135deg,#f8e6dc,#d8b09d);
-}
-
-.product-bg3{
-    background:linear-gradient(135deg,#fff5c8,#f7d982);
-}
-
-.product-bg4{
-    background:linear-gradient(135deg,#f1e8ff,#d7c3f5);
-}
-
-.product-bg5{
-    background:linear-gradient(135deg,#e8f7ff,#bde7f6);
-}
-
-.product-bg6{
-    background:linear-gradient(135deg,#ffe9dc,#ffc2a8);
-}
+.product-bg1{background:linear-gradient(135deg,#fff0f5,#ffdce8)}
+.product-bg2{background:linear-gradient(135deg,#f8e6dc,#d8b09d)}
+.product-bg3{background:linear-gradient(135deg,#fff5c8,#f7d982)}
+.product-bg4{background:linear-gradient(135deg,#f1e8ff,#d7c3f5)}
+.product-bg5{background:linear-gradient(135deg,#e8f7ff,#bde7f6)}
+.product-bg6{background:linear-gradient(135deg,#ffe9dc,#ffc2a8)}
 
 .product-tag{
     position:absolute;
@@ -737,13 +602,9 @@ section{
     border-radius:50%;
 }
 
-.product-info{
-    padding:22px;
-}
+.product-info{padding:22px}
 
-.product-info h3{
-    font-size:21px;
-}
+.product-info h3{font-size:21px}
 
 .product-info p{
     color:var(--brown-light);
@@ -764,19 +625,33 @@ section{
     font-weight:950;
 }
 
-/* ================= FLAVORS ================= */
+/* FLAVORS */
+.flavor-search{
+    max-width:650px;
+    margin:0 auto 30px;
+    position:relative;
+}
+
+.flavor-search input{
+    width:100%;
+    padding:17px 20px;
+    border:1px solid var(--border);
+    border-radius:18px;
+    background:white;
+    box-shadow:0 10px 30px rgba(70,30,30,.05);
+}
 
 .flavor-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(4,1fr);
     gap:15px;
 }
 
 .flavor{
-    background:rgba(255,255,255,.8);
+    background:rgba(255,255,255,.85);
     border:1px solid var(--border);
     border-radius:22px;
-    padding:24px;
+    padding:22px;
     transition:.3s;
 }
 
@@ -786,22 +661,17 @@ section{
     box-shadow:var(--shadow);
 }
 
-.flavor-icon{
-    font-size:35px;
-}
+.flavor-icon{font-size:32px}
 
-.flavor h3{
-    margin:8px 0 3px;
-}
+.flavor h3{margin:8px 0 3px}
 
 .flavor p{
     color:var(--brown-light);
-    font-size:14px;
+    font-size:13px;
     line-height:1.5;
 }
 
-/* ================= ABOUT ================= */
-
+/* ABOUT */
 .about{
     background:#2c1818;
     color:white;
@@ -870,12 +740,13 @@ section{
 }
 
 @keyframes bigCake{
-    50%{
-        transform:translateY(-12px) rotate(-5deg);
-    }
+    50%{transform:translateY(-12px) rotate(-5deg)}
 }
 
-/* ================= REVIEWS ================= */
+/* REVIEWS */
+.reviews-section{
+    background:linear-gradient(180deg,#fff9f5,#fff);
+}
 
 .review-grid{
     display:grid;
@@ -890,6 +761,7 @@ section{
     border-radius:25px;
     box-shadow:0 10px 30px rgba(70,30,30,.05);
     transition:.3s;
+    animation:reviewAppear .5s ease;
 }
 
 .review:hover{
@@ -897,9 +769,15 @@ section{
     box-shadow:var(--shadow);
 }
 
+@keyframes reviewAppear{
+    from{opacity:0;transform:translateY(20px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
 .stars{
     color:#e6a33f;
     letter-spacing:3px;
+    font-size:20px;
 }
 
 .review p{
@@ -924,11 +802,107 @@ section{
     background:#ffe1ea;
 }
 
-/* ================= ORDER ================= */
-
-.order-section{
-    padding-top:60px;
+.review-form-card{
+    max-width:800px;
+    margin:50px auto 0;
+    padding:32px;
+    background:white;
+    border:1px solid var(--border);
+    border-radius:30px;
+    box-shadow:var(--shadow);
 }
+
+.review-form-card h3{
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.review-form-card > p{
+    color:var(--brown-light);
+    margin-bottom:25px;
+}
+
+.review-form{
+    display:grid;
+    gap:17px;
+}
+
+.review-input{
+    display:grid;
+    gap:7px;
+}
+
+.review-input label{
+    font-size:13px;
+    font-weight:900;
+}
+
+.review-input input,
+.review-input textarea{
+    width:100%;
+    padding:14px;
+    border:1px solid #eadbd7;
+    border-radius:14px;
+    outline:none;
+    background:#fffaf8;
+}
+
+.review-input input:focus,
+.review-input textarea:focus{
+    border-color:var(--pink);
+    box-shadow:0 0 0 4px rgba(232,93,136,.1);
+}
+
+.review-input textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+.star-selector{
+    display:flex;
+    flex-direction:row-reverse;
+    justify-content:flex-end;
+    gap:5px;
+}
+
+.star-selector input{display:none}
+
+.star-selector label{
+    font-size:35px;
+    color:#d9c9c5;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.star-selector label:hover,
+.star-selector label:hover ~ label,
+.star-selector input:checked ~ label{
+    color:#e6a33f;
+    transform:scale(1.1);
+}
+
+.review-submit{
+    border:none;
+    background:linear-gradient(135deg,var(--pink),var(--pink2));
+    color:white;
+    padding:15px 22px;
+    border-radius:15px;
+    font-weight:900;
+    box-shadow:0 12px 25px rgba(232,93,136,.25);
+    transition:.3s;
+}
+
+.review-submit:hover{transform:translateY(-3px)}
+
+.review-note{
+    margin-top:12px;
+    color:#987f7b;
+    font-size:12px;
+    text-align:center;
+}
+
+/* ORDER */
+.order-section{padding-top:60px}
 
 .order-grid{
     display:grid;
@@ -1004,18 +978,14 @@ section{
     gap:7px;
 }
 
-.form-field.full{
-    grid-column:1/-1;
-}
+.form-field.full{grid-column:1/-1}
 
 label{
     font-size:13px;
     font-weight:900;
 }
 
-input,
-select,
-textarea{
+input,select,textarea{
     width:100%;
     padding:13px 14px;
     border:1px solid #eadbd7;
@@ -1026,9 +996,7 @@ textarea{
     transition:.25s;
 }
 
-input:focus,
-select:focus,
-textarea:focus{
+input:focus,select:focus,textarea:focus{
     border-color:var(--pink);
     box-shadow:0 0 0 4px rgba(232,93,136,.1);
 }
@@ -1038,17 +1006,9 @@ textarea{
     min-height:115px;
 }
 
-.submit-area{
-    grid-column:1/-1;
-}
+.submit-area{grid-column:1/-1}
 
-.submit-buttons{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-}
-
-.submit-buttons .btn{
+.submit-area .btn{
     width:100%;
     min-height:55px;
 }
@@ -1064,12 +1024,9 @@ textarea{
     line-height:1.5;
 }
 
-.success-message.show{
-    display:block;
-}
+.success-message.show{display:block}
 
-/* ================= CONTACT ================= */
-
+/* CONTACT */
 .contact-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -1089,30 +1046,16 @@ textarea{
     box-shadow:var(--shadow);
 }
 
-.contact-icon{
-    font-size:32px;
-}
+.contact-icon{font-size:32px}
 
-.contact-box h3{
-    margin:8px 0;
-}
+.contact-box h3{margin:8px 0}
 
 .contact-box p{
     color:var(--brown-light);
     line-height:1.6;
 }
 
-.contact-link{
-    color:var(--pink);
-    font-weight:800;
-}
-
-.contact-link:hover{
-    text-decoration:underline;
-}
-
-/* ================= FOOTER ================= */
-
+/* FOOTER */
 footer{
     background:#241313;
     color:white;
@@ -1162,8 +1105,7 @@ footer{
     font-size:13px;
 }
 
-/* ================= TOAST ================= */
-
+/* TOAST */
 #toast{
     position:fixed;
     right:20px;
@@ -1185,8 +1127,7 @@ footer{
     opacity:1;
 }
 
-/* ================= REVEAL ================= */
-
+/* REVEAL */
 .reveal{
     opacity:0;
     transform:translateY(35px);
@@ -1198,17 +1139,16 @@ footer{
     transform:translateY(0);
 }
 
-/* ================= RESPONSIVE ================= */
+/* RESPONSIVE */
+@media(max-width:1100px){
+    .flavor-grid{grid-template-columns:repeat(3,1fr)}
+}
 
 @media(max-width:950px){
 
-    .container{
-        width:min(94%,760px);
-    }
+    .container{width:min(94%,760px)}
 
-    .navbar{
-        height:70px;
-    }
+    .navbar{height:70px}
 
     .nav-links{
         position:fixed;
@@ -1224,17 +1164,11 @@ footer{
         overflow-y:auto;
     }
 
-    .nav-links.open{
-        display:flex;
-    }
+    .nav-links.open{display:flex}
 
-    .menu-button{
-        display:block;
-    }
+    .menu-button{display:block}
 
-    .nav-order{
-        display:none;
-    }
+    .nav-order{display:none}
 
     .hero-grid,
     .about-grid,
@@ -1242,50 +1176,32 @@ footer{
         grid-template-columns:1fr;
     }
 
-    .hero-art{
-        min-height:450px;
-    }
+    .hero-art{min-height:450px}
 
-    .feature-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
+    .feature-grid{grid-template-columns:repeat(2,1fr)}
 
     .cake-grid,
     .review-grid{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .flavor-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
+    .flavor-grid{grid-template-columns:repeat(2,1fr)}
 
     .about-art{
         order:-1;
         height:330px;
     }
-
-    .order-grid{
-        gap:20px;
-    }
 }
 
 @media(max-width:600px){
 
-    section{
-        padding:75px 0;
-    }
+    section{padding:75px 0}
 
-    .container{
-        width:92%;
-    }
+    .container{width:92%}
 
-    .navbar{
-        height:68px;
-    }
+    .navbar{height:68px}
 
-    .logo{
-        font-size:21px;
-    }
+    .logo{font-size:21px}
 
     .logo-icon{
         width:39px;
@@ -1319,19 +1235,10 @@ footer{
         overflow:hidden;
     }
 
-    .cake-scene{
-        transform:scale(.62);
-    }
+    .cake-scene{transform:scale(.62)}
 
-    .card1{
-        right:-5px;
-        top:55px;
-    }
-
-    .card2{
-        left:-5px;
-        bottom:50px;
-    }
+    .card1{right:-5px;top:55px}
+    .card2{left:-5px;bottom:50px}
 
     .feature-grid,
     .cake-grid,
@@ -1341,26 +1248,18 @@ footer{
         grid-template-columns:1fr;
     }
 
-    .product-image{
-        height:220px;
-    }
+    .product-image{height:220px}
 
-    .product-info{
-        padding:18px;
-    }
+    .product-info{padding:18px}
 
     .price-row{
         align-items:stretch;
         flex-direction:column;
     }
 
-    .price-row .btn{
-        width:100%;
-    }
+    .price-row .btn{width:100%}
 
-    .form-grid{
-        grid-template-columns:1fr;
-    }
+    .form-grid{grid-template-columns:1fr}
 
     .form-field.full,
     .submit-area{
@@ -1368,7 +1267,8 @@ footer{
     }
 
     .form-card,
-    .order-intro{
+    .order-intro,
+    .review-form-card{
         padding:20px;
         border-radius:22px;
     }
@@ -1379,37 +1279,17 @@ footer{
         font-size:16px;
     }
 
-    .submit-area .btn{
-        min-height:55px;
-    }
+    .stats{grid-template-columns:1fr}
 
-    .submit-buttons{
-        grid-template-columns:1fr;
-    }
+    .about-art{height:270px}
 
-    .stats{
-        grid-template-columns:1fr;
-    }
+    .about-art span{font-size:100px}
 
-    .about-art{
-        height:270px;
-    }
+    .footer-top{flex-direction:column}
 
-    .about-art span{
-        font-size:100px;
-    }
+    .order-intro h2{font-size:38px}
 
-    .footer-top{
-        flex-direction:column;
-    }
-
-    .order-intro h2{
-        font-size:38px;
-    }
-
-    .hero-buttons .btn{
-        width:100%;
-    }
+    .hero-buttons .btn{width:100%}
 
     #toast{
         left:15px;
@@ -1421,1983 +1301,830 @@ footer{
 
 @media(max-width:400px){
 
-    .hero h1{
-        font-size:42px;
-    }
+    .hero h1{font-size:42px}
 
-    .cake-scene{
-        transform:scale(.55);
-    }
+    .cake-scene{transform:scale(.55)}
 
     .floating-card{
         padding:10px 12px;
         font-size:11px;
     }
 
-    .order-intro h2{
-        font-size:34px;
-    }
-}
-
-/* ================= REDUCED MOTION ================= */
-
-@media(prefers-reduced-motion:reduce){
-
-    *,
-    *::before,
-    *::after{
-        animation-duration:.01ms !important;
-        animation-iteration-count:1 !important;
-        scroll-behavior:auto !important;
-        transition-duration:.01ms !important;
-    }
-
+    .order-intro h2{font-size:34px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= LOADER ================= -->
-
 <div id="loader">
-
     <div class="loader-content">
-
         <div class="loader-cake">🎂</div>
-
-        <div class="loader-title">
-            CAKEHUB
-        </div>
-
-        <div class="loader-subtitle">
-            Baking something sweet...
-        </div>
-
+        <div class="loader-title">CAKEHUB</div>
     </div>
-
 </div>
 
 <div class="bg-circle circle1"></div>
 <div class="bg-circle circle2"></div>
 <div class="bg-circle circle3"></div>
 
-<!-- ================= HEADER ================= -->
-
 <header id="header">
-
     <div class="container navbar">
 
         <a href="#home" class="logo">
-
-            <div class="logo-icon">
-                🍰
-            </div>
-
+            <div class="logo-icon">🍰</div>
             Cake<span>Hub</span>
-
         </a>
 
         <nav class="nav-links" id="navLinks">
-
             <a href="#home">Home</a>
             <a href="#cakes">Cakes</a>
             <a href="#flavors">Flavors</a>
             <a href="#about">About</a>
             <a href="#reviews">Reviews</a>
             <a href="#order">Order</a>
-
         </nav>
 
-        <a href="#order" class="nav-order">
-            Order a Cake
-        </a>
+        <a href="#order" class="nav-order">Order a Cake</a>
 
-        <button
-            type="button"
-            class="menu-button"
-            id="menuButton"
-            aria-label="Open menu"
-            aria-expanded="false">
-
-            ☰
-
-        </button>
-
+        <button class="menu-button" id="menuButton">☰</button>
     </div>
-
 </header>
-
-<!-- ================= MAIN ================= -->
 
 <main>
 
-<!-- ================= HERO ================= -->
-
+<!-- HERO -->
 <section class="hero" id="home">
+<div class="container hero-grid">
 
-    <div class="container hero-grid">
+<div class="reveal">
 
-        <div class="reveal">
+<div class="badge">✨ Baked with love • Made for memories</div>
 
-            <div class="badge">
-                ✨ Baked with love • Made for memories
-            </div>
+<h1>
+Sweet moments,
+<br>
+<span class="pink">beautifully</span>
+<span class="outline"> baked.</span>
+</h1>
 
-            <h1>
+<p class="hero-description">
+Welcome to CakeHub — your destination for handcrafted cakes,
+delicious flavors and celebration-worthy designs made with care.
+</p>
 
-                Sweet moments,
-                <br>
+<div class="hero-buttons">
+<a href="#cakes" class="btn btn-primary">Explore Cakes →</a>
+<a href="#order" class="btn btn-secondary">Customize Yours ✨</a>
+</div>
 
-                <span class="pink">
-                    beautifully
-                </span>
+<div class="hero-features">
+<span>⭐ <strong>Freshly baked</strong></span>
+<span>🎨 <strong>Custom designs</strong></span>
+<span>💝 <strong>Made with love</strong></span>
+</div>
 
-                <span class="outline">
-                    baked.
-                </span>
+</div>
 
-            </h1>
+<div class="hero-art reveal">
 
-            <p class="hero-description">
+<div class="cake-scene">
 
-                Welcome to CakeHub — your destination
-                for handcrafted cakes, delicious flavors
-                and celebration-worthy designs made
-                with care.
+<div class="plate"></div>
 
-            </p>
+<div class="main-cake">
+<div class="cake-layer layer-bottom"></div>
+<div class="cake-layer layer-middle"></div>
+<div class="cake-layer layer-top"></div>
+<div class="icing"></div>
+<div class="drip drip1"></div>
+<div class="drip drip2"></div>
+<div class="drip drip3"></div>
+<div class="cherry"></div>
+</div>
 
-            <div class="hero-buttons">
+<div class="sparkle sparkle1">✦</div>
+<div class="sparkle sparkle2">✧</div>
+<div class="sparkle sparkle3">✦</div>
 
-                <a
-                    href="#cakes"
-                    class="btn btn-primary">
+</div>
 
-                    Explore Cakes →
+<div class="floating-card card1">🎀 Made just for you</div>
+<div class="floating-card card2">⭐ Celebration worthy</div>
 
-                </a>
-
-                <a
-                    href="#order"
-                    class="btn btn-secondary">
-
-                    Customize Yours ✨
-
-                </a>
-
-            </div>
-
-            <div class="hero-features">
-
-                <span>
-                    ⭐ <strong>Freshly baked</strong>
-                </span>
-
-                <span>
-                    🎨 <strong>Custom designs</strong>
-                </span>
-
-                <span>
-                    💝 <strong>Made with love</strong>
-                </span>
-
-            </div>
-
-        </div>
-
-        <div class="hero-art reveal">
-
-            <div class="cake-scene">
-
-                <div class="plate"></div>
-
-                <div class="main-cake">
-
-                    <div class="cake-layer layer-bottom"></div>
-
-                    <div class="cake-layer layer-middle"></div>
-
-                    <div class="cake-layer layer-top"></div>
-
-                    <div class="icing"></div>
-
-                    <div class="drip drip1"></div>
-                    <div class="drip drip2"></div>
-                    <div class="drip drip3"></div>
-
-                    <div class="cherry"></div>
-
-                </div>
-
-                <div class="sparkle sparkle1">
-                    ✦
-                </div>
-
-                <div class="sparkle sparkle2">
-                    ✧
-                </div>
-
-                <div class="sparkle sparkle3">
-                    ✦
-                </div>
-
-            </div>
-
-            <div class="floating-card card1">
-                🎀 Made just for you
-            </div>
-
-            <div class="floating-card card2">
-                ⭐ Celebration worthy
-            </div>
-
-        </div>
-
-    </div>
-
+</div>
+</div>
 </section>
 
-<!-- ================= FEATURES ================= -->
-
+<!-- FEATURES -->
 <section style="padding-top:20px;">
+<div class="container feature-grid">
 
-    <div class="container feature-grid">
+<div class="feature-card reveal">
+<div class="feature-icon">🧁</div>
+<div><b>Freshly Baked</b><small>Made with care</small></div>
+</div>
 
-        <div class="feature-card reveal">
+<div class="feature-card reveal">
+<div class="feature-icon">🎨</div>
+<div><b>Custom Designs</b><small>Your dream cake</small></div>
+</div>
 
-            <div class="feature-icon">
-                🧁
-            </div>
+<div class="feature-card reveal">
+<div class="feature-icon">💎</div>
+<div><b>Premium Quality</b><small>Beautiful & delicious</small></div>
+</div>
 
-            <div>
-                <b>Freshly Baked</b>
-                <small>Made with care</small>
-            </div>
+<div class="feature-card reveal">
+<div class="feature-icon">💝</div>
+<div><b>Made with Love</b><small>For special moments</small></div>
+</div>
 
-        </div>
-
-        <div class="feature-card reveal">
-
-            <div class="feature-icon">
-                🎨
-            </div>
-
-            <div>
-                <b>Custom Designs</b>
-                <small>Your dream cake</small>
-            </div>
-
-        </div>
-
-        <div class="feature-card reveal">
-
-            <div class="feature-icon">
-                💎
-            </div>
-
-            <div>
-                <b>Premium Quality</b>
-                <small>Beautiful & delicious</small>
-            </div>
-
-        </div>
-
-        <div class="feature-card reveal">
-
-            <div class="feature-icon">
-                💝
-            </div>
-
-            <div>
-                <b>Made with Love</b>
-                <small>For special moments</small>
-            </div>
-
-        </div>
-
-    </div>
-
+</div>
 </section>
 
-<!-- ================= CAKES ================= -->
-
+<!-- CAKES -->
 <section id="cakes">
-
-    <div class="container">
-
-        <div class="section-title reveal">
-
-            <div class="eyebrow">
-                Our signature collection
-            </div>
-
-            <h2>
-                Pick your perfect slice.
-            </h2>
-
-            <p>
-                From timeless classics to playful
-                celebrations, discover a CakeHub
-                favorite for every occasion.
-            </p>
-
-        </div>
-
-        <div class="cake-grid">
-
-            <!-- CAKE 1 -->
-
-            <article class="product reveal">
-
-                <div class="product-image product-bg1">
-
-                    <span class="product-tag">
-                        BESTSELLER
-                    </span>
-
-                    <div class="mini-cake">
-
-                        <div class="mini-bottom"></div>
-
-                        <div class="mini-top"></div>
-
-                        <div class="mini-cream"></div>
-
-                    </div>
-
-                </div>
-
-                <div class="product-info">
-
-                    <h3>
-                        Strawberry Dream
-                    </h3>
-
-                    <p>
-                        Soft vanilla cake, creamy frosting
-                        and a sweet strawberry finish.
-                    </p>
-
-                    <div class="price-row">
-
-                        <span class="price">
-                            From PKR 2,499
-                        </span>
-
-                        <button
-                            type="button"
-                            class="btn btn-primary order-button"
-                            data-cake="Strawberry Dream">
-
-                            Order →
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- CAKE 2 -->
-
-            <article class="product reveal">
-
-                <div class="product-image product-bg2">
-
-                    <span class="product-tag">
-                        RICH
-                    </span>
-
-                    <div class="mini-cake">
-
-                        <div
-                            class="mini-bottom"
-                            style="background:linear-gradient(90deg,#6b3c2d,#b77b5b,#583126);">
-                        </div>
-
-                        <div
-                            class="mini-top"
-                            style="background:linear-gradient(90deg,#4b2922,#7b4a3d,#3e231e);">
-                        </div>
-
-                        <div
-                            class="mini-cream"
-                            style="background:#f3d7bd;">
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="product-info">
-
-                    <h3>
-                        Chocolate Bliss
-                    </h3>
-
-                    <p>
-                        Rich chocolate layers with silky
-                        chocolate frosting.
-                    </p>
-
-                    <div class="price-row">
-
-                        <span class="price">
-                            From PKR 2,699
-                        </span>
-
-                        <button
-                            type="button"
-                            class="btn btn-primary order-button"
-                            data-cake="Chocolate Bliss">
-
-                            Order →
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- CAKE 3 -->
-
-            <article class="product reveal">
-
-                <div class="product-image product-bg3">
-
-                    <span class="product-tag">
-                        CLASSIC
-                    </span>
-
-                    <div class="mini-cake">
-
-                        <div
-                            class="mini-bottom"
-                            style="background:linear-gradient(90deg,#e4a63d,#ffe7a8,#d8922d);">
-                        </div>
-
-                        <div
-                            class="mini-top"
-                            style="background:linear-gradient(90deg,#fff5d8,#fff,#f7dc9b);">
-                        </div>
-
-                        <div class="mini-cream"></div>
-
-                    </div>
-
-                </div>
-
-                <div class="product-info">
-
-                    <h3>
-                        Golden Butter
-                    </h3>
-
-                    <p>
-                        A deeply buttery, moist classic
-                        with a luxurious golden crumb.
-                    </p>
-
-                    <div class="price-row">
-
-                        <span class="price">
-                            From PKR 2,299
-                        </span>
-
-                        <button
-                            type="button"
-                            class="btn btn-primary order-button"
-                            data-cake="Golden Butter">
-
-                            Order →
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- CAKE 4 -->
-
-            <article class="product reveal">
-
-                <div class="product-image product-bg4">
-
-                    <span class="product-tag">
-                        ELEGANT
-                    </span>
-
-                    <div class="mini-cake">
-
-                        <div
-                            class="mini-bottom"
-                            style="background:linear-gradient(90deg,#a98bd2,#e9dcff,#8f6cbe);">
-                        </div>
-
-                        <div
-                            class="mini-top"
-                            style="background:linear-gradient(90deg,#f5efff,#fff,#d9c6f3);">
-                        </div>
-
-                        <div class="mini-cream"></div>
-
-                    </div>
-
-                </div>
-
-                <div class="product-info">
-
-                    <h3>
-                        Velvet Celebration
-                    </h3>
-
-                    <p>
-                        Silky, soft and elegant with a
-                        creamy celebration finish.
-                    </p>
-
-                    <div class="price-row">
-
-                        <span class="price">
-                            From PKR 2,899
-                        </span>
-
-                        <button
-                            type="button"
-                            class="btn btn-primary order-button"
-                            data-cake="Velvet Celebration">
-
-                            Order →
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- CAKE 5 -->
-
-            <article class="product reveal">
-
-                <div class="product-image product-bg5">
-
-                    <span class="product-tag">
-                        LIGHT
-                    </span>
-
-                    <div class="mini-cake">
-
-                        <div
-                            class="mini-bottom"
-                            style="background:linear-gradient(90deg,#82c8e2,#d9f5ff,#67b3d0);">
-                        </div>
-
-                        <div
-                            class="mini-top"
-                            style="background:linear-gradient(90deg,#e8faff,#fff,#bdebf7);">
-                        </div>
-
-                        <div class="mini-cream"></div>
-
-                    </div>
-
-                </div>
-
-                <div class="product-info">
-
-                    <h3>
-                        Vanilla Cloud
-                    </h3>
-
-                    <p>
-                        Light, fluffy vanilla layers that
-                        pair beautifully with frosting.
-                    </p>
-
-                    <div class="price-row">
-
-                        <span class="price">
-                            From PKR 2,199
-                        </span>
-
-                        <button
-                            type="button"
-                            class="btn btn-primary order-button"
-                            data-cake="Vanilla Cloud">
-
-                            Order →
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- CAKE 6 -->
-
-            <article class="product reveal">
-
-                <div class="product-image product-bg6">
-
-                    <span class="product-tag">
-                        FUN
-                    </span>
-
-                    <div class="mini-cake">
-
-                        <div
-                            class="mini-bottom"
-                            style="background:linear-gradient(90deg,#ee9d77,#ffe0ca,#e88660);">
-                        </div>
-
-                        <div
-                            class="mini-top"
-                            style="background:linear-gradient(90deg,#fff,#ffe7da,#ffd0bd);">
-                        </div>
-
-                        <div class="mini-cream"></div>
-
-                    </div>
-
-                </div>
-
-                <div class="product-info">
-
-                    <h3>
-                        Funfetti Party
-                    </h3>
-
-                    <p>
-                        Vanilla cake packed with colorful
-                        sprinkles and party energy.
-                    </p>
-
-                    <div class="price-row">
-
-                        <span class="price">
-                            From PKR 2,399
-                        </span>
-
-                        <button
-                            type="button"
-                            class="btn btn-primary order-button"
-                            data-cake="Funfetti Party">
-
-                            Order →
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </div>
-
+<div class="container">
+
+<div class="section-title reveal">
+<div class="eyebrow">Our signature collection</div>
+<h2>Pick your perfect slice.</h2>
+<p>From timeless classics to playful celebrations, discover a CakeHub favorite for every occasion.</p>
+</div>
+
+<div class="cake-grid">
+
+<article class="product reveal">
+<div class="product-image product-bg1">
+<span class="product-tag">BESTSELLER</span>
+<div class="mini-cake">
+<div class="mini-bottom"></div>
+<div class="mini-top"></div>
+<div class="mini-cream"></div>
+</div>
+</div>
+<div class="product-info">
+<h3>Strawberry Dream</h3>
+<p>Soft vanilla cake, creamy frosting and a sweet strawberry finish.</p>
+<div class="price-row">
+<span class="price">From PKR 2,499</span>
+<button class="btn btn-primary order-button" data-cake="Strawberry Dream">Order →</button>
+</div>
+</div>
+</article>
+
+<article class="product reveal">
+<div class="product-image product-bg2">
+<span class="product-tag">RICH</span>
+<div class="mini-cake">
+<div class="mini-bottom" style="background:linear-gradient(90deg,#6b3c2d,#b77b5b,#583126)"></div>
+<div class="mini-top" style="background:linear-gradient(90deg,#4b2922,#7b4a3d,#3e231e)"></div>
+<div class="mini-cream" style="background:#f3d7bd"></div>
+</div>
+</div>
+<div class="product-info">
+<h3>Chocolate Bliss</h3>
+<p>Rich chocolate layers with silky chocolate frosting.</p>
+<div class="price-row">
+<span class="price">From PKR 2,699</span>
+<button class="btn btn-primary order-button" data-cake="Chocolate Bliss">Order →</button>
+</div>
+</div>
+</article>
+
+<article class="product reveal">
+<div class="product-image product-bg3">
+<span class="product-tag">CLASSIC</span>
+<div class="mini-cake">
+<div class="mini-bottom" style="background:linear-gradient(90deg,#e4a63d,#ffe7a8,#d8922d)"></div>
+<div class="mini-top" style="background:linear-gradient(90deg,#fff5d8,#fff,#f7dc9b)"></div>
+<div class="mini-cream"></div>
+</div>
+</div>
+<div class="product-info">
+<h3>Golden Butter</h3>
+<p>A deeply buttery, moist classic with a luxurious golden crumb.</p>
+<div class="price-row">
+<span class="price">From PKR 2,299</span>
+<button class="btn btn-primary order-button" data-cake="Golden Butter">Order →</button>
+</div>
+</div>
+</article>
+
+<article class="product reveal">
+<div class="product-image product-bg4">
+<span class="product-tag">ELEGANT</span>
+<div class="mini-cake">
+<div class="mini-bottom" style="background:linear-gradient(90deg,#a98bd2,#e9dcff,#8f6cbe)"></div>
+<div class="mini-top" style="background:linear-gradient(90deg,#f5efff,#fff,#d9c6f3)"></div>
+<div class="mini-cream"></div>
+</div>
+</div>
+<div class="product-info">
+<h3>Velvet Celebration</h3>
+<p>Silky, soft and elegant with a creamy celebration finish.</p>
+<div class="price-row">
+<span class="price">From PKR 2,899</span>
+<button class="btn btn-primary order-button" data-cake="Velvet Celebration">Order →</button>
+</div>
+</div>
+</article>
+
+<article class="product reveal">
+<div class="product-image product-bg5">
+<span class="product-tag">LIGHT</span>
+<div class="mini-cake">
+<div class="mini-bottom" style="background:linear-gradient(90deg,#82c8e2,#d9f5ff,#67b3d0)"></div>
+<div class="mini-top" style="background:linear-gradient(90deg,#e8faff,#fff,#bdebf7)"></div>
+<div class="mini-cream"></div>
+</div>
+</div>
+<div class="product-info">
+<h3>Vanilla Cloud</h3>
+<p>Light, fluffy vanilla layers that pair beautifully with frosting.</p>
+<div class="price-row">
+<span class="price">From PKR 2,199</span>
+<button class="btn btn-primary order-button" data-cake="Vanilla Cloud">Order →</button>
+</div>
+</div>
+</article>
+
+<article class="product reveal">
+<div class="product-image product-bg6">
+<span class="product-tag">FUN</span>
+<div class="mini-cake">
+<div class="mini-bottom" style="background:linear-gradient(90deg,#ee9d77,#ffe0ca,#e88660)"></div>
+<div class="mini-top" style="background:linear-gradient(90deg,#fff,#ffe7da,#ffd0bd)"></div>
+<div class="mini-cream"></div>
+</div>
+</div>
+<div class="product-info">
+<h3>Funfetti Party</h3>
+<p>Vanilla cake packed with colorful sprinkles and party energy.</p>
+<div class="price-row">
+<span class="price">From PKR 2,399</span>
+<button class="btn btn-primary order-button" data-cake="Funfetti Party">Order →</button>
+</div>
+</div>
+</article>
+
+</div>
+</div>
 </section>
 
-<!-- ================= FLAVORS ================= -->
-
+<!-- FLAVORS -->
 <section id="flavors">
+<div class="container">
 
-    <div class="container">
+<div class="section-title reveal">
+<div class="eyebrow">Worldwide Flavor Collection</div>
+<h2>Find your favorite flavor.</h2>
+<p>Explore a huge collection of classic, fruity, chocolate, nutty, coffee, tropical and international cake flavors.</p>
+</div>
 
-        <div class="section-title reveal">
+<div class="flavor-search">
+<input type="search" id="flavorSearch" placeholder="🔎 Search cake flavors...">
+</div>
 
-            <div class="eyebrow">
-                Classic & Traditional
-            </div>
+<div class="flavor-grid" id="flavorGrid">
 
-            <h2>
-                Flavors everyone loves.
-            </h2>
+<!-- CLASSIC -->
+<div class="flavor reveal"><div class="flavor-icon">🍦</div><h3>Vanilla</h3><p>Light, sweet and wonderfully versatile.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Chocolate</h3><p>Rich, fudgy and deeply chocolatey.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🧈</div><h3>Yellow Butter Cake</h3><p>Moist, rich and deeply buttery.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">☁️</div><h3>White Cake</h3><p>Fluffy and delicate.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🌀</div><h3>Marble</h3><p>Chocolate and vanilla swirled together.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🌈</div><h3>Funfetti</h3><p>Vanilla cake with colorful sprinkles.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍯</div><h3>Honey</h3><p>Sweet, warm and naturally aromatic.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🥥</div><h3>Coconut</h3><p>Soft cake with tropical coconut flavor.</p></div>
 
-            <p>
-                Choose a familiar favorite or ask us
-                to create something custom.
-            </p>
+<!-- CHOCOLATE -->
+<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Dark Chocolate</h3><p>Bold and intense cocoa flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Milk Chocolate</h3><p>Creamy and smooth chocolate.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🤎</div><h3>Chocolate Fudge</h3><p>Extra rich and fudgy.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍪</div><h3>Chocolate Cookie</h3><p>Chocolate cake with cookie goodness.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Chocolate Hazelnut</h3><p>Chocolate combined with roasted hazelnut.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🥜</div><h3>Chocolate Peanut Butter</h3><p>Chocolate and creamy peanut butter.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍒</div><h3>Black Forest</h3><p>Chocolate, cherry and cream inspired classic.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Chocolate Ganache</h3><p>Silky chocolate with ganache.</p></div>
 
-        </div>
+<!-- FRUIT -->
+<div class="flavor reveal"><div class="flavor-icon">🍓</div><h3>Strawberry</h3><p>Sweet and fruity strawberry flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🫐</div><h3>Blueberry</h3><p>Soft berry flavor with a fresh finish.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍋</div><h3>Lemon</h3><p>Bright, fresh and citrusy.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍊</div><h3>Orange</h3><p>Fresh citrus flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍍</div><h3>Pineapple</h3><p>Tropical and juicy.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🥭</div><h3>Mango</h3><p>Sweet tropical mango.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍑</div><h3>Peach</h3><p>Soft and fruity peach flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍎</div><h3>Apple Cinnamon</h3><p>Apple with warm cinnamon.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍌</div><h3>Banana</h3><p>Moist and naturally sweet.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🥝</div><h3>Kiwi</h3><p>Fresh tropical fruit flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍇</div><h3>Grape</h3><p>Sweet grape-inspired flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍒</div><h3>Cherry</h3><p>Rich cherry fruit flavor.</p></div>
 
-        <div class="flavor-grid">
+<!-- RED VELVET -->
+<div class="flavor reveal"><div class="flavor-icon">❤️</div><h3>Red Velvet</h3><p>Soft cocoa cake with creamy frosting.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">❤️</div><h3>Red Velvet Chocolate</h3><p>Red velvet with deeper chocolate notes.</p></div>
 
-            <div class="flavor reveal">
+<!-- COFFEE -->
+<div class="flavor reveal"><div class="flavor-icon">☕</div><h3>Coffee</h3><p>Rich roasted coffee flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">☕</div><h3>Mocha</h3><p>Coffee and chocolate together.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">☕</div><h3>Espresso</h3><p>Bold espresso-inspired flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">☕</div><h3>Cappuccino</h3><p>Creamy coffee flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">☕</div><h3>Tiramisu</h3><p>Coffee, cocoa and creamy dessert-inspired flavor.</p></div>
 
-                <div class="flavor-icon">🍦</div>
+<!-- NUTS -->
+<div class="flavor reveal"><div class="flavor-icon">🥜</div><h3>Almond</h3><p>Delicate roasted almond flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🌰</div><h3>Hazelnut</h3><p>Rich roasted hazelnut flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🌰</div><h3>Pistachio</h3><p>Creamy pistachio flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🥜</div><h3>Peanut</h3><p>Classic roasted peanut flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🌰</div><h3>Walnut</h3><p>Nutty walnut flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🌰</div><h3>Cashew</h3><p>Soft creamy cashew flavor.</p></div>
 
-                <h3>
-                    Vanilla
-                </h3>
+<!-- CARAMEL -->
+<div class="flavor reveal"><div class="flavor-icon">🍮</div><h3>Caramel</h3><p>Buttery caramel sweetness.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🧂</div><h3>Salted Caramel</h3><p>Sweet caramel balanced with salt.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍯</div><h3>Toffee</h3><p>Buttery cooked sugar flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍯</div><h3>Butterscotch</h3><p>Rich buttery caramel flavor.</p></div>
 
-                <p>
-                    Light, sweet, and pairs with
-                    almost any frosting.
-                </p>
+<!-- SPECIAL -->
+<div class="flavor reveal"><div class="flavor-icon">🥕</div><h3>Carrot Cake</h3><p>Spiced carrot cake with creamy frosting.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍰</div><h3>Cheesecake</h3><p>Creamy cheesecake-inspired cake.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍪</div><h3>Cookies & Cream</h3><p>Creamy vanilla with chocolate cookies.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍪</div><h3>Oreo</h3><p>Chocolate cookie and cream flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍬</div><h3>Marshmallow</h3><p>Sweet soft marshmallow flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Rocky Road</h3><p>Chocolate with nutty and marshmallow notes.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍓</div><h3>Strawberry Cheesecake</h3><p>Strawberry and creamy cheesecake.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍋</div><h3>Lemon Cheesecake</h3><p>Creamy cheesecake with lemon.</p></div>
 
-            </div>
+<!-- TROPICAL -->
+<div class="flavor reveal"><div class="flavor-icon">🥥</div><h3>Coconut Cream</h3><p>Rich creamy coconut.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🥭</div><h3>Mango Coconut</h3><p>Mango with tropical coconut.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍍</div><h3>Pineapple Coconut</h3><p>Tropical pineapple and coconut.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🥥</div><h3>Coconut Chocolate</h3><p>Chocolate with coconut.</p></div>
 
-            <div class="flavor reveal">
+<!-- INTERNATIONAL INSPIRED -->
+<div class="flavor reveal"><div class="flavor-icon">🇮🇹</div><h3>Italian Tiramisu</h3><p>Coffee and cocoa dessert-inspired flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🇫🇷</div><h3>French Vanilla</h3><p>Rich creamy vanilla.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🇯🇵</div><h3>Matcha</h3><p>Earthy green tea flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍵</div><h3>Matcha White Chocolate</h3><p>Green tea with creamy white chocolate.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🌹</div><h3>Rose</h3><p>Floral and delicately sweet.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🌸</div><h3>Rose Pistachio</h3><p>Floral rose with pistachio.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🫖</div><h3>Earl Grey</h3><p>Elegant black tea and citrus notes.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍯</div><h3>Honey Lavender</h3><p>Floral lavender with honey sweetness.</p></div>
 
-                <div class="flavor-icon">🍫</div>
+<!-- CUSTOM -->
+<div class="flavor reveal"><div class="flavor-icon">✨</div><h3>Custom Flavor</h3><p>Tell CakeHub your dream combination.</p></div>
 
-                <h3>
-                    Chocolate
-                </h3>
-
-                <p>
-                    Rich, fudgy, deep and
-                    universally loved.
-                </p>
-
-            </div>
-
-            <div class="flavor reveal">
-
-                <div class="flavor-icon">🧈</div>
-
-                <h3>
-                    Yellow Butter Cake
-                </h3>
-
-                <p>
-                    Dense, moist and
-                    deeply buttery.
-                </p>
-
-            </div>
-
-            <div class="flavor reveal">
-
-                <div class="flavor-icon">☁️</div>
-
-                <h3>
-                    White Cake
-                </h3>
-
-                <p>
-                    Fluffy, delicate and
-                    perfect for elegant events.
-                </p>
-
-            </div>
-
-            <div class="flavor reveal">
-
-                <div class="flavor-icon">🌀</div>
-
-                <h3>
-                    Marble
-                </h3>
-
-                <p>
-                    Beautiful swirls of
-                    chocolate and vanilla.
-                </p>
-
-            </div>
-
-            <div class="flavor reveal">
-
-                <div class="flavor-icon">🌈</div>
-
-                <h3>
-                    Funfetti
-                </h3>
-
-                <p>
-                    Vanilla cake packed
-                    with colorful sprinkles.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
+</div>
+</div>
 </section>
 
-<!-- ================= ABOUT ================= -->
-
+<!-- ABOUT -->
 <section class="about" id="about">
+<div class="container about-grid">
 
-    <div class="container about-grid">
+<div class="reveal">
 
-        <div class="reveal">
+<div class="eyebrow">The CakeHub story</div>
 
-            <div class="eyebrow">
-                The CakeHub story
-            </div>
+<h2>We bake happiness into every layer.</h2>
 
-            <h2>
-                We bake happiness
-                into every layer.
-            </h2>
+<p>
+CakeHub is all about turning ordinary days into sweet memories.
+Every cake is thoughtfully prepared with attention to flavor,
+design and the details that make your celebration special.
+</p>
 
-            <p>
-                CakeHub is all about turning ordinary
-                days into sweet memories. Every cake is
-                thoughtfully prepared with attention to
-                flavor, design and the details that make
-                your celebration special.
-            </p>
+<div class="stats">
+<div class="stat"><strong>100%</strong><span>Made with care</span></div>
+<div class="stat"><strong>80+</strong><span>Flavor choices</span></div>
+<div class="stat"><strong>∞</strong><span>Custom ideas</span></div>
+</div>
 
-            <div class="stats">
+</div>
 
-                <div class="stat">
+<div class="about-art reveal">
+<span>🎂</span>
+</div>
 
-                    <strong>
-                        100%
-                    </strong>
-
-                    <span>
-                        Made with care
-                    </span>
-
-                </div>
-
-                <div class="stat">
-
-                    <strong>
-                        6+
-                    </strong>
-
-                    <span>
-                        Classic flavors
-                    </span>
-
-                </div>
-
-                <div class="stat">
-
-                    <strong>
-                        ∞
-                    </strong>
-
-                    <span>
-                        Custom ideas
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="about-art reveal">
-
-            <span>
-                🎂
-            </span>
-
-        </div>
-
-    </div>
-
+</div>
 </section>
 
-<!-- ================= REVIEWS ================= -->
+<!-- REVIEWS -->
+<section id="reviews" class="reviews-section">
+<div class="container">
 
-<section id="reviews">
+<div class="section-title reveal">
+<div class="eyebrow">Customer Reviews</div>
+<h2>What our customers say.</h2>
+<p>Loved your CakeHub cake? Share your experience with everyone.</p>
+</div>
 
-    <div class="container">
+<div class="review-grid" id="reviewList"></div>
 
-        <div class="section-title reveal">
+<div class="review-form-card reveal">
 
-            <div class="eyebrow">
-                Sweet words
-            </div>
+<h3>⭐ Leave a Review</h3>
 
-            <h2>
-                Loved by cake people.
-            </h2>
+<p>Tell us about your CakeHub experience.</p>
 
-            <p>
-                Beautiful cakes, happy customers
-                and unforgettable celebrations.
-            </p>
+<form id="reviewForm" class="review-form">
 
-        </div>
+<div class="review-input">
+<label for="reviewName">Your Name</label>
+<input type="text" id="reviewName" placeholder="Enter your name" maxlength="40" required>
+</div>
 
-        <div class="review-grid">
+<div class="review-input">
 
-            <article class="review reveal">
+<label>Your Rating</label>
 
-                <div class="stars">
-                    ★★★★★
-                </div>
+<div class="star-selector">
 
-                <p>
-                    “The cake looked beautiful and
-                    tasted even better. Everyone at
-                    the celebration loved it!”
-                </p>
+<input type="radio" name="rating" id="star5" value="5">
+<label for="star5">★</label>
 
-                <div class="reviewer">
+<input type="radio" name="rating" id="star4" value="4">
+<label for="star4">★</label>
 
-                    <div class="avatar">
-                        😊
-                    </div>
+<input type="radio" name="rating" id="star3" value="3">
+<label for="star3">★</label>
 
-                    <span>
-                        Happy Customer
-                    </span>
+<input type="radio" name="rating" id="star2" value="2">
+<label for="star2">★</label>
 
-                </div>
+<input type="radio" name="rating" id="star1" value="1">
+<label for="star1">★</label>
 
-            </article>
+</div>
 
-            <article class="review reveal">
+</div>
 
-                <div class="stars">
-                    ★★★★★
-                </div>
+<div class="review-input">
+<label for="reviewText">Your Review</label>
+<textarea id="reviewText" placeholder="Write your review..." maxlength="500" required></textarea>
+</div>
 
-                <p>
-                    “The design was exactly what we
-                    imagined. The whole CakeHub
-                    experience felt so special.”
-                </p>
+<button type="submit" class="review-submit">
+Submit Review ⭐
+</button>
 
-                <div class="reviewer">
+</form>
 
-                    <div class="avatar">
-                        🌸
-                    </div>
+<div class="review-note">
+Reviews cannot be deleted from the customer panel.
+</div>
 
-                    <span>
-                        Celebration Guest
-                    </span>
-
-                </div>
-
-            </article>
-
-            <article class="review reveal">
-
-                <div class="stars">
-                    ★★★★★
-                </div>
-
-                <p>
-                    “Fresh, soft and delicious.
-                    The presentation was gorgeous
-                    and perfect for our party.”
-                </p>
-
-                <div class="reviewer">
-
-                    <div class="avatar">
-                        🎉
-                    </div>
-
-                    <span>
-                        Happy Customer
-                    </span>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </div>
-
+</div>
+</div>
 </section>
 
-<!-- ================= ORDER ================= -->
-
+<!-- ORDER -->
 <section class="order-section" id="order">
-
-    <div class="container order-grid">
-
-        <div class="order-intro reveal">
-
-            <div class="eyebrow">
-                Make it yours
-            </div>
-
-            <h2>
-                Have a cake idea?
-            </h2>
-
-            <p>
-                Tell us what you're celebrating
-                and what you have in mind.
-            </p>
-
-            <div class="order-points">
-
-                <div>
-                    ✓ Choose your flavor
-                </div>
-
-                <div>
-                    ✓ Choose your size
-                </div>
-
-                <div>
-                    ✓ Add your celebration date
-                </div>
-
-                <div>
-                    ✓ Describe your dream design
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="form-card reveal">
-
-            <div
-                class="section-title"
-                style="text-align:left;margin-bottom:25px;">
-
-                <div class="eyebrow">
-                    Order request
-                </div>
-
-                <h2 style="font-size:38px;">
-                    Let's create something sweet.
-                </h2>
-
-            </div>
-
-            <form id="orderForm">
-
-                <div class="form-grid">
-
-                    <div class="form-field">
-
-                        <label for="customerName">
-                            Your name
-                        </label>
-
-                        <input
-                            type="text"
-                            id="customerName"
-                            autocomplete="name"
-                            required
-                            placeholder="Your name">
-
-                    </div>
-
-                    <div class="form-field">
-
-                        <label for="customerPhone">
-                            Phone
-                        </label>
-
-                        <input
-                            type="tel"
-                            id="customerPhone"
-                            autocomplete="tel"
-                            required
-                            placeholder="03XX XXXXXXX">
-
-                    </div>
-
-                    <div class="form-field">
-
-                        <label for="cakeFlavor">
-                            Cake / Flavor
-                        </label>
-
-                        <select
-                            id="cakeFlavor"
-                            required>
-
-                            <option value="">
-                                Choose one
-                            </option>
-
-                            <option value="Vanilla">
-                                Vanilla
-                            </option>
-
-                            <option value="Chocolate">
-                                Chocolate
-                            </option>
-
-                            <option value="Yellow Butter Cake">
-                                Yellow Butter Cake
-                            </option>
-
-                            <option value="White Cake">
-                                White Cake
-                            </option>
-
-                            <option value="Marble">
-                                Marble
-                            </option>
-
-                            <option value="Funfetti">
-                                Funfetti
-                            </option>
-
-                            <option value="Custom Design">
-                                Custom Design
-                            </option>
-
-                        </select>
-
-                    </div>
-
-                    <div class="form-field">
-
-                        <label for="cakeSize">
-                            Size
-                        </label>
-
-                        <select id="cakeSize">
-
-                            <option>
-                                1 Pound
-                            </option>
-
-                            <option>
-                                2 Pounds
-                            </option>
-
-                            <option>
-                                3 Pounds
-                            </option>
-
-                            <option>
-                                4 Pounds
-                            </option>
-
-                            <option>
-                                Custom Size
-                            </option>
-
-                        </select>
-
-                    </div>
-
-                    <div class="form-field">
-
-                        <label for="cakeDate">
-                            Celebration Date
-                        </label>
-
-                        <input
-                            type="date"
-                            id="cakeDate">
-
-                    </div>
-
-                    <div class="form-field">
-
-                        <label for="occasion">
-                            Occasion
-                        </label>
-
-                        <input
-                            type="text"
-                            id="occasion"
-                            placeholder="Birthday, wedding, etc.">
-
-                    </div>
-
-                    <div class="form-field full">
-
-                        <label for="cakeDetails">
-                            Cake Details
-                        </label>
-
-                        <textarea
-                            id="cakeDetails"
-                            placeholder="Tell us about colors, decorations, writing, theme or special requests..."></textarea>
-
-                    </div>
-
-                    <div class="submit-area">
-
-                        <div class="submit-buttons">
-
-                            <button
-                                type="submit"
-                                class="btn btn-primary">
-
-                                📧 Send with Gmail
-
-                            </button>
-
-                            <button
-                                type="button"
-                                id="whatsappButton"
-                                class="btn btn-whatsapp">
-
-                                💬 Order on WhatsApp
-
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div
-                    id="successMessage"
-                    class="success-message">
-                </div>
-
-            </form>
-
-        </div>
-
-    </div>
-
+<div class="container order-grid">
+
+<div class="order-intro reveal">
+
+<div class="eyebrow">Make it yours</div>
+
+<h2>Have a cake idea?</h2>
+
+<p>Tell us what you're celebrating and what you have in mind.</p>
+
+<div class="order-points">
+<div>✓ Choose your flavor</div>
+<div>✓ Choose your size</div>
+<div>✓ Add your celebration date</div>
+<div>✓ Describe your dream design</div>
+</div>
+
+</div>
+
+<div class="form-card reveal">
+
+<div class="section-title" style="text-align:left;margin-bottom:25px;">
+<div class="eyebrow">Order request</div>
+<h2 style="font-size:38px;">Let's create something sweet.</h2>
+</div>
+
+<form id="orderForm">
+
+<div class="form-grid">
+
+<div class="form-field">
+<label for="customerName">Your name</label>
+<input type="text" id="customerName" required placeholder="Your name">
+</div>
+
+<div class="form-field">
+<label for="customerPhone">Phone</label>
+<input type="tel" id="customerPhone" required placeholder="03XX XXXXXXX">
+</div>
+
+<div class="form-field">
+<label for="cakeFlavor">Cake / Flavor</label>
+
+<select id="cakeFlavor" required>
+<option value="">Choose one</option>
+
+<!-- NO PUMPKIN -->
+<option>Vanilla</option>
+<option>French Vanilla</option>
+<option>Chocolate</option>
+<option>Dark Chocolate</option>
+<option>Milk Chocolate</option>
+<option>Chocolate Fudge</option>
+<option>Chocolate Ganache</option>
+<option>Chocolate Hazelnut</option>
+<option>Chocolate Peanut Butter</option>
+<option>White Cake</option>
+<option>Yellow Butter Cake</option>
+<option>Marble</option>
+<option>Funfetti</option>
+<option>Strawberry</option>
+<option>Strawberry Cheesecake</option>
+<option>Blueberry</option>
+<option>Lemon</option>
+<option>Lemon Cheesecake</option>
+<option>Orange</option>
+<option>Pineapple</option>
+<option>Mango</option>
+<option>Peach</option>
+<option>Apple Cinnamon</option>
+<option>Banana</option>
+<option>Kiwi</option>
+<option>Grape</option>
+<option>Cherry</option>
+<option>Black Forest</option>
+<option>Red Velvet</option>
+<option>Red Velvet Chocolate</option>
+<option>Coffee</option>
+<option>Mocha</option>
+<option>Espresso</option>
+<option>Cappuccino</option>
+<option>Tiramisu</option>
+<option>Italian Tiramisu</option>
+<option>Almond</option>
+<option>Hazelnut</option>
+<option>Pistachio</option>
+<option>Peanut</option>
+<option>Walnut</option>
+<option>Cashew</option>
+<option>Caramel</option>
+<option>Salted Caramel</option>
+<option>Toffee</option>
+<option>Butterscotch</option>
+<option>Carrot Cake</option>
+<option>Cheesecake</option>
+<option>Cookies & Cream</option>
+<option>Oreo</option>
+<option>Marshmallow</option>
+<option>Rocky Road</option>
+<option>Coconut</option>
+<option>Coconut Cream</option>
+<option>Mango Coconut</option>
+<option>Pineapple Coconut</option>
+<option>Coconut Chocolate</option>
+<option>Matcha</option>
+<option>Matcha White Chocolate</option>
+<option>Rose</option>
+<option>Rose Pistachio</option>
+<option>Earl Grey</option>
+<option>Honey</option>
+<option>Honey Lavender</option>
+<option>Custom Flavor</option>
+
+</select>
+</div>
+
+<div class="form-field">
+<label for="cakeSize">Size</label>
+
+<select id="cakeSize">
+<option>1 Pound</option>
+<option>2 Pounds</option>
+<option>3 Pounds</option>
+<option>4 Pounds</option>
+<option>5 Pounds</option>
+<option>6 Pounds</option>
+<option>Custom Size</option>
+</select>
+</div>
+
+<div class="form-field">
+<label for="cakeDate">Celebration Date</label>
+<input type="date" id="cakeDate">
+</div>
+
+<div class="form-field">
+<label for="occasion">Occasion</label>
+<input type="text" id="occasion" placeholder="Birthday, wedding, etc.">
+</div>
+
+<div class="form-field full">
+<label for="cakeDetails">Cake Details</label>
+<textarea id="cakeDetails" placeholder="Tell us about colors, decorations, writing, theme or special requests..."></textarea>
+</div>
+
+<div class="submit-area">
+<button type="submit" class="btn btn-primary">
+Send Cake Request 🎂
+</button>
+</div>
+
+</div>
+
+<div id="successMessage" class="success-message"></div>
+
+</form>
+</div>
+</div>
 </section>
 
-<!-- ================= CONTACT ================= -->
-
+<!-- CONTACT -->
 <section>
+<div class="container">
 
-    <div class="container">
+<div class="section-title reveal">
+<div class="eyebrow">Come say hello</div>
+<h2>Let's make your celebration sweeter.</h2>
+</div>
 
-        <div class="section-title reveal">
+<div class="contact-grid">
 
-            <div class="eyebrow">
-                Come say hello
-            </div>
+<div class="contact-box reveal">
+<div class="contact-icon">📞</div>
+<h3>Call / WhatsApp</h3>
+<p>03133489623</p>
+</div>
 
-            <h2>
-                Let's make your celebration sweeter.
-            </h2>
+<div class="contact-box reveal">
+<div class="contact-icon">📧</div>
+<h3>Email</h3>
+<p>itsomeransari@gmail.com</p>
+</div>
 
-        </div>
+<div class="contact-box reveal">
+<div class="contact-icon">🕒</div>
+<h3>Opening Hours</h3>
+<p>Monday – Sunday<br>10:00 AM – 10:00 PM</p>
+</div>
 
-        <div class="contact-grid">
-
-            <div class="contact-box reveal">
-
-                <div class="contact-icon">
-                    📞
-                </div>
-
-                <h3>
-                    Call / WhatsApp
-                </h3>
-
-                <p>
-
-                    <a
-                        class="contact-link"
-                        href="tel:+923133489623">
-
-                        03133489623
-
-                    </a>
-
-                </p>
-
-            </div>
-
-            <div class="contact-box reveal">
-
-                <div class="contact-icon">
-                    📧
-                </div>
-
-                <h3>
-                    Email
-                </h3>
-
-                <p>
-
-                    <a
-                        class="contact-link"
-                        href="mailto:itsomeransari@gmail.com">
-
-                        itsomeransari@gmail.com
-
-                    </a>
-
-                </p>
-
-            </div>
-
-            <div class="contact-box reveal">
-
-                <div class="contact-icon">
-                    🕒
-                </div>
-
-                <h3>
-                    Opening Hours
-                </h3>
-
-                <p>
-                    Monday – Sunday
-                    <br>
-                    10:00 AM – 10:00 PM
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
+</div>
+</div>
 </section>
 
 </main>
 
-<!-- ================= FOOTER ================= -->
-
+<!-- FOOTER -->
 <footer>
+<div class="container">
 
-    <div class="container">
+<div class="footer-top">
 
-        <div class="footer-top">
+<div>
+<a href="#home" class="logo">
+<div class="logo-icon">🍰</div>
+Cake<span>Hub</span>
+</a>
 
-            <div>
+<p class="footer-description">
+Beautiful cakes, delicious flavors and sweet memories —
+made with love at CakeHub.
+</p>
+</div>
 
-                <a href="#home" class="logo">
+<div class="socials">
+<a href="#" class="social">◎</a>
+<a href="#" class="social">f</a>
+<a href="#" class="social">♪</a>
+</div>
 
-                    <div class="logo-icon">
-                        🍰
-                    </div>
+</div>
 
-                    Cake<span>Hub</span>
+<div class="copyright">
+© <span id="year"></span> CakeHub. All rights reserved. Baked with ❤️.
+</div>
 
-                </a>
-
-                <p class="footer-description">
-
-                    Beautiful cakes, delicious flavors
-                    and sweet memories — made with love
-                    at CakeHub.
-
-                </p>
-
-            </div>
-
-            <div class="socials">
-
-                <a
-                    href="https://www.instagram.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="social"
-                    aria-label="Instagram">
-
-                    ◎
-
-                </a>
-
-                <a
-                    href="https://www.facebook.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="social"
-                    aria-label="Facebook">
-
-                    f
-
-                </a>
-
-                <a
-                    href="https://www.tiktok.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="social"
-                    aria-label="TikTok">
-
-                    ♪
-
-                </a>
-
-            </div>
-
-        </div>
-
-        <div class="copyright">
-
-            ©
-            <span id="year"></span>
-            CakeHub.
-            All rights reserved.
-            Baked with ❤️.
-
-        </div>
-
-    </div>
-
+</div>
 </footer>
 
-<div id="toast">
-    Cake selected 🎂
-</div>
+<div id="toast">Cake selected 🎂</div>
 
 <script>
 
 /* =====================================================
-   CAKEHUB CONFIGURATION
+   CAKEHUB COMPLETE JAVASCRIPT SYSTEM
 ===================================================== */
 
-const BUSINESS_EMAIL =
-    "itsomeransari@gmail.com";
+const BUSINESS_EMAIL="itsomeransari@gmail.com";
 
-const BUSINESS_WHATSAPP =
-    "923133489623";
-
-
-/* =====================================================
-   LOADER
-===================================================== */
-
-window.addEventListener("load", function(){
-
-    setTimeout(function(){
-
-        const loader =
-            document.getElementById("loader");
-
-        if(loader){
-            loader.classList.add("hide");
-        }
-
+/* LOADER */
+window.addEventListener("load",()=>{
+    setTimeout(()=>{
+        document.getElementById("loader").classList.add("hide");
     },700);
-
 });
 
+/* HEADER */
+const header=document.getElementById("header");
 
-/* =====================================================
-   HEADER SCROLL
-===================================================== */
+window.addEventListener("scroll",()=>{
+    header.classList.toggle("scrolled",window.scrollY>30);
+});
 
-const header =
-    document.getElementById("header");
+/* MOBILE MENU */
+const menuButton=document.getElementById("menuButton");
+const navLinks=document.getElementById("navLinks");
 
-function updateHeader(){
+menuButton.addEventListener("click",()=>{
+    navLinks.classList.toggle("open");
+    menuButton.textContent=navLinks.classList.contains("open")?"✕":"☰";
+});
 
-    if(window.scrollY > 30){
-
-        header.classList.add("scrolled");
-
-    }else{
-
-        header.classList.remove("scrolled");
-
-    }
-
-}
-
-window.addEventListener(
-    "scroll",
-    updateHeader,
-    {passive:true}
-);
-
-updateHeader();
-
-
-/* =====================================================
-   MOBILE MENU
-===================================================== */
-
-const menuButton =
-    document.getElementById("menuButton");
-
-const navLinks =
-    document.getElementById("navLinks");
-
-function closeMenu(){
-
-    navLinks.classList.remove("open");
-
-    menuButton.textContent = "☰";
-
-    menuButton.setAttribute(
-        "aria-expanded",
-        "false"
-    );
-
-}
-
-menuButton.addEventListener(
-    "click",
-    function(event){
-
-        event.stopPropagation();
-
-        const isOpen =
-            navLinks.classList.toggle("open");
-
-        menuButton.textContent =
-            isOpen ? "✕" : "☰";
-
-        menuButton.setAttribute(
-            "aria-expanded",
-            String(isOpen)
-        );
-
-    }
-);
-
-
-document
-    .querySelectorAll(".nav-links a")
-    .forEach(function(link){
-
-        link.addEventListener(
-            "click",
-            closeMenu
-        );
-
+document.querySelectorAll(".nav-links a").forEach(link=>{
+    link.addEventListener("click",()=>{
+        navLinks.classList.remove("open");
+        menuButton.textContent="☰";
     });
+});
 
-
-document.addEventListener(
-    "click",
-    function(event){
-
-        if(
-            navLinks.classList.contains("open") &&
-            !navLinks.contains(event.target) &&
-            !menuButton.contains(event.target)
-        ){
-
-            closeMenu();
-
-        }
-
+document.addEventListener("click",event=>{
+    if(
+        navLinks.classList.contains("open") &&
+        !navLinks.contains(event.target) &&
+        !menuButton.contains(event.target)
+    ){
+        navLinks.classList.remove("open");
+        menuButton.textContent="☰";
     }
-);
+});
 
-
-/* =====================================================
-   ESC KEY
-===================================================== */
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(event.key === "Escape"){
-
-            closeMenu();
-
+/* REVEAL */
+const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
         }
+    });
+},{threshold:.08});
 
-    }
-);
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 
-
-/* =====================================================
-   SCROLL REVEAL
-===================================================== */
-
-const revealElements =
-    document.querySelectorAll(".reveal");
-
-if("IntersectionObserver" in window){
-
-    const observer =
-        new IntersectionObserver(
-
-            function(entries){
-
-                entries.forEach(function(entry){
-
-                    if(entry.isIntersecting){
-
-                        entry.target
-                            .classList
-                            .add("visible");
-
-                        observer.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                });
-
-            },
-
-            {
-                threshold:.12
-            }
-
-        );
-
-    revealElements.forEach(
-        function(element){
-
-            observer.observe(element);
-
-        }
-    );
-
-}else{
-
-    revealElements.forEach(
-        function(element){
-
-            element.classList.add(
-                "visible"
-            );
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   TOAST
-===================================================== */
-
-const toast =
-    document.getElementById("toast");
-
+/* TOAST */
+const toast=document.getElementById("toast");
 let toastTimer;
 
 function showToast(message){
-
-    toast.textContent =
-        message;
-
+    toast.textContent=message;
     toast.classList.add("show");
 
     clearTimeout(toastTimer);
 
-    toastTimer =
-        setTimeout(function(){
-
-            toast.classList.remove(
-                "show"
-            );
-
-        },2800);
-
+    toastTimer=setTimeout(()=>{
+        toast.classList.remove("show");
+    },2500);
 }
 
+/* CAKE ORDER BUTTONS */
+const orderButtons=document.querySelectorAll(".order-button");
+const cakeFlavor=document.getElementById("cakeFlavor");
 
-/* =====================================================
-   FORM ELEMENTS
-===================================================== */
+orderButtons.forEach(button=>{
+    button.addEventListener("click",()=>{
+        const cake=button.dataset.cake;
 
-const orderForm =
-    document.getElementById("orderForm");
+        if(cake.includes("Chocolate")){
+            cakeFlavor.value="Chocolate";
+        }else if(cake.includes("Vanilla")){
+            cakeFlavor.value="Vanilla";
+        }else if(cake.includes("Golden")){
+            cakeFlavor.value="Yellow Butter Cake";
+        }else if(cake.includes("Funfetti")){
+            cakeFlavor.value="Funfetti";
+        }else if(cake.includes("Strawberry")){
+            cakeFlavor.value="Strawberry";
+        }else{
+            cakeFlavor.value="Custom Flavor";
+        }
 
-const customerName =
-    document.getElementById(
-        "customerName"
-    );
+        document.getElementById("order").scrollIntoView({
+            behavior:"smooth"
+        });
 
-const customerPhone =
-    document.getElementById(
-        "customerPhone"
-    );
-
-const cakeFlavor =
-    document.getElementById(
-        "cakeFlavor"
-    );
-
-const cakeSize =
-    document.getElementById(
-        "cakeSize"
-    );
-
-const cakeDate =
-    document.getElementById(
-        "cakeDate"
-    );
-
-const occasion =
-    document.getElementById(
-        "occasion"
-    );
-
-const cakeDetails =
-    document.getElementById(
-        "cakeDetails"
-    );
-
-const successMessage =
-    document.getElementById(
-        "successMessage"
-    );
-
-
-/* =====================================================
-   MINIMUM DATE = TODAY
-===================================================== */
-
-const today =
-    new Date();
-
-const year =
-    today.getFullYear();
-
-const month =
-    String(
-        today.getMonth()+1
-    ).padStart(2,"0");
-
-const day =
-    String(
-        today.getDate()
-    ).padStart(2,"0");
-
-cakeDate.min =
-    `${year}-${month}-${day}`;
-
-
-/* =====================================================
-   CAKE ORDER BUTTONS
-===================================================== */
-
-document
-    .querySelectorAll(".order-button")
-    .forEach(function(button){
-
-        button.addEventListener(
-            "click",
-            function(){
-
-                const cake =
-                    button.dataset.cake || "";
-
-                const cakeLower =
-                    cake.toLowerCase();
-
-                if(
-                    cakeLower.includes(
-                        "chocolate"
-                    )
-                ){
-
-                    cakeFlavor.value =
-                        "Chocolate";
-
-                }
-
-                else if(
-                    cakeLower.includes(
-                        "vanilla"
-                    ) ||
-                    cakeLower.includes(
-                        "strawberry"
-                    )
-                ){
-
-                    cakeFlavor.value =
-                        "Vanilla";
-
-                }
-
-                else if(
-                    cakeLower.includes(
-                        "golden"
-                    )
-                ){
-
-                    cakeFlavor.value =
-                        "Yellow Butter Cake";
-
-                }
-
-                else if(
-                    cakeLower.includes(
-                        "funfetti"
-                    )
-                ){
-
-                    cakeFlavor.value =
-                        "Funfetti";
-
-                }
-
-                else{
-
-                    cakeFlavor.value =
-                        "Custom Design";
-
-                }
-
-                document
-                    .getElementById("order")
-                    .scrollIntoView({
-                        behavior:"smooth",
-                        block:"start"
-                    });
-
-                showToast(
-                    cake +
-                    " selected 🎂"
-                );
-
-                setTimeout(
-                    function(){
-
-                        customerName.focus();
-
-                    },
-                    700
-                );
-
-            }
-        );
-
+        showToast(cake+" selected 🎂");
     });
+});
 
+/* GMAIL */
+function openGmailOrder(data){
 
-/* =====================================================
-   VALIDATE PHONE
-===================================================== */
+    const subject="CakeHub Cake Order - "+data.name;
 
-function isValidPhone(phone){
-
-    const digits =
-        phone.replace(/\D/g,"");
-
-    return (
-        digits.length >= 10 &&
-        digits.length <= 15
-    );
-
-}
-
-
-/* =====================================================
-   COLLECT ORDER DATA
-===================================================== */
-
-function getOrderData(){
-
-    return {
-
-        name:
-            customerName.value.trim(),
-
-        phone:
-            customerPhone.value.trim(),
-
-        flavor:
-            cakeFlavor.value.trim(),
-
-        size:
-            cakeSize.value.trim(),
-
-        date:
-            cakeDate.value.trim() ||
-            "Not specified",
-
-        occasion:
-            occasion.value.trim() ||
-            "Not specified",
-
-        details:
-            cakeDetails.value.trim() ||
-            "No additional details"
-
-    };
-
-}
-
-
-/* =====================================================
-   VALIDATE ORDER
-===================================================== */
-
-function validateOrder(){
-
-    const name =
-        customerName.value.trim();
-
-    const phone =
-        customerPhone.value.trim();
-
-    const flavor =
-        cakeFlavor.value.trim();
-
-
-    if(!name){
-
-        showToast(
-            "Please enter your name."
-        );
-
-        customerName.focus();
-
-        return false;
-
-    }
-
-
-    if(!phone){
-
-        showToast(
-            "Please enter your phone number."
-        );
-
-        customerPhone.focus();
-
-        return false;
-
-    }
-
-
-    if(!isValidPhone(phone)){
-
-        showToast(
-            "Please enter a valid phone number."
-        );
-
-        customerPhone.focus();
-
-        return false;
-
-    }
-
-
-    if(!flavor){
-
-        showToast(
-            "Please choose a cake flavor."
-        );
-
-        cakeFlavor.focus();
-
-        return false;
-
-    }
-
-
-    return true;
-
-}
-
-
-/* =====================================================
-   FORMAT ORDER MESSAGE
-===================================================== */
-
-function createOrderMessage(orderData){
-
-    return `Hello CakeHub,
+    const body=`Hello CakeHub,
 
 I would like to place a cake order.
 
@@ -3406,328 +2133,301 @@ CUSTOMER DETAILS
 ================================
 
 Name:
-${orderData.name}
+${data.name}
 
 Phone:
-${orderData.phone}
+${data.phone}
 
 ================================
 CAKE DETAILS
 ================================
 
 Cake / Flavor:
-${orderData.flavor}
+${data.flavor}
 
 Size:
-${orderData.size}
+${data.size}
 
 Celebration Date:
-${orderData.date}
+${data.date}
 
 Occasion:
-${orderData.occasion}
+${data.occasion}
 
 Cake Details:
-${orderData.details}
+${data.details}
 
 ================================
 
 Please contact me to confirm my order.
 
 Thank you,
-${orderData.name}`;
+${data.name}`;
+
+    const gmailURL=
+        "https://mail.google.com/mail/?view=cm&fs=1"+
+        "&to="+encodeURIComponent(BUSINESS_EMAIL)+
+        "&su="+encodeURIComponent(subject)+
+        "&body="+encodeURIComponent(body);
+
+    const newWindow=window.open(gmailURL,"_blank");
+
+    if(!newWindow){
+        window.location.href=gmailURL;
+    }
 }
 
+/* ORDER FORM */
+document.getElementById("orderForm").addEventListener("submit",event=>{
 
-/* =====================================================
-   OPEN GMAIL
-===================================================== */
+    event.preventDefault();
 
-function openGmailOrder(orderData){
+    const name=document.getElementById("customerName").value.trim();
+    const phone=document.getElementById("customerPhone").value.trim();
+    const flavor=document.getElementById("cakeFlavor").value.trim();
+    const size=document.getElementById("cakeSize").value;
+    const date=document.getElementById("cakeDate").value;
+    const occasion=document.getElementById("occasion").value.trim();
+    const details=document.getElementById("cakeDetails").value.trim();
 
-    const subject =
-        "CakeHub Cake Order - " +
-        orderData.name;
-
-    const body =
-        createOrderMessage(
-            orderData
-        );
-
-    const gmailURL =
-        "https://mail.google.com/mail/?" +
-        "view=cm" +
-        "&fs=1" +
-        "&to=" +
-        encodeURIComponent(
-            BUSINESS_EMAIL
-        ) +
-        "&su=" +
-        encodeURIComponent(
-            subject
-        ) +
-        "&body=" +
-        encodeURIComponent(
-            body
-        );
-
-    const popup =
-        window.open(
-            gmailURL,
-            "_blank",
-            "noopener,noreferrer"
-        );
-
-    if(!popup){
-
-        window.location.href =
-            gmailURL;
-
+    if(!name){
+        showToast("Please enter your name.");
+        return;
     }
 
-}
+    if(!phone){
+        showToast("Please enter your phone number.");
+        return;
+    }
 
+    if(!flavor){
+        showToast("Please choose a cake flavor.");
+        cakeFlavor.focus();
+        return;
+    }
 
-/* =====================================================
-   OPEN WHATSAPP
-===================================================== */
+    const orderData={
+        name,
+        phone,
+        flavor,
+        size,
+        date:date||"Not specified",
+        occasion:occasion||"Not specified",
+        details:details||"No additional details"
+    };
 
-function openWhatsAppOrder(orderData){
+    const success=document.getElementById("successMessage");
 
-    const message =
-        createOrderMessage(
-            orderData
-        );
+    success.classList.add("show");
 
-    const whatsappURL =
-        "https://wa.me/" +
-        BUSINESS_WHATSAPP +
-        "?text=" +
-        encodeURIComponent(
-            message
-        );
+    success.innerHTML=
+        "🎉 Your order email is ready! Gmail will open with your order details. Tap <strong>Send</strong> to send it to CakeHub.";
 
-    window.open(
-        whatsappURL,
-        "_blank",
-        "noopener,noreferrer"
-    );
+    showToast("Opening Gmail... 📧");
 
-}
-
-
-/* =====================================================
-   SUCCESS MESSAGE
-===================================================== */
-
-function showSuccess(message){
-
-    successMessage.innerHTML =
-        message;
-
-    successMessage.classList.add(
-        "show"
-    );
-
-}
-
+    setTimeout(()=>{
+        openGmailOrder(orderData);
+    },400);
+});
 
 /* =====================================================
-   GMAIL FORM SUBMIT
+   REVIEW SYSTEM
 ===================================================== */
 
-orderForm.addEventListener(
-    "submit",
-    function(event){
+const REVIEW_STORAGE_KEY="cakehub_customer_reviews";
 
-        event.preventDefault();
+const reviewForm=document.getElementById("reviewForm");
+const reviewList=document.getElementById("reviewList");
 
-        if(!validateOrder()){
+const defaultReviews=[
+    {
+        name:"Happy Customer",
+        rating:5,
+        text:"The cake looked beautiful and tasted even better. Everyone at the celebration loved it!"
+    },
+    {
+        name:"Celebration Guest",
+        rating:5,
+        text:"The design was exactly what we imagined. The whole CakeHub experience felt so special."
+    },
+    {
+        name:"Happy Customer",
+        rating:5,
+        text:"Fresh, soft and delicious. The presentation was gorgeous and perfect for our party."
+    }
+];
 
-            return;
+function getReviews(){
 
+    try{
+        const saved=localStorage.getItem(REVIEW_STORAGE_KEY);
+
+        if(saved){
+            return JSON.parse(saved);
         }
-
-        const orderData =
-            getOrderData();
-
-
-        showSuccess(
-            "🎉 Your order details are ready! " +
-            "Gmail will open with the message. " +
-            "Please review it and tap <strong>Send</strong>."
-        );
-
-
-        showToast(
-            "Opening Gmail... 📧"
-        );
-
-
-        setTimeout(
-            function(){
-
-                openGmailOrder(
-                    orderData
-                );
-
-            },
-            400
-        );
-
-    }
-);
-
-
-/* =====================================================
-   WHATSAPP BUTTON
-===================================================== */
-
-const whatsappButton =
-    document.getElementById(
-        "whatsappButton"
-    );
-
-whatsappButton.addEventListener(
-    "click",
-    function(){
-
-        if(!validateOrder()){
-
-            return;
-
-        }
-
-        const orderData =
-            getOrderData();
-
-
-        showSuccess(
-            "💬 WhatsApp is opening with your complete cake request. " +
-            "Review the message and tap <strong>Send</strong>."
-        );
-
-
-        showToast(
-            "Opening WhatsApp... 💬"
-        );
-
-
-        setTimeout(
-            function(){
-
-                openWhatsAppOrder(
-                    orderData
-                );
-
-            },
-            300
-        );
-
-    }
-);
-
-
-/* =====================================================
-   YEAR
-===================================================== */
-
-document
-    .getElementById("year")
-    .textContent =
-    new Date().getFullYear();
-
-
-/* =====================================================
-   HERO PARALLAX
-===================================================== */
-
-const heroArt =
-    document.querySelector(
-        ".hero-art"
-    );
-
-const desktopMedia =
-    window.matchMedia(
-        "(min-width:901px)"
-    );
-
-if(
-    desktopMedia.matches &&
-    heroArt
-){
-
-    let targetX = 0;
-    let targetY = 0;
-    let currentX = 0;
-    let currentY = 0;
-
-    window.addEventListener(
-        "mousemove",
-        function(event){
-
-            targetX =
-                (
-                    event.clientX /
-                    window.innerWidth -
-                    .5
-                ) * 8;
-
-            targetY =
-                (
-                    event.clientY /
-                    window.innerHeight -
-                    .5
-                ) * 8;
-
-        },
-        {passive:true}
-    );
-
-
-    function animateParallax(){
-
-        currentX +=
-            (targetX-currentX) * .08;
-
-        currentY +=
-            (targetY-currentY) * .08;
-
-        heroArt.style.transform =
-            `translate(${currentX}px,${currentY}px)`;
-
-        requestAnimationFrame(
-            animateParallax
-        );
-
+    }catch(error){
+        console.log("Review storage unavailable.");
     }
 
-    animateParallax();
-
+    return defaultReviews;
 }
 
+function saveReviews(reviews){
 
-/* =====================================================
-   CLOSE MOBILE MENU WHEN RESIZING
-===================================================== */
-
-window.addEventListener(
-    "resize",
-    function(){
-
-        if(
-            window.innerWidth > 950
-        ){
-
-            closeMenu();
-
-        }
-
+    try{
+        localStorage.setItem(
+            REVIEW_STORAGE_KEY,
+            JSON.stringify(reviews)
+        );
+    }catch(error){
+        console.log("Could not save reviews.");
     }
-);
+}
+
+function createStars(rating){
+
+    let stars="";
+
+    for(let i=1;i<=5;i++){
+        stars+=i<=rating?"★":"☆";
+    }
+
+    return stars;
+}
+
+function escapeHTML(text){
+
+    const div=document.createElement("div");
+    div.textContent=text;
+    return div.innerHTML;
+}
+
+function renderReviews(){
+
+    const reviews=getReviews();
+
+    reviewList.innerHTML="";
+
+    if(!reviews.length){
+
+        reviewList.innerHTML=`
+        <article class="review">
+            <div class="stars">★★★★★</div>
+            <p>Be the first person to leave a review! 🎂</p>
+        </article>`;
+
+        return;
+    }
+
+    reviews.slice().reverse().forEach(review=>{
+
+        const article=document.createElement("article");
+
+        article.className="review";
+
+        article.innerHTML=`
+            <div class="stars">
+                ${createStars(review.rating)}
+            </div>
+
+            <p>
+                “${escapeHTML(review.text)}”
+            </p>
+
+            <div class="reviewer">
+                <div class="avatar">😊</div>
+                <span>${escapeHTML(review.name)}</span>
+            </div>
+        `;
+
+        reviewList.appendChild(article);
+    });
+}
+
+reviewForm.addEventListener("submit",event=>{
+
+    event.preventDefault();
+
+    const name=document.getElementById("reviewName").value.trim();
+    const text=document.getElementById("reviewText").value.trim();
+    const selected=document.querySelector('input[name="rating"]:checked');
+
+    if(!name){
+        showToast("Please enter your name.");
+        return;
+    }
+
+    if(!selected){
+        showToast("Please select a star rating ⭐");
+        return;
+    }
+
+    if(!text){
+        showToast("Please write your review.");
+        return;
+    }
+
+    const reviews=getReviews();
+
+    reviews.push({
+        name:name,
+        rating:Number(selected.value),
+        text:text
+    });
+
+    saveReviews(reviews);
+    renderReviews();
+
+    reviewForm.reset();
+
+    showToast("Thank you for your review! ⭐");
+
+    setTimeout(()=>{
+        document.getElementById("reviews").scrollIntoView({
+            behavior:"smooth"
+        });
+    },200);
+});
+
+renderReviews();
+
+/* FLAVOR SEARCH */
+const flavorSearch=document.getElementById("flavorSearch");
+
+flavorSearch.addEventListener("input",()=>{
+
+    const query=flavorSearch.value.toLowerCase().trim();
+
+    document.querySelectorAll("#flavorGrid .flavor").forEach(card=>{
+
+        const text=card.textContent.toLowerCase();
+
+        card.style.display=
+            text.includes(query)
+            ? ""
+            : "none";
+    });
+});
+
+/* YEAR */
+document.getElementById("year").textContent=new Date().getFullYear();
+
+/* DESKTOP PARALLAX */
+if(window.matchMedia("(min-width:901px)").matches){
+
+    const heroArt=document.querySelector(".hero-art");
+
+    window.addEventListener("mousemove",event=>{
+
+        const x=(event.clientX/window.innerWidth-.5)*8;
+        const y=(event.clientY/window.innerHeight-.5)*8;
+
+        heroArt.style.transform=
+            `translate(${x}px,${y}px)`;
+    });
+}
 
 </script>
 
 </body>
 </html>
-```
