@@ -1,0 +1,3364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>CakeHub | Luxury Bakery</title>
+
+<style>
+:root{
+    --pink:#e85d88;
+    --pink2:#c93668;
+    --pink-light:#ffdce8;
+    --cream:#fff9f5;
+    --white:#fff;
+    --brown:#351c1c;
+    --brown-light:#735957;
+    --gold:#e6a33f;
+    --green:#20b866;
+    --border:#efdfda;
+    --shadow:0 20px 60px rgba(70,30,30,.12);
+    --radius:28px;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:var(--cream);
+    color:var(--brown);
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button,input,select,textarea{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+/* LOADER */
+
+#loader{
+    position:fixed;
+    inset:0;
+    background:var(--cream);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+    transition:.7s;
+}
+
+#loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-content{
+    text-align:center;
+}
+
+.loader-cake{
+    font-size:75px;
+    animation:loaderBounce 1s infinite alternate;
+}
+
+.loader-title{
+    margin-top:10px;
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:5px;
+}
+
+@keyframes loaderBounce{
+    from{transform:translateY(0) rotate(-5deg)}
+    to{transform:translateY(-18px) rotate(5deg)}
+}
+
+/* BACKGROUND */
+
+.bg-circle{
+    position:fixed;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:-2;
+    filter:blur(3px);
+    opacity:.35;
+    animation:bgFloat 9s infinite ease-in-out;
+}
+
+.circle1{
+    width:260px;
+    height:260px;
+    background:#ffd0df;
+    left:-120px;
+    top:15%;
+}
+
+.circle2{
+    width:230px;
+    height:230px;
+    background:#ffe4ae;
+    right:-110px;
+    top:55%;
+    animation-delay:2s;
+}
+
+.circle3{
+    width:180px;
+    height:180px;
+    background:#e2d1ff;
+    left:45%;
+    bottom:-80px;
+    animation-delay:4s;
+}
+
+@keyframes bgFloat{
+    50%{transform:translate(25px,-30px)}
+}
+
+/* HEADER */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:5000;
+    background:rgba(255,249,245,.75);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid transparent;
+    transition:.3s;
+}
+
+header.scrolled{
+    background:rgba(255,255,255,.95);
+    border-bottom-color:#f0deda;
+    box-shadow:0 10px 35px rgba(50,20,20,.08);
+}
+
+.navbar{
+    height:80px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:25px;
+    font-weight:950;
+}
+
+.logo-icon{
+    width:44px;
+    height:44px;
+    display:grid;
+    place-items:center;
+    border-radius:15px;
+    color:white;
+    background:linear-gradient(135deg,#e85d88,#ffabc4);
+    box-shadow:0 10px 25px rgba(232,93,136,.3);
+    transform:rotate(-5deg);
+}
+
+.logo span{
+    color:var(--pink);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:27px;
+    font-weight:750;
+}
+
+.nav-links a{
+    position:relative;
+    padding:8px 0;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:0;
+    height:2px;
+    background:var(--pink);
+    transition:.3s;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.nav-order{
+    background:var(--brown);
+    color:white;
+    padding:12px 20px;
+    border-radius:999px;
+    transition:.3s;
+}
+
+.nav-order:hover{
+    transform:translateY(-3px);
+}
+
+.menu-button{
+    display:none;
+    background:none;
+    border:none;
+    font-size:30px;
+    color:var(--brown);
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    padding-top:140px;
+    padding-bottom:80px;
+    display:flex;
+    align-items:center;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.badge{
+    display:inline-flex;
+    padding:9px 15px;
+    border-radius:999px;
+    background:#ffeaf1;
+    color:#b43f64;
+    font-size:13px;
+    font-weight:900;
+    margin-bottom:20px;
+    animation:pulseBadge 2.5s infinite;
+}
+
+@keyframes pulseBadge{
+    50%{box-shadow:0 0 0 8px rgba(232,93,136,.06)}
+}
+
+.hero h1{
+    font-size:clamp(50px,7vw,95px);
+    line-height:.94;
+    letter-spacing:-5px;
+    margin-bottom:25px;
+}
+
+.pink{
+    color:var(--pink);
+}
+
+.outline{
+    color:transparent;
+    -webkit-text-stroke:1.5px var(--brown);
+}
+
+.hero-description{
+    max-width:600px;
+    color:var(--brown-light);
+    font-size:18px;
+    line-height:1.6;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:13px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:none;
+    padding:15px 22px;
+    border-radius:16px;
+    font-weight:900;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+}
+
+.btn-primary{
+    background:linear-gradient(135deg,var(--pink),var(--pink2));
+    color:white;
+    box-shadow:0 15px 30px rgba(232,93,136,.28);
+}
+
+.btn-secondary{
+    background:white;
+    border:1px solid #eadbd7;
+}
+
+.btn-whatsapp{
+    background:var(--green);
+    color:white;
+    box-shadow:0 12px 25px rgba(32,184,102,.25);
+}
+
+.btn-call{
+    background:var(--brown);
+    color:white;
+}
+
+.hero-features{
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+    margin-top:30px;
+    color:var(--brown-light);
+    font-size:14px;
+}
+
+/* HERO CAKE */
+
+.hero-art{
+    min-height:520px;
+    position:relative;
+    display:grid;
+    place-items:center;
+}
+
+.cake-scene{
+    position:relative;
+    width:390px;
+    height:400px;
+    animation:cakeFloat 5s infinite ease-in-out;
+}
+
+@keyframes cakeFloat{
+    50%{transform:translateY(-15px)}
+}
+
+.plate{
+    position:absolute;
+    width:390px;
+    height:70px;
+    bottom:45px;
+    border-radius:50%;
+    background:linear-gradient(#fff,#eee2de);
+    box-shadow:0 25px 35px rgba(60,25,25,.16);
+}
+
+.main-cake{
+    position:absolute;
+    width:300px;
+    height:260px;
+    left:45px;
+    bottom:100px;
+    filter:drop-shadow(0 25px 18px rgba(70,25,35,.18));
+}
+
+.cake-layer{
+    position:absolute;
+    left:0;
+    width:100%;
+    border-radius:18px 18px 25px 25px;
+}
+
+.layer-bottom{
+    height:115px;
+    bottom:0;
+    background:linear-gradient(90deg,#ed8ca8,#fff0f4,#e9809e);
+}
+
+.layer-middle{
+    height:95px;
+    width:90%;
+    left:5%;
+    bottom:90px;
+    background:linear-gradient(90deg,#fff4ed,#ffe3dc,#f7b6ae);
+}
+
+.layer-top{
+    height:80px;
+    width:76%;
+    left:12%;
+    bottom:165px;
+    background:linear-gradient(90deg,#f4b6c9,#fff5f7,#ed9db5);
+}
+
+.icing{
+    position:absolute;
+    left:12%;
+    bottom:205px;
+    width:76%;
+    height:42px;
+    background:#fff;
+    border-radius:50%;
+}
+
+.drip{
+    position:absolute;
+    background:white;
+    width:17px;
+    border-radius:0 0 12px 12px;
+}
+
+.drip1{
+    height:35px;
+    left:25%;
+    bottom:186px;
+}
+
+.drip2{
+    height:50px;
+    left:43%;
+    bottom:185px;
+}
+
+.drip3{
+    height:30px;
+    left:64%;
+    bottom:190px;
+}
+
+.cherry{
+    position:absolute;
+    width:27px;
+    height:27px;
+    border-radius:50%;
+    background:#d94061;
+    left:48%;
+    bottom:238px;
+}
+
+.cherry::before{
+    content:"";
+    position:absolute;
+    width:28px;
+    height:20px;
+    border-left:3px solid #4d914e;
+    border-radius:50%;
+    left:12px;
+    top:-15px;
+    transform:rotate(35deg);
+}
+
+.sparkle{
+    position:absolute;
+    font-size:32px;
+    animation:sparkle 2s infinite;
+}
+
+.sparkle1{
+    left:15px;
+    top:50px;
+}
+
+.sparkle2{
+    right:15px;
+    top:130px;
+    animation-delay:.6s;
+}
+
+.sparkle3{
+    left:30px;
+    bottom:80px;
+    animation-delay:1s;
+}
+
+@keyframes sparkle{
+    50%{
+        transform:scale(1.35) rotate(20deg);
+        opacity:.5;
+    }
+}
+
+.floating-card{
+    position:absolute;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(12px);
+    padding:14px 17px;
+    border-radius:18px;
+    font-weight:850;
+    box-shadow:var(--shadow);
+    animation:cardFloat 4s infinite ease-in-out;
+}
+
+.card1{
+    top:90px;
+    right:0;
+}
+
+.card2{
+    bottom:90px;
+    left:0;
+}
+
+@keyframes cardFloat{
+    50%{transform:translateY(-10px)}
+}
+
+/* SECTIONS */
+
+section{
+    padding:100px 0;
+}
+
+.section-title{
+    max-width:700px;
+    margin:0 auto 45px;
+    text-align:center;
+}
+
+.eyebrow{
+    text-transform:uppercase;
+    color:var(--pink);
+    font-weight:950;
+    letter-spacing:3px;
+    font-size:12px;
+}
+
+.section-title h2{
+    font-size:clamp(38px,5vw,65px);
+    line-height:1;
+    letter-spacing:-3px;
+    margin:10px 0 15px;
+}
+
+.section-title p{
+    color:var(--brown-light);
+    line-height:1.6;
+}
+
+/* FEATURES */
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.feature-card{
+    background:white;
+    padding:22px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    display:flex;
+    gap:14px;
+    align-items:center;
+    box-shadow:0 12px 30px rgba(70,30,30,.05);
+    transition:.3s;
+}
+
+.feature-card:hover{
+    transform:translateY(-7px);
+}
+
+.feature-icon{
+    font-size:30px;
+}
+
+.feature-card small{
+    display:block;
+    color:var(--brown-light);
+    margin-top:3px;
+}
+
+/* CAKES */
+
+.cake-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.product{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:0 12px 35px rgba(70,30,30,.06);
+    transition:.35s;
+}
+
+.product:hover{
+    transform:translateY(-10px);
+    box-shadow:var(--shadow);
+}
+
+.product-image{
+    height:245px;
+    display:grid;
+    place-items:center;
+    position:relative;
+}
+
+.product-bg1{
+    background:linear-gradient(135deg,#fff0f5,#ffdce8);
+}
+
+.product-bg2{
+    background:linear-gradient(135deg,#f8e6dc,#d8b09d);
+}
+
+.product-bg3{
+    background:linear-gradient(135deg,#fff5c8,#f7d982);
+}
+
+.product-bg4{
+    background:linear-gradient(135deg,#f1e8ff,#d7c3f5);
+}
+
+.product-bg5{
+    background:linear-gradient(135deg,#e8f7ff,#bde7f6);
+}
+
+.product-bg6{
+    background:linear-gradient(135deg,#ffe9dc,#ffc2a8);
+}
+
+.product-tag{
+    position:absolute;
+    top:14px;
+    left:14px;
+    background:white;
+    padding:7px 11px;
+    border-radius:999px;
+    font-size:11px;
+    font-weight:950;
+}
+
+.mini-cake{
+    width:165px;
+    height:135px;
+    position:relative;
+    filter:drop-shadow(0 15px 10px rgba(60,30,30,.16));
+    transition:.4s;
+}
+
+.product:hover .mini-cake{
+    transform:scale(1.08) rotate(-2deg);
+}
+
+.mini-bottom{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:65px;
+    border-radius:15px 15px 20px 20px;
+    background:linear-gradient(90deg,#ef8faa,#fff0f2,#ea829e);
+}
+
+.mini-top{
+    position:absolute;
+    bottom:50px;
+    left:10%;
+    width:80%;
+    height:55px;
+    border-radius:15px 15px 20px 20px;
+    background:linear-gradient(90deg,#fff,#ffe8ee,#f9b6c6);
+}
+
+.mini-cream{
+    position:absolute;
+    left:10%;
+    bottom:96px;
+    width:80%;
+    height:24px;
+    background:white;
+    border-radius:50%;
+}
+
+.product-info{
+    padding:22px;
+}
+
+.product-info h3{
+    font-size:21px;
+}
+
+.product-info p{
+    color:var(--brown-light);
+    font-size:14px;
+    line-height:1.5;
+    margin:7px 0 15px;
+}
+
+.price-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.price{
+    color:var(--pink);
+    font-weight:950;
+}
+
+/* FLAVORS */
+
+.flavor-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.flavor{
+    background:rgba(255,255,255,.8);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:24px;
+    transition:.3s;
+}
+
+.flavor:hover{
+    transform:translateY(-7px);
+    background:white;
+    box-shadow:var(--shadow);
+}
+
+.flavor-icon{
+    font-size:35px;
+}
+
+.flavor h3{
+    margin:8px 0 3px;
+}
+
+.flavor p{
+    color:var(--brown-light);
+    font-size:14px;
+    line-height:1.5;
+}
+
+/* ABOUT */
+
+.about{
+    background:#2c1818;
+    color:white;
+    position:relative;
+    overflow:hidden;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.about h2{
+    font-size:clamp(40px,5vw,68px);
+    line-height:1;
+    letter-spacing:-3px;
+    margin:10px 0 20px;
+}
+
+.about p{
+    color:#d7c4c0;
+    max-width:580px;
+    line-height:1.7;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:30px;
+}
+
+.stat{
+    padding:18px;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:18px;
+}
+
+.stat strong{
+    display:block;
+    font-size:28px;
+}
+
+.stat span{
+    color:#cdb9b5;
+    font-size:12px;
+}
+
+.about-art{
+    height:430px;
+    border-radius:35px;
+    background:linear-gradient(135deg,#f7a6bc,#ffe6df);
+    display:grid;
+    place-items:center;
+    transform:rotate(2deg);
+}
+
+.about-art span{
+    font-size:150px;
+    animation:bigCake 3s infinite;
+}
+
+@keyframes bigCake{
+    50%{
+        transform:translateY(-12px) rotate(-5deg);
+    }
+}
+
+/* CAKEHUB AI */
+.cake-ai-section{
+    background:linear-gradient(135deg,#fff8fb,#f8f2ff);
+}
+.cake-ai-card{
+    max-width:900px;
+    margin:auto;
+    background:#1f141a;
+    color:white;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:30px;
+    padding:28px;
+    box-shadow:0 25px 70px rgba(70,30,50,.18);
+}
+.cake-ai-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+.cake-ai-icon{
+    width:58px;
+    height:58px;
+    display:grid;
+    place-items:center;
+    border-radius:18px;
+    font-size:28px;
+    background:linear-gradient(135deg,var(--pink),#9a63ff);
+}
+.cake-ai-header h3{font-size:22px}
+.cake-ai-header p{color:#d8c8ce;font-size:13px;margin-top:4px}
+.ai-quick-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-bottom:18px;
+}
+.ai-quick-buttons button{
+    border:1px solid rgba(255,255,255,.12);
+    background:#2b1d24;
+    color:#fff;
+    padding:10px 13px;
+    border-radius:12px;
+    cursor:pointer;
+}
+.ai-quick-buttons button:hover{background:#392630}
+.ai-chat{
+    min-height:170px;
+    max-height:300px;
+    overflow:auto;
+    display:grid;
+    gap:10px;
+    padding:5px;
+    margin-bottom:14px;
+}
+.ai-message{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+    max-width:82%;
+    padding:12px 14px;
+    border-radius:14px;
+    line-height:1.5;
+    font-size:14px;
+}
+.ai-message.bot{background:#2a1d24}
+.ai-message.user{background:linear-gradient(135deg,var(--pink),#925cff);margin-left:auto}
+.ai-message span{color:#e9dfe3}
+.ai-message.user span{color:white}
+.ai-composer{
+    display:flex;
+    gap:9px;
+    background:#171016;
+    border:1px solid rgba(255,255,255,.12);
+    padding:8px;
+    border-radius:15px;
+}
+.ai-composer input{
+    flex:1;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:white;
+    padding:10px;
+}
+.ai-composer input::placeholder{color:#93848b}
+.ai-composer button{
+    border:0;
+    background:linear-gradient(135deg,var(--pink),#925cff);
+    color:white;
+    border-radius:11px;
+    padding:11px 16px;
+    font-weight:800;
+}
+#customPoundField input{width:100%}
+
+/* URGENT */
+
+.urgent{
+    padding-top:50px;
+    padding-bottom:70px;
+}
+
+.urgent-box{
+    position:relative;
+    overflow:hidden;
+    border-radius:32px;
+    padding:40px;
+    background:linear-gradient(135deg,#351c1c,#5c252d);
+    color:white;
+    box-shadow:0 25px 60px rgba(70,25,30,.2);
+}
+
+.urgent-box h2{
+    font-size:clamp(35px,5vw,58px);
+    line-height:1;
+    margin:10px 0 15px;
+}
+
+.urgent-box p{
+    max-width:650px;
+    color:#ead7d4;
+    line-height:1.7;
+}
+
+.urgent-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:25px;
+}
+
+/* ORDER */
+
+.order-section{
+    padding-top:50px;
+}
+
+.order-grid{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:30px;
+}
+
+.order-intro{
+    background:linear-gradient(145deg,#3a2020,#241313);
+    color:white;
+    border-radius:30px;
+    padding:35px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+}
+
+.order-intro h2{
+    font-size:48px;
+    line-height:1;
+    margin:12px 0 18px;
+}
+
+.order-intro p{
+    color:#d9c6c3;
+    line-height:1.6;
+}
+
+.order-points{
+    margin-top:28px;
+    display:grid;
+    gap:12px;
+}
+
+.form-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:30px;
+    padding:32px;
+    box-shadow:var(--shadow);
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.form-field{
+    display:grid;
+    gap:7px;
+}
+
+.form-field.full,
+.submit-area{
+    grid-column:1/-1;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:13px 14px;
+    border:1px solid #eadbd7;
+    border-radius:14px;
+    outline:none;
+    background:#fffaf8;
+    color:var(--brown);
+}
+
+textarea{
+    resize:vertical;
+    min-height:115px;
+}
+
+.img-preview{
+    margin-top:10px;
+    max-width:100%;
+    max-height:180px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    display:none;
+    object-fit:cover;
+}
+
+.submit-area .btn{
+    width:100%;
+    min-height:55px;
+}
+
+.success-message{
+    display:none;
+    margin-top:15px;
+    padding:15px;
+    border-radius:13px;
+    background:#e8f8ed;
+    color:#28623a;
+    font-weight:750;
+    line-height:1.5;
+}
+
+.success-message.show{
+    display:block;
+}
+
+/* DATABASE PANEL */
+
+.database-section{
+    background:#fff;
+}
+
+.database-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:28px;
+    padding:30px;
+    box-shadow:var(--shadow);
+}
+
+.database-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.database-status{
+    padding:8px 13px;
+    border-radius:999px;
+    background:#e8f8ed;
+    color:#28623a;
+    font-size:12px;
+    font-weight:900;
+}
+
+.order-record{
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:18px;
+    margin-top:12px;
+    background:#fffaf8;
+}
+
+.order-record strong{
+    color:var(--pink);
+}
+
+.order-record small{
+    display:block;
+    color:var(--brown-light);
+    margin-top:5px;
+}
+
+.record-image-wrapper{
+    margin-top:10px;
+}
+
+.record-image{
+    max-width:200px;
+    max-height:160px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    object-fit:cover;
+    display:block;
+}
+
+.database-empty{
+    color:var(--brown-light);
+    padding:20px;
+    text-align:center;
+}
+
+/* CONTACT */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    max-width:400px;
+    margin:auto;
+}
+
+.contact-box{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:25px;
+    transition:.3s;
+}
+
+.contact-box:hover{
+    transform:translateY(-7px);
+    box-shadow:var(--shadow);
+}
+
+.contact-icon{
+    font-size:32px;
+}
+
+.contact-box h3{
+    margin:8px 0;
+}
+
+.contact-box p{
+    color:var(--brown-light);
+    line-height:1.6;
+}
+
+/* FOOTER */
+
+footer{
+    background:#241313;
+    color:white;
+    padding:45px 0 25px;
+}
+
+.footer-top{
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.footer-description{
+    max-width:430px;
+    color:#c9b6b2;
+    margin-top:12px;
+    line-height:1.6;
+}
+
+.socials{
+    display:flex;
+    gap:10px;
+}
+
+.social{
+    width:43px;
+    height:43px;
+    display:grid;
+    place-items:center;
+    border-radius:13px;
+    background:#382323;
+    transition:.3s;
+    font-weight:900;
+}
+
+.social:hover{
+    transform:translateY(-5px);
+}
+
+.copyright{
+    margin-top:35px;
+    padding-top:20px;
+    border-top:1px solid #432b2b;
+    text-align:center;
+    color:#a9918c;
+    font-size:13px;
+}
+
+/* TOAST */
+
+#toast{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:#241313;
+    color:white;
+    padding:15px 18px;
+    border-radius:16px;
+    box-shadow:0 15px 35px rgba(0,0,0,.2);
+    transform:translateY(120px);
+    opacity:0;
+    transition:.4s;
+    z-index:10000;
+    max-width:calc(100% - 30px);
+}
+
+#toast.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+/* REVEAL */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:opacity .8s ease,transform .8s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:950px){
+
+    .container{
+        width:min(94%,760px);
+    }
+
+    .nav-links{
+        position:fixed;
+        top:70px;
+        left:0;
+        right:0;
+        display:none;
+        flex-direction:column;
+        background:rgba(255,255,255,.98);
+        padding:25px;
+        box-shadow:0 20px 30px rgba(0,0,0,.08);
+    }
+
+    .nav-links.open{
+        display:flex;
+    }
+
+    .menu-button{
+        display:block;
+    }
+
+    .nav-order{
+        display:none;
+    }
+
+    .hero-grid,
+    .about-grid,
+    .order-grid{
+        grid-template-columns:1fr;
+    }
+
+    .feature-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .cake-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .flavor-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .about-art{
+        order:-1;
+    }
+}
+
+@media(max-width:600px){
+
+    section{
+        padding:75px 0;
+    }
+
+    .container{
+        width:92%;
+    }
+
+    .hero{
+        padding-top:105px;
+    }
+
+    .hero h1{
+        font-size:clamp(43px,14vw,58px);
+        letter-spacing:-3px;
+    }
+
+    .hero-description{
+        font-size:16px;
+    }
+
+    .hero-features{
+        display:grid;
+        gap:10px;
+    }
+
+    .hero-art{
+        min-height:340px;
+        overflow:hidden;
+    }
+
+    .cake-scene{
+        transform:scale(.62);
+    }
+
+    .feature-grid,
+    .cake-grid,
+    .flavor-grid{
+        grid-template-columns:1fr;
+    }
+
+    .price-row{
+        align-items:stretch;
+        flex-direction:column;
+    }
+
+    .price-row .btn{
+        width:100%;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-field.full,
+    .submit-area{
+        grid-column:auto;
+    }
+
+    .form-card,
+    .order-intro,
+    .urgent-box,
+    .database-card{
+        padding:20px;
+        border-radius:22px;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .about-art{
+        height:270px;
+    }
+
+    .about-art span{
+        font-size:100px;
+    }
+
+    .footer-top{
+        flex-direction:column;
+    }
+
+    .hero-buttons .btn,
+    .urgent-buttons .btn{
+        width:100%;
+    }
+
+    #toast{
+        left:15px;
+        right:15px;
+        bottom:15px;
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="loader">
+    <div class="loader-content">
+        <div class="loader-cake">🎂</div>
+        <div class="loader-title">CAKEHUB</div>
+    </div>
+</div>
+
+<div class="bg-circle circle1"></div>
+<div class="bg-circle circle2"></div>
+<div class="bg-circle circle3"></div>
+
+<header id="header">
+<div class="container navbar">
+
+<a href="#home" class="logo">
+    <div class="logo-icon">🍰</div>
+    Cake<span>Hub</span>
+</a>
+
+<nav class="nav-links" id="navLinks">
+    <a href="#home">Home</a>
+    <a href="#cakes">Cakes</a>
+    <a href="#flavors">Flavors</a>
+    <a href="#about">About</a>
+    <a href="#urgent">Urgent Order</a>
+    <a href="#order">Order</a>
+</nav>
+
+<a href="#order" class="nav-order">Order a Cake</a>
+
+<button class="menu-button" id="menuButton">☰</button>
+
+</div>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="container hero-grid">
+
+<div class="reveal">
+
+<div class="badge">
+✨ Baked with love • Made for memories
+</div>
+
+<h1>
+Sweet moments,
+<br>
+<span class="pink">beautifully</span>
+<span class="outline"> baked.</span>
+</h1>
+
+<p class="hero-description">
+Welcome to CakeHub — your destination for handcrafted cakes,
+delicious flavors and celebration-worthy designs made with care.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#cakes" class="btn btn-primary">
+Explore Cakes →
+</a>
+
+<a href="#order" class="btn btn-secondary">
+Customize Yours ✨
+</a>
+
+</div>
+
+<div class="hero-features">
+<span>⭐ <strong>Freshly baked</strong></span>
+<span>🎨 <strong>Custom designs</strong></span>
+<span>💝 <strong>Made with love</strong></span>
+</div>
+
+</div>
+
+<div class="hero-art reveal">
+
+<div class="cake-scene">
+
+<div class="plate"></div>
+
+<div class="main-cake">
+
+<div class="cake-layer layer-bottom"></div>
+<div class="cake-layer layer-middle"></div>
+<div class="cake-layer layer-top"></div>
+
+<div class="icing"></div>
+
+<div class="drip drip1"></div>
+<div class="drip drip2"></div>
+<div class="drip drip3"></div>
+
+<div class="cherry"></div>
+
+</div>
+
+<div class="sparkle sparkle1">✦</div>
+<div class="sparkle sparkle2">✧</div>
+<div class="sparkle sparkle3">✦</div>
+
+</div>
+
+<div class="floating-card card1">
+🎀 Made just for you
+</div>
+
+<div class="floating-card card2">
+⭐ Celebration worthy
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- FEATURES -->
+
+<section style="padding-top:20px;">
+
+<div class="container feature-grid">
+
+<div class="feature-card reveal">
+<div class="feature-icon">🧁</div>
+<div>
+<b>Freshly Baked</b>
+<small>Made with care</small>
+</div>
+</div>
+
+<div class="feature-card reveal">
+<div class="feature-icon">🎨</div>
+<div>
+<b>Custom Designs</b>
+<small>Your dream cake</small>
+</div>
+</div>
+
+<div class="feature-card reveal">
+<div class="feature-icon">💎</div>
+<div>
+<b>Premium Quality</b>
+<small>Beautiful & delicious</small>
+</div>
+</div>
+
+<div class="feature-card reveal">
+<div class="feature-icon">💝</div>
+<div>
+<b>Made with Love</b>
+<small>For special moments</small>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- CAKES -->
+
+<section id="cakes">
+
+<div class="container">
+
+<div class="section-title reveal">
+<div class="eyebrow">Our signature collection</div>
+<h2>Pick your perfect slice.</h2>
+<p>
+From timeless classics to playful celebrations,
+discover a CakeHub favorite for every occasion.
+</p>
+</div>
+
+<div class="cake-grid">
+
+<article class="product reveal">
+
+<div class="product-image product-bg1">
+<span class="product-tag">BESTSELLER</span>
+
+<div class="mini-cake">
+<div class="mini-bottom"></div>
+<div class="mini-top"></div>
+<div class="mini-cream"></div>
+</div>
+</div>
+
+<div class="product-info">
+<h3>Strawberry Dream</h3>
+<p>Soft vanilla cake, creamy frosting and a sweet strawberry finish.</p>
+
+<div class="price-row">
+<span class="price">From PKR 2,499</span>
+
+<button class="btn btn-primary order-button"
+data-cake="Strawberry Dream">
+Order →
+</button>
+</div>
+</div>
+
+</article>
+
+<article class="product reveal">
+
+<div class="product-image product-bg2">
+<span class="product-tag">RICH</span>
+
+<div class="mini-cake">
+<div class="mini-bottom"
+style="background:linear-gradient(90deg,#6b3c2d,#b77b5b,#583126);"></div>
+
+<div class="mini-top"
+style="background:linear-gradient(90deg,#4b2922,#7b4a3d,#3e231e);"></div>
+
+<div class="mini-cream"
+style="background:#f3d7bd;"></div>
+</div>
+</div>
+
+<div class="product-info">
+<h3>Chocolate Bliss</h3>
+<p>Rich chocolate layers with silky chocolate frosting.</p>
+
+<div class="price-row">
+<span class="price">From PKR 2,699</span>
+
+<button class="btn btn-primary order-button"
+data-cake="Chocolate Bliss">
+Order →
+</button>
+</div>
+</div>
+
+</article>
+
+<article class="product reveal">
+
+<div class="product-image product-bg3">
+<span class="product-tag">CLASSIC</span>
+
+<div class="mini-cake">
+<div class="mini-bottom"
+style="background:linear-gradient(90deg,#e4a63d,#ffe7a8,#d8922d);"></div>
+
+<div class="mini-top"
+style="background:linear-gradient(90deg,#fff5d8,#fff,#f7dc9b);"></div>
+
+<div class="mini-cream"></div>
+</div>
+</div>
+
+<div class="product-info">
+<h3>Golden Butter</h3>
+<p>A deeply buttery, moist classic with a luxurious golden crumb.</p>
+
+<div class="price-row">
+<span class="price">From PKR 2,299</span>
+
+<button class="btn btn-primary order-button"
+data-cake="Golden Butter">
+Order →
+</button>
+</div>
+</div>
+
+</article>
+
+<article class="product reveal">
+
+<div class="product-image product-bg4">
+<span class="product-tag">ELEGANT</span>
+
+<div class="mini-cake">
+<div class="mini-bottom"
+style="background:linear-gradient(90deg,#a98bd2,#e9dcff,#8f6cbe);"></div>
+
+<div class="mini-top"
+style="background:linear-gradient(90deg,#f5efff,#fff,#d9c6f3);"></div>
+
+<div class="mini-cream"></div>
+</div>
+</div>
+
+<div class="product-info">
+<h3>Velvet Celebration</h3>
+<p>Silky, soft and elegant with a creamy celebration finish.</p>
+
+<div class="price-row">
+<span class="price">From PKR 2,899</span>
+
+<button class="btn btn-primary order-button"
+data-cake="Velvet Celebration">
+Order →
+</button>
+</div>
+</div>
+
+</article>
+
+<article class="product reveal">
+
+<div class="product-image product-bg5">
+<span class="product-tag">LIGHT</span>
+
+<div class="mini-cake">
+<div class="mini-bottom"
+style="background:linear-gradient(90deg,#82c8e2,#d9f5ff,#67b3d0);"></div>
+
+<div class="mini-top"
+style="background:linear-gradient(90deg,#e8faff,#fff,#bdebf7);"></div>
+
+<div class="mini-cream"></div>
+</div>
+</div>
+
+<div class="product-info">
+<h3>Vanilla Cloud</h3>
+<p>Light, fluffy vanilla layers that pair beautifully with frosting.</p>
+
+<div class="price-row">
+<span class="price">From PKR 2,199</span>
+
+<button class="btn btn-primary order-button"
+data-cake="Vanilla Cloud">
+Order →
+</button>
+</div>
+</div>
+
+</article>
+
+<article class="product reveal">
+
+<div class="product-image product-bg6">
+<span class="product-tag">FUN</span>
+
+<div class="mini-cake">
+<div class="mini-bottom"
+style="background:linear-gradient(90deg,#ee9d77,#ffe0ca,#e88660);"></div>
+
+<div class="mini-top"
+style="background:linear-gradient(90deg,#fff,#ffe7da,#ffd0bd);"></div>
+
+<div class="mini-cream"></div>
+</div>
+</div>
+
+<div class="product-info">
+<h3>Funfetti Party</h3>
+<p>Vanilla cake packed with colorful sprinkles and party energy.</p>
+
+<div class="price-row">
+<span class="price">From PKR 2,399</span>
+
+<button class="btn btn-primary order-button"
+data-cake="Funfetti Party">
+Order →
+</button>
+</div>
+</div>
+
+</article>
+
+</div>
+</div>
+</section>
+
+<!-- FLAVORS -->
+
+<section id="flavors">
+
+<div class="container">
+
+<div class="section-title reveal">
+<div class="eyebrow">Cake Flavor Menu</div>
+<h2>A world of flavors.</h2>
+<p>Choose your favorite flavor or request a custom combination.</p>
+</div>
+
+<div class="flavor-grid">
+
+<div class="flavor reveal"><div class="flavor-icon">🍦</div><h3>Vanilla</h3><p>Light, sweet and classic.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Chocolate</h3><p>Rich, fudgy and deeply chocolatey.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🧈</div><h3>Yellow Butter</h3><p>Moist, buttery and golden.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">☁️</div><h3>White Cake</h3><p>Soft and delicate.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🌀</div><h3>Marble</h3><p>Chocolate and vanilla swirled together.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🌈</div><h3>Funfetti</h3><p>Vanilla with colorful sprinkles.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍓</div><h3>Strawberry</h3><p>Sweet strawberry flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🫐</div><h3>Blueberry</h3><p>Fruity and fresh.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍋</div><h3>Lemon</h3><p>Bright citrus flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍊</div><h3>Orange</h3><p>Fresh citrus flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🥥</div><h3>Coconut</h3><p>Creamy tropical flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍌</div><h3>Banana</h3><p>Soft and naturally sweet.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍍</div><h3>Pineapple</h3><p>Tropical and juicy.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🥭</div><h3>Mango</h3><p>Sweet tropical mango.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍒</div><h3>Cherry</h3><p>Sweet and fruity.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">Peach</div><h3>Peach</h3><p>Soft fruity sweetness.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🥕</div><h3>Carrot Cake</h3><p>Spiced, moist and delicious.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">☕</div><h3>Coffee</h3><p>Rich coffee-inspired flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍪</div><h3>Cookies & Cream</h3><p>Creamy with cookie pieces.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍯</div><h3>Honey</h3><p>Sweet natural honey flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🌰</div><h3>Hazelnut</h3><p>Nutty and creamy.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🥜</div><h3>Peanut Butter</h3><p>Rich nutty sweetness.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍵</div><h3>Matcha</h3><p>Earthy green tea flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🧁</div><h3>Red Velvet</h3><p>Velvety cocoa cake with creaminess.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍯</div><h3>Salted Caramel</h3><p>Sweet caramel with a salty finish.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Chocolate Fudge</h3><p>Extra rich chocolate flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Chocolate Mint</h3><p>Chocolate with refreshing mint.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🥥</div><h3>Coconut Cream</h3><p>Silky tropical coconut.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍓</div><h3>Strawberry Cheesecake</h3><p>Strawberry with creamy cheesecake flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍋</div><h3>Lemon Raspberry</h3><p>Tangy lemon and sweet raspberry.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🫐</div><h3>Blueberry Cheesecake</h3><p>Blueberry with creamy cheesecake flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Chocolate Hazelnut</h3><p>Chocolate and roasted hazelnut.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🌹</div><h3>Rose</h3><p>Floral and delicately sweet.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🌸</div><h3>Lavender</h3><p>Soft floral-inspired flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🥛</div><h3>Milk Cake</h3><p>Rich milky and creamy.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍮</div><h3>Caramel</h3><p>Deep caramel sweetness.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍇</div><h3>Black Forest</h3><p>Chocolate, cherry and cream inspired.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>German Chocolate</h3><p>Chocolate with rich coconut-style topping.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍰</div><h3>Cheesecake</h3><p>Creamy cheesecake-inspired cake.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍓</div><h3>Raspberry</h3><p>Bright berry flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍐</div><h3>Pear</h3><p>Delicate fruity sweetness.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍎</div><h3>Apple Cinnamon</h3><p>Warm apple and cinnamon flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Mocha</h3><p>Chocolate and coffee together.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🥭</div><h3>Mango Passion Fruit</h3><p>Tropical and refreshing.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍋</div><h3>Lemon Blueberry</h3><p>Lemon with sweet blueberry.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🥥</div><h3>Pina Colada</h3><p>Pineapple and coconut inspired.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Rocky Road</h3><p>Chocolate with rich mix-ins.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍪</div><h3>Oreo</h3><p>Chocolate cookie and cream flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍬</div><h3>Toffee</h3><p>Buttery caramelized sweetness.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Triple Chocolate</h3><p>Three layers of chocolate goodness.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍓</div><h3>Strawberry Cream</h3><p>Strawberries with creamy frosting.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Nutella</h3><p>Chocolate-hazelnut inspired flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🌰</div><h3>Pistachio</h3><p>Delicate roasted nut flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🌰</div><h3>Almond</h3><p>Classic almond sweetness.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Brownie</h3><p>Dense chocolate brownie-inspired cake.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍊</div><h3>Orange Chocolate</h3><p>Chocolate with bright orange notes.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍋</div><h3>Lemon Cream</h3><p>Creamy lemon flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍓</div><h3>Berry Blast</h3><p>Mixed berry-inspired flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍯</div><h3>Honey Almond</h3><p>Honey sweetness with almond.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🥛</div><h3>Milk & Honey</h3><p>Creamy milk with honey sweetness.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Chocolate Orange</h3><p>Rich chocolate and orange.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍒</div><h3>Cherry Chocolate</h3><p>Chocolate with cherry flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍑</div><h3>Peach Melba</h3><p>Peach and berry inspired.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍵</div><h3>Green Tea</h3><p>Delicate tea-inspired flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🌰</div><h3>Praline</h3><p>Sweet roasted nut flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Chocolate Caramel</h3><p>Chocolate with smooth caramel.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍓</div><h3>Raspberry White Chocolate</h3><p>Berry flavor with creamy white chocolate.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🥭</div><h3>Mango Coconut</h3><p>Tropical mango and coconut.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍍</div><h3>Pineapple Coconut</h3><p>Bright pineapple and coconut.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Chocolate Espresso</h3><p>Bold chocolate and coffee flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍮</div><h3>Vanilla Caramel</h3><p>Vanilla with buttery caramel.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍓</div><h3>Strawberry Lemon</h3><p>Sweet strawberry and citrus.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍊</div><h3>Citrus Cake</h3><p>Fresh mixed citrus flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Chocolate Raspberry</h3><p>Rich chocolate and raspberry.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🥜</div><h3>Peanut Chocolate</h3><p>Chocolate with roasted peanut flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍪</div><h3>Cookie Dough</h3><p>Sweet cookie-inspired flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">🍰</div><h3>Birthday Cake</h3><p>Classic celebratory cake flavor.</p></div>
+<div class="flavor reveal"><div class="flavor-icon">✨</div><h3>Custom Flavor</h3><p>Tell us your own flavor idea.</p></div>
+
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+<div class="container about-grid">
+
+<div class="reveal">
+
+<div class="eyebrow">
+The CakeHub story
+</div>
+
+<h2>
+We bake happiness into every layer.
+</h2>
+
+<p>
+CakeHub is all about turning ordinary days into sweet memories.
+Every cake is thoughtfully prepared with attention to flavor,
+design and the details that make your celebration special.
+</p>
+
+<div class="stats">
+
+<div class="stat">
+<strong>100%</strong>
+<span>Made with care</span>
+</div>
+
+<div class="stat">
+<strong>70+</strong>
+<span>Flavor choices</span>
+</div>
+
+<div class="stat">
+<strong>∞</strong>
+<span>Custom ideas</span>
+</div>
+
+</div>
+
+</div>
+
+<div class="about-art reveal">
+<span>🎂</span>
+</div>
+
+</div>
+</section>
+
+<!-- CAKEHUB AI -->
+<section class="cake-ai-section" id="cake-ai">
+<div class="container">
+<div class="section-title reveal">
+<div class="eyebrow">CakeHub AI</div>
+<h2>Your personal cake assistant.</h2>
+<p>Get quick cake ideas, flavour recommendations and help planning your perfect order.</p>
+</div>
+
+<div class="cake-ai-card">
+<div class="cake-ai-header">
+<div class="cake-ai-icon">🤖</div>
+<div>
+<h3>CakeHub AI Assistant</h3>
+<p>Ask about flavours, birthdays, weddings, designs, sizes or orders.</p>
+</div>
+</div>
+
+<div class="ai-quick-buttons">
+<button type="button" onclick="cakeAIAsk('Recommend a birthday cake')">🎉 Birthday cake</button>
+<button type="button" onclick="cakeAIAsk('What flavours do you recommend?')">🍓 Popular flavours</button>
+<button type="button" onclick="cakeAIAsk('Help me design a luxury cake')">✨ Luxury cake</button>
+<button type="button" onclick="cakeAIAsk('What cake is good for a wedding?')">💍 Wedding cake</button>
+</div>
+
+<div class="ai-chat" id="cakeAIChat">
+<div class="ai-message bot"><strong>🎂 CakeHub AI</strong><span>Hi! Tell me what kind of cake you're looking for and I'll help you choose.</span></div>
+</div>
+
+<div class="ai-composer">
+<input id="cakeAIInput" type="text" placeholder="Ask CakeHub AI anything about cakes..." onkeydown="if(event.key==='Enter') cakeAISend()">
+<button type="button" onclick="cakeAISend()">Ask AI ➤</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- URGENT ORDER -->
+
+<section class="urgent" id="urgent">
+
+<div class="container">
+
+<div class="urgent-box reveal">
+
+<div class="eyebrow">
+Need a cake quickly?
+</div>
+
+<h2>🚨 Urgent Order</h2>
+
+<p>
+Need a cake for a celebration soon?
+Contact CakeHub directly so we can discuss your urgent
+cake request and availability.
+</p>
+
+<div class="urgent-buttons">
+
+<a
+class="btn btn-whatsapp"
+href="https://wa.me/923133489623?text=Hello%20CakeHub%2C%20I%20need%20an%20URGENT%20cake%20order.%20Please%20let%20me%20know%20if%20you%20can%20help."
+target="_blank">
+💬 WhatsApp Urgently
+</a>
+
+<a
+class="btn btn-call"
+href="tel:03133489623">
+📞 Call Urgently
+</a>
+
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ORDER -->
+
+<section class="order-section" id="order">
+
+<div class="container order-grid">
+
+<div class="order-intro reveal">
+
+<div class="eyebrow">Make it yours</div>
+
+<h2>Have a cake idea?</h2>
+
+<p>
+Tell us what you're celebrating and what you have in mind.
+Your order will be saved in the local CakeHub database and
+prepared as a WhatsApp message.
+</p>
+
+<div class="order-points">
+<div>✓ Choose your flavor</div>
+<div>✓ Choose your size</div>
+<div>✓ Add your celebration date</div>
+<div>✓ Describe your dream design</div>
+<div>✓ Upload a reference photo</div>
+<div>✓ Send everything through WhatsApp</div>
+</div>
+
+</div>
+
+<div class="form-card reveal">
+
+<div class="section-title"
+style="text-align:left;margin-bottom:25px;">
+
+<div class="eyebrow">Order request</div>
+
+<h2 style="font-size:38px;">
+Let's create something sweet.
+</h2>
+
+</div>
+
+<form id="orderForm">
+
+<div class="form-grid">
+
+<div class="form-field">
+
+<label for="customerName">
+Your name
+</label>
+
+<input
+type="text"
+id="customerName"
+required
+placeholder="Your name">
+
+</div>
+
+<div class="form-field" id="customPoundField" style="display:none;">
+<label for="customCakePound">Custom Pound</label>
+<input type="number" id="customCakePound" min="0.5" step="0.5" placeholder="e.g. 2.5">
+</div>
+
+<div class="form-field">
+
+<label for="customerPhone">
+Phone
+</label>
+
+<input
+type="tel"
+id="customerPhone"
+required
+placeholder="03XX XXXXXXX">
+
+</div>
+
+<div class="form-field">
+
+<label for="cakeFlavor">
+Cake / Flavor
+</label>
+
+<select id="cakeFlavor" required>
+
+<option value="">Choose a flavor</option>
+
+<option>Vanilla</option>
+<option>Chocolate</option>
+<option>Yellow Butter Cake</option>
+<option>White Cake</option>
+<option>Marble</option>
+<option>Funfetti</option>
+<option>Strawberry</option>
+<option>Blueberry</option>
+<option>Lemon</option>
+<option>Orange</option>
+<option>Coconut</option>
+<option>Banana</option>
+<option>Pineapple</option>
+<option>Mango</option>
+<option>Cherry</option>
+<option>Peach</option>
+<option>Carrot Cake</option>
+<option>Coffee</option>
+<option>Cookies & Cream</option>
+<option>Honey</option>
+<option>Hazelnut</option>
+<option>Peanut Butter</option>
+<option>Matcha</option>
+<option>Red Velvet</option>
+<option>Salted Caramel</option>
+<option>Chocolate Fudge</option>
+<option>Chocolate Mint</option>
+<option>Coconut Cream</option>
+<option>Strawberry Cheesecake</option>
+<option>Lemon Raspberry</option>
+<option>Blueberry Cheesecake</option>
+<option>Chocolate Hazelnut</option>
+<option>Rose</option>
+<option>Lavender</option>
+<option>Milk Cake</option>
+<option>Caramel</option>
+<option>Black Forest</option>
+<option>German Chocolate</option>
+<option>Cheesecake</option>
+<option>Raspberry</option>
+<option>Pear</option>
+<option>Apple Cinnamon</option>
+<option>Mocha</option>
+<option>Mango Passion Fruit</option>
+<option>Lemon Blueberry</option>
+<option>Pina Colada</option>
+<option>Rocky Road</option>
+<option>Oreo</option>
+<option>Toffee</option>
+<option>Triple Chocolate</option>
+<option>Strawberry Cream</option>
+<option>Nutella</option>
+<option>Pistachio</option>
+<option>Almond</option>
+<option>Brownie</option>
+<option>Orange Chocolate</option>
+<option>Lemon Cream</option>
+<option>Berry Blast</option>
+<option>Honey Almond</option>
+<option>Milk & Honey</option>
+<option>Chocolate Orange</option>
+<option>Cherry Chocolate</option>
+<option>Peach Melba</option>
+<option>Green Tea</option>
+<option>Praline</option>
+<option>Chocolate Caramel</option>
+<option>Raspberry White Chocolate</option>
+<option>Mango Coconut</option>
+<option>Pineapple Coconut</option>
+<option>Chocolate Espresso</option>
+<option>Vanilla Caramel</option>
+<option>Strawberry Lemon</option>
+<option>Citrus Cake</option>
+<option>Chocolate Raspberry</option>
+<option>Peanut Chocolate</option>
+<option>Cookie Dough</option>
+<option>Birthday Cake</option>
+<option>Custom Flavor</option>
+
+</select>
+
+</div>
+
+<div class="form-field">
+
+<label for="cakeSize">
+Size
+</label>
+
+<select id="cakeSize">
+<option>1 Pound</option>
+<option>2 Pounds</option>
+<option>3 Pounds</option>
+<option>4 Pounds</option>
+<option>5 Pounds</option>
+<option>6 Pounds</option>
+<option>7 Pounds</option>
+<option>8 Pounds</option>
+<option>9 Pounds</option>
+<option>10 Pounds</option>
+<option>11 Pounds</option>
+<option>12 Pounds</option>
+<option>13 Pounds</option>
+<option>14 Pounds</option>
+<option>15 Pounds</option>
+<option>16 Pounds</option>
+<option>17 Pounds</option>
+<option>18 Pounds</option>
+<option>19 Pounds</option>
+<option>20 Pounds</option>
+<option>Custom Pound</option>
+</select>
+
+</div>
+
+<div class="form-field">
+
+<label for="cakeDate">
+Celebration Date
+</label>
+
+<input
+type="date"
+id="cakeDate">
+
+</div>
+
+<div class="form-field">
+
+<label for="occasion">
+Occasion
+</label>
+
+<input
+type="text"
+id="occasion"
+placeholder="Birthday, wedding, etc.">
+
+</div>
+
+<div class="form-field full">
+
+<label for="referenceImage">
+Reference Image (Optional)
+</label>
+
+<input
+type="file"
+id="referenceImage"
+accept="image/*">
+
+<img id="imagePreview" class="img-preview" alt="Cake reference preview">
+
+</div>
+
+<div class="form-field full">
+
+<label for="cakeDetails">
+Cake Details
+</label>
+
+<textarea
+id="cakeDetails"
+placeholder="Tell us about colors, decorations, writing, theme or special requests..."></textarea>
+
+</div>
+
+<div class="submit-area">
+
+<button
+type="submit"
+class="btn btn-whatsapp">
+
+Send Order on WhatsApp 💬
+
+</button>
+
+</div>
+
+</div>
+
+<div id="successMessage" class="success-message"></div>
+
+</form>
+
+</div>
+
+</div>
+</section>
+
+<!-- DATABASE -->
+
+<section class="database-section" id="database">
+
+<div class="container">
+
+<div class="section-title reveal">
+
+<div class="eyebrow">
+CakeHub Database
+</div>
+
+<h2>
+Saved orders.
+</h2>
+
+<p>
+Orders are stored locally in this browser using IndexedDB.
+</p>
+
+</div>
+
+<div class="database-card reveal">
+
+<div class="database-header">
+
+<h3>📦 Order Database</h3>
+
+<div class="database-status" id="databaseStatus">
+Database starting...
+</div>
+
+</div>
+
+<div id="orderRecords">
+<div class="database-empty">
+No orders saved yet.
+</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- CONTACT -->
+
+<section>
+
+<div class="container">
+
+<div class="section-title reveal">
+
+<div class="eyebrow">
+Need help?
+</div>
+
+<h2>
+Call CakeHub.
+</h2>
+
+<p>
+For quick questions or urgent help, call us directly.
+</p>
+
+</div>
+
+<div class="contact-grid">
+
+<div class="contact-box reveal">
+
+<div class="contact-icon">📞</div>
+
+<h3>Call CakeHub</h3>
+
+<p>
+03133489623
+</p>
+
+<a
+class="btn btn-call"
+href="tel:03133489623"
+style="margin-top:15px;width:100%;">
+Call Now →
+</a>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-top">
+
+<div>
+
+<a href="#home" class="logo">
+
+<div class="logo-icon">
+🍰
+</div>
+
+Cake<span>Hub</span>
+
+</a>
+
+<p class="footer-description">
+Beautiful cakes, delicious flavors and sweet memories —
+made with love at CakeHub.
+</p>
+
+</div>
+
+<div class="socials">
+
+<a
+href="https://wa.me/923133489623"
+target="_blank"
+class="social">
+W
+</a>
+
+<a
+href="tel:03133489623"
+class="social">
+☎
+</a>
+
+</div>
+
+</div>
+
+<div class="copyright">
+
+© <span id="year"></span>
+CakeHub.
+All rights reserved.
+Baked with ❤️.
+
+</div>
+
+</div>
+
+</footer>
+
+<div id="toast">
+CakeHub
+</div>
+
+<script>
+
+/* =====================================================
+   CAKEHUB CONFIGURATION
+===================================================== */
+
+const BUSINESS_PHONE = "03133489623";
+const WHATSAPP_NUMBER = "923133489623";
+
+
+/* =====================================================
+   LOADER
+===================================================== */
+
+window.addEventListener("load",function(){
+
+setTimeout(function(){
+
+document
+.getElementById("loader")
+.classList.add("hide");
+
+},700);
+
+});
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+const header =
+document.getElementById("header");
+
+window.addEventListener("scroll",function(){
+
+if(window.scrollY > 30){
+    header.classList.add("scrolled");
+}else{
+    header.classList.remove("scrolled");
+}
+
+});
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+const menuButton =
+document.getElementById("menuButton");
+
+const navLinks =
+document.getElementById("navLinks");
+
+menuButton.addEventListener("click",function(){
+
+navLinks.classList.toggle("open");
+
+menuButton.textContent =
+navLinks.classList.contains("open")
+? "✕"
+: "☰";
+
+});
+
+document
+.querySelectorAll(".nav-links a")
+.forEach(function(link){
+
+link.addEventListener("click",function(){
+
+navLinks.classList.remove("open");
+
+menuButton.textContent="☰";
+
+});
+
+});
+
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+const observer =
+new IntersectionObserver(
+function(entries){
+
+entries.forEach(function(entry){
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("visible");
+
+observer.unobserve(entry.target);
+
+}
+
+});
+
+},
+{
+threshold:.08
+}
+);
+
+document
+.querySelectorAll(".reveal")
+.forEach(function(element){
+
+observer.observe(element);
+
+});
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+const toast =
+document.getElementById("toast");
+
+let toastTimer;
+
+function showToast(message){
+
+toast.textContent=message;
+
+toast.classList.add("show");
+
+clearTimeout(toastTimer);
+
+toastTimer=setTimeout(function(){
+
+toast.classList.remove("show");
+
+},2800);
+
+}
+
+
+/* =====================================================
+   INDEXEDDB DATABASE
+===================================================== */
+
+const DB_NAME = "CakeHubDatabase";
+const DB_VERSION = 1;
+
+let db = null;
+
+
+/* =====================================================
+   OPEN DATABASE
+===================================================== */
+
+function openDatabase(){
+
+return new Promise(function(resolve,reject){
+
+const request =
+indexedDB.open(
+DB_NAME,
+DB_VERSION
+);
+
+request.onupgradeneeded=function(event){
+
+const database =
+event.target.result;
+
+if(!database.objectStoreNames.contains("orders")){
+
+const orderStore =
+database.createObjectStore(
+"orders",
+{
+keyPath:"id",
+autoIncrement:true
+}
+);
+
+orderStore.createIndex(
+"customerName",
+"customerName",
+{
+unique:false
+}
+);
+
+orderStore.createIndex(
+"createdAt",
+"createdAt",
+{
+unique:false
+}
+);
+
+}
+
+};
+
+request.onsuccess=function(){
+
+db=request.result;
+
+document
+.getElementById("databaseStatus")
+.textContent="Database Ready ✓";
+
+resolve(db);
+
+};
+
+request.onerror=function(){
+
+document
+.getElementById("databaseStatus")
+.textContent="Database Error";
+
+reject(request.error);
+
+};
+
+});
+
+}
+
+
+/* =====================================================
+   SAVE ORDER
+===================================================== */
+
+function saveOrder(order){
+
+return new Promise(function(resolve,reject){
+
+if(!db){
+reject("Database is not ready");
+return;
+}
+
+const transaction =
+db.transaction(
+["orders"],
+"readwrite"
+);
+
+const store =
+transaction.objectStore("orders");
+
+const request =
+store.add(order);
+
+request.onsuccess=function(){
+
+resolve(request.result);
+
+};
+
+request.onerror=function(){
+
+reject(request.error);
+
+};
+
+});
+
+}
+
+
+/* =====================================================
+   GET ORDERS
+===================================================== */
+
+function getOrders(){
+
+return new Promise(function(resolve,reject){
+
+if(!db){
+
+resolve([]);
+
+return;
+
+}
+
+const transaction =
+db.transaction(
+["orders"],
+"readonly"
+);
+
+const store =
+transaction.objectStore("orders");
+
+const request =
+store.getAll();
+
+request.onsuccess=function(){
+
+const orders =
+request.result.sort(
+function(a,b){
+
+return new Date(b.createdAt)
+-
+new Date(a.createdAt);
+
+}
+);
+
+resolve(orders);
+
+};
+
+request.onerror=function(){
+
+reject(request.error);
+
+};
+
+});
+
+}
+
+
+/* =====================================================
+   DISPLAY ORDERS
+===================================================== */
+
+function escapeHTML(str) {
+    if (!str) return "";
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+async function renderOrders(){
+
+const container =
+document.getElementById("orderRecords");
+
+try{
+
+const orders =
+await getOrders();
+
+if(!orders.length){
+
+container.innerHTML=
+`
+<div class="database-empty">
+📦 No orders saved yet.
+</div>
+`;
+
+return;
+
+}
+
+container.innerHTML="";
+
+orders.forEach(function(order){
+
+const record =
+document.createElement("div");
+
+record.className="order-record";
+
+const date =
+new Date(order.createdAt)
+.toLocaleString();
+
+let imageHTML = "";
+if(order.image){
+    imageHTML = `
+    <div class="record-image-wrapper">
+        <b>Reference Image:</b><br>
+        <img src="${escapeHTML(order.image)}" class="record-image" alt="Cake reference photo">
+    </div>`;
+}
+
+record.innerHTML=`
+<strong>🎂 ${escapeHTML(order.flavor)}</strong>
+
+<div>
+<b>Customer:</b>
+${escapeHTML(order.customerName)}
+</div>
+
+<div>
+<b>Phone:</b>
+${escapeHTML(order.phone)}
+</div>
+
+<div>
+<b>Size:</b>
+${escapeHTML(order.size)}
+</div>
+
+<div>
+<b>Celebration:</b>
+${escapeHTML(order.date)}
+</div>
+
+<div>
+<b>Occasion:</b>
+${escapeHTML(order.occasion)}
+</div>
+
+<div>
+<b>Details:</b>
+${escapeHTML(order.details)}
+</div>
+
+${imageHTML}
+
+<small>
+Saved: ${escapeHTML(date)}
+</small>
+`;
+
+container.appendChild(record);
+
+});
+
+}catch(error){
+
+container.innerHTML=
+`
+<div class="database-empty">
+Unable to load orders.
+</div>
+`;
+
+}
+
+}
+
+
+/* =====================================================
+   IMAGE INPUT PREVIEW HANDLING
+===================================================== */
+
+const referenceInput = document.getElementById("referenceImage");
+const imagePreview = document.getElementById("imagePreview");
+let selectedImageData = "";
+
+if(referenceInput){
+    referenceInput.addEventListener("change", function(e){
+        const file = e.target.files[0];
+        if(file){
+            const reader = new FileReader();
+            reader.onload = function(event){
+                selectedImageData = event.target.result;
+                imagePreview.src = selectedImageData;
+                imagePreview.style.display = "block";
+            };
+            reader.readAsDataURL(file);
+        } else {
+            selectedImageData = "";
+            imagePreview.src = "";
+            imagePreview.style.display = "none";
+        }
+    });
+}
+
+
+/* =====================================================
+   ORDER FORM
+===================================================== */
+
+const orderForm =
+document.getElementById("orderForm");
+
+const cakeFlavor =
+document.getElementById("cakeFlavor");
+
+orderForm.addEventListener(
+"submit",
+async function(event){
+
+event.preventDefault();
+
+const name =
+document
+.getElementById("customerName")
+.value.trim();
+
+const phone =
+document
+.getElementById("customerPhone")
+.value.trim();
+
+const flavor =
+document
+.getElementById("cakeFlavor")
+.value.trim();
+
+let size =
+document
+.getElementById("cakeSize")
+.value.trim();
+
+if(size === "Custom Pound"){
+    const customPVal = document.getElementById("customCakePound").value.trim();
+    if(customPVal) size = customPVal + " Pounds";
+}
+
+const date =
+document
+.getElementById("cakeDate")
+.value.trim();
+
+const occasion =
+document
+.getElementById("occasion")
+.value.trim();
+
+const details =
+document
+.getElementById("cakeDetails")
+.value.trim();
+
+
+if(!name){
+
+showToast("Please enter your name.");
+
+document
+.getElementById("customerName")
+.focus();
+
+return;
+
+}
+
+if(!phone){
+
+showToast("Please enter your phone number.");
+
+document
+.getElementById("customerPhone")
+.focus();
+
+return;
+
+}
+
+if(!flavor){
+
+showToast("Please choose a cake flavor.");
+
+cakeFlavor.focus();
+
+return;
+
+}
+
+
+/* CREATE ORDER OBJECT */
+
+const orderData = {
+
+customerName:name,
+
+phone:phone,
+
+flavor:flavor,
+
+size:size,
+
+date:date || "Not specified",
+
+occasion:occasion || "Not specified",
+
+details:details || "No additional details",
+
+image:selectedImageData || "",
+
+createdAt:new Date().toISOString()
+
+};
+
+
+/* SAVE TO DATABASE */
+
+try{
+
+await saveOrder(orderData);
+
+await renderOrders();
+
+}catch(error){
+
+console.error(error);
+
+}
+
+
+/* WHATSAPP MESSAGE */
+
+const imageNotice = selectedImageData ? "\n📸 *Reference Image:* Attached in chat / Saved in record" : "";
+
+const whatsappMessage =
+`🎂 *CAKEHUB NEW CAKE ORDER*
+
+━━━━━━━━━━━━━━━━━━
+
+👤 *CUSTOMER DETAILS*
+
+Name: ${name}
+Phone: ${phone}
+
+━━━━━━━━━━━━━━━━━━
+
+🍰 *CAKE DETAILS*
+
+Flavor: ${flavor}
+Size: ${size}
+Celebration Date: ${date || "Not specified"}
+Occasion: ${occasion || "Not specified"}
+
+Cake Details:
+${details || "No additional details"}${imageNotice}
+
+━━━━━━━━━━━━━━━━━━
+
+Please confirm my cake order.
+
+Thank you! ❤️`;
+
+
+const whatsappURL =
+"https://wa.me/" +
+WHATSAPP_NUMBER +
+"?text=" +
+encodeURIComponent(
+whatsappMessage
+);
+
+
+/* SUCCESS */
+
+const success =
+document.getElementById(
+"successMessage"
+);
+
+success.classList.add("show");
+
+success.innerHTML=
+`
+🎉 <strong>Order saved!</strong>
+Your order and reference image have been saved in the local database.
+WhatsApp will now open with all your order details.
+${selectedImageData ? "<br><em>Note: Please attach your reference image in WhatsApp when sending your message.</em>" : ""}
+`;
+
+
+showToast(
+"Order saved! Opening WhatsApp... 💬"
+);
+
+
+/* OPEN WHATSAPP */
+
+setTimeout(function(){
+
+const newWindow =
+window.open(
+whatsappURL,
+"_blank"
+);
+
+if(!newWindow){
+
+window.location.href =
+whatsappURL;
+
+}
+
+},500);
+
+});
+
+
+/* =====================================================
+   PRODUCT ORDER BUTTONS
+===================================================== */
+
+document
+.querySelectorAll(".order-button")
+.forEach(function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+const cake =
+button.dataset.cake;
+
+if(cake.includes("Chocolate")){
+
+cakeFlavor.value="Chocolate";
+
+}else if(cake.includes("Vanilla")){
+
+cakeFlavor.value="Vanilla";
+
+}else if(cake.includes("Golden")){
+
+cakeFlavor.value="Yellow Butter Cake";
+
+}else if(cake.includes("Funfetti")){
+
+cakeFlavor.value="Funfetti";
+
+}else if(cake.includes("Strawberry")){
+
+cakeFlavor.value="Strawberry";
+
+}else{
+
+cakeFlavor.value="Custom Flavor";
+
+}
+
+document
+.getElementById("order")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+showToast(
+cake+" selected 🎂"
+);
+
+});
+
+});
+
+
+/* =====================================================
+   CAKEHUB AI SECTION
+===================================================== */
+function cakeAIAsk(text){
+    document.getElementById("cakeAIInput").value = text;
+    cakeAISend();
+}
+
+function cakeAISend(){
+    const input = document.getElementById("cakeAIInput");
+    const text = input.value.trim();
+    if(!text) return;
+
+    addAIMessage("user", text);
+    input.value = "";
+
+    setTimeout(function(){
+        addAIMessage("bot", generateCakeAI(text));
+    }, 250);
+}
+
+function addAIMessage(type, text){
+    const chat = document.getElementById("cakeAIChat");
+    const box = document.createElement("div");
+    box.className = "ai-message " + type;
+
+    const title = document.createElement("strong");
+    title.textContent = type === "bot" ? "🎂 CakeHub AI" : "👤 You";
+
+    const body = document.createElement("span");
+    body.innerHTML = text.replace(/\n/g,"<br>");
+
+    box.appendChild(title);
+    box.appendChild(body);
+    chat.appendChild(box);
+    chat.scrollTop = chat.scrollHeight;
+}
+
+function generateCakeAI(message){
+    const t = message.toLowerCase();
+
+    if(t.includes("birthday"))
+        return "🎉 For a birthday, Chocolate Fudge, Oreo, Red Velvet or Kinder are great choices. Tell me the theme and number of guests and I can suggest a design.";
+
+    if(t.includes("wedding") || t.includes("marriage"))
+        return "💍 For a wedding, I recommend an elegant multi-layer cake. Vanilla Berry, Belgian Chocolate or Pistachio Rose work beautifully.";
+
+    if(t.includes("flavour") || t.includes("flavor") || t.includes("taste"))
+        return "🍰 Popular choices include Chocolate Fudge, Oreo, Lotus Biscoff, Strawberry, Ferrero Rocher, Red Velvet, Pistachio and Salted Caramel.";
+
+    if(t.includes("luxury") || t.includes("premium"))
+        return "✨ Try a clean buttercream finish, elegant colours, custom topper and premium flavour such as Ferrero Rocher, Belgian Chocolate or Pistachio Rose.";
+
+    if(t.includes("price") || t.includes("cost"))
+        return "💰 The final price depends on pound size, flavour and decoration. Use the order form and CakeHub can confirm the exact price.";
+
+    if(t.includes("order") || t.includes("buy"))
+        return "🎂 Ready to order? Scroll to the order section, choose your flavour and a size from 1–20 pounds, or select Custom Pound.";
+
+    return "🤖 I can help with cake flavours, birthday ideas, wedding cakes, luxury designs, sizes and orders. What would you like to bake?";
+}
+
+/* CUSTOM POUND */
+const cakeSizeSelect = document.getElementById("cakeSize");
+const customPoundField = document.getElementById("customPoundField");
+const customCakePound = document.getElementById("customCakePound");
+
+if(cakeSizeSelect){
+    cakeSizeSelect.addEventListener("change", function(){
+        const custom = this.value === "Custom Pound";
+        customPoundField.style.display = custom ? "block" : "none";
+        if(!custom) customCakePound.value = "";
+    });
+}
+
+/* =====================================================
+   START DATABASE
+===================================================== */
+
+async function startCakeHubDatabase(){
+
+try{
+
+await openDatabase();
+
+await renderOrders();
+
+}catch(error){
+
+console.error(
+"CakeHub database error:",
+error
+);
+
+document
+.getElementById("databaseStatus")
+.textContent=
+"Database unavailable";
+
+}
+
+}
+
+startCakeHubDatabase();
+
+
+/* =====================================================
+   YEAR
+===================================================== */
+
+document
+.getElementById("year")
+.textContent=
+new Date().getFullYear();
+
+
+/* =====================================================
+   HERO PARALLAX
+===================================================== */
+
+if(
+window.matchMedia(
+"(min-width:901px)"
+).matches
+){
+
+const heroArt =
+document.querySelector(
+".hero-art"
+);
+
+window.addEventListener(
+"mousemove",
+function(event){
+
+const x =
+(
+event.clientX /
+window.innerWidth -
+.5
+) * 8;
+
+const y =
+(
+event.clientY /
+window.innerHeight -
+.5
+) * 8;
+
+heroArt.style.transform=
+"translate("+x+"px,"+y+"px)";
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
