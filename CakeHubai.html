@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>CakeHub AI | Your Personal Cake Assistant</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#09090d;
+    --panel:#111117;
+    --panel2:#17171f;
+    --border:#292933;
+    --text:#f7f7fa;
+    --muted:#9b9ba8;
+    --pink:#ff4f9a;
+    --pink2:#ff7ab5;
+    --purple:#8d5cff;
+    --green:#35d98b;
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+    background:
+        radial-gradient(circle at 20% 0%,rgba(255,79,154,.13),transparent 30%),
+        radial-gradient(circle at 90% 20%,rgba(141,92,255,.13),transparent 30%),
+        var(--bg);
+    color:var(--text);
+    min-height:100vh;
+}
+
+/* APP */
+
+.app{
+    height:100vh;
+    display:flex;
+    overflow:hidden;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:270px;
+    background:rgba(12,12,17,.96);
+    border-right:1px solid var(--border);
+    padding:18px;
+    display:flex;
+    flex-direction:column;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    margin-bottom:25px;
+}
+
+.logoIcon{
+    width:42px;
+    height:42px;
+    border-radius:13px;
+    display:grid;
+    place-items:center;
+    font-size:22px;
+    background:linear-gradient(135deg,var(--pink),var(--purple));
+    box-shadow:0 10px 30px rgba(255,79,154,.2);
+}
+
+.logoText{
+    font-weight:800;
+    font-size:19px;
+}
+
+.logoText span{
+    color:var(--pink2);
+}
+
+.newChat{
+    width:100%;
+    border:1px solid var(--border);
+    background:#17171e;
+    color:white;
+    border-radius:12px;
+    padding:13px;
+    cursor:pointer;
+    font-size:14px;
+    transition:.2s;
+}
+
+.newChat:hover{
+    background:#20202a;
+    border-color:#41414d;
+}
+
+.sideTitle{
+    color:#777783;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin:28px 5px 10px;
+}
+
+.sideItem{
+    padding:11px;
+    border-radius:10px;
+    color:#bcbcc7;
+    font-size:13px;
+    margin-bottom:4px;
+}
+
+.sideItem.active{
+    background:#1b1b24;
+    color:white;
+}
+
+.sidebarBottom{
+    margin-top:auto;
+}
+
+.status{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:12px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    font-size:12px;
+    color:#aaaab5;
+}
+
+.dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 10px var(--green);
+}
+
+/* MAIN */
+
+.main{
+    flex:1;
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+}
+
+/* HEADER */
+
+.header{
+    height:64px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 22px;
+    background:rgba(10,10,14,.7);
+    backdrop-filter:blur(20px);
+}
+
+.headerTitle{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:700;
+}
+
+.aiBadge{
+    font-size:10px;
+    padding:4px 7px;
+    border-radius:6px;
+    background:rgba(255,79,154,.12);
+    color:#ff7ab5;
+    border:1px solid rgba(255,79,154,.25);
+}
+
+.headerRight{
+    color:#888894;
+    font-size:12px;
+}
+
+/* CHAT */
+
+.chat{
+    flex:1;
+    overflow-y:auto;
+    padding:35px 20px 170px;
+}
+
+.chatInner{
+    max-width:850px;
+    margin:auto;
+}
+
+/* WELCOME */
+
+.welcome{
+    text-align:center;
+    margin:45px auto 30px;
+    max-width:700px;
+}
+
+.cakeLogo{
+    width:70px;
+    height:70px;
+    margin:auto;
+    border-radius:22px;
+    display:grid;
+    place-items:center;
+    font-size:38px;
+    background:linear-gradient(135deg,#ff4f9a,#8d5cff);
+    box-shadow:
+        0 20px 50px rgba(255,79,154,.18),
+        0 0 50px rgba(141,92,255,.12);
+}
+
+.welcome h1{
+    margin-top:22px;
+    font-size:38px;
+    letter-spacing:-1.5px;
+}
+
+.gradient{
+    background:linear-gradient(90deg,#ff7ab5,#a982ff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.welcome p{
+    margin-top:12px;
+    color:var(--muted);
+    line-height:1.7;
+    font-size:15px;
+}
+
+/* QUICK PROMPTS */
+
+.quick{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin:25px auto;
+    max-width:680px;
+}
+
+.quick button{
+    background:#111117;
+    border:1px solid var(--border);
+    color:#d5d5dc;
+    border-radius:13px;
+    padding:14px;
+    text-align:left;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.quick button:hover{
+    background:#191922;
+    border-color:#454552;
+    transform:translateY(-1px);
+}
+
+.quick strong{
+    display:block;
+    font-size:13px;
+    margin-bottom:4px;
+}
+
+.quick span{
+    color:#858591;
+    font-size:11px;
+}
+
+/* MESSAGES */
+
+.message{
+    display:flex;
+    gap:13px;
+    margin:22px 0;
+}
+
+.avatar{
+    flex:0 0 35px;
+    height:35px;
+    border-radius:10px;
+    display:grid;
+    place-items:center;
+    font-size:17px;
+}
+
+.aiAvatar{
+    background:linear-gradient(135deg,var(--pink),var(--purple));
+}
+
+.userAvatar{
+    background:#292932;
+}
+
+.messageBody{
+    max-width:720px;
+    line-height:1.7;
+    font-size:14px;
+}
+
+.messageName{
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:5px;
+}
+
+.messageText{
+    color:#d3d3da;
+}
+
+.messageText b{
+    color:white;
+}
+
+/* CAKE CARDS */
+
+.cakeGrid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-top:15px;
+}
+
+.cakeCard{
+    border:1px solid var(--border);
+    background:#121219;
+    padding:13px;
+    border-radius:14px;
+}
+
+.cakeEmoji{
+    font-size:27px;
+}
+
+.cakeCard h3{
+    margin-top:7px;
+    font-size:13px;
+}
+
+.cakeCard p{
+    color:#858591;
+    font-size:11px;
+    margin-top:4px;
+}
+
+.tag{
+    display:inline-block;
+    margin-top:8px;
+    padding:4px 7px;
+    background:#1d1821;
+    color:#ff82b9;
+    border-radius:6px;
+    font-size:10px;
+}
+
+/* INPUT AREA */
+
+.inputArea{
+    position:fixed;
+    bottom:0;
+    left:270px;
+    right:0;
+    padding:15px 20px 22px;
+    background:
+        linear-gradient(to top,rgba(9,9,13,1) 65%,rgba(9,9,13,.0));
+}
+
+.inputWrap{
+    max-width:850px;
+    margin:auto;
+}
+
+.composer{
+    background:#17171e;
+    border:1px solid #30303a;
+    border-radius:18px;
+    padding:10px;
+    display:flex;
+    align-items:flex-end;
+    gap:8px;
+    box-shadow:0 15px 50px rgba(0,0,0,.3);
+}
+
+.composer textarea{
+    flex:1;
+    resize:none;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:white;
+    font:inherit;
+    padding:9px;
+    max-height:120px;
+    min-height:40px;
+}
+
+.composer textarea::placeholder{
+    color:#73737e;
+}
+
+.iconBtn{
+    width:40px;
+    height:40px;
+    border:0;
+    border-radius:11px;
+    background:#24242d;
+    color:#aaaab4;
+    cursor:pointer;
+    font-size:17px;
+}
+
+.sendBtn{
+    width:42px;
+    height:42px;
+    border:0;
+    border-radius:12px;
+    background:linear-gradient(135deg,var(--pink),var(--purple));
+    color:white;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.disclaimer{
+    text-align:center;
+    color:#666672;
+    font-size:10px;
+    margin-top:8px;
+}
+
+/* ORDER PANEL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(10px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+    z-index:20;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.orderBox{
+    width:100%;
+    max-width:650px;
+    max-height:90vh;
+    overflow:auto;
+    background:#121219;
+    border:1px solid #30303a;
+    border-radius:22px;
+    padding:22px;
+}
+
+.orderHead{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.orderHead h2{
+    font-size:20px;
+}
+
+.close{
+    background:#24242d;
+    border:0;
+    color:white;
+    width:35px;
+    height:35px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.formGrid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.field{
+    margin-bottom:12px;
+}
+
+.field.full{
+    grid-column:1/-1;
+}
+
+.field label{
+    display:block;
+    font-size:12px;
+    color:#a5a5af;
+    margin-bottom:6px;
+}
+
+.field input,
+.field select,
+.field textarea{
+    width:100%;
+    background:#1a1a22;
+    border:1px solid #30303a;
+    color:white;
+    border-radius:10px;
+    padding:11px;
+    outline:none;
+    font:inherit;
+}
+
+.field textarea{
+    min-height:80px;
+    resize:vertical;
+}
+
+.reference{
+    border:1px dashed #454551;
+    border-radius:12px;
+    padding:15px;
+    text-align:center;
+    color:#8e8e99;
+    font-size:12px;
+}
+
+.reference input{
+    margin-top:8px;
+    width:100%;
+}
+
+.preview{
+    max-width:100%;
+    max-height:180px;
+    margin-top:10px;
+    border-radius:10px;
+    display:none;
+}
+
+.orderActions{
+    display:flex;
+    gap:10px;
+    margin-top:10px;
+}
+
+.orderActions button{
+    flex:1;
+    border:0;
+    border-radius:11px;
+    padding:13px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.whatsapp{
+    background:#25d366;
+    color:white;
+}
+
+.cancel{
+    background:#25252e;
+    color:white;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .sidebar{
+        display:none;
+    }
+
+    .inputArea{
+        left:0;
+    }
+
+    .header{
+        padding:0 15px;
+    }
+
+    .headerRight{
+        display:none;
+    }
+
+    .welcome h1{
+        font-size:30px;
+    }
+
+    .quick{
+        grid-template-columns:1fr;
+    }
+
+    .cakeGrid{
+        grid-template-columns:1fr;
+    }
+
+    .chat{
+        padding-left:14px;
+        padding-right:14px;
+    }
+
+    .formGrid{
+        grid-template-columns:1fr;
+    }
+
+    .field.full{
+        grid-column:auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <div class="logoIcon">🎂</div>
+        <div class="logoText">Cake<span>Hub</span> AI</div>
+    </div>
+
+    <button class="newChat" onclick="newChat()">
+        ＋ New conversation
+    </button>
+
+    <div class="sideTitle">CakeHub</div>
+
+    <div class="sideItem active">🤖 Cake AI Assistant</div>
+    <div class="sideItem" onclick="openOrder()">🎂 Create an order</div>
+    <div class="sideItem" onclick="ask('What cake flavours do you have?')">🍰 Cake flavours</div>
+    <div class="sideItem" onclick="ask('Help me choose a birthday cake')">🎉 Birthday cakes</div>
+    <div class="sideItem" onclick="ask('What cakes are good for a wedding?')">💍 Wedding cakes</div>
+
+    <div class="sidebarBottom">
+        <div class="status">
+            <span class="dot"></span>
+            CakeHub AI online
+        </div>
+    </div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+<header class="header">
+
+    <div class="headerTitle">
+        🎂 CakeHub AI
+        <span class="aiBadge">AI ASSISTANT</span>
+    </div>
+
+    <div class="headerRight">
+        Your personal cake designer
+    </div>
+
+</header>
+
+
+<!-- CHAT -->
+
+<section class="chat" id="chat">
+
+<div class="chatInner" id="chatInner">
+
+<div class="welcome" id="welcome">
+
+    <div class="cakeLogo">🎂</div>
+
+    <h1>
+        What can I help you
+        <span class="gradient">bake?</span>
+    </h1>
+
+    <p>
+        I'm CakeHub AI — your personal cake assistant.
+        Tell me what you're celebrating, your favourite flavour,
+        design idea, or anything else about your cake.
+    </p>
+
+    <div class="quick">
+
+        <button onclick="ask('Recommend a birthday cake for me')">
+            🎉
+            <strong>Birthday cake</strong>
+            <span>Find a cake for a birthday</span>
+        </button>
+
+        <button onclick="ask('Help me design a luxury cake')">
+            ✨
+            <strong>Luxury cake</strong>
+            <span>Create something special</span>
+        </button>
+
+        <button onclick="ask('Show me popular cake flavours')">
+            🍓
+            <strong>Popular flavours</strong>
+            <span>Explore CakeHub flavours</span>
+        </button>
+
+        <button onclick="openOrder()">
+            📝
+            <strong>Place an order</strong>
+            <span>Send your cake requirements</span>
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- COMPOSER -->
+
+<div class="inputArea">
+
+<div class="inputWrap">
+
+<div class="composer">
+
+<button class="iconBtn" onclick="openOrder()" title="Order">
+    🎂
+</button>
+
+<textarea
+id="messageInput"
+placeholder="Message CakeHub AI..."
+rows="1"
+onkeydown="handleKey(event)"
+></textarea>
+
+<button class="sendBtn" onclick="sendMessage()">
+    ➤
+</button>
+
+</div>
+
+<div class="disclaimer">
+CakeHub AI can help you choose and design cakes. Final prices and availability are confirmed by CakeHub.
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+
+<!-- ORDER MODAL -->
+
+<div class="modal" id="orderModal">
+
+<div class="orderBox">
+
+<div class="orderHead">
+    <h2>🎂 Create Your Cake Order</h2>
+    <button class="close" onclick="closeOrder()">×</button>
+</div>
+
+<div class="formGrid">
+
+<div class="field">
+<label>Your name</label>
+<input id="customerName" placeholder="Your name">
+</div>
+
+<div class="field">
+<label>Phone / WhatsApp</label>
+<input id="customerPhone" placeholder="03XXXXXXXXX">
+</div>
+
+<div class="field">
+<label>Cake flavour</label>
+
+<select id="flavour">
+
+<option>Chocolate</option>
+<option>Vanilla</option>
+<option>Red Velvet</option>
+<option>Strawberry</option>
+<option>Oreo</option>
+<option>Lotus Biscoff</option>
+<option>Caramel</option>
+<option>Butterscotch</option>
+<option>Black Forest</option>
+<option>Nutella</option>
+<option>Custom flavour</option>
+
+</select>
+</div>
+
+<div class="field">
+<label>Cake size</label>
+
+<select id="size">
+<option>1 pound</option>
+<option>2 pounds</option>
+<option>3 pounds</option>
+<option>4 pounds</option>
+<option>5 pounds</option>
+<option>Custom size</option>
+</select>
+
+</div>
+
+<div class="field">
+<label>Event</label>
+
+<select id="event">
+<option>Birthday</option>
+<option>Wedding</option>
+<option>Anniversary</option>
+<option>Graduation</option>
+<option>Baby celebration</option>
+<option>Other</option>
+</select>
+
+</div>
+
+<div class="field">
+<label>Needed date</label>
+<input type="date" id="date">
+</div>
+
+<div class="field full">
+
+<label>Cake design / message</label>
+
+<textarea
+id="design"
+placeholder="Describe your cake design, colours, writing, theme, characters, decorations, etc."
+></textarea>
+
+</div>
+
+<div class="field full">
+
+<label>Reference cake image</label>
+
+<div class="reference">
+
+📸 Upload a picture of the cake design you want
+
+<input
+type="file"
+id="referenceImage"
+accept="image/*"
+onchange="previewImage(event)"
+>
+
+<img id="preview" class="preview">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="orderActions">
+
+<button class="cancel" onclick="closeOrder()">
+Cancel
+</button>
+
+<button class="whatsapp" onclick="sendWhatsApp()">
+💬 Order on WhatsApp
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<script>
+
+/* =========================
+   CAKEHUB AI
+========================= */
+
+const flavours = [
+
+"Chocolate",
+"Vanilla",
+"Red Velvet",
+"Strawberry",
+"Oreo",
+"Lotus Biscoff",
+"Nutella",
+"Caramel",
+"Butterscotch",
+"Black Forest",
+"White Forest",
+"Coffee",
+"Mocha",
+"Ferrero Rocher",
+"KitKat",
+"Kinder",
+"Milky Way",
+"Galaxy",
+"Snickers",
+"Twix",
+"Mars",
+"Brownie",
+"Chocolate Fudge",
+"Dark Chocolate",
+"White Chocolate",
+"Milk Chocolate",
+"Belgian Chocolate",
+"Chocolate Hazelnut",
+"Chocolate Orange",
+"Chocolate Mint",
+"Chocolate Raspberry",
+"Chocolate Strawberry",
+"Chocolate Cherry",
+"Chocolate Coconut",
+"Coconut",
+"Pistachio",
+"Almond",
+"Walnut",
+"Cashew",
+"Peanut Butter",
+"Peanut",
+"Blueberry",
+"Raspberry",
+"Blackberry",
+"Mango",
+"Passion Fruit",
+"Peach",
+"Apricot",
+"Banana",
+"Pineapple",
+"Apple Cinnamon",
+"Cherry",
+"Lemon",
+"Lime",
+"Orange",
+"Mandarin",
+"Mixed Berry",
+"Berry Vanilla",
+"Strawberry Cheesecake",
+"Blueberry Cheesecake",
+"Oreo Cheesecake",
+"Lotus Cheesecake",
+"Caramel Cheesecake",
+"Chocolate Cheesecake",
+"New York Cheesecake",
+"Classic Cheesecake",
+"Vanilla Cream",
+"Chocolate Cream",
+"Strawberry Cream",
+"Fresh Cream",
+"Coffee Cream",
+"Mocha Cream",
+"Caramel Cream",
+"Buttercream",
+"Vanilla Buttercream",
+"Chocolate Buttercream",
+"Strawberry Buttercream",
+"Raspberry Buttercream",
+"Salted Caramel",
+"Cookies & Cream",
+"Cookie Dough",
+"Brown Sugar",
+"Maple",
+"Honey",
+"Marble",
+"Funfetti",
+"Rainbow",
+"Red Velvet Oreo",
+"Red Velvet Chocolate",
+"Chocolate Raspberry",
+"Chocolate Cherry",
+"Vanilla Berry",
+"Vanilla Strawberry",
+"Mango Cream",
+"Mango Passion",
+"Pistachio Rose",
+"Rose Vanilla",
+"Rose Raspberry",
+"Cardamom",
+"Saffron",
+"Chai Spice",
+"Carrot",
+"Carrot Walnut",
+"Banana Chocolate",
+"Banana Caramel",
+"Coffee Walnut",
+"Espresso",
+"Tiramisu",
+"Creme Brulee",
+"Toffee",
+"Praline",
+"Praline Chocolate",
+"Hazelnut",
+"Macadamia",
+"Almond Vanilla",
+"Coconut Chocolate",
+"Coconut Caramel",
+"Custom flavour"
+
+];
+
+
+/* USER MESSAGE */
+
+function ask(text){
+
+    document.getElementById("messageInput").value = text;
+
+    sendMessage();
+
+}
+
+
+function handleKey(e){
+
+    if(e.key === "Enter" && !e.shiftKey){
+
+        e.preventDefault();
+
+        sendMessage();
+
+    }
+
+}
+
+
+/* SEND */
+
+function sendMessage(){
+
+    const input =
+        document.getElementById("messageInput");
+
+    const text =
+        input.value.trim();
+
+    if(!text) return;
+
+    document.getElementById("welcome").style.display="none";
+
+    addMessage("user",text);
+
+    input.value="";
+
+    setTimeout(()=>{
+
+        const response =
+            generateAI(text);
+
+        addMessage("ai",response);
+
+    },500);
+
+}
+
+
+/* MESSAGE */
+
+function addMessage(type,text){
+
+    const container =
+        document.getElementById("chatInner");
+
+    const message =
+        document.createElement("div");
+
+    message.className="message";
+
+    const avatar =
+        document.createElement("div");
+
+    avatar.className =
+        "avatar " +
+        (type==="ai" ? "aiAvatar":"userAvatar");
+
+    avatar.textContent =
+        type==="ai" ? "🎂":"👤";
+
+    const body =
+        document.createElement("div");
+
+    body.className="messageBody";
+
+    const name =
+        document.createElement("div");
+
+    name.className="messageName";
+
+    name.textContent =
+        type==="ai" ? "CakeHub AI":"You";
+
+    const textDiv =
+        document.createElement("div");
+
+    textDiv.className="messageText";
+
+    textDiv.innerHTML =
+        text.replace(/\n/g,"<br>");
+
+    body.appendChild(name);
+    body.appendChild(textDiv);
+
+    message.appendChild(avatar);
+    message.appendChild(body);
+
+    container.appendChild(message);
+
+    document.getElementById("chat").scrollTop =
+        document.getElementById("chat").scrollHeight;
+
+}
+
+
+/* =========================
+   AI RESPONSE ENGINE
+========================= */
+
+function generateAI(message){
+
+    const text =
+        message.toLowerCase();
+
+    if(
+        text.includes("birthday") ||
+        text.includes("birth day")
+    ){
+
+        return `
+        🎉 <b>Birthday cake idea!</b><br><br>
+
+        I'd recommend a <b>Chocolate Fudge</b> cake with
+        chocolate drip, personalised writing and decorations
+        matching the birthday theme.<br><br>
+
+        ⭐ Great flavours: Chocolate, Oreo, Red Velvet,
+        Nutella, Kinder or Lotus Biscoff.<br><br>
+
+        Want to order it? Click <b>🎂 Create an order</b>.
+        `;
+
+    }
+
+
+    if(
+        text.includes("wedding") ||
+        text.includes("marriage")
+    ){
+
+        return `
+        💍 <b>For a wedding</b>, I'd suggest an elegant
+        multi-layer design with smooth buttercream,
+        subtle decorations and personalised details.<br><br>
+
+        Popular choices include <b>Vanilla Berry,
+        Red Velvet, Pistachio Rose and Belgian Chocolate.</b><br><br>
+
+        I can also help you create the complete design.
+        `;
+
+    }
+
+
+    if(
+        text.includes("flavour") ||
+        text.includes("flavor") ||
+        text.includes("taste")
+    ){
+
+        return `
+        🍰 CakeHub has <b>100+ flavour options</b>.<br><br>
+
+        Some favourites are:<br>
+        • 🍫 Chocolate Fudge<br>
+        • 🍪 Oreo<br>
+        • 🍓 Strawberry<br>
+        • 🌹 Pistachio Rose<br>
+        • 🍯 Salted Caramel<br>
+        • 🍫 Ferrero Rocher<br>
+        • 🍪 Lotus Biscoff<br>
+        • ☕ Tiramisu<br><br>
+
+        Tell me what flavours you like and I'll recommend
+        something.
+        `;
+
+    }
+
+
+    if(
+        text.includes("price") ||
+        text.includes("cost") ||
+        text.includes("budget")
+    ){
+
+        return `
+        💰 Cake prices depend on the size, flavour,
+        decoration and customisation.<br><br>
+
+        I don't want to invent a price for you.
+        Send your cake requirements through the order form
+        and CakeHub can confirm the exact price.
+        `;
+
+    }
+
+
+    if(
+        text.includes("order") ||
+        text.includes("buy") ||
+        text.includes("book")
+    ){
+
+        return `
+        🎂 Absolutely! Let's create your cake order.<br><br>
+
+        Click <b>🎂 Create an order</b> and enter your
+        flavour, size, date, design and reference image.
+        Then you can send everything through WhatsApp.
+        `;
+
+    }
+
+
+    if(
+        text.includes("luxury") ||
+        text.includes("professional") ||
+        text.includes("expensive")
+    ){
+
+        return `
+        ✨ For a luxury CakeHub design, I'd combine:
+
+        <br><br>
+        • Elegant colour palette<br>
+        • Premium chocolate or vanilla base<br>
+        • Clean buttercream finish<br>
+        • Custom topper<br>
+        • Metallic-style decoration<br>
+        • Personalised writing<br><br>
+
+        A <b>Ferrero Rocher, Belgian Chocolate or Pistachio
+        Rose</b> cake would work beautifully.
+        `;
+
+    }
+
+
+    if(
+        text.includes("kid") ||
+        text.includes("child") ||
+        text.includes("children")
+    ){
+
+        return `
+        🧸 For a kids' cake, we can create a fun theme around
+        their favourite character, game, colour or hobby.<br><br>
+
+        Great flavours include <b>Chocolate, Oreo, Vanilla,
+        Strawberry and Kinder.</b><br><br>
+
+        You can upload a reference image in the order form.
+        `;
+
+    }
+
+
+    if(
+        text.includes("recommend") ||
+        text.includes("suggest") ||
+        text.includes("choose")
+    ){
+
+        return `
+        🤖 I'd love to help you choose! Tell me:
+
+        <br><br>
+        <b>1.</b> What is the occasion?<br>
+        <b>2.</b> What flavours do you like?<br>
+        <b>3.</b> How many people is it for?<br>
+        <b>4.</b> What style do you want?<br><br>
+
+        For example:<br>
+        <i>"Birthday, chocolate, 10 people,
+        black and gold luxury design."</i>
+        `;
+
+    }
+
+
+    if(
+        text.includes("hello") ||
+        text.includes("hi") ||
+        text.includes("hey")
+    ){
+
+        return `
+        Hey! 👋🎂<br><br>
+
+        Welcome to <b>CakeHub AI</b>.<br><br>
+
+        I can help you choose a flavour, design a cake,
+        plan a birthday/wedding cake or prepare your order.<br><br>
+
+        What are we baking today? 🍰
+        `;
+
+    }
+
+
+    return `
+    🎂 I can help with your CakeHub order!
+
+    <br><br>
+
+    Try asking me:
+
+    <br><br>
+
+    • <b>"Recommend a birthday cake"</b><br>
+    • <b>"Show me popular flavours"</b><br>
+    • <b>"Help me design a luxury cake"</b><br>
+    • <b>"What cake is good for a wedding?"</b><br>
+    • <b>"I want to place an order"</b><br><br>
+
+    Or tell me your cake idea in your own words. 🤖
+    `;
+
+}
+
+
+/* =========================
+   NEW CHAT
+========================= */
+
+function newChat(){
+
+    const container =
+        document.getElementById("chatInner");
+
+    container.innerHTML="";
+
+    container.innerHTML=`
+
+    <div class="welcome" id="welcome">
+
+        <div class="cakeLogo">🎂</div>
+
+        <h1>
+            What can I help you
+            <span class="gradient">bake?</span>
+        </h1>
+
+        <p>
+            I'm CakeHub AI — your personal cake assistant.
+            Tell me what you're celebrating, your favourite
+            flavour, design idea, or anything else about your cake.
+        </p>
+
+        <div class="quick">
+
+            <button onclick="ask('Recommend a birthday cake for me')">
+                🎉
+                <strong>Birthday cake</strong>
+                <span>Find a cake for a birthday</span>
+            </button>
+
+            <button onclick="ask('Help me design a luxury cake')">
+                ✨
+                <strong>Luxury cake</strong>
+                <span>Create something special</span>
+            </button>
+
+            <button onclick="ask('Show me popular cake flavours')">
+                🍓
+                <strong>Popular flavours</strong>
+                <span>Explore CakeHub flavours</span>
+            </button>
+
+            <button onclick="openOrder()">
+                📝
+                <strong>Place an order</strong>
+                <span>Send your cake requirements</span>
+            </button>
+
+        </div>
+
+    </div>
+
+    `;
+
+}
+
+
+/* =========================
+   ORDER MODAL
+========================= */
+
+function openOrder(){
+
+    document
+        .getElementById("orderModal")
+        .classList.add("show");
+
+}
+
+
+function closeOrder(){
+
+    document
+        .getElementById("orderModal")
+        .classList.remove("show");
+
+}
+
+
+/* IMAGE PREVIEW */
+
+function previewImage(event){
+
+    const file =
+        event.target.files[0];
+
+    const preview =
+        document.getElementById("preview");
+
+    if(!file){
+
+        preview.style.display="none";
+
+        return;
+
+    }
+
+    const reader =
+        new FileReader();
+
+    reader.onload=function(e){
+
+        preview.src=e.target.result;
+
+        preview.style.display="block";
+
+    };
+
+    reader.readAsDataURL(file);
+
+}
+
+
+/* =========================
+   WHATSAPP
+========================= */
+
+/*
+   CHANGE THIS NUMBER TO YOUR CAKEHUB
+   BUSINESS WHATSAPP NUMBER.
+*/
+
+const CAKEHUB_WHATSAPP =
+    "923133148962";
+
+
+function sendWhatsApp(){
+
+    const name =
+        document.getElementById("customerName").value.trim();
+
+    const phone =
+        document.getElementById("customerPhone").value.trim();
+
+    const flavour =
+        document.getElementById("flavour").value;
+
+    const size =
+        document.getElementById("size").value;
+
+    const event =
+        document.getElementById("event").value;
+
+    const date =
+        document.getElementById("date").value;
+
+    const design =
+        document.getElementById("design").value.trim();
+
+
+    if(!name || !phone || !date){
+
+        alert(
+            "Please enter your name, phone number and required date."
+        );
+
+        return;
+
+    }
+
+
+    let message =
+
+`🎂 CAKEHUB AI ORDER
+
+Customer: ${name}
+Phone: ${phone}
+
+Flavour: ${flavour}
+Size: ${size}
+Event: ${event}
+Required Date: ${date}
+
+Cake Design:
+${design || "Not specified"}
+
+Reference image:
+${document.getElementById("referenceImage").files.length
+    ? "Customer will send/upload a reference image."
+    : "No reference image."}
+
+Sent from CakeHub AI website.`;
+
+
+    const url =
+        "https://wa.me/" +
+        CAKEHUB_WHATSAPP +
+        "?text=" +
+        encodeURIComponent(message);
+
+
+    window.open(url,"_blank");
+
+}
+
+
+/* Close modal when clicking outside */
+
+document
+.getElementById("orderModal")
+.addEventListener("click",function(e){
+
+    if(e.target === this){
+
+        closeOrder();
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
