@@ -44,7 +44,10 @@ a{
     color:inherit;
 }
 
-button,input,select,textarea{
+button,
+input,
+select,
+textarea{
     font:inherit;
 }
 
@@ -57,7 +60,9 @@ button{
     margin:auto;
 }
 
-/* LOADER */
+/* =========================
+   LOADER
+========================= */
 
 #loader{
     position:fixed;
@@ -92,11 +97,17 @@ button{
 }
 
 @keyframes loaderBounce{
-    from{transform:translateY(0) rotate(-5deg)}
-    to{transform:translateY(-18px) rotate(5deg)}
+    from{
+        transform:translateY(0) rotate(-5deg)
+    }
+    to{
+        transform:translateY(-18px) rotate(5deg)
+    }
 }
 
-/* BACKGROUND */
+/* =========================
+   BACKGROUND
+========================= */
 
 .bg-circle{
     position:fixed;
@@ -135,10 +146,14 @@ button{
 }
 
 @keyframes bgFloat{
-    50%{transform:translate(25px,-30px)}
+    50%{
+        transform:translate(25px,-30px)
+    }
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 header{
     position:fixed;
@@ -236,7 +251,9 @@ header.scrolled{
     color:var(--brown);
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
     min-height:100vh;
@@ -266,7 +283,9 @@ header.scrolled{
 }
 
 @keyframes pulseBadge{
-    50%{box-shadow:0 0 0 8px rgba(232,93,136,.06)}
+    50%{
+        box-shadow:0 0 0 8px rgba(232,93,136,.06)
+    }
 }
 
 .hero h1{
@@ -346,7 +365,9 @@ header.scrolled{
     font-size:14px;
 }
 
-/* HERO CAKE */
+/* =========================
+   HERO CAKE
+========================= */
 
 .hero-art{
     min-height:520px;
@@ -363,7 +384,9 @@ header.scrolled{
 }
 
 @keyframes cakeFloat{
-    50%{transform:translateY(-15px)}
+    50%{
+        transform:translateY(-15px)
+    }
 }
 
 .plate{
@@ -523,10 +546,14 @@ header.scrolled{
 }
 
 @keyframes cardFloat{
-    50%{transform:translateY(-10px)}
+    50%{
+        transform:translateY(-10px)
+    }
 }
 
-/* SECTIONS */
+/* =========================
+   SECTIONS
+========================= */
 
 section{
     padding:100px 0;
@@ -558,7 +585,9 @@ section{
     line-height:1.6;
 }
 
-/* FEATURES */
+/* =========================
+   FEATURES
+========================= */
 
 .feature-grid{
     display:grid;
@@ -592,7 +621,9 @@ section{
     margin-top:3px;
 }
 
-/* CAKES */
+/* =========================
+   CAKES
+========================= */
 
 .cake-grid{
     display:grid;
@@ -639,10 +670,6 @@ section{
 
 .product-bg5{
     background:linear-gradient(135deg,#e8f7ff,#bde7f6);
-}
-
-.product-bg6{
-    background:linear-gradient(135deg,#ffe9dc,#ffc2a8);
 }
 
 .product-tag{
@@ -725,7 +752,9 @@ section{
     font-weight:950;
 }
 
-/* FLAVORS */
+/* =========================
+   FLAVORS
+========================= */
 
 .flavor-grid{
     display:grid;
@@ -761,7 +790,9 @@ section{
     line-height:1.5;
 }
 
-/* ABOUT */
+/* =========================
+   ABOUT
+========================= */
 
 .about{
     background:#2c1818;
@@ -834,7 +865,9 @@ section{
     }
 }
 
-/* URGENT */
+/* =========================
+   URGENT
+========================= */
 
 .urgent{
     padding-top:50px;
@@ -870,7 +903,9 @@ section{
     margin-top:25px;
 }
 
-/* ORDER */
+/* =========================
+   ORDER
+========================= */
 
 .order-section{
     padding-top:50px;
@@ -933,7 +968,9 @@ section{
     grid-column:1/-1;
 }
 
-input,select,textarea{
+input,
+select,
+textarea{
     width:100%;
     padding:13px 14px;
     border:1px solid #eadbd7;
@@ -941,6 +978,13 @@ input,select,textarea{
     outline:none;
     background:#fffaf8;
     color:var(--brown);
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:var(--pink);
+    box-shadow:0 0 0 4px rgba(232,93,136,.08);
 }
 
 textarea{
@@ -968,7 +1012,185 @@ textarea{
     display:block;
 }
 
-/* DATABASE PANEL */
+/* =========================
+   IMAGE UPLOAD
+========================= */
+
+.upload-box{
+    border:1.5px dashed #dfc9c3;
+    border-radius:18px;
+    padding:24px;
+    text-align:center;
+    background:#fffaf8;
+    transition:.25s;
+}
+
+.upload-box:hover{
+    border-color:var(--pink);
+    background:#fff6f9;
+}
+
+.upload-box input{
+    display:none;
+}
+
+.upload-icon{
+    font-size:34px;
+    margin-bottom:5px;
+}
+
+.upload-box strong,
+.upload-box small{
+    display:block;
+}
+
+.upload-box small{
+    color:var(--brown-light);
+    margin-top:5px;
+}
+
+.image-preview-wrap{
+    margin-top:10px;
+    padding:12px;
+    border:1px solid var(--border);
+    border-radius:18px;
+    background:#fffaf8;
+}
+
+.image-preview-wrap img{
+    display:block;
+    width:100%;
+    max-height:250px;
+    object-fit:contain;
+    border-radius:12px;
+}
+
+.image-preview-wrap button{
+    margin-top:10px;
+    border:0;
+    background:#2c1818;
+    color:#fff;
+    padding:9px 13px;
+    border-radius:10px;
+    font-weight:800;
+}
+
+.form-field label span{
+    font-weight:600;
+    color:var(--brown-light);
+    font-size:12px;
+}
+
+/* =========================
+   REVIEWS
+========================= */
+
+.reviews-section{
+    background:#fff;
+}
+
+.review-form-card{
+    max-width:760px;
+    margin:0 auto 45px;
+    background:white;
+    border:1px solid var(--border);
+    border-radius:28px;
+    padding:30px;
+    box-shadow:var(--shadow);
+}
+
+.review-form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.review-form-grid .full{
+    grid-column:1/-1;
+}
+
+.stars-input{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+}
+
+.star-btn{
+    border:1px solid var(--border);
+    background:#fffaf8;
+    width:48px;
+    height:45px;
+    border-radius:12px;
+    font-size:22px;
+    transition:.2s;
+}
+
+.star-btn.active{
+    background:#fff0b8;
+    border-color:#e6a33f;
+    transform:translateY(-2px);
+}
+
+.review-submit{
+    width:100%;
+    min-height:54px;
+}
+
+.review-list{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.review-card{
+    background:#fffaf8;
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:22px;
+    box-shadow:0 10px 30px rgba(70,30,30,.05);
+}
+
+.review-header{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    align-items:flex-start;
+}
+
+.review-name{
+    font-weight:950;
+    font-size:18px;
+}
+
+.review-stars{
+    color:#e6a33f;
+    letter-spacing:2px;
+    font-size:15px;
+}
+
+.review-text{
+    margin-top:15px;
+    color:var(--brown-light);
+    line-height:1.65;
+}
+
+.review-date{
+    display:block;
+    margin-top:15px;
+    color:#a58d88;
+    font-size:11px;
+}
+
+.review-empty{
+    grid-column:1/-1;
+    text-align:center;
+    color:var(--brown-light);
+    padding:30px;
+}
+
+/* =========================
+   DATABASE
+========================= */
 
 .database-section{
     background:#fff;
@@ -999,12 +1221,63 @@ textarea{
     font-weight:900;
 }
 
+.admin-login-form{
+    display:grid;
+    gap:15px;
+    max-width:760px;
+}
+
+.admin-login-form>.btn{
+    width:100%;
+    min-height:52px;
+}
+
+.admin-message{
+    margin:0;
+    color:#b43f64;
+    font-weight:800;
+}
+
+.admin-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.order-stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin:0 0 18px;
+}
+
+.order-stats>div{
+    padding:18px;
+    border:1px solid var(--border);
+    background:#fffaf8;
+    border-radius:18px;
+}
+
+.order-stats strong{
+    display:block;
+    font-size:28px;
+    color:var(--pink);
+}
+
+.order-stats span{
+    color:var(--brown-light);
+    font-size:12px;
+    font-weight:800;
+}
+
 .order-record{
     border:1px solid var(--border);
     border-radius:18px;
     padding:18px;
     margin-top:12px;
     background:#fffaf8;
+    position:relative;
 }
 
 .order-record strong{
@@ -1017,13 +1290,68 @@ textarea{
     margin-top:5px;
 }
 
+.order-top{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    align-items:flex-start;
+}
+
+.order-meta{
+    display:grid;
+    gap:7px;
+    margin-top:12px;
+}
+
+.order-status{
+    border:none;
+    border-radius:999px;
+    padding:8px 11px;
+    font-size:12px;
+    font-weight:900;
+    background:#fff0f5;
+    color:#b43f64;
+}
+
+.order-actions{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:15px;
+}
+
+.order-actions button{
+    border:1px solid var(--border);
+    background:white;
+    padding:9px 12px;
+    border-radius:11px;
+    font-weight:850;
+}
+
+.order-actions .danger{
+    color:#b42318;
+}
+
+.reference-thumb{
+    display:block;
+    width:min(100%,240px);
+    max-height:220px;
+    object-fit:cover;
+    border-radius:16px;
+    margin-top:12px;
+    border:1px solid var(--border);
+    cursor:pointer;
+}
+
 .database-empty{
     color:var(--brown-light);
     padding:20px;
     text-align:center;
 }
 
-/* CONTACT */
+/* =========================
+   CONTACT
+========================= */
 
 .contact-grid{
     display:grid;
@@ -1058,7 +1386,9 @@ textarea{
     line-height:1.6;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
     background:#241313;
@@ -1108,11 +1438,9 @@ footer{
     font-size:13px;
 }
 
-
-/* CLOUD ORDER DASHBOARD */
-.admin-login-form{display:grid;gap:15px;max-width:760px}.admin-login-form>.btn{width:100%;min-height:52px}.admin-message{margin:0;color:#b43f64;font-weight:800}.admin-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.order-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 18px}.order-stats>div{padding:18px;border:1px solid var(--border);background:#fffaf8;border-radius:18px}.order-stats strong{display:block;font-size:28px;color:var(--pink)}.order-stats span{color:var(--brown-light);font-size:12px;font-weight:800}.order-record{position:relative}.order-top{display:flex;justify-content:space-between;gap:15px;align-items:flex-start}.order-meta{display:grid;gap:7px;margin-top:12px}.order-status{border:none;border-radius:999px;padding:8px 11px;font-size:12px;font-weight:900;background:#fff0f5;color:#b43f64}.order-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.order-actions button{border:1px solid var(--border);background:white;padding:9px 12px;border-radius:11px;font-weight:850}.order-actions .danger{color:#b42318}.reference-thumb{display:block;width:min(100%,240px);max-height:220px;object-fit:cover;border-radius:16px;margin-top:12px;border:1px solid var(--border);cursor:pointer}.upload-box{border:1.5px dashed #dfc9c3;border-radius:18px;padding:24px;text-align:center;background:#fffaf8;transition:.25s}.upload-box:hover{border-color:var(--pink);background:#fff6f9}.upload-box input{display:none}.upload-icon{font-size:34px;margin-bottom:5px}.upload-box strong,.upload-box small{display:block}.upload-box small{color:var(--brown-light);margin-top:5px}.image-preview-wrap{margin-top:10px;padding:12px;border:1px solid var(--border);border-radius:18px;background:#fffaf8}.image-preview-wrap img{display:block;width:100%;max-height:250px;object-fit:contain;border-radius:12px}.image-preview-wrap button{margin-top:10px;border:0;background:#2c1818;color:#fff;padding:9px 13px;border-radius:10px;font-weight:800}.form-field label span{font-weight:600;color:var(--brown-light);font-size:12px}.cloud-note{font-size:12px;color:var(--brown-light);margin-top:8px}
-
-/* TOAST */
+/* =========================
+   TOAST
+========================= */
 
 #toast{
     position:fixed;
@@ -1135,7 +1463,9 @@ footer{
     opacity:1;
 }
 
-/* REVEAL */
+/* =========================
+   REVEAL
+========================= */
 
 .reveal{
     opacity:0;
@@ -1148,7 +1478,9 @@ footer{
     transform:translateY(0);
 }
 
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media(max-width:950px){
 
@@ -1198,6 +1530,10 @@ footer{
         grid-template-columns:repeat(2,1fr);
     }
 
+    .review-list{
+        grid-template-columns:repeat(2,1fr);
+    }
+
     .about-art{
         order:-1;
     }
@@ -1242,7 +1578,8 @@ footer{
 
     .feature-grid,
     .cake-grid,
-    .flavor-grid{
+    .flavor-grid,
+    .review-list{
         grid-template-columns:1fr;
     }
 
@@ -1255,25 +1592,32 @@ footer{
         width:100%;
     }
 
-    .form-grid{
+    .form-grid,
+    .review-form-grid{
         grid-template-columns:1fr;
     }
 
     .form-field.full,
-    .submit-area{
+    .submit-area,
+    .review-form-grid .full{
         grid-column:auto;
     }
 
     .form-card,
     .order-intro,
     .urgent-box,
-    .database-card{
+    .database-card,
+    .review-form-card{
         padding:20px;
         border-radius:22px;
     }
 
     .stats{
         grid-template-columns:1fr;
+    }
+
+    .order-stats{
+        grid-template-columns:repeat(2,1fr);
     }
 
     .about-art{
@@ -1293,6 +1637,10 @@ footer{
         width:100%;
     }
 
+    .review-header{
+        flex-direction:column;
+    }
+
     #toast{
         left:15px;
         right:15px;
@@ -1302,7 +1650,6 @@ footer{
 }
 </style>
 
-<!-- Firebase is loaded as modular CDN scripts in the module below. Replace the firebaseConfig values before publishing. -->
 </head>
 
 <body>
@@ -1319,6 +1666,7 @@ footer{
 <div class="bg-circle circle3"></div>
 
 <header id="header">
+
 <div class="container navbar">
 
 <a href="#home" class="logo">
@@ -1330,6 +1678,7 @@ footer{
     <a href="#home">Home</a>
     <a href="#cakes">Cakes</a>
     <a href="#flavors">Flavors</a>
+    <a href="#reviews">Reviews</a>
     <a href="#about">About</a>
     <a href="#urgent">Urgent Order</a>
     <a href="#order">Order</a>
@@ -1344,7 +1693,9 @@ footer{
 
 <main>
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero" id="home">
 
@@ -1429,7 +1780,9 @@ Customize Yours ✨
 </div>
 </section>
 
-<!-- FEATURES -->
+<!-- =========================
+     FEATURES
+========================= -->
 
 <section style="padding-top:20px;">
 
@@ -1470,19 +1823,27 @@ Customize Yours ✨
 </div>
 </section>
 
-<!-- CAKES -->
+<!-- =========================
+     CAKES
+========================= -->
 
 <section id="cakes">
 
 <div class="container">
 
 <div class="section-title reveal">
-<div class="eyebrow">Our signature collection</div>
+
+<div class="eyebrow">
+Our signature collection
+</div>
+
 <h2>Pick your perfect slice.</h2>
+
 <p>
 From timeless classics to playful celebrations,
 discover a CakeHub favorite for every occasion.
 </p>
+
 </div>
 
 <div class="cake-grid">
@@ -1490,6 +1851,7 @@ discover a CakeHub favorite for every occasion.
 <article class="product reveal">
 
 <div class="product-image product-bg1">
+
 <span class="product-tag">BESTSELLER</span>
 
 <div class="mini-cake">
@@ -1497,20 +1859,29 @@ discover a CakeHub favorite for every occasion.
 <div class="mini-top"></div>
 <div class="mini-cream"></div>
 </div>
+
 </div>
 
 <div class="product-info">
+
 <h3>Strawberry Dream</h3>
-<p>Soft vanilla cake, creamy frosting and a sweet strawberry finish.</p>
+
+<p>
+Soft vanilla cake, creamy frosting and a sweet strawberry finish.
+</p>
 
 <div class="price-row">
+
 <span class="price">From PKR 2,499</span>
 
-<button class="btn btn-primary order-button"
+<button
+class="btn btn-primary order-button"
 data-cake="Strawberry Dream">
 Order →
 </button>
+
 </div>
+
 </div>
 
 </article>
@@ -1518,32 +1889,50 @@ Order →
 <article class="product reveal">
 
 <div class="product-image product-bg2">
+
 <span class="product-tag">RICH</span>
 
 <div class="mini-cake">
-<div class="mini-bottom"
-style="background:linear-gradient(90deg,#6b3c2d,#b77b5b,#583126);"></div>
 
-<div class="mini-top"
-style="background:linear-gradient(90deg,#4b2922,#7b4a3d,#3e231e);"></div>
-
-<div class="mini-cream"
-style="background:#f3d7bd;"></div>
+<div
+class="mini-bottom"
+style="background:linear-gradient(90deg,#6b3c2d,#b77b5b,#583126);">
 </div>
+
+<div
+class="mini-top"
+style="background:linear-gradient(90deg,#4b2922,#7b4a3d,#3e231e);">
+</div>
+
+<div
+class="mini-cream"
+style="background:#f3d7bd;">
+</div>
+
+</div>
+
 </div>
 
 <div class="product-info">
+
 <h3>Chocolate Bliss</h3>
-<p>Rich chocolate layers with silky chocolate frosting.</p>
+
+<p>
+Rich chocolate layers with silky chocolate frosting.
+</p>
 
 <div class="price-row">
+
 <span class="price">From PKR 2,699</span>
 
-<button class="btn btn-primary order-button"
+<button
+class="btn btn-primary order-button"
 data-cake="Chocolate Bliss">
 Order →
 </button>
+
 </div>
+
 </div>
 
 </article>
@@ -1551,31 +1940,47 @@ Order →
 <article class="product reveal">
 
 <div class="product-image product-bg3">
+
 <span class="product-tag">CLASSIC</span>
 
 <div class="mini-cake">
-<div class="mini-bottom"
-style="background:linear-gradient(90deg,#e4a63d,#ffe7a8,#d8922d);"></div>
 
-<div class="mini-top"
-style="background:linear-gradient(90deg,#fff5d8,#fff,#f7dc9b);"></div>
+<div
+class="mini-bottom"
+style="background:linear-gradient(90deg,#e4a63d,#ffe7a8,#d8922d);">
+</div>
+
+<div
+class="mini-top"
+style="background:linear-gradient(90deg,#fff5d8,#fff,#f7dc9b);">
+</div>
 
 <div class="mini-cream"></div>
+
 </div>
+
 </div>
 
 <div class="product-info">
+
 <h3>Golden Butter</h3>
-<p>A deeply buttery, moist classic with a luxurious golden crumb.</p>
+
+<p>
+A deeply buttery, moist classic with a luxurious golden crumb.
+</p>
 
 <div class="price-row">
+
 <span class="price">From PKR 2,299</span>
 
-<button class="btn btn-primary order-button"
+<button
+class="btn btn-primary order-button"
 data-cake="Golden Butter">
 Order →
 </button>
+
 </div>
+
 </div>
 
 </article>
@@ -1583,31 +1988,47 @@ Order →
 <article class="product reveal">
 
 <div class="product-image product-bg4">
+
 <span class="product-tag">ELEGANT</span>
 
 <div class="mini-cake">
-<div class="mini-bottom"
-style="background:linear-gradient(90deg,#a98bd2,#e9dcff,#8f6cbe);"></div>
 
-<div class="mini-top"
-style="background:linear-gradient(90deg,#f5efff,#fff,#d9c6f3);"></div>
+<div
+class="mini-bottom"
+style="background:linear-gradient(90deg,#a98bd2,#e9dcff,#8f6cbe);">
+</div>
+
+<div
+class="mini-top"
+style="background:linear-gradient(90deg,#f5efff,#fff,#d9c6f3);">
+</div>
 
 <div class="mini-cream"></div>
+
 </div>
+
 </div>
 
 <div class="product-info">
+
 <h3>Velvet Celebration</h3>
-<p>Silky, soft and elegant with a creamy celebration finish.</p>
+
+<p>
+Silky, soft and elegant with a creamy celebration finish.
+</p>
 
 <div class="price-row">
+
 <span class="price">From PKR 2,899</span>
 
-<button class="btn btn-primary order-button"
+<button
+class="btn btn-primary order-button"
 data-cake="Velvet Celebration">
 Order →
 </button>
+
 </div>
+
 </div>
 
 </article>
@@ -1615,139 +2036,85 @@ Order →
 <article class="product reveal">
 
 <div class="product-image product-bg5">
+
 <span class="product-tag">LIGHT</span>
 
 <div class="mini-cake">
-<div class="mini-bottom"
-style="background:linear-gradient(90deg,#82c8e2,#d9f5ff,#67b3d0);"></div>
 
-<div class="mini-top"
-style="background:linear-gradient(90deg,#e8faff,#fff,#bdebf7);"></div>
+<div
+class="mini-bottom"
+style="background:linear-gradient(90deg,#82c8e2,#d9f5ff,#67b3d0);">
+</div>
+
+<div
+class="mini-top"
+style="background:linear-gradient(90deg,#e8faff,#fff,#bdebf7);">
+</div>
 
 <div class="mini-cream"></div>
+
 </div>
+
 </div>
 
 <div class="product-info">
+
 <h3>Vanilla Cloud</h3>
-<p>Light, fluffy vanilla layers that pair beautifully with frosting.</p>
+
+<p>
+Light, fluffy vanilla layers that pair beautifully with frosting.
+</p>
 
 <div class="price-row">
+
 <span class="price">From PKR 2,199</span>
 
-<button class="btn btn-primary order-button"
+<button
+class="btn btn-primary order-button"
 data-cake="Vanilla Cloud">
 Order →
 </button>
+
 </div>
+
 </div>
 
 </article>
-
-
 
 </div>
 </div>
 </section>
 
-<!-- FLAVORS -->
+<!-- =========================
+     FLAVORS
+========================= -->
 
 <section id="flavors">
 
 <div class="container">
 
 <div class="section-title reveal">
-<div class="eyebrow">Cake Flavor Menu</div>
+
+<div class="eyebrow">
+100 FLAVOR MENU
+</div>
+
 <h2>A world of flavors.</h2>
-<p>Choose your favorite flavor or request a custom combination.</p>
-</div>
 
-<div class="flavor-grid">
-
-<div class="flavor reveal"><div class="flavor-icon">🍦</div><h3>Vanilla</h3><p>Light, sweet and classic.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Chocolate</h3><p>Rich, fudgy and deeply chocolatey.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🧈</div><h3>Yellow Butter</h3><p>Moist, buttery and golden.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">☁️</div><h3>White Cake</h3><p>Soft and delicate.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🌀</div><h3>Marble</h3><p>Chocolate and vanilla swirled together.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🌈</div><h3>Funfetti</h3><p>Vanilla with colorful sprinkles.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍓</div><h3>Strawberry</h3><p>Sweet strawberry flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🫐</div><h3>Blueberry</h3><p>Fruity and fresh.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍋</div><h3>Lemon</h3><p>Bright citrus flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍊</div><h3>Orange</h3><p>Fresh citrus flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🥥</div><h3>Coconut</h3><p>Creamy tropical flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍌</div><h3>Banana</h3><p>Soft and naturally sweet.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍍</div><h3>Pineapple</h3><p>Tropical and juicy.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🥭</div><h3>Mango</h3><p>Sweet tropical mango.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍒</div><h3>Cherry</h3><p>Sweet and fruity.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍑</div><h3>Peach</h3><p>Soft fruity sweetness.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🥕</div><h3>Carrot Cake</h3><p>Spiced, moist and delicious.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">☕</div><h3>Coffee</h3><p>Rich coffee-inspired flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍪</div><h3>Cookies & Cream</h3><p>Creamy with cookie pieces.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍯</div><h3>Honey</h3><p>Sweet natural honey flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🌰</div><h3>Hazelnut</h3><p>Nutty and creamy.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🥜</div><h3>Peanut Butter</h3><p>Rich nutty sweetness.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍵</div><h3>Matcha</h3><p>Earthy green tea flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🧁</div><h3>Red Velvet</h3><p>Velvety cocoa cake with creaminess.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍯</div><h3>Salted Caramel</h3><p>Sweet caramel with a salty finish.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Chocolate Fudge</h3><p>Extra rich chocolate flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Chocolate Mint</h3><p>Chocolate with refreshing mint.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🥥</div><h3>Coconut Cream</h3><p>Silky tropical coconut.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍓</div><h3>Strawberry Cheesecake</h3><p>Strawberry with creamy cheesecake flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍋</div><h3>Lemon Raspberry</h3><p>Tangy lemon and sweet raspberry.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🫐</div><h3>Blueberry Cheesecake</h3><p>Blueberry with creamy cheesecake flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Chocolate Hazelnut</h3><p>Chocolate and roasted hazelnut.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🌹</div><h3>Rose</h3><p>Floral and delicately sweet.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🌸</div><h3>Lavender</h3><p>Soft floral-inspired flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🥛</div><h3>Milk Cake</h3><p>Rich milky and creamy.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍮</div><h3>Caramel</h3><p>Deep caramel sweetness.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍇</div><h3>Black Forest</h3><p>Chocolate, cherry and cream inspired.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>German Chocolate</h3><p>Chocolate with rich coconut-style topping.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍰</div><h3>Cheesecake</h3><p>Creamy cheesecake-inspired cake.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍓</div><h3>Raspberry</h3><p>Bright berry flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍐</div><h3>Pear</h3><p>Delicate fruity sweetness.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍎</div><h3>Apple Cinnamon</h3><p>Warm apple and cinnamon flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Mocha</h3><p>Chocolate and coffee together.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🥭</div><h3>Mango Passion Fruit</h3><p>Tropical and refreshing.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍋</div><h3>Lemon Blueberry</h3><p>Lemon with sweet blueberry.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🥥</div><h3>Pina Colada</h3><p>Pineapple and coconut inspired.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Rocky Road</h3><p>Chocolate with rich mix-ins.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍪</div><h3>Oreo</h3><p>Chocolate cookie and cream flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍬</div><h3>Toffee</h3><p>Buttery caramelized sweetness.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Triple Chocolate</h3><p>Three layers of chocolate goodness.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍓</div><h3>Strawberry Cream</h3><p>Strawberries with creamy frosting.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Nutella</h3><p>Chocolate-hazelnut inspired flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🌰</div><h3>Pistachio</h3><p>Delicate roasted nut flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🌰</div><h3>Almond</h3><p>Classic almond sweetness.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Brownie</h3><p>Dense chocolate brownie-inspired cake.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍊</div><h3>Orange Chocolate</h3><p>Chocolate with bright orange notes.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍋</div><h3>Lemon Cream</h3><p>Creamy lemon flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍓</div><h3>Berry Blast</h3><p>Mixed berry-inspired flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍯</div><h3>Honey Almond</h3><p>Honey sweetness with almond.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🥛</div><h3>Milk & Honey</h3><p>Creamy milk with honey sweetness.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Chocolate Orange</h3><p>Rich chocolate and orange.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍒</div><h3>Cherry Chocolate</h3><p>Chocolate with cherry flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍑</div><h3>Peach Melba</h3><p>Peach and berry inspired.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍵</div><h3>Green Tea</h3><p>Delicate tea-inspired flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🌰</div><h3>Praline</h3><p>Sweet roasted nut flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Chocolate Caramel</h3><p>Chocolate with smooth caramel.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍓</div><h3>Raspberry White Chocolate</h3><p>Berry flavor with creamy white chocolate.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🥭</div><h3>Mango Coconut</h3><p>Tropical mango and coconut.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍍</div><h3>Pineapple Coconut</h3><p>Bright pineapple and coconut.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Chocolate Espresso</h3><p>Bold chocolate and coffee flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍮</div><h3>Vanilla Caramel</h3><p>Vanilla with buttery caramel.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍓</div><h3>Strawberry Lemon</h3><p>Sweet strawberry and citrus.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍊</div><h3>Citrus Cake</h3><p>Fresh mixed citrus flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍫</div><h3>Chocolate Raspberry</h3><p>Rich chocolate and raspberry.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🥜</div><h3>Peanut Chocolate</h3><p>Chocolate with roasted peanut flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍪</div><h3>Cookie Dough</h3><p>Sweet cookie-inspired flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">🍰</div><h3>Birthday Cake</h3><p>Classic celebratory cake flavor.</p></div>
-<div class="flavor reveal"><div class="flavor-icon">✨</div><h3>Custom Flavor</h3><p>Tell us your own flavor idea.</p></div>
+<p>
+Choose from 100 delicious CakeHub flavors.
+</p>
 
 </div>
+
+<div class="flavor-grid" id="flavorGrid"></div>
+
 </div>
 </section>
 
-<!-- ABOUT -->
+<!-- =========================
+     ABOUT
+========================= -->
 
 <section class="about" id="about">
 
@@ -1777,7 +2144,7 @@ design and the details that make your celebration special.
 </div>
 
 <div class="stat">
-<strong>70+</strong>
+<strong>100</strong>
 <span>Flavor choices</span>
 </div>
 
@@ -1797,7 +2164,9 @@ design and the details that make your celebration special.
 </div>
 </section>
 
-<!-- URGENT ORDER -->
+<!-- =========================
+     URGENT ORDER
+========================= -->
 
 <section class="urgent" id="urgent">
 
@@ -1821,7 +2190,7 @@ cake request and availability.
 
 <a
 class="btn btn-whatsapp"
-href="https://wa.me/923133489623?text=Hello%20CakeHub%2C%20I%20need%20an%20URGENT%20cake%20order.%20Please%20let%20me%20know%20if%20you%20can%20help."
+href="https://wa.me/923133489623?text=Hello%20CakeHub%2C%20I%20need%20an%20URGENT%20cake%20order."
 target="_blank">
 💬 WhatsApp Urgently
 </a>
@@ -1838,7 +2207,9 @@ href="tel:03133489623">
 </div>
 </section>
 
-<!-- ORDER -->
+<!-- =========================
+     ORDER
+========================= -->
 
 <section class="order-section" id="order">
 
@@ -1846,31 +2217,41 @@ href="tel:03133489623">
 
 <div class="order-intro reveal">
 
-<div class="eyebrow">Make it yours</div>
+<div class="eyebrow">
+Make it yours
+</div>
 
-<h2>Have a cake idea?</h2>
+<h2>
+Have a cake idea?
+</h2>
 
 <p>
 Tell us what you're celebrating and what you have in mind.
-Your order is securely sent to CakeHub online and prepared as a WhatsApp message.
+Your order is saved securely online and prepared as a WhatsApp message.
 </p>
 
 <div class="order-points">
+
 <div>✓ Choose your flavor</div>
 <div>✓ Choose your size</div>
 <div>✓ Add your celebration date</div>
+<div>✓ Add your reference cake image</div>
 <div>✓ Describe your dream design</div>
 <div>✓ Send everything through WhatsApp</div>
+
 </div>
 
 </div>
 
 <div class="form-card reveal">
 
-<div class="section-title"
+<div
+class="section-title"
 style="text-align:left;margin-bottom:25px;">
 
-<div class="eyebrow">Order request</div>
+<div class="eyebrow">
+Order request
+</div>
 
 <h2 style="font-size:38px;">
 Let's create something sweet.
@@ -1918,86 +2299,9 @@ Cake / Flavor
 
 <select id="cakeFlavor" required>
 
-<option value="">Choose a flavor</option>
-
-<option>Vanilla</option>
-<option>Chocolate</option>
-<option>Yellow Butter Cake</option>
-<option>White Cake</option>
-<option>Marble</option>
-<option>Funfetti</option>
-<option>Strawberry</option>
-<option>Blueberry</option>
-<option>Lemon</option>
-<option>Orange</option>
-<option>Coconut</option>
-<option>Banana</option>
-<option>Pineapple</option>
-<option>Mango</option>
-<option>Cherry</option>
-<option>Peach</option>
-<option>Carrot Cake</option>
-<option>Coffee</option>
-<option>Cookies & Cream</option>
-<option>Honey</option>
-<option>Hazelnut</option>
-<option>Peanut Butter</option>
-<option>Matcha</option>
-<option>Red Velvet</option>
-<option>Salted Caramel</option>
-<option>Chocolate Fudge</option>
-<option>Chocolate Mint</option>
-<option>Coconut Cream</option>
-<option>Strawberry Cheesecake</option>
-<option>Lemon Raspberry</option>
-<option>Blueberry Cheesecake</option>
-<option>Chocolate Hazelnut</option>
-<option>Rose</option>
-<option>Lavender</option>
-<option>Milk Cake</option>
-<option>Caramel</option>
-<option>Black Forest</option>
-<option>German Chocolate</option>
-<option>Cheesecake</option>
-<option>Raspberry</option>
-<option>Pear</option>
-<option>Apple Cinnamon</option>
-<option>Mocha</option>
-<option>Mango Passion Fruit</option>
-<option>Lemon Blueberry</option>
-<option>Pina Colada</option>
-<option>Rocky Road</option>
-<option>Oreo</option>
-<option>Toffee</option>
-<option>Triple Chocolate</option>
-<option>Strawberry Cream</option>
-<option>Nutella</option>
-<option>Pistachio</option>
-<option>Almond</option>
-<option>Brownie</option>
-<option>Orange Chocolate</option>
-<option>Lemon Cream</option>
-<option>Berry Blast</option>
-<option>Honey Almond</option>
-<option>Milk & Honey</option>
-<option>Chocolate Orange</option>
-<option>Cherry Chocolate</option>
-<option>Peach Melba</option>
-<option>Green Tea</option>
-<option>Praline</option>
-<option>Chocolate Caramel</option>
-<option>Raspberry White Chocolate</option>
-<option>Mango Coconut</option>
-<option>Pineapple Coconut</option>
-<option>Chocolate Espresso</option>
-<option>Vanilla Caramel</option>
-<option>Strawberry Lemon</option>
-<option>Citrus Cake</option>
-<option>Chocolate Raspberry</option>
-<option>Peanut Chocolate</option>
-<option>Cookie Dough</option>
-<option>Birthday Cake</option>
-<option>Custom Flavor</option>
+<option value="">
+Choose a flavor
+</option>
 
 </select>
 
@@ -2049,34 +2353,116 @@ placeholder="Birthday, wedding, etc.">
 </div>
 
 <div class="form-field">
-<label for="servings">Number of Servings</label>
+
+<label for="servings">
+Number of Servings
+</label>
+
 <select id="servings">
-<option>Up to 8 people</option><option>9–12 people</option><option>13–20 people</option><option>21–30 people</option><option>31–50 people</option><option>50+ people</option>
+
+<option>Up to 8 people</option>
+<option>9–12 people</option>
+<option>13–20 people</option>
+<option>21–30 people</option>
+<option>31–50 people</option>
+<option>50+ people</option>
+
 </select>
+
 </div>
 
 <div class="form-field">
-<label for="cakeColor">Preferred Cake Color</label>
-<input id="cakeColor" type="text" placeholder="Pink, white, gold…">
+
+<label for="cakeColor">
+Preferred Cake Color
+</label>
+
+<input
+id="cakeColor"
+type="text"
+placeholder="Pink, white, gold…">
+
 </div>
 
 <div class="form-field">
-<label for="cakeWriting">Cake Writing</label>
-<input id="cakeWriting" type="text" maxlength="100" placeholder="Happy Birthday Umar!">
+
+<label for="cakeWriting">
+Cake Writing
+</label>
+
+<input
+id="cakeWriting"
+type="text"
+maxlength="100"
+placeholder="Happy Birthday!">
+
 </div>
 
 <div class="form-field">
-<label for="frosting">Frosting Preference</label>
-<select id="frosting"><option>Buttercream</option><option>Whipped cream</option><option>Chocolate ganache</option><option>Cream cheese</option><option>Not sure — recommend for me</option></select>
+
+<label for="frosting">
+Frosting Preference
+</label>
+
+<select id="frosting">
+
+<option>Buttercream</option>
+<option>Whipped cream</option>
+<option>Chocolate ganache</option>
+<option>Cream cheese</option>
+<option>Not sure — recommend for me</option>
+
+</select>
+
 </div>
 
-<div class="form-field full reference-field">
-<label for="referenceImage">Reference Cake Image <span>(optional)</span></label>
+<!-- REFERENCE IMAGE -->
+
+<div class="form-field full">
+
+<label for="referenceImage">
+Reference Cake Image
+<span>(optional)</span>
+</label>
+
 <div class="upload-box" id="uploadBox">
-<input id="referenceImage" type="file" accept="image/jpeg,image/png,image/webp">
-<div class="upload-icon">🖼️</div><strong>Choose a reference cake image</strong><small>JPG, PNG or WebP • compressed before saving</small>
+
+<input
+id="referenceImage"
+type="file"
+accept="image/jpeg,image/png,image/webp">
+
+<div class="upload-icon">
+🖼️
 </div>
-<div id="imagePreviewWrap" class="image-preview-wrap" hidden><img id="imagePreview" alt="Cake reference preview"><button type="button" id="removeImage">Remove image</button></div>
+
+<strong>
+Choose a reference cake image
+</strong>
+
+<small>
+JPG, PNG or WebP • compressed before saving
+</small>
+
+</div>
+
+<div
+id="imagePreviewWrap"
+class="image-preview-wrap"
+hidden>
+
+<img
+id="imagePreview"
+alt="Cake reference preview">
+
+<button
+type="button"
+id="removeImage">
+Remove image
+</button>
+
+</div>
+
 </div>
 
 <div class="form-field full">
@@ -2105,51 +2491,343 @@ Send Order on WhatsApp 💬
 
 </div>
 
-<div id="successMessage" class="success-message"></div>
+<div
+id="successMessage"
+class="success-message">
+</div>
+
+</form>
+
+</div>
+</div>
+</section>
+
+<!-- =========================
+     REVIEWS
+========================= -->
+
+<section
+class="reviews-section"
+id="reviews">
+
+<div class="container">
+
+<div class="section-title reveal">
+
+<div class="eyebrow">
+Customer Reviews
+</div>
+
+<h2>
+Sweet words from our customers.
+</h2>
+
+<p>
+Tell us about your CakeHub experience.
+Reviews are saved online and shared with other customers.
+</p>
+
+</div>
+
+<div class="review-form-card reveal">
+
+<form id="reviewForm">
+
+<div class="review-form-grid">
+
+<div class="form-field">
+
+<label for="reviewName">
+Your name
+</label>
+
+<input
+id="reviewName"
+type="text"
+maxlength="60"
+required
+placeholder="Your name">
+
+</div>
+
+<div class="form-field">
+
+<label>
+Your rating
+</label>
+
+<div
+class="stars-input"
+id="starsInput">
+
+<button
+type="button"
+class="star-btn"
+data-rating="1">
+★
+</button>
+
+<button
+type="button"
+class="star-btn"
+data-rating="2">
+★
+</button>
+
+<button
+type="button"
+class="star-btn"
+data-rating="3">
+★
+</button>
+
+<button
+type="button"
+class="star-btn"
+data-rating="4">
+★
+</button>
+
+<button
+type="button"
+class="star-btn"
+data-rating="5">
+★
+</button>
+
+</div>
+
+</div>
+
+<div class="form-field full">
+
+<label for="reviewText">
+Your review
+</label>
+
+<textarea
+id="reviewText"
+maxlength="500"
+required
+placeholder="How was your CakeHub experience?"></textarea>
+
+</div>
+
+<div class="form-field full">
+
+<button
+class="btn btn-primary review-submit"
+type="submit">
+
+Publish Review ⭐
+
+</button>
+
+</div>
+
+</div>
 
 </form>
 
 </div>
 
+<div
+class="review-list"
+id="reviewList">
+
+<div class="review-empty">
+Loading customer reviews...
+</div>
+
+</div>
+
 </div>
 </section>
 
-<!-- DATABASE -->
-<section class="database-section" id="database">
+<!-- =========================
+     DATABASE / PRIVATE LOGIN
+     No public admin button.
+========================= -->
+
+<section
+class="database-section"
+id="database">
+
 <div class="container">
-  <div class="section-title reveal">
-    <div class="eyebrow">CakeHub Cloud Orders</div>
-    <h2>Your order control center.</h2>
-    <p>Orders are stored securely online, so your authorized dashboard can access them from another phone, tablet or computer.</p>
-  </div>
-  <div class="database-card reveal">
-    <div id="adminLoginView">
-      <div class="database-header">
-        <div><h3>🔐 Admin access</h3><small>Only the CakeHub admin account can view orders.</small></div>
-        <div class="database-status" id="databaseStatus">Cloud not connected</div>
-      </div>
-      <form id="adminLoginForm" class="admin-login-form">
-        <div class="form-grid">
-          <div class="form-field"><label for="adminEmail">Admin email</label><input id="adminEmail" type="email" placeholder="your-admin@email.com" required></div>
-          <div class="form-field"><label for="adminPassword">Password</label><input id="adminPassword" type="password" placeholder="Admin password" required></div>
-        </div>
-        <button class="btn btn-primary" type="submit">Sign in to orders →</button>
-        <p id="adminLoginMessage" class="admin-message"></p>
-      </form>
-    </div>
-    <div id="adminPanel" hidden>
-      <div class="database-header">
-        <div><h3>📦 Live order inbox</h3><small id="adminIdentity"></small></div>
-        <div class="admin-actions"><span class="database-status" id="databaseStatusLogged">Cloud connected ✓</span><button id="adminLogout" class="btn btn-secondary" type="button">Log out</button></div>
-      </div>
-      <div class="order-stats"><div><strong id="totalOrders">0</strong><span>Total</span></div><div><strong id="newOrders">0</strong><span>New</span></div><div><strong id="approvedOrders">0</strong><span>Approved</span></div><div><strong id="completedOrders">0</strong><span>Completed</span></div></div>
-      <div id="orderRecords"><div class="database-empty">Loading orders…</div></div>
-    </div>
-  </div>
+
+<div class="section-title reveal">
+
+<div class="eyebrow">
+CakeHub Cloud
+</div>
+
+<h2>
+Order control center.
+</h2>
+
+<p>
+Private admin login for viewing and managing orders.
+There is no public Admin button.
+</p>
+
+</div>
+
+<div class="database-card reveal">
+
+<div id="adminLoginView">
+
+<div class="database-header">
+
+<div>
+
+<h3>
+🔐 Private admin access
+</h3>
+
+<small>
+Authorized CakeHub account only.
+</small>
+
+</div>
+
+<div
+class="database-status"
+id="databaseStatus">
+Cloud not connected
+</div>
+
+</div>
+
+<form
+id="adminLoginForm"
+class="admin-login-form">
+
+<div class="form-grid">
+
+<div class="form-field">
+
+<label for="adminEmail">
+Admin email
+</label>
+
+<input
+id="adminEmail"
+type="email"
+placeholder="your-admin@email.com"
+required>
+
+</div>
+
+<div class="form-field">
+
+<label for="adminPassword">
+Password
+</label>
+
+<input
+id="adminPassword"
+type="password"
+placeholder="Admin password"
+required>
+
+</div>
+
+</div>
+
+<button
+class="btn btn-primary"
+type="submit">
+
+Sign in to orders →
+
+</button>
+
+<p
+id="adminLoginMessage"
+class="admin-message">
+</p>
+
+</form>
+
+</div>
+
+<div
+id="adminPanel"
+hidden>
+
+<div class="database-header">
+
+<div>
+
+<h3>
+📦 Live order inbox
+</h3>
+
+<small id="adminIdentity"></small>
+
+</div>
+
+<div class="admin-actions">
+
+<span
+class="database-status">
+Cloud connected ✓
+</span>
+
+<button
+id="adminLogout"
+class="btn btn-secondary"
+type="button">
+
+Log out
+
+</button>
+
+</div>
+
+</div>
+
+<div class="order-stats">
+
+<div>
+<strong id="totalOrders">0</strong>
+<span>Total</span>
+</div>
+
+<div>
+<strong id="newOrders">0</strong>
+<span>New</span>
+</div>
+
+<div>
+<strong id="approvedOrders">0</strong>
+<span>Approved</span>
+</div>
+
+<div>
+<strong id="completedOrders">0</strong>
+<span>Completed</span>
+</div>
+
+</div>
+
+<div id="orderRecords">
+
+<div class="database-empty">
+Loading orders…
+</div>
+
+</div>
+
+</div>
+
+</div>
 </div>
 </section>
 
-<!-- CONTACT -->
+<!-- =========================
+     CONTACT
+========================= -->
 
 <section>
 
@@ -2175,9 +2853,13 @@ For quick questions or urgent help, call us directly.
 
 <div class="contact-box reveal">
 
-<div class="contact-icon">📞</div>
+<div class="contact-icon">
+📞
+</div>
 
-<h3>Call CakeHub</h3>
+<h3>
+Call CakeHub
+</h3>
 
 <p>
 03133489623
@@ -2187,19 +2869,22 @@ For quick questions or urgent help, call us directly.
 class="btn btn-call"
 href="tel:03133489623"
 style="margin-top:15px;width:100%;">
+
 Call Now →
+
 </a>
 
 </div>
 
 </div>
-
 </div>
 </section>
 
 </main>
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -2255,7 +2940,6 @@ Baked with ❤️.
 </div>
 
 </div>
-
 </footer>
 
 <div id="toast">
@@ -2263,238 +2947,2070 @@ CakeHub
 </div>
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, query, orderBy, updateDoc, deleteDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 /* =====================================================
-   CAKEHUB — FIREBASE CONFIG
-   Replace these values with the config from your Firebase project.
-   Firebase's web SDK supports modular CDN imports and Firestore/Auth.
+   FIREBASE
 ===================================================== */
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    query,
+    orderBy,
+    updateDoc,
+    deleteDoc,
+    doc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+/* =====================================================
+   FIREBASE CONFIG
+   REPLACE THESE WITH YOUR FIREBASE CONFIG
+===================================================== */
+
 const firebaseConfig = {
-  apiKey: "PASTE_YOUR_API_KEY",
-  authDomain: "PASTE_YOUR_PROJECT.firebaseapp.com",
-  projectId: "PASTE_YOUR_PROJECT_ID",
-  storageBucket: "PASTE_YOUR_PROJECT.firebasestorage.app",
-  messagingSenderId: "PASTE_YOUR_SENDER_ID",
-  appId: "PASTE_YOUR_APP_ID"
+
+    apiKey:
+        "PASTE_YOUR_API_KEY",
+
+    authDomain:
+        "PASTE_YOUR_PROJECT.firebaseapp.com",
+
+    projectId:
+        "PASTE_YOUR_PROJECT_ID",
+
+    storageBucket:
+        "PASTE_YOUR_PROJECT.firebasestorage.app",
+
+    messagingSenderId:
+        "PASTE_YOUR_SENDER_ID",
+
+    appId:
+        "PASTE_YOUR_APP_ID"
 };
 
+
+/* =====================================================
+   BUSINESS SETTINGS
+===================================================== */
+
 const BUSINESS_PHONE = "03133489623";
+
 const WHATSAPP_NUMBER = "923133489623";
+
+
 let cloudReady = false;
+
 let firebaseApp = null;
+
 let db = null;
+
 let auth = null;
+
 let currentImageData = "";
-let unsubscribeNotUsed = null;
+
+let selectedRating = 0;
+
+
+/* =====================================================
+   FIREBASE START
+===================================================== */
 
 function firebaseConfigured(){
-  return firebaseConfig.apiKey && !firebaseConfig.apiKey.startsWith("PASTE_") && firebaseConfig.projectId && !firebaseConfig.projectId.startsWith("PASTE_");
+
+    return (
+        firebaseConfig.apiKey &&
+        !firebaseConfig.apiKey.startsWith("PASTE_") &&
+        firebaseConfig.projectId &&
+        !firebaseConfig.projectId.startsWith("PASTE_")
+    );
 }
+
 
 if(firebaseConfigured()){
-  firebaseApp=initializeApp(firebaseConfig);
-  db=getFirestore(firebaseApp);
-  auth=getAuth(firebaseApp);
-  cloudReady=true;
+
+    firebaseApp =
+        initializeApp(firebaseConfig);
+
+    db =
+        getFirestore(firebaseApp);
+
+    auth =
+        getAuth(firebaseApp);
+
+    cloudReady = true;
 }
 
-/* LOADER */
-window.addEventListener("load",()=>setTimeout(()=>document.getElementById("loader")?.classList.add("hide"),700));
 
-/* HEADER */
-const header=document.getElementById("header");
-window.addEventListener("scroll",()=>header.classList.toggle("scrolled",window.scrollY>30));
+/* =====================================================
+   100 FLAVORS
+===================================================== */
 
-/* MOBILE MENU */
-const menuButton=document.getElementById("menuButton");
-const navLinks=document.getElementById("navLinks");
-menuButton?.addEventListener("click",()=>{navLinks.classList.toggle("open");menuButton.textContent=navLinks.classList.contains("open")?"✕":"☰"});
-document.querySelectorAll(".nav-links a").forEach(link=>link.addEventListener("click",()=>{navLinks.classList.remove("open");menuButton.textContent="☰"}));
+const flavors = [
 
-/* REVEAL */
-const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}}),{threshold:.08});
-document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+["🍦","Vanilla","Light, sweet and classic."],
+["🍫","Chocolate","Rich, fudgy and deeply chocolatey."],
+["🧈","Yellow Butter","Moist, buttery and golden."],
+["☁️","White Cake","Soft and delicate."],
+["🌀","Marble","Chocolate and vanilla swirled together."],
+["🌈","Funfetti","Vanilla with colorful sprinkles."],
+["🍓","Strawberry","Sweet strawberry flavor."],
+["🫐","Blueberry","Fruity and fresh."],
+["🍋","Lemon","Bright citrus flavor."],
+["🍊","Orange","Fresh citrus flavor."],
+["🥥","Coconut","Creamy tropical flavor."],
+["🍌","Banana","Soft and naturally sweet."],
+["🍍","Pineapple","Tropical and juicy."],
+["🥭","Mango","Sweet tropical mango."],
+["🍒","Cherry","Sweet and fruity."],
+["🍑","Peach","Soft fruity sweetness."],
+["🥕","Carrot Cake","Spiced, moist and delicious."],
+["☕","Coffee","Rich coffee-inspired flavor."],
+["🍪","Cookies & Cream","Creamy with cookie pieces."],
+["🍯","Honey","Sweet natural honey flavor."],
+["🌰","Hazelnut","Nutty and creamy."],
+["🥜","Peanut Butter","Rich nutty sweetness."],
+["🍵","Matcha","Earthy green tea flavor."],
+["🧁","Red Velvet","Velvety cocoa cake with creaminess."],
+["🍯","Salted Caramel","Sweet caramel with a salty finish."],
+["🍫","Chocolate Fudge","Extra rich chocolate flavor."],
+["🍫","Chocolate Mint","Chocolate with refreshing mint."],
+["🥥","Coconut Cream","Silky tropical coconut."],
+["🍓","Strawberry Cheesecake","Strawberry with creamy cheesecake flavor."],
+["🍋","Lemon Raspberry","Tangy lemon and sweet raspberry."],
+["🫐","Blueberry Cheesecake","Blueberry with creamy cheesecake flavor."],
+["🍫","Chocolate Hazelnut","Chocolate and roasted hazelnut."],
+["🌹","Rose","Floral and delicately sweet."],
+["🌸","Lavender","Soft floral-inspired flavor."],
+["🥛","Milk Cake","Rich milky and creamy."],
+["🍮","Caramel","Deep caramel sweetness."],
+["🍇","Black Forest","Chocolate, cherry and cream inspired."],
+["🍫","German Chocolate","Chocolate with rich coconut-style topping."],
+["🍰","Cheesecake","Creamy cheesecake-inspired cake."],
+["🍓","Raspberry","Bright berry flavor."],
+["🍐","Pear","Delicate fruity sweetness."],
+["🍎","Apple Cinnamon","Warm apple and cinnamon flavor."],
+["🍫","Mocha","Chocolate and coffee together."],
+["🥭","Mango Passion Fruit","Tropical and refreshing."],
+["🍋","Lemon Blueberry","Lemon with sweet blueberry."],
+["🥥","Pina Colada","Pineapple and coconut inspired."],
+["🍫","Rocky Road","Chocolate with rich mix-ins."],
+["🍪","Oreo","Chocolate cookie and cream flavor."],
+["🍬","Toffee","Buttery caramelized sweetness."],
+["🍫","Triple Chocolate","Three layers of chocolate goodness."],
+["🍓","Strawberry Cream","Strawberries with creamy frosting."],
+["🍫","Nutella","Chocolate-hazelnut inspired flavor."],
+["🌰","Pistachio","Delicate roasted nut flavor."],
+["🌰","Almond","Classic almond sweetness."],
+["🍫","Brownie","Dense chocolate brownie-inspired cake."],
+["🍊","Orange Chocolate","Chocolate with bright orange notes."],
+["🍋","Lemon Cream","Creamy lemon flavor."],
+["🍓","Berry Blast","Mixed berry-inspired flavor."],
+["🍯","Honey Almond","Honey sweetness with almond."],
+["🥛","Milk & Honey","Creamy milk with honey sweetness."],
+["🍫","Chocolate Orange","Rich chocolate and orange."],
+["🍒","Cherry Chocolate","Chocolate with cherry flavor."],
+["🍑","Peach Melba","Peach and berry inspired."],
+["🍵","Green Tea","Delicate tea-inspired flavor."],
+["🌰","Praline","Sweet roasted nut flavor."],
+["🍫","Chocolate Caramel","Chocolate with smooth caramel."],
+["🍓","Raspberry White Chocolate","Berry flavor with creamy white chocolate."],
+["🥭","Mango Coconut","Tropical mango and coconut."],
+["🍍","Pineapple Coconut","Bright pineapple and coconut."],
+["🍫","Chocolate Espresso","Bold chocolate and coffee flavor."],
+["🍮","Vanilla Caramel","Vanilla with buttery caramel."],
+["🍓","Strawberry Lemon","Sweet strawberry and citrus."],
+["🍊","Citrus Cake","Fresh mixed citrus flavor."],
+["🍫","Chocolate Raspberry","Rich chocolate and raspberry."],
+["🥜","Peanut Chocolate","Chocolate with roasted peanut flavor."],
+["🍪","Cookie Dough","Sweet cookie-inspired flavor."],
+["🍰","Birthday Cake","Classic celebratory cake flavor."],
+["✨","Custom Flavor","Tell us your own flavor idea."],
 
-/* TOAST */
-const toast=document.getElementById("toast");let toastTimer;
-function showToast(message){toast.textContent=message;toast.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove("show"),3000)}
+["🍫","Dark Chocolate","Deep and elegant dark chocolate."],
+["🍓","Strawberry Shortcake","Classic strawberry and cream."],
+["🍋","Lemon Vanilla","Vanilla with bright lemon."],
+["🍊","Orange Creamsicle","Creamy orange dessert flavor."],
+["🥥","Coconut Chocolate","Coconut with rich chocolate."],
+["🥭","Mango Cream","Smooth mango and cream."],
+["🍒","Cherry Vanilla","Sweet cherry with vanilla."],
+["🫐","Blueberry Vanilla","Blueberry with soft vanilla."],
+["🍯","Honey Vanilla","Gentle vanilla with honey."],
+["🍫","Chocolate Marshmallow","Chocolate with fluffy marshmallow flavor."],
+["🍓","Strawberry Chocolate","Strawberry and chocolate together."],
+["🍎","Apple Caramel","Apple with smooth caramel."],
+["🍑","Peach Vanilla","Peach with creamy vanilla."],
+["🍍","Pineapple Vanilla","Pineapple with soft vanilla."],
+["🌰","Pecan","Rich roasted pecan flavor."],
+["🥜","Peanut Caramel","Peanut with buttery caramel."],
+["🍫","Chocolate Peanut Butter","Classic chocolate and peanut butter."],
+["🍓","Raspberry Lemon","Bright raspberry and citrus."],
+["🥭","Mango Lime","Tropical mango with lime."],
+["🍋","Lemon Coconut","Fresh lemon with coconut."],
+["🍊","Orange Vanilla","Orange with classic vanilla."],
+["🍫","Chocolate Cherry","Chocolate with juicy cherry."],
+["🍓","Strawberry Vanilla","Strawberry and creamy vanilla."],
+["🍯","Caramel Pecan","Caramel with roasted pecans."],
+["🍫","Chocolate Almond","Chocolate and almond combination."],
+["🥥","Coconut Almond","Tropical coconut and almond."],
+["🍵","Matcha Vanilla","Matcha with soft vanilla."],
+["🍫","Espresso Chocolate","Coffee and chocolate richness."],
+["🍓","Mixed Berry","Fresh mixed berry flavor."],
+["✨","CakeHub Special","Our signature custom-inspired flavor."]
 
-/* IMAGE COMPRESSION — keeps the reference image inside the Firestore document without a separate file-storage service. */
+];
+
+
+/* =====================================================
+   RENDER FLAVORS
+===================================================== */
+
+const flavorGrid =
+    document.getElementById("flavorGrid");
+
+const cakeFlavor =
+    document.getElementById("cakeFlavor");
+
+
+flavors.forEach((flavor,index)=>{
+
+    const card =
+        document.createElement("div");
+
+    card.className =
+        "flavor reveal";
+
+    card.innerHTML = `
+
+        <div class="flavor-icon">
+            ${flavor[0]}
+        </div>
+
+        <h3>
+            ${flavor[1]}
+        </h3>
+
+        <p>
+            ${flavor[2]}
+        </p>
+
+    `;
+
+    flavorGrid.appendChild(card);
+
+
+    const option =
+        document.createElement("option");
+
+    option.value =
+        flavor[1];
+
+    option.textContent =
+        `${index + 1}. ${flavor[1]}`;
+
+    cakeFlavor.appendChild(option);
+
+});
+
+
+/* =====================================================
+   LOADER
+===================================================== */
+
+window.addEventListener(
+    "load",
+    () =>
+        setTimeout(
+            () =>
+                document
+                .getElementById("loader")
+                ?.classList.add("hide"),
+            700
+        )
+);
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+const header =
+    document.getElementById("header");
+
+window.addEventListener(
+    "scroll",
+    () =>
+        header.classList.toggle(
+            "scrolled",
+            window.scrollY > 30
+        )
+);
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const navLinks =
+    document.getElementById("navLinks");
+
+menuButton?.addEventListener(
+    "click",
+    () => {
+
+        navLinks.classList.toggle("open");
+
+        menuButton.textContent =
+            navLinks.classList.contains("open")
+                ? "✕"
+                : "☰";
+    }
+);
+
+
+document
+.querySelectorAll(".nav-links a")
+.forEach(link => {
+
+    link.addEventListener(
+        "click",
+        () => {
+
+            navLinks.classList.remove("open");
+
+            menuButton.textContent = "☰";
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    entry.target
+                        .classList
+                        .add("visible");
+
+                    observer.unobserve(
+                        entry.target
+                    );
+                }
+
+            });
+
+        },
+        {
+            threshold:.08
+        }
+    );
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(el =>
+    observer.observe(el)
+);
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+const toast =
+    document.getElementById("toast");
+
+let toastTimer;
+
+
+function showToast(message){
+
+    toast.textContent =
+        message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer =
+        setTimeout(
+            () =>
+                toast.classList.remove("show"),
+            3000
+        );
+}
+
+
+/* =====================================================
+   IMAGE COMPRESSION
+===================================================== */
+
 async function compressImage(file){
-  if(!file) return "";
-  if(!file.type.startsWith("image/")) throw new Error("Please choose an image file.");
-  if(file.size>8*1024*1024) throw new Error("Please choose an image smaller than 8 MB.");
-  const bitmap=await createImageBitmap(file);
-  const max=1000;
-  const scale=Math.min(1,max/Math.max(bitmap.width,bitmap.height));
-  const canvas=document.createElement("canvas");
-  canvas.width=Math.max(1,Math.round(bitmap.width*scale));
-  canvas.height=Math.max(1,Math.round(bitmap.height*scale));
-  const ctx=canvas.getContext("2d");
-  ctx.drawImage(bitmap,0,0,canvas.width,canvas.height);
-  bitmap.close?.();
-  const data=canvas.toDataURL("image/jpeg",.68);
-  if(data.length>850000) return canvas.toDataURL("image/jpeg",.5);
-  return data;
+
+    if(!file)
+        return "";
+
+    if(!file.type.startsWith("image/"))
+        throw new Error(
+            "Please choose an image file."
+        );
+
+    if(file.size > 8 * 1024 * 1024)
+        throw new Error(
+            "Please choose an image smaller than 8 MB."
+        );
+
+    const bitmap =
+        await createImageBitmap(file);
+
+    const max = 1000;
+
+    const scale =
+        Math.min(
+            1,
+            max /
+            Math.max(
+                bitmap.width,
+                bitmap.height
+            )
+        );
+
+    const canvas =
+        document.createElement("canvas");
+
+    canvas.width =
+        Math.max(
+            1,
+            Math.round(
+                bitmap.width * scale
+            )
+        );
+
+    canvas.height =
+        Math.max(
+            1,
+            Math.round(
+                bitmap.height * scale
+            )
+        );
+
+    const ctx =
+        canvas.getContext("2d");
+
+    ctx.drawImage(
+        bitmap,
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    bitmap.close?.();
+
+    let data =
+        canvas.toDataURL(
+            "image/jpeg",
+            .68
+        );
+
+    if(data.length > 850000){
+
+        data =
+            canvas.toDataURL(
+                "image/jpeg",
+                .50
+            );
+    }
+
+    return data;
 }
 
-const referenceImage=document.getElementById("referenceImage");
-const imagePreview=document.getElementById("imagePreview");
-const imagePreviewWrap=document.getElementById("imagePreviewWrap");
-const removeImage=document.getElementById("removeImage");
-referenceImage?.addEventListener("change",async()=>{
-  const file=referenceImage.files?.[0];
-  if(!file) return;
-  try{
-    currentImageData=await compressImage(file);
-    imagePreview.src=currentImageData;
-    imagePreviewWrap.hidden=false;
-    showToast("Reference image added 🖼️");
-  }catch(error){currentImageData="";referenceImage.value="";showToast(error.message||"Could not read image.")}
+
+/* =====================================================
+   REFERENCE IMAGE
+===================================================== */
+
+const referenceImage =
+    document.getElementById(
+        "referenceImage"
+    );
+
+const imagePreview =
+    document.getElementById(
+        "imagePreview"
+    );
+
+const imagePreviewWrap =
+    document.getElementById(
+        "imagePreviewWrap"
+    );
+
+const removeImage =
+    document.getElementById(
+        "removeImage"
+    );
+
+
+referenceImage?.addEventListener(
+    "change",
+    async () => {
+
+        const file =
+            referenceImage.files?.[0];
+
+        if(!file)
+            return;
+
+        try{
+
+            currentImageData =
+                await compressImage(file);
+
+            imagePreview.src =
+                currentImageData;
+
+            imagePreviewWrap.hidden =
+                false;
+
+            showToast(
+                "Reference image added 🖼️"
+            );
+
+        }catch(error){
+
+            currentImageData = "";
+
+            referenceImage.value = "";
+
+            showToast(
+                error.message ||
+                "Could not read image."
+            );
+        }
+
+    }
+);
+
+
+removeImage?.addEventListener(
+    "click",
+    () => {
+
+        currentImageData = "";
+
+        referenceImage.value = "";
+
+        imagePreview.src = "";
+
+        imagePreviewWrap.hidden = true;
+
+    }
+);
+
+
+/* =====================================================
+   ORDER FORM
+===================================================== */
+
+const orderForm =
+    document.getElementById("orderForm");
+
+
+orderForm.addEventListener(
+    "submit",
+    async event => {
+
+        event.preventDefault();
+
+        if(!cloudReady){
+
+            showToast(
+                "Connect Firebase first — order was not saved."
+            );
+
+            return;
+        }
+
+
+        const name =
+            document
+            .getElementById("customerName")
+            .value
+            .trim();
+
+
+        const phone =
+            document
+            .getElementById("customerPhone")
+            .value
+            .trim();
+
+
+        const flavor =
+            cakeFlavor
+            .value
+            .trim();
+
+
+        const size =
+            document
+            .getElementById("cakeSize")
+            .value
+            .trim();
+
+
+        const date =
+            document
+            .getElementById("cakeDate")
+            .value
+            .trim();
+
+
+        const occasion =
+            document
+            .getElementById("occasion")
+            .value
+            .trim();
+
+
+        const servings =
+            document
+            .getElementById("servings")
+            .value
+            .trim();
+
+
+        const cakeColor =
+            document
+            .getElementById("cakeColor")
+            .value
+            .trim();
+
+
+        const cakeWriting =
+            document
+            .getElementById("cakeWriting")
+            .value
+            .trim();
+
+
+        const frosting =
+            document
+            .getElementById("frosting")
+            .value
+            .trim();
+
+
+        const details =
+            document
+            .getElementById("cakeDetails")
+            .value
+            .trim();
+
+
+        if(!name){
+
+            showToast(
+                "Please enter your name."
+            );
+
+            return;
+        }
+
+
+        if(!phone){
+
+            showToast(
+                "Please enter your phone number."
+            );
+
+            return;
+        }
+
+
+        if(!flavor){
+
+            showToast(
+                "Please choose a cake flavor."
+            );
+
+            return;
+        }
+
+
+        const orderData = {
+
+            customerName:name,
+
+            phone,
+
+            flavor,
+
+            size,
+
+            date:
+                date ||
+                "Not specified",
+
+            occasion:
+                occasion ||
+                "Not specified",
+
+            servings,
+
+            cakeColor:
+                cakeColor ||
+                "Not specified",
+
+            cakeWriting:
+                cakeWriting ||
+                "No writing requested",
+
+            frosting,
+
+            details:
+                details ||
+                "No additional details",
+
+            referenceImage:
+                currentImageData ||
+                "",
+
+            status:
+                "New",
+
+            createdAt:
+                serverTimestamp(),
+
+            createdAtClient:
+                new Date().toISOString()
+
+        };
+
+
+        const button =
+            orderForm.querySelector(
+                "button[type=submit]"
+            );
+
+
+        button.disabled = true;
+
+        button.textContent =
+            "Saving order…";
+
+
+        try{
+
+            await addDoc(
+                collection(
+                    db,
+                    "orders"
+                ),
+                orderData
+            );
+
+
+            const whatsappMessage =
+
+`🎂 *CAKEHUB NEW CAKE ORDER*
+
+👤 *CUSTOMER*
+Name: ${name}
+Phone: ${phone}
+
+🍰 *CAKE*
+Flavor: ${flavor}
+Size: ${size}
+Servings: ${servings}
+Celebration Date: ${date || "Not specified"}
+Occasion: ${occasion || "Not specified"}
+Color: ${cakeColor || "Not specified"}
+Writing: ${cakeWriting || "None"}
+Frosting: ${frosting}
+
+🎨 *DESIGN DETAILS*
+${details || "No additional details"}
+
+🖼️ Reference image:
+${currentImageData ? "Attached to the online CakeHub order" : "Not provided"}
+
+Please confirm my cake order. ❤️`;
+
+
+            const whatsappURL =
+                "https://wa.me/" +
+                WHATSAPP_NUMBER +
+                "?text=" +
+                encodeURIComponent(
+                    whatsappMessage
+                );
+
+
+            document
+            .getElementById(
+                "successMessage"
+            )
+            .classList
+            .add("show");
+
+
+            document
+            .getElementById(
+                "successMessage"
+            )
+            .innerHTML =
+
+`🎉 <strong>Order saved online!</strong><br>
+Your order is now in CakeHub's cloud inbox.
+WhatsApp will open with the order details.`;
+
+
+            showToast(
+                "Order saved! Opening WhatsApp… 💬"
+            );
+
+
+            orderForm.reset();
+
+            currentImageData = "";
+
+            imagePreview.src = "";
+
+            imagePreviewWrap.hidden = true;
+
+
+            setTimeout(
+                () => {
+
+                    const w =
+                        window.open(
+                            whatsappURL,
+                            "_blank"
+                        );
+
+                    if(!w)
+                        window.location.href =
+                            whatsappURL;
+
+                },
+                450
+            );
+
+
+        }catch(error){
+
+            console.error(error);
+
+            showToast(
+                "Could not save order. Check Firebase."
+            );
+
+        }finally{
+
+            button.disabled = false;
+
+            button.textContent =
+                "Send Order on WhatsApp 💬";
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   PRODUCT BUTTONS
+===================================================== */
+
+document
+.querySelectorAll(".order-button")
+.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            const cake =
+                button.dataset.cake;
+
+            if(
+                cake.includes("Chocolate")
+            )
+                cakeFlavor.value =
+                    "Chocolate";
+
+            else if(
+                cake.includes("Vanilla")
+            )
+                cakeFlavor.value =
+                    "Vanilla";
+
+            else if(
+                cake.includes("Golden")
+            )
+                cakeFlavor.value =
+                    "Yellow Butter";
+
+            else if(
+                cake.includes("Strawberry")
+            )
+                cakeFlavor.value =
+                    "Strawberry";
+
+            else if(
+                cake.includes("Velvet")
+            )
+                cakeFlavor.value =
+                    "Red Velvet";
+
+            else
+                cakeFlavor.value =
+                    "Custom Flavor";
+
+
+            document
+            .getElementById("order")
+            .scrollIntoView({
+                behavior:"smooth"
+            });
+
+
+            showToast(
+                cake +
+                " selected 🎂"
+            );
+
+        }
+    );
+
 });
-removeImage?.addEventListener("click",()=>{currentImageData="";referenceImage.value="";imagePreview.src="";imagePreviewWrap.hidden=true});
 
-/* ORDER FORM */
-const orderForm=document.getElementById("orderForm");
-const cakeFlavor=document.getElementById("cakeFlavor");
-orderForm.addEventListener("submit",async event=>{
-  event.preventDefault();
-  if(!cloudReady){showToast("Connect Firebase first — the order was not saved.");return}
 
-  const name=document.getElementById("customerName").value.trim();
-  const phone=document.getElementById("customerPhone").value.trim();
-  const flavor=cakeFlavor.value.trim();
-  const size=document.getElementById("cakeSize").value.trim();
-  const date=document.getElementById("cakeDate").value.trim();
-  const occasion=document.getElementById("occasion").value.trim();
-  const servings=document.getElementById("servings").value.trim();
-  const cakeColor=document.getElementById("cakeColor").value.trim();
-  const cakeWriting=document.getElementById("cakeWriting").value.trim();
-  const frosting=document.getElementById("frosting").value.trim();
-  const details=document.getElementById("cakeDetails").value.trim();
+/* =====================================================
+   REVIEWS
+===================================================== */
 
-  if(!name){showToast("Please enter your name.");return}
-  if(!phone){showToast("Please enter your phone number.");return}
-  if(!flavor){showToast("Please choose a cake flavor.");return}
+const reviewForm =
+    document.getElementById(
+        "reviewForm"
+    );
 
-  const orderData={
-    customerName:name,phone,flavor,size,
-    date:date||"Not specified",
-    occasion:occasion||"Not specified",
-    servings,cakeColor:cakeColor||"Not specified",
-    cakeWriting:cakeWriting||"No writing requested",
-    frosting,details:details||"No additional details",
-    referenceImage:currentImageData||"",
-    status:"New",
-    createdAt:serverTimestamp(),
-    createdAtClient:new Date().toISOString()
-  };
+const reviewList =
+    document.getElementById(
+        "reviewList"
+    );
 
-  const button=orderForm.querySelector("button[type=submit]");
-  button.disabled=true;button.textContent="Saving order…";
-  try{
-    await addDoc(collection(db,"orders"),orderData);
-    const whatsappMessage=`🎂 *CAKEHUB NEW CAKE ORDER*\n\n👤 *CUSTOMER*\nName: ${name}\nPhone: ${phone}\n\n🍰 *CAKE*\nFlavor: ${flavor}\nSize: ${size}\nServings: ${servings}\nCelebration Date: ${date||"Not specified"}\nOccasion: ${occasion||"Not specified"}\nColor: ${cakeColor||"Not specified"}\nWriting: ${cakeWriting||"None"}\nFrosting: ${frosting}\n\n🎨 *DESIGN DETAILS*\n${details||"No additional details"}\n\n🖼️ Reference image: ${currentImageData?"Attached to the online order":"Not provided"}\n\nPlease confirm my cake order. ❤️`;
-    const whatsappURL="https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(whatsappMessage);
-    document.getElementById("successMessage").classList.add("show");
-    document.getElementById("successMessage").innerHTML=`🎉 <strong>Order saved online!</strong><br>Your order is now in CakeHub's cloud order inbox. WhatsApp will open with the order details.`;
-    showToast("Order saved online! Opening WhatsApp… 💬");
-    orderForm.reset();currentImageData="";imagePreview.src="";imagePreviewWrap.hidden=true;
-    setTimeout(()=>{const w=window.open(whatsappURL,"_blank");if(!w)window.location.href=whatsappURL},450);
-  }catch(error){
-    console.error(error);showToast("Could not save the order. Check Firebase setup.");
-  }finally{button.disabled=false;button.textContent="Send Order on WhatsApp 💬"}
+const starButtons =
+    document.querySelectorAll(
+        ".star-btn"
+    );
+
+
+/* STAR SELECTION */
+
+starButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            selectedRating =
+                Number(
+                    button.dataset.rating
+                );
+
+
+            starButtons.forEach(
+                star => {
+
+                    star.classList.toggle(
+                        "active",
+                        Number(
+                            star.dataset.rating
+                        ) <=
+                        selectedRating
+                    );
+
+                }
+            );
+
+        }
+    );
+
 });
 
-/* PRODUCT ORDER BUTTONS — Funfetti Party was removed from the collection. */
-document.querySelectorAll(".order-button").forEach(button=>button.addEventListener("click",()=>{
-  const cake=button.dataset.cake;
-  if(cake.includes("Chocolate"))cakeFlavor.value="Chocolate";
-  else if(cake.includes("Vanilla"))cakeFlavor.value="Vanilla";
-  else if(cake.includes("Golden"))cakeFlavor.value="Yellow Butter Cake";
-  else if(cake.includes("Strawberry"))cakeFlavor.value="Strawberry";
-  else if(cake.includes("Velvet"))cakeFlavor.value="Red Velvet";
-  else cakeFlavor.value="Custom Flavor";
-  document.getElementById("order").scrollIntoView({behavior:"smooth"});
-  showToast(cake+" selected 🎂");
-}));
 
-/* ADMIN CLOUD DASHBOARD */
-const adminLoginForm=document.getElementById("adminLoginForm");
-const adminLoginView=document.getElementById("adminLoginView");
-const adminPanel=document.getElementById("adminPanel");
-const adminLoginMessage=document.getElementById("adminLoginMessage");
+/* ESCAPE HTML */
 
-function escapeHTML(value){const div=document.createElement("div");div.textContent=String(value??"");return div.innerHTML}
-function friendlyDate(order){if(order.createdAt?.toDate)return order.createdAt.toDate().toLocaleString();return order.createdAtClient?new Date(order.createdAtClient).toLocaleString():"Unknown"}
+function escapeHTML(value){
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        String(value ?? "");
+
+    return div.innerHTML;
+}
+
+
+/* REVIEW DATE */
+
+function reviewDate(review){
+
+    if(review.createdAt?.toDate){
+
+        return review
+            .createdAt
+            .toDate()
+            .toLocaleDateString();
+
+    }
+
+    if(review.createdAtClient){
+
+        return new Date(
+            review.createdAtClient
+        ).toLocaleDateString();
+
+    }
+
+    return "Recently";
+}
+
+
+/* REVIEW STARS */
+
+function renderStars(rating){
+
+    const number =
+        Math.max(
+            1,
+            Math.min(
+                5,
+                Number(rating) || 5
+            )
+        );
+
+    return "★".repeat(number) +
+           "☆".repeat(5 - number);
+}
+
+
+/* LOAD REVIEWS */
+
+async function loadReviews(){
+
+    if(!cloudReady){
+
+        reviewList.innerHTML = `
+
+            <div class="review-empty">
+
+                Connect Firebase to load
+                customer reviews.
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    try{
+
+        const reviewsQuery =
+            query(
+                collection(
+                    db,
+                    "reviews"
+                ),
+                orderBy(
+                    "createdAtClient",
+                    "desc"
+                )
+            );
+
+
+        const snapshot =
+            await getDocs(
+                reviewsQuery
+            );
+
+
+        const reviews =
+            snapshot.docs.map(
+                item => ({
+                    id:item.id,
+                    ...item.data()
+                })
+            );
+
+
+        if(!reviews.length){
+
+            reviewList.innerHTML = `
+
+                <div class="review-empty">
+
+                    ⭐ No reviews yet.
+                    Be the first to review CakeHub!
+
+                </div>
+
+            `;
+
+            return;
+        }
+
+
+        reviewList.innerHTML = "";
+
+
+        reviews.forEach(review => {
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+            card.className =
+                "review-card reveal";
+
+
+            card.innerHTML = `
+
+                <div class="review-header">
+
+                    <div class="review-name">
+                        ${escapeHTML(
+                            review.name
+                        )}
+                    </div>
+
+                    <div class="review-stars">
+                        ${renderStars(
+                            review.rating
+                        )}
+                    </div>
+
+                </div>
+
+                <div class="review-text">
+                    ${escapeHTML(
+                        review.text
+                    )}
+                </div>
+
+                <small class="review-date">
+                    ${escapeHTML(
+                        reviewDate(review)
+                    )}
+                </small>
+
+            `;
+
+
+            reviewList.appendChild(
+                card
+            );
+
+
+            observer.observe(card);
+
+        });
+
+    }catch(error){
+
+        console.error(error);
+
+        reviewList.innerHTML = `
+
+            <div class="review-empty">
+
+                Could not load reviews.
+                Please check Firebase.
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   SUBMIT REVIEW
+===================================================== */
+
+reviewForm.addEventListener(
+    "submit",
+    async event => {
+
+        event.preventDefault();
+
+
+        if(!cloudReady){
+
+            showToast(
+                "Connect Firebase first."
+            );
+
+            return;
+        }
+
+
+        const name =
+            document
+            .getElementById("reviewName")
+            .value
+            .trim();
+
+
+        const text =
+            document
+            .getElementById("reviewText")
+            .value
+            .trim();
+
+
+        if(!name){
+
+            showToast(
+                "Please enter your name."
+            );
+
+            return;
+        }
+
+
+        if(!selectedRating){
+
+            showToast(
+                "Please choose a star rating."
+            );
+
+            return;
+        }
+
+
+        if(!text){
+
+            showToast(
+                "Please write a review."
+            );
+
+            return;
+        }
+
+
+        const submitButton =
+            reviewForm.querySelector(
+                "button[type=submit]"
+            );
+
+
+        submitButton.disabled = true;
+
+        submitButton.textContent =
+            "Saving review…";
+
+
+        try{
+
+            await addDoc(
+                collection(
+                    db,
+                    "reviews"
+                ),
+                {
+
+                    name,
+
+                    rating:
+                        selectedRating,
+
+                    text,
+
+                    createdAt:
+                        serverTimestamp(),
+
+                    createdAtClient:
+                        new Date().toISOString()
+
+                }
+            );
+
+
+            reviewForm.reset();
+
+            selectedRating = 0;
+
+
+            starButtons.forEach(
+                star =>
+                    star.classList.remove(
+                        "active"
+                    )
+            );
+
+
+            showToast(
+                "Review saved successfully ⭐"
+            );
+
+
+            await loadReviews();
+
+
+        }catch(error){
+
+            console.error(error);
+
+            showToast(
+                "Could not save review."
+            );
+
+        }finally{
+
+            submitButton.disabled =
+                false;
+
+            submitButton.textContent =
+                "Publish Review ⭐";
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   ADMIN ORDER DASHBOARD
+   No public Admin button.
+===================================================== */
+
+const adminLoginForm =
+    document.getElementById(
+        "adminLoginForm"
+    );
+
+const adminLoginView =
+    document.getElementById(
+        "adminLoginView"
+    );
+
+const adminPanel =
+    document.getElementById(
+        "adminPanel"
+    );
+
+const adminLoginMessage =
+    document.getElementById(
+        "adminLoginMessage"
+    );
+
+
+function friendlyDate(order){
+
+    if(order.createdAt?.toDate){
+
+        return order
+            .createdAt
+            .toDate()
+            .toLocaleString();
+
+    }
+
+    if(order.createdAtClient){
+
+        return new Date(
+            order.createdAtClient
+        ).toLocaleString();
+
+    }
+
+    return "Unknown";
+}
+
+
 function updateStats(orders){
-  document.getElementById("totalOrders").textContent=orders.length;
-  document.getElementById("newOrders").textContent=orders.filter(o=>(o.status||"New")==="New").length;
-  document.getElementById("approvedOrders").textContent=orders.filter(o=>o.status==="Approved").length;
-  document.getElementById("completedOrders").textContent=orders.filter(o=>o.status==="Completed").length;
+
+    document.getElementById(
+        "totalOrders"
+    ).textContent =
+        orders.length;
+
+
+    document.getElementById(
+        "newOrders"
+    ).textContent =
+        orders.filter(
+            o =>
+                (o.status || "New")
+                === "New"
+        ).length;
+
+
+    document.getElementById(
+        "approvedOrders"
+    ).textContent =
+        orders.filter(
+            o =>
+                o.status === "Approved"
+        ).length;
+
+
+    document.getElementById(
+        "completedOrders"
+    ).textContent =
+        orders.filter(
+            o =>
+                o.status === "Completed"
+        ).length;
+
 }
+
+
+/* =====================================================
+   RENDER ORDERS
+===================================================== */
 
 async function renderOrders(){
-  if(!db||!auth?.currentUser)return;
-  const container=document.getElementById("orderRecords");
-  container.innerHTML='<div class="database-empty">Loading live orders…</div>';
-  try{
-    const q=query(collection(db,"orders"),orderBy("createdAtClient","desc"));
-    const snap=await getDocs(q);
-    const orders=snap.docs.map(d=>({id:d.id,...d.data()}));
-    updateStats(orders);
-    if(!orders.length){container.innerHTML='<div class="database-empty">📦 No orders yet.</div>';return}
-    container.innerHTML="";
-    orders.forEach(order=>{
-      const record=document.createElement("article");record.className="order-record";
-      const image=order.referenceImage?`<img class="reference-thumb" src="${order.referenceImage}" alt="Reference cake image" title="Open reference image">`:"";
-      record.innerHTML=`<div class="order-top"><div><strong>🎂 ${escapeHTML(order.flavor)}</strong><div><b>${escapeHTML(order.customerName)}</b> • ${escapeHTML(order.phone)}</div></div><select class="order-status" data-id="${order.id}"><option ${order.status==="New"?"selected":""}>New</option><option ${order.status==="Approved"?"selected":""}>Approved</option><option ${order.status==="Completed"?"selected":""}>Completed</option><option ${order.status==="Cancelled"?"selected":""}>Cancelled</option></select></div>
-      <div class="order-meta"><div><b>Size:</b> ${escapeHTML(order.size)}</div><div><b>Servings:</b> ${escapeHTML(order.servings)}</div><div><b>Date:</b> ${escapeHTML(order.date)}</div><div><b>Occasion:</b> ${escapeHTML(order.occasion)}</div><div><b>Color:</b> ${escapeHTML(order.cakeColor)}</div><div><b>Writing:</b> ${escapeHTML(order.cakeWriting)}</div><div><b>Frosting:</b> ${escapeHTML(order.frosting)}</div><div><b>Details:</b> ${escapeHTML(order.details)}</div>${image}</div>
-      <small>Saved: ${escapeHTML(friendlyDate(order))}</small><div class="order-actions"><a class="btn btn-whatsapp" target="_blank" href="https://wa.me/${encodeURIComponent(String(order.phone||"").replace(/\D/g,""))}?text=${encodeURIComponent("Hello "+order.customerName+", this is CakeHub regarding your cake order.")}">WhatsApp customer</a><button class="danger" data-delete="${order.id}" type="button">Delete order</button></div>`;
-      container.appendChild(record);
-    });
-    container.querySelectorAll(".order-status").forEach(select=>select.addEventListener("change",async()=>{try{await updateDoc(doc(db,"orders",select.dataset.id),{status:select.value});showToast("Order status updated ✓");await renderOrders()}catch(e){showToast("Could not update status.")}}));
-    container.querySelectorAll("[data-delete]").forEach(btn=>btn.addEventListener("click",async()=>{if(!confirm("Delete this order permanently?"))return;try{await deleteDoc(doc(db,"orders",btn.dataset.delete));showToast("Order deleted.");await renderOrders()}catch(e){showToast("Could not delete order.")}}));
-    container.querySelectorAll(".reference-thumb").forEach(img=>img.addEventListener("click",()=>window.open(img.src,"_blank")));
-  }catch(error){console.error(error);container.innerHTML='<div class="database-empty">Unable to load orders. Check Firestore rules and indexes.</div>'}
+
+    if(!db || !auth?.currentUser)
+        return;
+
+
+    const container =
+        document.getElementById(
+            "orderRecords"
+        );
+
+
+    container.innerHTML =
+
+        '<div class="database-empty">Loading live orders…</div>';
+
+
+    try{
+
+        const q =
+            query(
+                collection(
+                    db,
+                    "orders"
+                ),
+                orderBy(
+                    "createdAtClient",
+                    "desc"
+                )
+            );
+
+
+        const snapshot =
+            await getDocs(q);
+
+
+        const orders =
+            snapshot.docs.map(
+                item => ({
+                    id:item.id,
+                    ...item.data()
+                })
+            );
+
+
+        updateStats(orders);
+
+
+        if(!orders.length){
+
+            container.innerHTML =
+
+                '<div class="database-empty">📦 No orders yet.</div>';
+
+            return;
+        }
+
+
+        container.innerHTML = "";
+
+
+        orders.forEach(order => {
+
+            const record =
+                document.createElement(
+                    "article"
+                );
+
+
+            record.className =
+                "order-record";
+
+
+            const image =
+                order.referenceImage
+                ?
+
+`<img
+class="reference-thumb"
+src="${order.referenceImage}"
+alt="Reference cake image"
+title="Open reference image">`
+
+                : "";
+
+
+            record.innerHTML = `
+
+                <div class="order-top">
+
+                    <div>
+
+                        <strong>
+                            🎂 ${escapeHTML(
+                                order.flavor
+                            )}
+                        </strong>
+
+                        <div>
+
+                            <b>
+                                ${escapeHTML(
+                                    order.customerName
+                                )}
+                            </b>
+
+                            •
+
+                            ${escapeHTML(
+                                order.phone
+                            )}
+
+                        </div>
+
+                    </div>
+
+
+                    <select
+                        class="order-status"
+                        data-id="${order.id}">
+
+                        <option
+                            ${
+                                order.status === "New"
+                                ? "selected"
+                                : ""
+                            }>
+                            New
+                        </option>
+
+                        <option
+                            ${
+                                order.status === "Approved"
+                                ? "selected"
+                                : ""
+                            }>
+                            Approved
+                        </option>
+
+                        <option
+                            ${
+                                order.status === "Completed"
+                                ? "selected"
+                                : ""
+                            }>
+                            Completed
+                        </option>
+
+                        <option
+                            ${
+                                order.status === "Cancelled"
+                                ? "selected"
+                                : ""
+                            }>
+                            Cancelled
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="order-meta">
+
+                    <div>
+                        <b>Size:</b>
+                        ${escapeHTML(order.size)}
+                    </div>
+
+                    <div>
+                        <b>Servings:</b>
+                        ${escapeHTML(order.servings)}
+                    </div>
+
+                    <div>
+                        <b>Date:</b>
+                        ${escapeHTML(order.date)}
+                    </div>
+
+                    <div>
+                        <b>Occasion:</b>
+                        ${escapeHTML(order.occasion)}
+                    </div>
+
+                    <div>
+                        <b>Color:</b>
+                        ${escapeHTML(order.cakeColor)}
+                    </div>
+
+                    <div>
+                        <b>Writing:</b>
+                        ${escapeHTML(order.cakeWriting)}
+                    </div>
+
+                    <div>
+                        <b>Frosting:</b>
+                        ${escapeHTML(order.frosting)}
+                    </div>
+
+                    <div>
+                        <b>Details:</b>
+                        ${escapeHTML(order.details)}
+                    </div>
+
+                    ${image}
+
+                </div>
+
+
+                <small>
+                    Saved:
+                    ${escapeHTML(
+                        friendlyDate(order)
+                    )}
+                </small>
+
+
+                <div class="order-actions">
+
+                    <a
+                        class="btn btn-whatsapp"
+                        target="_blank"
+                        href="https://wa.me/${encodeURIComponent(
+                            String(
+                                order.phone || ""
+                            ).replace(/\D/g,"")
+                        )}?text=${encodeURIComponent(
+                            "Hello " +
+                            order.customerName +
+                            ", this is CakeHub regarding your cake order."
+                        )}">
+
+                        WhatsApp customer
+
+                    </a>
+
+
+                    <button
+                        class="danger"
+                        data-delete="${order.id}"
+                        type="button">
+
+                        Delete order
+
+                    </button>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(
+                record
+            );
+
+        });
+
+
+        /* STATUS */
+
+        container
+        .querySelectorAll(
+            ".order-status"
+        )
+        .forEach(select => {
+
+            select.addEventListener(
+                "change",
+                async () => {
+
+                    try{
+
+                        await updateDoc(
+                            doc(
+                                db,
+                                "orders",
+                                select.dataset.id
+                            ),
+                            {
+                                status:
+                                    select.value
+                            }
+                        );
+
+
+                        showToast(
+                            "Order status updated ✓"
+                        );
+
+
+                        await renderOrders();
+
+                    }catch(error){
+
+                        showToast(
+                            "Could not update order."
+                        );
+
+                    }
+
+                }
+            );
+
+        });
+
+
+        /* DELETE ORDERS */
+
+        container
+        .querySelectorAll(
+            "[data-delete]"
+        )
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                async () => {
+
+                    if(
+                        !confirm(
+                            "Delete this order permanently?"
+                        )
+                    )
+                        return;
+
+
+                    try{
+
+                        await deleteDoc(
+                            doc(
+                                db,
+                                "orders",
+                                button.dataset.delete
+                            )
+                        );
+
+
+                        showToast(
+                            "Order deleted."
+                        );
+
+
+                        await renderOrders();
+
+                    }catch(error){
+
+                        showToast(
+                            "Could not delete order."
+                        );
+
+                    }
+
+                }
+            );
+
+        });
+
+
+        /* OPEN REFERENCE IMAGE */
+
+        container
+        .querySelectorAll(
+            ".reference-thumb"
+        )
+        .forEach(img => {
+
+            img.addEventListener(
+                "click",
+                () =>
+                    window.open(
+                        img.src,
+                        "_blank"
+                    )
+            );
+
+        });
+
+
+    }catch(error){
+
+        console.error(error);
+
+        container.innerHTML =
+
+`<div class="database-empty">
+Unable to load orders.
+Check Firestore rules and indexes.
+</div>`;
+
+    }
+
 }
 
-adminLoginForm?.addEventListener("submit",async event=>{
-  event.preventDefault();
-  if(!cloudReady){adminLoginMessage.textContent="Add your Firebase configuration first.";return}
-  adminLoginMessage.textContent="Signing in…";
-  try{await signInWithEmailAndPassword(auth,document.getElementById("adminEmail").value.trim(),document.getElementById("adminPassword").value);adminLoginMessage.textContent=""}
-  catch(error){adminLoginMessage.textContent="Sign-in failed. Check your admin email/password."}
-});
 
-document.getElementById("adminLogout")?.addEventListener("click",()=>signOut(auth));
+/* =====================================================
+   ADMIN LOGIN
+===================================================== */
+
+adminLoginForm?.addEventListener(
+    "submit",
+    async event => {
+
+        event.preventDefault();
+
+
+        if(!cloudReady){
+
+            adminLoginMessage.textContent =
+                "Add your Firebase configuration first.";
+
+            return;
+        }
+
+
+        adminLoginMessage.textContent =
+            "Signing in…";
+
+
+        try{
+
+            await signInWithEmailAndPassword(
+                auth,
+                document
+                .getElementById(
+                    "adminEmail"
+                )
+                .value
+                .trim(),
+
+                document
+                .getElementById(
+                    "adminPassword"
+                )
+                .value
+            );
+
+
+            adminLoginMessage.textContent =
+                "";
+
+        }catch(error){
+
+            console.error(error);
+
+            adminLoginMessage.textContent =
+                "Sign-in failed. Check your admin email/password.";
+
+        }
+
+    }
+);
+
+
+/* LOGOUT */
+
+document
+.getElementById(
+    "adminLogout"
+)
+?.addEventListener(
+    "click",
+    () =>
+        signOut(auth)
+);
+
+
+/* =====================================================
+   AUTH STATE
+===================================================== */
 
 if(cloudReady){
-  document.getElementById("databaseStatus").textContent="Cloud ready ✓";
-  onAuthStateChanged(auth,user=>{
-    if(user){
-      adminLoginView.hidden=true;adminPanel.hidden=false;
-      document.getElementById("adminIdentity").textContent=user.email||"Signed in admin";
-      renderOrders();
-    }else{
-      adminLoginView.hidden=false;adminPanel.hidden=true;
-      document.getElementById("databaseStatus").textContent="Cloud ready ✓";
-    }
-  });
+
+    document
+    .getElementById(
+        "databaseStatus"
+    )
+    .textContent =
+        "Cloud ready ✓";
+
+
+    onAuthStateChanged(
+        auth,
+        user => {
+
+            if(user){
+
+                adminLoginView.hidden =
+                    true;
+
+                adminPanel.hidden =
+                    false;
+
+
+                document
+                .getElementById(
+                    "adminIdentity"
+                )
+                .textContent =
+                    user.email ||
+                    "Signed in admin";
+
+
+                renderOrders();
+
+            }else{
+
+                adminLoginView.hidden =
+                    false;
+
+                adminPanel.hidden =
+                    true;
+
+                document
+                .getElementById(
+                    "databaseStatus"
+                )
+                .textContent =
+                    "Cloud ready ✓";
+
+            }
+
+        }
+    );
+
+
 }else{
-  document.getElementById("databaseStatus").textContent="Firebase setup needed";
+
+    document
+    .getElementById(
+        "databaseStatus"
+    )
+    .textContent =
+        "Firebase setup needed";
+
 }
 
-document.getElementById("year").textContent=new Date().getFullYear();
 
-/* LIGHT PARALLAX */
-if(window.matchMedia("(min-width:901px)").matches){
-  const heroArt=document.querySelector(".hero-art");
-  window.addEventListener("mousemove",event=>{const x=(event.clientX/window.innerWidth-.5)*6;const y=(event.clientY/window.innerHeight-.5)*6;if(heroArt)heroArt.style.transform=`translate(${x}px,${y}px)`},{passive:true});
+/* =====================================================
+   INITIAL REVIEW LOAD
+===================================================== */
+
+loadReviews();
+
+
+/* =====================================================
+   YEAR
+===================================================== */
+
+document
+.getElementById("year")
+.textContent =
+    new Date().getFullYear();
+
+
+/* =====================================================
+   LIGHT PARALLAX
+===================================================== */
+
+if(
+    window.matchMedia(
+        "(min-width:901px)"
+    ).matches
+){
+
+    const heroArt =
+        document.querySelector(
+            ".hero-art"
+        );
+
+
+    window.addEventListener(
+        "mousemove",
+        event => {
+
+            const x =
+                (
+                    event.clientX /
+                    window.innerWidth -
+                    .5
+                ) * 6;
+
+
+            const y =
+                (
+                    event.clientY /
+                    window.innerHeight -
+                    .5
+                ) * 6;
+
+
+            if(heroArt){
+
+                heroArt.style.transform =
+                    `translate(${x}px,${y}px)`;
+
+            }
+
+        },
+        {
+            passive:true
+        }
+    );
+
 }
+
 </script>
 
 </body>
