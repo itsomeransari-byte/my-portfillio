@@ -834,126 +834,6 @@ section{
     }
 }
 
-/* REVIEWS */
-
-.reviews-section{
-    background:linear-gradient(180deg,#fff9f5,#fff);
-}
-
-.review-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.review{
-    background:white;
-    padding:27px;
-    border:1px solid var(--border);
-    border-radius:25px;
-    box-shadow:0 10px 30px rgba(70,30,30,.05);
-    transition:.3s;
-}
-
-.review:hover{
-    transform:translateY(-7px);
-}
-
-.stars{
-    color:var(--gold);
-    letter-spacing:3px;
-    font-size:20px;
-}
-
-.review p{
-    margin:16px 0;
-    color:var(--brown-light);
-    line-height:1.6;
-}
-
-.reviewer{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    font-weight:850;
-}
-
-.avatar{
-    width:43px;
-    height:43px;
-    border-radius:50%;
-    display:grid;
-    place-items:center;
-    background:#ffe1ea;
-}
-
-.review-form-card{
-    max-width:800px;
-    margin:50px auto 0;
-    padding:32px;
-    background:white;
-    border:1px solid var(--border);
-    border-radius:30px;
-    box-shadow:var(--shadow);
-}
-
-.review-form{
-    display:grid;
-    gap:17px;
-}
-
-.review-input{
-    display:grid;
-    gap:7px;
-}
-
-.review-input input,
-.review-input textarea{
-    width:100%;
-    padding:14px;
-    border:1px solid #eadbd7;
-    border-radius:14px;
-    outline:none;
-    background:#fffaf8;
-}
-
-.review-input textarea{
-    min-height:120px;
-    resize:vertical;
-}
-
-.star-selector{
-    display:flex;
-    flex-direction:row-reverse;
-    justify-content:flex-end;
-    gap:5px;
-}
-
-.star-selector input{
-    display:none;
-}
-
-.star-selector label{
-    font-size:35px;
-    color:#d9c9c5;
-    cursor:pointer;
-}
-
-.star-selector label:hover,
-.star-selector label:hover ~ label,
-.star-selector input:checked ~ label{
-    color:var(--gold);
-}
-
-.review-submit{
-    border:none;
-    background:linear-gradient(135deg,var(--pink),var(--pink2));
-    color:white;
-    padding:15px 22px;
-    border-radius:15px;
-    font-weight:900;
-}
-
 /* URGENT */
 
 .urgent{
@@ -1228,6 +1108,10 @@ footer{
     font-size:13px;
 }
 
+
+/* CLOUD ORDER DASHBOARD */
+.admin-login-form{display:grid;gap:15px;max-width:760px}.admin-login-form>.btn{width:100%;min-height:52px}.admin-message{margin:0;color:#b43f64;font-weight:800}.admin-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.order-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 18px}.order-stats>div{padding:18px;border:1px solid var(--border);background:#fffaf8;border-radius:18px}.order-stats strong{display:block;font-size:28px;color:var(--pink)}.order-stats span{color:var(--brown-light);font-size:12px;font-weight:800}.order-record{position:relative}.order-top{display:flex;justify-content:space-between;gap:15px;align-items:flex-start}.order-meta{display:grid;gap:7px;margin-top:12px}.order-status{border:none;border-radius:999px;padding:8px 11px;font-size:12px;font-weight:900;background:#fff0f5;color:#b43f64}.order-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.order-actions button{border:1px solid var(--border);background:white;padding:9px 12px;border-radius:11px;font-weight:850}.order-actions .danger{color:#b42318}.reference-thumb{display:block;width:min(100%,240px);max-height:220px;object-fit:cover;border-radius:16px;margin-top:12px;border:1px solid var(--border);cursor:pointer}.upload-box{border:1.5px dashed #dfc9c3;border-radius:18px;padding:24px;text-align:center;background:#fffaf8;transition:.25s}.upload-box:hover{border-color:var(--pink);background:#fff6f9}.upload-box input{display:none}.upload-icon{font-size:34px;margin-bottom:5px}.upload-box strong,.upload-box small{display:block}.upload-box small{color:var(--brown-light);margin-top:5px}.image-preview-wrap{margin-top:10px;padding:12px;border:1px solid var(--border);border-radius:18px;background:#fffaf8}.image-preview-wrap img{display:block;width:100%;max-height:250px;object-fit:contain;border-radius:12px}.image-preview-wrap button{margin-top:10px;border:0;background:#2c1818;color:#fff;padding:9px 13px;border-radius:10px;font-weight:800}.form-field label span{font-weight:600;color:var(--brown-light);font-size:12px}.cloud-note{font-size:12px;color:var(--brown-light);margin-top:8px}
+
 /* TOAST */
 
 #toast{
@@ -1306,8 +1190,7 @@ footer{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .cake-grid,
-    .review-grid{
+    .cake-grid{
         grid-template-columns:repeat(2,1fr);
     }
 
@@ -1359,8 +1242,7 @@ footer{
 
     .feature-grid,
     .cake-grid,
-    .flavor-grid,
-    .review-grid{
+    .flavor-grid{
         grid-template-columns:1fr;
     }
 
@@ -1384,7 +1266,6 @@ footer{
 
     .form-card,
     .order-intro,
-    .review-form-card,
     .urgent-box,
     .database-card{
         padding:20px;
@@ -1420,6 +1301,8 @@ footer{
     }
 }
 </style>
+
+<!-- Firebase is loaded as modular CDN scripts in the module below. Replace the firebaseConfig values before publishing. -->
 </head>
 
 <body>
@@ -1448,7 +1331,6 @@ footer{
     <a href="#cakes">Cakes</a>
     <a href="#flavors">Flavors</a>
     <a href="#about">About</a>
-    <a href="#reviews">Reviews</a>
     <a href="#urgent">Urgent Order</a>
     <a href="#order">Order</a>
 </nav>
@@ -1762,37 +1644,7 @@ Order →
 
 </article>
 
-<article class="product reveal">
 
-<div class="product-image product-bg6">
-<span class="product-tag">FUN</span>
-
-<div class="mini-cake">
-<div class="mini-bottom"
-style="background:linear-gradient(90deg,#ee9d77,#ffe0ca,#e88660);"></div>
-
-<div class="mini-top"
-style="background:linear-gradient(90deg,#fff,#ffe7da,#ffd0bd);"></div>
-
-<div class="mini-cream"></div>
-</div>
-</div>
-
-<div class="product-info">
-<h3>Funfetti Party</h3>
-<p>Vanilla cake packed with colorful sprinkles and party energy.</p>
-
-<div class="price-row">
-<span class="price">From PKR 2,399</span>
-
-<button class="btn btn-primary order-button"
-data-cake="Funfetti Party">
-Order →
-</button>
-</div>
-</div>
-
-</article>
 
 </div>
 </div>
@@ -1945,84 +1797,6 @@ design and the details that make your celebration special.
 </div>
 </section>
 
-<!-- REVIEWS -->
-
-<section id="reviews" class="reviews-section">
-
-<div class="container">
-
-<div class="section-title reveal">
-<div class="eyebrow">Customer Reviews</div>
-<h2>What our customers say.</h2>
-<p>Loved your CakeHub cake? Share your experience.</p>
-</div>
-
-<div class="review-grid" id="reviewList"></div>
-
-<div class="review-form-card reveal">
-
-<h3>⭐ Leave a Review</h3>
-
-<p>Tell us about your CakeHub experience.</p>
-
-<form id="reviewForm" class="review-form">
-
-<div class="review-input">
-<label for="reviewName">Your Name</label>
-<input type="text" id="reviewName"
-placeholder="Enter your name"
-maxlength="40"
-required>
-</div>
-
-<div class="review-input">
-
-<label>Your Rating</label>
-
-<div class="star-selector">
-
-<input type="radio" name="rating" id="star5" value="5">
-<label for="star5">★</label>
-
-<input type="radio" name="rating" id="star4" value="4">
-<label for="star4">★</label>
-
-<input type="radio" name="rating" id="star3" value="3">
-<label for="star3">★</label>
-
-<input type="radio" name="rating" id="star2" value="2">
-<label for="star2">★</label>
-
-<input type="radio" name="rating" id="star1" value="1">
-<label for="star1">★</label>
-
-</div>
-
-</div>
-
-<div class="review-input">
-
-<label for="reviewText">Your Review</label>
-
-<textarea
-id="reviewText"
-placeholder="Write your review..."
-maxlength="500"
-required></textarea>
-
-</div>
-
-<button type="submit" class="review-submit">
-Submit Review ⭐
-</button>
-
-</form>
-
-</div>
-
-</div>
-</section>
-
 <!-- URGENT ORDER -->
 
 <section class="urgent" id="urgent">
@@ -2078,8 +1852,7 @@ href="tel:03133489623">
 
 <p>
 Tell us what you're celebrating and what you have in mind.
-Your order will be saved in the local CakeHub database and
-prepared as a WhatsApp message.
+Your order is securely sent to CakeHub online and prepared as a WhatsApp message.
 </p>
 
 <div class="order-points">
@@ -2275,6 +2048,37 @@ placeholder="Birthday, wedding, etc.">
 
 </div>
 
+<div class="form-field">
+<label for="servings">Number of Servings</label>
+<select id="servings">
+<option>Up to 8 people</option><option>9–12 people</option><option>13–20 people</option><option>21–30 people</option><option>31–50 people</option><option>50+ people</option>
+</select>
+</div>
+
+<div class="form-field">
+<label for="cakeColor">Preferred Cake Color</label>
+<input id="cakeColor" type="text" placeholder="Pink, white, gold…">
+</div>
+
+<div class="form-field">
+<label for="cakeWriting">Cake Writing</label>
+<input id="cakeWriting" type="text" maxlength="100" placeholder="Happy Birthday Umar!">
+</div>
+
+<div class="form-field">
+<label for="frosting">Frosting Preference</label>
+<select id="frosting"><option>Buttercream</option><option>Whipped cream</option><option>Chocolate ganache</option><option>Cream cheese</option><option>Not sure — recommend for me</option></select>
+</div>
+
+<div class="form-field full reference-field">
+<label for="referenceImage">Reference Cake Image <span>(optional)</span></label>
+<div class="upload-box" id="uploadBox">
+<input id="referenceImage" type="file" accept="image/jpeg,image/png,image/webp">
+<div class="upload-icon">🖼️</div><strong>Choose a reference cake image</strong><small>JPG, PNG or WebP • compressed before saving</small>
+</div>
+<div id="imagePreviewWrap" class="image-preview-wrap" hidden><img id="imagePreview" alt="Cake reference preview"><button type="button" id="removeImage">Remove image</button></div>
+</div>
+
 <div class="form-field full">
 
 <label for="cakeDetails">
@@ -2311,47 +2115,37 @@ Send Order on WhatsApp 💬
 </section>
 
 <!-- DATABASE -->
-
 <section class="database-section" id="database">
-
 <div class="container">
-
-<div class="section-title reveal">
-
-<div class="eyebrow">
-CakeHub Database
-</div>
-
-<h2>
-Saved orders.
-</h2>
-
-<p>
-Orders are stored locally in this browser using IndexedDB.
-</p>
-
-</div>
-
-<div class="database-card reveal">
-
-<div class="database-header">
-
-<h3>📦 Order Database</h3>
-
-<div class="database-status" id="databaseStatus">
-Database starting...
-</div>
-
-</div>
-
-<div id="orderRecords">
-<div class="database-empty">
-No orders saved yet.
-</div>
-</div>
-
-</div>
-
+  <div class="section-title reveal">
+    <div class="eyebrow">CakeHub Cloud Orders</div>
+    <h2>Your order control center.</h2>
+    <p>Orders are stored securely online, so your authorized dashboard can access them from another phone, tablet or computer.</p>
+  </div>
+  <div class="database-card reveal">
+    <div id="adminLoginView">
+      <div class="database-header">
+        <div><h3>🔐 Admin access</h3><small>Only the CakeHub admin account can view orders.</small></div>
+        <div class="database-status" id="databaseStatus">Cloud not connected</div>
+      </div>
+      <form id="adminLoginForm" class="admin-login-form">
+        <div class="form-grid">
+          <div class="form-field"><label for="adminEmail">Admin email</label><input id="adminEmail" type="email" placeholder="your-admin@email.com" required></div>
+          <div class="form-field"><label for="adminPassword">Password</label><input id="adminPassword" type="password" placeholder="Admin password" required></div>
+        </div>
+        <button class="btn btn-primary" type="submit">Sign in to orders →</button>
+        <p id="adminLoginMessage" class="admin-message"></p>
+      </form>
+    </div>
+    <div id="adminPanel" hidden>
+      <div class="database-header">
+        <div><h3>📦 Live order inbox</h3><small id="adminIdentity"></small></div>
+        <div class="admin-actions"><span class="database-status" id="databaseStatusLogged">Cloud connected ✓</span><button id="adminLogout" class="btn btn-secondary" type="button">Log out</button></div>
+      </div>
+      <div class="order-stats"><div><strong id="totalOrders">0</strong><span>Total</span></div><div><strong id="newOrders">0</strong><span>New</span></div><div><strong id="approvedOrders">0</strong><span>Approved</span></div><div><strong id="completedOrders">0</strong><span>Completed</span></div></div>
+      <div id="orderRecords"><div class="database-empty">Loading orders…</div></div>
+    </div>
+  </div>
 </div>
 </section>
 
@@ -2468,1122 +2262,239 @@ Baked with ❤️.
 CakeHub
 </div>
 
-<script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, query, orderBy, updateDoc, deleteDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 /* =====================================================
-   CAKEHUB CONFIGURATION
+   CAKEHUB — FIREBASE CONFIG
+   Replace these values with the config from your Firebase project.
+   Firebase's web SDK supports modular CDN imports and Firestore/Auth.
 ===================================================== */
+const firebaseConfig = {
+  apiKey: "PASTE_YOUR_API_KEY",
+  authDomain: "PASTE_YOUR_PROJECT.firebaseapp.com",
+  projectId: "PASTE_YOUR_PROJECT_ID",
+  storageBucket: "PASTE_YOUR_PROJECT.firebasestorage.app",
+  messagingSenderId: "PASTE_YOUR_SENDER_ID",
+  appId: "PASTE_YOUR_APP_ID"
+};
 
 const BUSINESS_PHONE = "03133489623";
 const WHATSAPP_NUMBER = "923133489623";
-
-
-/* =====================================================
-   LOADER
-===================================================== */
-
-window.addEventListener("load",function(){
-
-setTimeout(function(){
-
-document
-.getElementById("loader")
-.classList.add("hide");
-
-},700);
-
-});
-
-
-/* =====================================================
-   HEADER
-===================================================== */
-
-const header =
-document.getElementById("header");
-
-window.addEventListener("scroll",function(){
-
-if(window.scrollY > 30){
-    header.classList.add("scrolled");
-}else{
-    header.classList.remove("scrolled");
-}
-
-});
-
-
-/* =====================================================
-   MOBILE MENU
-===================================================== */
-
-const menuButton =
-document.getElementById("menuButton");
-
-const navLinks =
-document.getElementById("navLinks");
-
-menuButton.addEventListener("click",function(){
-
-navLinks.classList.toggle("open");
-
-menuButton.textContent =
-navLinks.classList.contains("open")
-? "✕"
-: "☰";
-
-});
-
-document
-.querySelectorAll(".nav-links a")
-.forEach(function(link){
-
-link.addEventListener("click",function(){
-
-navLinks.classList.remove("open");
-
-menuButton.textContent="☰";
-
-});
-
-});
-
-
-/* =====================================================
-   SCROLL REVEAL
-===================================================== */
-
-const observer =
-new IntersectionObserver(
-function(entries){
-
-entries.forEach(function(entry){
-
-if(entry.isIntersecting){
-
-entry.target.classList.add("visible");
-
-observer.unobserve(entry.target);
-
-}
-
-});
-
-},
-{
-threshold:.08
-}
-);
-
-document
-.querySelectorAll(".reveal")
-.forEach(function(element){
-
-observer.observe(element);
-
-});
-
-
-/* =====================================================
-   TOAST
-===================================================== */
-
-const toast =
-document.getElementById("toast");
-
-let toastTimer;
-
-function showToast(message){
-
-toast.textContent=message;
-
-toast.classList.add("show");
-
-clearTimeout(toastTimer);
-
-toastTimer=setTimeout(function(){
-
-toast.classList.remove("show");
-
-},2800);
-
-}
-
-
-/* =====================================================
-   INDEXEDDB DATABASE
-===================================================== */
-
-const DB_NAME = "CakeHubDatabase";
-const DB_VERSION = 1;
-
+let cloudReady = false;
+let firebaseApp = null;
 let db = null;
+let auth = null;
+let currentImageData = "";
+let unsubscribeNotUsed = null;
 
-
-/* =====================================================
-   OPEN DATABASE
-===================================================== */
-
-function openDatabase(){
-
-return new Promise(function(resolve,reject){
-
-const request =
-indexedDB.open(
-DB_NAME,
-DB_VERSION
-);
-
-request.onupgradeneeded=function(event){
-
-const database =
-event.target.result;
-
-if(!database.objectStoreNames.contains("orders")){
-
-const orderStore =
-database.createObjectStore(
-"orders",
-{
-keyPath:"id",
-autoIncrement:true
-}
-);
-
-orderStore.createIndex(
-"customerName",
-"customerName",
-{
-unique:false
-}
-);
-
-orderStore.createIndex(
-"createdAt",
-"createdAt",
-{
-unique:false
-}
-);
-
+function firebaseConfigured(){
+  return firebaseConfig.apiKey && !firebaseConfig.apiKey.startsWith("PASTE_") && firebaseConfig.projectId && !firebaseConfig.projectId.startsWith("PASTE_");
 }
 
-if(!database.objectStoreNames.contains("reviews")){
-
-const reviewStore =
-database.createObjectStore(
-"reviews",
-{
-keyPath:"id",
-autoIncrement:true
-}
-);
-
-reviewStore.createIndex(
-"createdAt",
-"createdAt",
-{
-unique:false
-}
-);
-
+if(firebaseConfigured()){
+  firebaseApp=initializeApp(firebaseConfig);
+  db=getFirestore(firebaseApp);
+  auth=getAuth(firebaseApp);
+  cloudReady=true;
 }
 
-};
+/* LOADER */
+window.addEventListener("load",()=>setTimeout(()=>document.getElementById("loader")?.classList.add("hide"),700));
 
-request.onsuccess=function(){
+/* HEADER */
+const header=document.getElementById("header");
+window.addEventListener("scroll",()=>header.classList.toggle("scrolled",window.scrollY>30));
 
-db=request.result;
+/* MOBILE MENU */
+const menuButton=document.getElementById("menuButton");
+const navLinks=document.getElementById("navLinks");
+menuButton?.addEventListener("click",()=>{navLinks.classList.toggle("open");menuButton.textContent=navLinks.classList.contains("open")?"✕":"☰"});
+document.querySelectorAll(".nav-links a").forEach(link=>link.addEventListener("click",()=>{navLinks.classList.remove("open");menuButton.textContent="☰"}));
 
-document
-.getElementById("databaseStatus")
-.textContent="Database Ready ✓";
+/* REVEAL */
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}}),{threshold:.08});
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 
-resolve(db);
+/* TOAST */
+const toast=document.getElementById("toast");let toastTimer;
+function showToast(message){toast.textContent=message;toast.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove("show"),3000)}
 
-};
+/* IMAGE COMPRESSION — keeps the reference image inside the Firestore document without a separate file-storage service. */
+async function compressImage(file){
+  if(!file) return "";
+  if(!file.type.startsWith("image/")) throw new Error("Please choose an image file.");
+  if(file.size>8*1024*1024) throw new Error("Please choose an image smaller than 8 MB.");
+  const bitmap=await createImageBitmap(file);
+  const max=1000;
+  const scale=Math.min(1,max/Math.max(bitmap.width,bitmap.height));
+  const canvas=document.createElement("canvas");
+  canvas.width=Math.max(1,Math.round(bitmap.width*scale));
+  canvas.height=Math.max(1,Math.round(bitmap.height*scale));
+  const ctx=canvas.getContext("2d");
+  ctx.drawImage(bitmap,0,0,canvas.width,canvas.height);
+  bitmap.close?.();
+  const data=canvas.toDataURL("image/jpeg",.68);
+  if(data.length>850000) return canvas.toDataURL("image/jpeg",.5);
+  return data;
+}
 
-request.onerror=function(){
+const referenceImage=document.getElementById("referenceImage");
+const imagePreview=document.getElementById("imagePreview");
+const imagePreviewWrap=document.getElementById("imagePreviewWrap");
+const removeImage=document.getElementById("removeImage");
+referenceImage?.addEventListener("change",async()=>{
+  const file=referenceImage.files?.[0];
+  if(!file) return;
+  try{
+    currentImageData=await compressImage(file);
+    imagePreview.src=currentImageData;
+    imagePreviewWrap.hidden=false;
+    showToast("Reference image added 🖼️");
+  }catch(error){currentImageData="";referenceImage.value="";showToast(error.message||"Could not read image.")}
+});
+removeImage?.addEventListener("click",()=>{currentImageData="";referenceImage.value="";imagePreview.src="";imagePreviewWrap.hidden=true});
 
-document
-.getElementById("databaseStatus")
-.textContent="Database Error";
+/* ORDER FORM */
+const orderForm=document.getElementById("orderForm");
+const cakeFlavor=document.getElementById("cakeFlavor");
+orderForm.addEventListener("submit",async event=>{
+  event.preventDefault();
+  if(!cloudReady){showToast("Connect Firebase first — the order was not saved.");return}
 
-reject(request.error);
+  const name=document.getElementById("customerName").value.trim();
+  const phone=document.getElementById("customerPhone").value.trim();
+  const flavor=cakeFlavor.value.trim();
+  const size=document.getElementById("cakeSize").value.trim();
+  const date=document.getElementById("cakeDate").value.trim();
+  const occasion=document.getElementById("occasion").value.trim();
+  const servings=document.getElementById("servings").value.trim();
+  const cakeColor=document.getElementById("cakeColor").value.trim();
+  const cakeWriting=document.getElementById("cakeWriting").value.trim();
+  const frosting=document.getElementById("frosting").value.trim();
+  const details=document.getElementById("cakeDetails").value.trim();
 
-};
+  if(!name){showToast("Please enter your name.");return}
+  if(!phone){showToast("Please enter your phone number.");return}
+  if(!flavor){showToast("Please choose a cake flavor.");return}
 
+  const orderData={
+    customerName:name,phone,flavor,size,
+    date:date||"Not specified",
+    occasion:occasion||"Not specified",
+    servings,cakeColor:cakeColor||"Not specified",
+    cakeWriting:cakeWriting||"No writing requested",
+    frosting,details:details||"No additional details",
+    referenceImage:currentImageData||"",
+    status:"New",
+    createdAt:serverTimestamp(),
+    createdAtClient:new Date().toISOString()
+  };
+
+  const button=orderForm.querySelector("button[type=submit]");
+  button.disabled=true;button.textContent="Saving order…";
+  try{
+    await addDoc(collection(db,"orders"),orderData);
+    const whatsappMessage=`🎂 *CAKEHUB NEW CAKE ORDER*\n\n👤 *CUSTOMER*\nName: ${name}\nPhone: ${phone}\n\n🍰 *CAKE*\nFlavor: ${flavor}\nSize: ${size}\nServings: ${servings}\nCelebration Date: ${date||"Not specified"}\nOccasion: ${occasion||"Not specified"}\nColor: ${cakeColor||"Not specified"}\nWriting: ${cakeWriting||"None"}\nFrosting: ${frosting}\n\n🎨 *DESIGN DETAILS*\n${details||"No additional details"}\n\n🖼️ Reference image: ${currentImageData?"Attached to the online order":"Not provided"}\n\nPlease confirm my cake order. ❤️`;
+    const whatsappURL="https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(whatsappMessage);
+    document.getElementById("successMessage").classList.add("show");
+    document.getElementById("successMessage").innerHTML=`🎉 <strong>Order saved online!</strong><br>Your order is now in CakeHub's cloud order inbox. WhatsApp will open with the order details.`;
+    showToast("Order saved online! Opening WhatsApp… 💬");
+    orderForm.reset();currentImageData="";imagePreview.src="";imagePreviewWrap.hidden=true;
+    setTimeout(()=>{const w=window.open(whatsappURL,"_blank");if(!w)window.location.href=whatsappURL},450);
+  }catch(error){
+    console.error(error);showToast("Could not save the order. Check Firebase setup.");
+  }finally{button.disabled=false;button.textContent="Send Order on WhatsApp 💬"}
 });
 
+/* PRODUCT ORDER BUTTONS — Funfetti Party was removed from the collection. */
+document.querySelectorAll(".order-button").forEach(button=>button.addEventListener("click",()=>{
+  const cake=button.dataset.cake;
+  if(cake.includes("Chocolate"))cakeFlavor.value="Chocolate";
+  else if(cake.includes("Vanilla"))cakeFlavor.value="Vanilla";
+  else if(cake.includes("Golden"))cakeFlavor.value="Yellow Butter Cake";
+  else if(cake.includes("Strawberry"))cakeFlavor.value="Strawberry";
+  else if(cake.includes("Velvet"))cakeFlavor.value="Red Velvet";
+  else cakeFlavor.value="Custom Flavor";
+  document.getElementById("order").scrollIntoView({behavior:"smooth"});
+  showToast(cake+" selected 🎂");
+}));
+
+/* ADMIN CLOUD DASHBOARD */
+const adminLoginForm=document.getElementById("adminLoginForm");
+const adminLoginView=document.getElementById("adminLoginView");
+const adminPanel=document.getElementById("adminPanel");
+const adminLoginMessage=document.getElementById("adminLoginMessage");
+
+function escapeHTML(value){const div=document.createElement("div");div.textContent=String(value??"");return div.innerHTML}
+function friendlyDate(order){if(order.createdAt?.toDate)return order.createdAt.toDate().toLocaleString();return order.createdAtClient?new Date(order.createdAtClient).toLocaleString():"Unknown"}
+function updateStats(orders){
+  document.getElementById("totalOrders").textContent=orders.length;
+  document.getElementById("newOrders").textContent=orders.filter(o=>(o.status||"New")==="New").length;
+  document.getElementById("approvedOrders").textContent=orders.filter(o=>o.status==="Approved").length;
+  document.getElementById("completedOrders").textContent=orders.filter(o=>o.status==="Completed").length;
 }
-
-
-/* =====================================================
-   SAVE ORDER
-===================================================== */
-
-function saveOrder(order){
-
-return new Promise(function(resolve,reject){
-
-if(!db){
-reject("Database is not ready");
-return;
-}
-
-const transaction =
-db.transaction(
-["orders"],
-"readwrite"
-);
-
-const store =
-transaction.objectStore("orders");
-
-const request =
-store.add(order);
-
-request.onsuccess=function(){
-
-resolve(request.result);
-
-};
-
-request.onerror=function(){
-
-reject(request.error);
-
-};
-
-});
-
-}
-
-
-/* =====================================================
-   GET ORDERS
-===================================================== */
-
-function getOrders(){
-
-return new Promise(function(resolve,reject){
-
-if(!db){
-
-resolve([]);
-
-return;
-
-}
-
-const transaction =
-db.transaction(
-["orders"],
-"readonly"
-);
-
-const store =
-transaction.objectStore("orders");
-
-const request =
-store.getAll();
-
-request.onsuccess=function(){
-
-const orders =
-request.result.sort(
-function(a,b){
-
-return new Date(b.createdAt)
--
-new Date(a.createdAt);
-
-}
-);
-
-resolve(orders);
-
-};
-
-request.onerror=function(){
-
-reject(request.error);
-
-};
-
-});
-
-}
-
-
-/* =====================================================
-   DISPLAY ORDERS
-===================================================== */
 
 async function renderOrders(){
-
-const container =
-document.getElementById("orderRecords");
-
-try{
-
-const orders =
-await getOrders();
-
-if(!orders.length){
-
-container.innerHTML=
-`
-<div class="database-empty">
-📦 No orders saved yet.
-</div>
-`;
-
-return;
-
+  if(!db||!auth?.currentUser)return;
+  const container=document.getElementById("orderRecords");
+  container.innerHTML='<div class="database-empty">Loading live orders…</div>';
+  try{
+    const q=query(collection(db,"orders"),orderBy("createdAtClient","desc"));
+    const snap=await getDocs(q);
+    const orders=snap.docs.map(d=>({id:d.id,...d.data()}));
+    updateStats(orders);
+    if(!orders.length){container.innerHTML='<div class="database-empty">📦 No orders yet.</div>';return}
+    container.innerHTML="";
+    orders.forEach(order=>{
+      const record=document.createElement("article");record.className="order-record";
+      const image=order.referenceImage?`<img class="reference-thumb" src="${order.referenceImage}" alt="Reference cake image" title="Open reference image">`:"";
+      record.innerHTML=`<div class="order-top"><div><strong>🎂 ${escapeHTML(order.flavor)}</strong><div><b>${escapeHTML(order.customerName)}</b> • ${escapeHTML(order.phone)}</div></div><select class="order-status" data-id="${order.id}"><option ${order.status==="New"?"selected":""}>New</option><option ${order.status==="Approved"?"selected":""}>Approved</option><option ${order.status==="Completed"?"selected":""}>Completed</option><option ${order.status==="Cancelled"?"selected":""}>Cancelled</option></select></div>
+      <div class="order-meta"><div><b>Size:</b> ${escapeHTML(order.size)}</div><div><b>Servings:</b> ${escapeHTML(order.servings)}</div><div><b>Date:</b> ${escapeHTML(order.date)}</div><div><b>Occasion:</b> ${escapeHTML(order.occasion)}</div><div><b>Color:</b> ${escapeHTML(order.cakeColor)}</div><div><b>Writing:</b> ${escapeHTML(order.cakeWriting)}</div><div><b>Frosting:</b> ${escapeHTML(order.frosting)}</div><div><b>Details:</b> ${escapeHTML(order.details)}</div>${image}</div>
+      <small>Saved: ${escapeHTML(friendlyDate(order))}</small><div class="order-actions"><a class="btn btn-whatsapp" target="_blank" href="https://wa.me/${encodeURIComponent(String(order.phone||"").replace(/\D/g,""))}?text=${encodeURIComponent("Hello "+order.customerName+", this is CakeHub regarding your cake order.")}">WhatsApp customer</a><button class="danger" data-delete="${order.id}" type="button">Delete order</button></div>`;
+      container.appendChild(record);
+    });
+    container.querySelectorAll(".order-status").forEach(select=>select.addEventListener("change",async()=>{try{await updateDoc(doc(db,"orders",select.dataset.id),{status:select.value});showToast("Order status updated ✓");await renderOrders()}catch(e){showToast("Could not update status.")}}));
+    container.querySelectorAll("[data-delete]").forEach(btn=>btn.addEventListener("click",async()=>{if(!confirm("Delete this order permanently?"))return;try{await deleteDoc(doc(db,"orders",btn.dataset.delete));showToast("Order deleted.");await renderOrders()}catch(e){showToast("Could not delete order.")}}));
+    container.querySelectorAll(".reference-thumb").forEach(img=>img.addEventListener("click",()=>window.open(img.src,"_blank")));
+  }catch(error){console.error(error);container.innerHTML='<div class="database-empty">Unable to load orders. Check Firestore rules and indexes.</div>'}
 }
 
-container.innerHTML="";
-
-orders.forEach(function(order){
-
-const record =
-document.createElement("div");
-
-record.className="order-record";
-
-const date =
-new Date(order.createdAt)
-.toLocaleString();
-
-record.innerHTML=`
-<strong>🎂 ${escapeHTML(order.flavor)}</strong>
-
-<div>
-<b>Customer:</b>
-${escapeHTML(order.customerName)}
-</div>
-
-<div>
-<b>Phone:</b>
-${escapeHTML(order.phone)}
-</div>
-
-<div>
-<b>Size:</b>
-${escapeHTML(order.size)}
-</div>
-
-<div>
-<b>Celebration:</b>
-${escapeHTML(order.date)}
-</div>
-
-<div>
-<b>Occasion:</b>
-${escapeHTML(order.occasion)}
-</div>
-
-<div>
-<b>Details:</b>
-${escapeHTML(order.details)}
-</div>
-
-<small>
-Saved: ${escapeHTML(date)}
-</small>
-`;
-
-container.appendChild(record);
-
+adminLoginForm?.addEventListener("submit",async event=>{
+  event.preventDefault();
+  if(!cloudReady){adminLoginMessage.textContent="Add your Firebase configuration first.";return}
+  adminLoginMessage.textContent="Signing in…";
+  try{await signInWithEmailAndPassword(auth,document.getElementById("adminEmail").value.trim(),document.getElementById("adminPassword").value);adminLoginMessage.textContent=""}
+  catch(error){adminLoginMessage.textContent="Sign-in failed. Check your admin email/password."}
 });
 
-}catch(error){
-
-container.innerHTML=
-`
-<div class="database-empty">
-Unable to load orders.
-</div>
-`;
-
-}
-
-}
-
-
-/* =====================================================
-   ORDER FORM
-===================================================== */
-
-const orderForm =
-document.getElementById("orderForm");
-
-const cakeFlavor =
-document.getElementById("cakeFlavor");
-
-orderForm.addEventListener(
-"submit",
-async function(event){
-
-event.preventDefault();
-
-const name =
-document
-.getElementById("customerName")
-.value.trim();
-
-const phone =
-document
-.getElementById("customerPhone")
-.value.trim();
-
-const flavor =
-document
-.getElementById("cakeFlavor")
-.value.trim();
-
-const size =
-document
-.getElementById("cakeSize")
-.value.trim();
-
-const date =
-document
-.getElementById("cakeDate")
-.value.trim();
-
-const occasion =
-document
-.getElementById("occasion")
-.value.trim();
-
-const details =
-document
-.getElementById("cakeDetails")
-.value.trim();
-
-
-if(!name){
-
-showToast("Please enter your name.");
-
-document
-.getElementById("customerName")
-.focus();
-
-return;
-
-}
-
-if(!phone){
-
-showToast("Please enter your phone number.");
-
-document
-.getElementById("customerPhone")
-.focus();
-
-return;
-
-}
-
-if(!flavor){
-
-showToast("Please choose a cake flavor.");
-
-cakeFlavor.focus();
-
-return;
-
-}
-
-
-/* CREATE ORDER OBJECT */
-
-const orderData = {
-
-customerName:name,
-
-phone:phone,
-
-flavor:flavor,
-
-size:size,
-
-date:date || "Not specified",
-
-occasion:occasion || "Not specified",
-
-details:details || "No additional details",
-
-createdAt:new Date().toISOString()
-
-};
-
-
-/* SAVE TO DATABASE */
-
-try{
-
-await saveOrder(orderData);
-
-await renderOrders();
-
-}catch(error){
-
-console.error(error);
-
-}
-
-
-/* WHATSAPP MESSAGE */
-
-const whatsappMessage =
-`🎂 *CAKEHUB NEW CAKE ORDER*
-
-━━━━━━━━━━━━━━━━━━
-
-👤 *CUSTOMER DETAILS*
-
-Name: ${name}
-Phone: ${phone}
-
-━━━━━━━━━━━━━━━━━━
-
-🍰 *CAKE DETAILS*
-
-Flavor: ${flavor}
-Size: ${size}
-Celebration Date: ${date || "Not specified"}
-Occasion: ${occasion || "Not specified"}
-
-Cake Details:
-${details || "No additional details"}
-
-━━━━━━━━━━━━━━━━━━
-
-Please confirm my cake order.
-
-Thank you! ❤️`;
-
-
-const whatsappURL =
-"https://wa.me/" +
-WHATSAPP_NUMBER +
-"?text=" +
-encodeURIComponent(
-whatsappMessage
-);
-
-
-/* SUCCESS */
-
-const success =
-document.getElementById(
-"successMessage"
-);
-
-success.classList.add("show");
-
-success.innerHTML=
-`
-🎉 <strong>Order saved!</strong>
-Your order has been saved in the local database.
-WhatsApp will now open with all your order details.
-Tap <strong>Send</strong> in WhatsApp.
-`;
-
-
-showToast(
-"Order saved! Opening WhatsApp... 💬"
-);
-
-
-/* OPEN WHATSAPP */
-
-setTimeout(function(){
-
-const newWindow =
-window.open(
-whatsappURL,
-"_blank"
-);
-
-if(!newWindow){
-
-window.location.href =
-whatsappURL;
-
-}
-
-},500);
-
-});
-
-
-/* =====================================================
-   PRODUCT ORDER BUTTONS
-===================================================== */
-
-document
-.querySelectorAll(".order-button")
-.forEach(function(button){
-
-button.addEventListener(
-"click",
-function(){
-
-const cake =
-button.dataset.cake;
-
-if(cake.includes("Chocolate")){
-
-cakeFlavor.value="Chocolate";
-
-}else if(cake.includes("Vanilla")){
-
-cakeFlavor.value="Vanilla";
-
-}else if(cake.includes("Golden")){
-
-cakeFlavor.value="Yellow Butter Cake";
-
-}else if(cake.includes("Funfetti")){
-
-cakeFlavor.value="Funfetti";
-
-}else if(cake.includes("Strawberry")){
-
-cakeFlavor.value="Strawberry";
-
+document.getElementById("adminLogout")?.addEventListener("click",()=>signOut(auth));
+
+if(cloudReady){
+  document.getElementById("databaseStatus").textContent="Cloud ready ✓";
+  onAuthStateChanged(auth,user=>{
+    if(user){
+      adminLoginView.hidden=true;adminPanel.hidden=false;
+      document.getElementById("adminIdentity").textContent=user.email||"Signed in admin";
+      renderOrders();
+    }else{
+      adminLoginView.hidden=false;adminPanel.hidden=true;
+      document.getElementById("databaseStatus").textContent="Cloud ready ✓";
+    }
+  });
 }else{
-
-cakeFlavor.value="Custom Flavor";
-
+  document.getElementById("databaseStatus").textContent="Firebase setup needed";
 }
 
-document
-.getElementById("order")
-.scrollIntoView({
-behavior:"smooth"
-});
+document.getElementById("year").textContent=new Date().getFullYear();
 
-showToast(
-cake+" selected 🎂"
-);
-
-});
-
-});
-
-
-/* =====================================================
-   REVIEW DATABASE
-===================================================== */
-
-const defaultReviews=[
-
-{
-name:"Happy Customer",
-rating:5,
-text:"The cake looked beautiful and tasted even better. Everyone loved it!"
-},
-
-{
-name:"Celebration Guest",
-rating:5,
-text:"The design was exactly what we imagined. Such a special experience."
-},
-
-{
-name:"Happy Customer",
-rating:5,
-text:"Fresh, soft and delicious. The presentation was gorgeous."
+/* LIGHT PARALLAX */
+if(window.matchMedia("(min-width:901px)").matches){
+  const heroArt=document.querySelector(".hero-art");
+  window.addEventListener("mousemove",event=>{const x=(event.clientX/window.innerWidth-.5)*6;const y=(event.clientY/window.innerHeight-.5)*6;if(heroArt)heroArt.style.transform=`translate(${x}px,${y}px)`},{passive:true});
 }
-
-];
-
-
-/* =====================================================
-   REVIEW DATABASE SAVE
-===================================================== */
-
-function saveReview(review){
-
-return new Promise(function(resolve,reject){
-
-if(!db){
-
-reject("Database not ready");
-
-return;
-
-}
-
-const transaction =
-db.transaction(
-["reviews"],
-"readwrite"
-);
-
-const store =
-transaction.objectStore("reviews");
-
-const request =
-store.add(review);
-
-request.onsuccess=function(){
-
-resolve(request.result);
-
-};
-
-request.onerror=function(){
-
-reject(request.error);
-
-};
-
-});
-
-}
-
-
-/* =====================================================
-   GET REVIEWS
-===================================================== */
-
-function getSavedReviews(){
-
-return new Promise(function(resolve,reject){
-
-if(!db){
-
-resolve([]);
-
-return;
-
-}
-
-const transaction =
-db.transaction(
-["reviews"],
-"readonly"
-);
-
-const store =
-transaction.objectStore("reviews");
-
-const request =
-store.getAll();
-
-request.onsuccess=function(){
-
-resolve(request.result);
-
-};
-
-request.onerror=function(){
-
-reject(request.error);
-
-};
-
-});
-
-}
-
-
-/* =====================================================
-   STARS
-===================================================== */
-
-function createStars(rating){
-
-let stars="";
-
-for(let i=1;i<=5;i++){
-
-stars +=
-i <= rating
-? "★"
-: "☆";
-
-}
-
-return stars;
-
-}
-
-
-/* =====================================================
-   SECURITY
-===================================================== */
-
-function escapeHTML(text){
-
-const div =
-document.createElement("div");
-
-div.textContent=
-String(text);
-
-return div.innerHTML;
-
-}
-
-
-/* =====================================================
-   RENDER REVIEWS
-===================================================== */
-
-async function renderReviews(){
-
-const reviewList =
-document.getElementById(
-"reviewList"
-);
-
-let reviews=[];
-
-try{
-
-const saved =
-await getSavedReviews();
-
-reviews =
-defaultReviews.concat(saved);
-
-}catch(error){
-
-reviews =
-defaultReviews;
-
-}
-
-reviewList.innerHTML="";
-
-reviews
-.slice()
-.reverse()
-.forEach(function(review){
-
-const article =
-document.createElement("article");
-
-article.className="review";
-
-article.innerHTML=`
-
-<div class="stars">
-${createStars(Number(review.rating))}
-</div>
-
-<p>
-“${escapeHTML(review.text)}”
-</p>
-
-<div class="reviewer">
-
-<div class="avatar">
-😊
-</div>
-
-<span>
-${escapeHTML(review.name)}
-</span>
-
-</div>
-`;
-
-reviewList.appendChild(article);
-
-});
-
-}
-
-
-/* =====================================================
-   REVIEW FORM
-===================================================== */
-
-document
-.getElementById("reviewForm")
-.addEventListener(
-"submit",
-async function(event){
-
-event.preventDefault();
-
-const name =
-document
-.getElementById("reviewName")
-.value.trim();
-
-const text =
-document
-.getElementById("reviewText")
-.value.trim();
-
-const selected =
-document.querySelector(
-'input[name="rating"]:checked'
-);
-
-if(!name){
-
-showToast(
-"Please enter your name."
-);
-
-return;
-
-}
-
-if(!selected){
-
-showToast(
-"Please select a star rating ⭐"
-);
-
-return;
-
-}
-
-if(!text){
-
-showToast(
-"Please write your review."
-);
-
-return;
-
-}
-
-const review={
-
-name:name,
-
-rating:Number(
-selected.value
-),
-
-text:text,
-
-createdAt:
-new Date().toISOString()
-
-};
-
-try{
-
-await saveReview(review);
-
-await renderReviews();
-
-document
-.getElementById("reviewForm")
-.reset();
-
-showToast(
-"Review saved! ⭐"
-);
-
-}catch(error){
-
-showToast(
-"Could not save review."
-);
-
-}
-
-});
-
-
-/* =====================================================
-   START DATABASE
-===================================================== */
-
-async function startCakeHubDatabase(){
-
-try{
-
-await openDatabase();
-
-await renderOrders();
-
-await renderReviews();
-
-}catch(error){
-
-console.error(
-"CakeHub database error:",
-error
-);
-
-document
-.getElementById("databaseStatus")
-.textContent=
-"Database unavailable";
-
-}
-
-}
-
-startCakeHubDatabase();
-
-
-/* =====================================================
-   YEAR
-===================================================== */
-
-document
-.getElementById("year")
-.textContent=
-new Date().getFullYear();
-
-
-/* =====================================================
-   HERO PARALLAX
-===================================================== */
-
-if(
-window.matchMedia(
-"(min-width:901px)"
-).matches
-){
-
-const heroArt =
-document.querySelector(
-".hero-art"
-);
-
-window.addEventListener(
-"mousemove",
-function(event){
-
-const x =
-(
-event.clientX /
-window.innerWidth -
-.5
-) * 8;
-
-const y =
-(
-event.clientY /
-window.innerHeight -
-.5
-) * 8;
-
-heroArt.style.transform=
-"translate("+x+"px,"+y+"px)";
-
-});
-
-}
-
 </script>
 
 </body>
