@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Street Fighter II - JS Edition</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2/family=Press+Start+2P&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Press Start 2P', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        #game-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            border: 4px solid #facc15;
+            box-shadow: 0 0 20px rgba(250, 204, 21, 0.5);
+            background: #111;
+        }
+
+        /* Arcade HUD */
+        #ui-hud {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .fighter-hud {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 42%;
+        }
+
+        .fighter-hud.p2 {
+            flex-direction: row-reverse;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+            border: 2px solid #facc15;
+            background: #333;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            color: #facc15;
+            font-weight: bold;
+            box-shadow: inset 0 0 5px #000;
+        }
+
+        .hud-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .name-score {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.55rem;
+            color: #facc15;
+            text-shadow: 1px 1px #000;
+        }
+
+        .health-bar-bg {
+            width: 100%;
+            height: 16px;
+            background: #311;
+            border: 2px solid #fff;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .health-bar-fill {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(180deg, #f87171 0%, #dc2626 100%);
+            transition: width 0.1s ease-out;
+        }
+
+        .fighter-hud.p2 .health-bar-fill {
+            background: linear-gradient(180deg, #60a5fa 0%, #2563eb 100%);
+        }
+
+        #timer-box {
+            font-size: 1.2rem;
+            color: #facc15;
+            text-shadow: 2px 2px #000;
+            background: #000;
+            padding: 4px 8px;
+            border: 2px solid #facc15;
+            border-radius: 4px;
+        }
+
+        canvas {
+            display: block;
+            background: linear-gradient(180deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+        }
+
+        #announcement {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2rem;
+            color: #facc15;
+            text-shadow: 3px 3px #000, 0 0 15px #facc15;
+            display: none;
+            z-index: 20;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Mobile Controls */
+        #mobile-controls {
+            width: 100%;
+            max-width: 800px;
+            flex-grow: 1;
+            background: #050505;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-top: 2px solid #333;
+        }
+
+        .control-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .ctrl-btn {
+            background: rgba(250, 204, 21, 0.1);
+            border: 2px solid #facc15;
+            color: #facc15;
+            font-size: 1rem;
+            border-radius: 8px;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .ctrl-btn:active, .ctrl-btn.active {
+            background: #facc15;
+            color: #000;
+        }
+
+        .action-btn {
+            background: rgba(239, 68, 68, 0.15);
+            border: 2px solid #ef4444;
+            color: #ef4444;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .action-btn:active, .action-btn.active {
+            background: #ef4444;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <!-- Arcade HUD Header -->
+        <div id="ui-hud">
+            <div class="fighter-hud">
+                <div class="avatar">RYU</div>
+                <div class="hud-details">
+                    <div class="name-score"><span>RYU</span><span id="p1-hp">100</span></div>
+                    <div class="health-bar-bg"><div class="health-bar-fill" id="p1-health"></div></div>
+                </div>
+            </div>
+
+            <div id="timer-box">60</div>
+
+            <div class="fighter-hud p2">
+                <div class="avatar" style="border-color:#60a5fa; color:#60a5fa;">KEN</div>
+                <div class="hud-details">
+                    <div class="name-score"><span>KEN</span><span id="p2-hp">100</span></div>
+                    <div class="health-bar-bg" style="direction: rtl;"><div class="health-bar-fill" id="p2-health"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="announcement">ROUND 1</div>
+
+        <canvas id="fighterCanvas" width="800" height="450"></canvas>
+    </div>
+
+    <!-- On-Screen Arcade Touch Controls -->
+    <div id="mobile-controls">
+        <div class="control-group">
+            <button class="ctrl-btn" id="btn-left">◀</button>
+            <button class="ctrl-btn" id="btn-right">▶</button>
+            <button class="ctrl-btn" id="btn-jump">▲</button>
+        </div>
+        <div class="control-group">
+            <button class="ctrl-btn action-btn" id="btn-punch">PUNCH</button>
+            <button class="ctrl-btn action-btn" id="btn-kick">KICK</button>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('fighterCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const p1HealthBar = document.getElementById('p1-health');
+        const p2HealthBar = document.getElementById('p2-health');
+        const p1HpText = document.getElementById('p1-hp');
+        const p2HpText = document.getElementById('p2-hp');
+        const timerText = document.getElementById('timer-box');
+        const announcement = document.getElementById('announcement');
+
+        const groundY = 350;
+        let gameActive = true;
+        let timeLeft = 60;
+
+        const timerInterval = setInterval(() => {
+            if (!gameActive) return;
+            timeLeft--;
+            timerText.innerText = timeLeft;
+            if (timeLeft <= 0) endGameByTime();
+        }, 1000);
+
+        // Detailed Retro Fighter Class (Styled like Ryu & Ken)
+        class Fighter {
+            constructor({ x, y, name, color, giColor, beltColor, facing }) {
+                this.x = x;
+                this.y = y;
+                this.width = 55;
+                this.height = 110;
+                this.vx = 0;
+                this.vy = 0;
+                this.name = name;
+                this.color = color; // Skin tone
+                this.giColor = giColor; // Outfit color
+                this.beltColor = beltColor;
+                this.health = 100;
+                this.facing = facing;
+                this.isJumping = false;
+                this.isAttacking = false;
+                this.attackCooldown = false;
+            }
+
+            draw() {
+                ctx.save();
+                
+                // Fighter Gi / Torso
+                ctx.fillStyle = this.giColor;
+                ctx.fillRect(this.x + 5, this.y + 35, this.width - 10, this.height - 50);
+
+                // Belt
+                ctx.fillStyle = this.beltColor;
+                ctx.fillRect(this.x + 5, this.y + 75, this.width - 10, 8);
+
+                // Head & Skin
+                ctx.fillStyle = this.color;
+                ctx.fillRect(this.x + 12, this.y + 10, 32, 30);
+
+                // Hair / Headband (Ryu red headband / Ken blonde hair)
+                if (this.name === 'RYU') {
+                    ctx.fillStyle = '#dc2626'; // Red Headband
+                    ctx.fillRect(this.x + 10, this.y + 15, 36, 6);
+                    ctx.fillStyle = '#111'; // Dark hair
+                    ctx.fillRect(this.x + 10, this.y + 5, 25, 8);
+                } else {
+                    ctx.fillStyle = '#fbbf24'; // Blonde hair
+                    ctx.fillRect(this.x + 8, this.y + 5, 38, 14);
+                }
+
+                // Eyes / Facing direction
+                ctx.fillStyle = '#000';
+                let eyeX = this.facing === 'right' ? this.x + 32 : this.x + 15;
+                ctx.fillRect(eyeX, this.y + 20, 6, 4);
+
+                // Attack Hitbox / Fist extension visual
+                if (this.isAttacking) {
+                    ctx.fillStyle = '#fff';
+                    let fistX = this.facing === 'right' ? this.x + this.width : this.x - 30;
+                    ctx.fillRect(fistX, this.y + 45, 30, 16);
+                }
+
+                ctx.restore();
+            }
+
+            update() {
+                this.vy += 0.65;
+                this.y += this.vy;
+                this.x += this.vx;
+
+                if (this.y + this.height >= groundY) {
+                    this.y = groundY - this.height;
+                    this.vy = 0;
+                    this.isJumping = false;
+                }
+
+                if (this.x < 0) this.x = 0;
+                if (this.x + this.width > canvas.width) this.x = canvas.width - this.width;
+            }
+
+            attack(type) {
+                if (this.isAttacking || this.attackCooldown) return;
+                this.isAttacking = true;
+                let duration = type === 'punch' ? 150 : 250;
+                setTimeout(() => {
+                    this.isAttacking = false;
+                    this.attackCooldown = true;
+                    setTimeout(() => { this.attackCooldown = false; }, 200);
+                }, duration);
+            }
+        }
+
+        // Initialize Ryu (Player 1) vs Ken (AI Bot)
+        const player1 = new Fighter({ x: 200, y: 200, name: 'RYU', color: '#f5d0fe', giColor: '#f8fafc', beltColor: '#1e293b', facing: 'right' });
+        const player2 = new Fighter({ x: 540, y: 200, name: 'KEN', color: '#fed7aa', giColor: '#dc2626', beltColor: '#111827', facing: 'left' });
+
+        const keys = { a: false, d: false };
+
+        // Keyboard bindings
+        window.addEventListener('keydown', (e) => {
+            if (!gameActive) return;
+            if (e.key === 'a' || e.key === 'A') keys.a = true;
+            if (e.key === 'd' || e.key === 'D') keys.d = true;
+            if (e.key === 'w' || e.key === 'W') {
+                if (!player1.isJumping) { player1.vy = -12.5; player1.isJumping = true; }
+            }
+            if (e.key === 'f' || e.key === 'F') player1.attack('punch');
+            if (e.key === 'g' || e.key === 'G') player1.attack('kick');
+        });
+
+        window.addEventListener('keyup', (e) => {
+            if (e.key === 'a' || e.key === 'A') keys.a = false;
+            if (e.key === 'd' || e.key === 'D') keys.d = false;
+        });
+
+        // Touch Control Setup
+        function bindTouch(id, onDown, onUp) {
+            const btn = document.getElementById(id);
+            btn.addEventListener('touchstart', (e) => { e.preventDefault(); btn.classList.add('active'); onDown(); });
+            btn.addEventListener('touchend', (e) => { e.preventDefault(); btn.classList.remove('active'); if(onUp) onUp(); });
+            btn.addEventListener('mousedown', () => { btn.classList.add('active'); onDown(); });
+            btn.addEventListener('mouseup', () => { btn.classList.remove('active'); if(onUp) onUp(); });
+        }
+
+        bindTouch('btn-left', () => keys.a = true, () => keys.a = false);
+        bindTouch('btn-right', () => keys.d = true, () => keys.d = false);
+        bindTouch('btn-jump', () => { if (!player1.isJumping) { player1.vy = -12.5; player1.isJumping = true; } });
+        bindTouch('btn-punch', () => player1.attack('punch'));
+        bindTouch('btn-kick', () => player1.attack('kick'));
+
+        // AI Logic for Ken
+        function updateAI() {
+            if (!gameActive) return;
+            let dist = player1.x - player2.x;
+            player2.vx = 0;
+
+            if (Math.abs(dist) > 85) {
+                player2.vx = dist > 0 ? 3.2 : -3.2;
+            } else {
+                if (Math.random() < 0.05) {
+                    Math.random() > 0.4 ? player2.attack('punch') : player2.attack('kick');
+                }
+                if (Math.random() < 0.015 && !player2.isJumping) {
+                    player2.vy = -11.5;
+                    player2.isJumping = true;
+                }
+            }
+        }
+
+        function checkAttackHit(attacker, defender, damage) {
+            if (!attacker.isAttacking) return;
+            let hitX = attacker.facing === 'right' ? attacker.x + attacker.width : attacker.x - 30;
+            let hitY = attacker.y + 40;
+
+            if (
+                hitX < defender.x + defender.width &&
+                hitX + 30 > defender.x &&
+                hitY < defender.y + defender.height &&
+                hitY + 20 > defender.y
+            ) {
+                defender.health -= damage;
+                if (defender.health < 0) defender.health = 0;
+                updateHUD();
+
+                if (defender.health <= 0) {
+                    endGame(attacker === player1 ? "RYU WINS!" : "KEN WINS!");
+                }
+            }
+        }
+
+        function updateHUD() {
+            p1HealthBar.style.width = player1.health + '%';
+            p1HpText.innerText = player1.health;
+            p2HealthBar.style.width = player2.health + '%';
+            p2HpText.innerText = player2.health;
+        }
+
+        function endGame(msg) {
+            gameActive = false;
+            announcement.innerText = msg;
+            announcement.style.display = 'block';
+        }
+
+        function endGameByTime() {
+            if (player1.health > player2.health) endGame("RYU WINS (TIME)!");
+            else if (player2.health > player1.health) endGame("KEN WINS (TIME)!");
+            else endGame("DRAW!");
+        }
+
+        // Render Retro Stage Floor & Background Elements
+        function drawStage() {
+            // Retro Sun / Background Glow
+            ctx.fillStyle = '#312e81';
+            ctx.beginPath();
+            ctx.arc(400, 180, 100, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Ground Floor
+            ctx.fillStyle = '#78350f';
+            ctx.fillRect(0, groundY, canvas.width, canvas.height - groundY);
+            ctx.fillStyle = '#b45309';
+            ctx.fillRect(0, groundY, canvas.width, 6);
+
+            // Stage Tile Lines
+            ctx.strokeStyle = '#92400e';
+            ctx.lineWidth = 2;
+            for (let i = 0; i < canvas.width; i += 60) {
+                ctx.beginPath();
+                ctx.moveTo(i, groundY + 6);
+                ctx.lineTo(i - 40, canvas.height);
+                ctx.stroke();
+            }
+        }
+
+        function animate() {
+            window.requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            drawStage();
+
+            player1.vx = 0;
+            if (keys.a) player1.vx = -4.2;
+            if (keys.d) player1.vx = 4.2;
+
+            updateAI();
+
+            if (player1.x < player2.x) {
+                player1.facing = 'right';
+                player2.facing = 'left';
+            } else {
+                player1.facing = 'left';
+                player2.facing = 'right';
+            }
+
+            player1.update();
+            player2.update();
+
+            player1.draw();
+            player2.draw();
+
+            if (gameActive) {
+                checkAttackHit(player1, player2, 4);
+                checkAttackHit(player2, player1, 3);
+            }
+        }
+
+        setTimeout(() => {
+            announcement.style.display = 'none';
+        }, 1500);
+
+        animate();
+    </script>
+</body>
+</html>
