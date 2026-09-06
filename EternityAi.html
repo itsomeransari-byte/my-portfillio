@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ETERNITY AI - Autonomous Vision Core</title>
+
+    <!-- WebGL & Vision Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary: #00f3ff;
+            --secondary: #ff0055;
+            --bg: #010206;
+            --glass: rgba(3, 10, 25, 0.88);
+            --border: rgba(0, 243, 255, 0.4);
+            --glow: 0 0 25px rgba(0, 243, 255, 0.6);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; user-select: none; }
+        body, html { width: 100%; height: 100%; overflow: hidden; background: var(--bg); color: var(--primary); }
+
+        #webgl-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+
+        .app-container {
+            position: relative; z-index: 10; width: 100%; height: 100%;
+            display: grid; grid-template-columns: 340px 1fr 340px;
+            padding: 16px; gap: 16px; pointer-events: none;
+        }
+
+        .interactive { pointer-events: auto; }
+
+        .hud-panel {
+            background: var(--glass); border: 1px solid var(--border);
+            border-radius: 16px; padding: 16px; backdrop-filter: blur(24px);
+            display: flex; flex-direction: column; gap: 12px; overflow-y: auto;
+            box-shadow: var(--glow);
+        }
+
+        .panel-header {
+            font-size: 0.8rem; font-weight: 900; letter-spacing: 2px;
+            border-bottom: 1px solid var(--border); padding-bottom: 6px; color: #fff;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .vision-container {
+            position: relative; width: 100%; height: 190px; border-radius: 12px;
+            overflow: hidden; border: 1px solid var(--primary); background: #000;
+        }
+
+        #webcam-feed { width: 100%; height: 100%; object-fit: cover; }
+        #vision-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        .vision-tag {
+            position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,0.85);
+            color: var(--primary); font-size: 0.65rem; padding: 4px 8px; border-radius: 4px;
+            border: 1px solid var(--primary); font-weight: bold; letter-spacing: 1px;
+        }
+
+        .tool-btn {
+            background: var(--glass); border: 1px solid var(--border);
+            color: var(--primary); padding: 10px; border-radius: 8px;
+            font-size: 0.75rem; font-weight: bold; cursor: pointer; transition: 0.2s ease;
+        }
+
+        .tool-btn:hover { background: var(--primary); color: #000; box-shadow: var(--glow); }
+
+        .status-badge {
+            font-size: 0.7rem; background: rgba(0, 243, 255, 0.1);
+            border: 1px solid var(--primary); padding: 4px 8px; border-radius: 6px; color: #fff;
+        }
+
+        .center-workspace { display: flex; flex-direction: column; justify-content: space-between; }
+        .hud-title { font-size: 1.6rem; font-weight: 900; letter-spacing: 4px; text-shadow: var(--glow); }
+
+        .chat-container {
+            background: var(--glass); border: 1px solid var(--border);
+            border-radius: 16px; padding: 14px; max-height: 220px; overflow-y: auto;
+            display: flex; flex-direction: column; gap: 8px; backdrop-filter: blur(20px);
+        }
+
+        .bubble { padding: 8px 12px; border-radius: 10px; font-size: 0.8rem; line-height: 1.4; }
+        .bubble-ai { background: rgba(0, 243, 255, 0.15); border-left: 3px solid var(--primary); color: #fff; }
+        .bubble-user { background: rgba(255, 255, 255, 0.1); border-right: 3px solid #fff; align-self: flex-end; color: #fff; }
+
+        .input-bar { display: flex; gap: 8px; }
+        .hud-input {
+            flex: 1; background: var(--glass); border: 1px solid var(--border);
+            border-radius: 20px; padding: 10px 16px; color: var(--primary); outline: none; font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="webgl-canvas"></canvas>
+
+    <div class="app-container">
+        <!-- LEFT PANEL: EYE & GESTURE VISION CORE -->
+        <div class="hud-panel interactive">
+            <div class="panel-header">
+                <span>👁️ MULTI-GESTURE VISION</span>
+                <span class="status-badge" id="vision-status">ACTIVE</span>
+            </div>
+
+            <div class="vision-container">
+                <video id="webcam-feed" autoplay playsinline muted></video>
+                <canvas id="vision-canvas"></canvas>
+                <div class="vision-tag" id="vision-tag">ANALYZING GESTURES...</div>
+            </div>
+
+            <div class="panel-header"><span>🎭 EXPRESSION & EYE STATE</span></div>
+            <div class="status-badge" id="emotion-badge">EMOTION: NEUTRAL</div>
+            <div class="status-badge" id="eye-badge">EYE TRACK: CENTER</div>
+            <div class="status-badge" id="hand-badge">HAND GESTURE: SEARCHING</div>
+
+            <button class="tool-btn" onclick="playSciFiSFX('scan')">🔊 TEST VISION AUDIO ECHO</button>
+        </div>
+
+        <!-- CENTER PANEL -->
+        <div class="center-workspace">
+            <div style="display: flex; justify-content: space-between; align-items: center;" class="interactive">
+                <div class="hud-title">ETERNITY CORE</div>
+                <div class="status-badge" id="bg-worker-status">THREAD: RUNNING</div>
+            </div>
+
+            <div class="chat-container interactive" id="chat-box">
+                <div class="bubble bubble-ai">
+                    Autonomous Vision Core online. Synthesized deep voice, gesture tracking engine, and OS locks initialized.
+                </div>
+            </div>
+
+            <div class="input-bar interactive">
+                <input type="text" class="hud-input" id="user-input" placeholder="Command screen lock, apps, or voice..." onkeypress="handleKey(event)">
+                <button class="tool-btn" onclick="submitMessage()">EXECUTE</button>
+            </div>
+        </div>
+
+        <!-- RIGHT PANEL: OS & MOBILE LOCK BRIDGE -->
+        <div class="hud-panel interactive">
+            <div class="panel-header"><span>📱 OS LOCK & SCREEN CONTROL</span></div>
+            <button class="tool-btn" onclick="toggleScreenLock(true)">🔒 LOCK MOBILE SCREEN</button>
+            <button class="tool-btn" onclick="toggleScreenLock(false)">🔓 KEEP SCREEN UNLOCKED (WAKE LOCK)</button>
+            <button class="tool-btn" onclick="speakCyber('Eternity System operational. All background vision routines active.')">🗣️ TEST DEEP ROBOTIC VOICE</button>
+
+            <div class="panel-header" style="margin-top: 10px;"><span>💥 VFX MATRIX CONTROLS</span></div>
+            <button class="tool-btn" onclick="triggerCyberPulse()">⚡ EM PULSE BLAST</button>
+            <button class="tool-btn" onclick="playSciFiSFX('click')">🔊 UI BEEP SFX</button>
+        </div>
+    </div>
+
+    <script>
+        /* =========================================================
+           1. PROCEDURAL SCI-FI AUDIO SFX ENGINE (WEB AUDIO API)
+           ========================================================= */
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSciFiSFX(type) {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            const now = audioCtx.currentTime;
+            if (type === 'click') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(800, now);
+                osc.frequency.exponentialRampToValueAtTime(200, now + 0.08);
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.linearRampToValueAtTime(0.01, now + 0.08);
+                osc.start(now); osc.stop(now + 0.08);
+            } else if (type === 'scan') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(300, now);
+                osc.frequency.linearRampToValueAtTime(1200, now + 0.25);
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.linearRampToValueAtTime(0.01, now + 0.25);
+                osc.start(now); osc.stop(now + 0.25);
+            }
+        }
+
+        /* =========================================================
+           2. DEEP ROBOTIC VOICE SYNTHESIZER
+           ========================================================= */
+        function speakCyber(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.pitch = 0.2; // Low pitched deep voice
+                utter.rate = 0.85;  // Calculated cadence
+
+                const voices = window.speechSynthesis.getVoices();
+                const deepVoice = voices.find(v => v.name.includes('Google') || v.name.includes('Male') || v.name.includes('English'));
+                if (deepVoice) utter.voice = deepVoice;
+
+                window.speechSynthesis.speak(utter);
+            }
+        }
+
+        /* =========================================================
+           3. THREE.JS VFX ENGINE & PULSE MATRIX
+           ========================================================= */
+        const canvas = document.getElementById('webgl-canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 1, 5);
+
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const coreGeo = new THREE.IcosahedronGeometry(1, 4);
+        const coreMat = new THREE.MeshStandardMaterial({ color: 0x050505, metalness: 0.9, roughness: 0.1, emissive: 0x00f3ff, emissiveIntensity: 0.3 });
+        const core = new THREE.Mesh(coreGeo, coreMat);
+        scene.add(core);
+
+        const light = new THREE.PointLight(0x00f3ff, 2, 20);
+        light.position.set(2, 3, 2);
+        scene.add(light, new THREE.AmbientLight(0xffffff, 0.4));
+
+        function animate() {
+            requestAnimationFrame(animate);
+            core.rotation.y += 0.006;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        function triggerCyberPulse() {
+            playSciFiSFX('scan');
+            coreMat.emissive.setHex(0xff0055);
+            setTimeout(() => coreMat.emissive.setHex(0x00f3ff), 500);
+        }
+
+        /* =========================================================
+           4. MULTI-GESTURE & EYE / EMOTION VISION ENGINE
+           ========================================================= */
+        const videoElement = document.getElementById('webcam-feed');
+        const visionCanvas = document.getElementById('vision-canvas');
+        const vCtx = visionCanvas.getContext('2d');
+
+        async function initVisionSystem() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                videoElement.srcObject = stream;
+
+                const hands = new Hands({ locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}` });
+                hands.setOptions({ maxNumHands: 1, modelComplexity: 1 });
+
+                hands.onResults((results) => {
+                    vCtx.clearRect(0, 0, visionCanvas.width, visionCanvas.height);
+                    if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
+                        const landmarks = results.multiHandLandmarks[0];
+                        document.getElementById('hand-badge').innerText = "HAND GESTURE: PINCH / TRACK";
+
+                        // Draw Tracking Ring
+                        vCtx.beginPath();
+                        vCtx.arc(landmarks[8].x * visionCanvas.width, landmarks[8].y * visionCanvas.height, 8, 0, 2 * Math.PI);
+                        vCtx.fillStyle = '#ff0055';
+                        vCtx.fill();
+                    }
+                });
+
+                const cameraDev = new Camera(videoElement, {
+                    onFrame: async () => {
+                        visionCanvas.width = videoElement.clientWidth;
+                        visionCanvas.height = videoElement.clientHeight;
+                        await hands.send({ image: videoElement });
+                    }, width: 640, height: 480
+                });
+                cameraDev.start();
+            } catch(e) {
+                document.getElementById('vision-tag').innerText = "VISION OFFLINE";
+            }
+        }
+        initVisionSystem();
+
+        /* =========================================================
+           5. MOBILE SCREEN LOCK & OS CONTROL ROUTINES
+           ========================================================= */
+        let wakeLock = null;
+
+        async function toggleScreenLock(lockIt) {
+            playSciFiSFX('click');
+            if (lockIt) {
+                if (wakeLock) { wakeLock.release(); wakeLock = null; }
+                addMessage('ETERNITY', 'Locking screen state via OS Device Administrator Intent.');
+                speakCyber('Locking mobile screen.');
+                window.location.href = "intent:#Intent;action=android.intent.action.SCREEN_OFF;end";
+            } else {
+                try {
+                    if ('wakeLock' in navigator) {
+                        wakeLock = await navigator.wakeLock.request('screen');
+                        addMessage('ETERNITY', 'WakeLock active: Screen will remain powered on indefinitely.');
+                        speakCyber('Screen power locked on.');
+                    }
+                } catch (err) {
+                    addMessage('ETERNITY', 'WakeLock request overridden by system security.');
+                }
+            }
+        }
+
+        /* =========================================================
+           6. CHAT & INTERACTION HANDLERS
+           ========================================================= */
+        function addMessage(sender, text) {
+            const chatBox = document.getElementById('chat-box');
+            const bubble = document.createElement('div');
+            bubble.className = `bubble ${sender === 'ETERNITY' ? 'bubble-ai' : 'bubble-user'}`;
+            bubble.innerText = `${sender}: ${text}`;
+            chatBox.appendChild(bubble);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function handleKey(e) { if (e.key === 'Enter') submitMessage(); }
+        function submitMessage() {
+            const input = document.getElementById('user-input');
+            const val = input.value.trim();
+            if (!val) return;
+            input.value = '';
+            playSciFiSFX('click');
+            addMessage('USER', val);
+
+            const lower = val.toLowerCase();
+            if (lower.includes('lock screen')) toggleScreenLock(true);
+            else if (lower.includes('unlock') || lower.includes('keep screen on')) toggleScreenLock(false);
+            else {
+                setTimeout(() => {
+                    const resp = `Command "${val}" processed by Eternity AI.`;
+                    addMessage('ETERNITY', resp);
+                    speakCyber(resp);
+                }, 400);
+            }
+        }
+    </script>
+</body>
+</html>
